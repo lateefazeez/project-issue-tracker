@@ -1,0 +1,102 @@
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
+#
+# It's strongly recommended that you check this file into your version control system.
+
+ActiveRecord::Schema.define(version: 2021_11_19_235135) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "tickets_id"
+    t.index ["tickets_id"], name: "index_comments_on_tickets_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "percentage_complete"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "users_id"
+    t.index ["users_id"], name: "index_projects_on_users_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "title"
+    t.boolean "complete?"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "tickets_id"
+    t.index ["tickets_id"], name: "index_tasks_on_tickets_id"
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "plan_duration"
+    t.string "title"
+    t.string "description"
+    t.string "status"
+    t.integer "percentage_complete"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "projects_id"
+    t.bigint "users_id"
+    t.index ["projects_id"], name: "index_tickets_on_projects_id"
+    t.index ["users_id"], name: "index_tickets_on_users_id"
+  end
+
+  create_table "user_projects", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "users_id"
+    t.bigint "projects_id"
+    t.index ["projects_id"], name: "index_user_projects_on_projects_id"
+    t.index ["users_id"], name: "index_user_projects_on_users_id"
+  end
+
+  create_table "user_tickets", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "users_id"
+    t.bigint "tickets_id"
+    t.index ["tickets_id"], name: "index_user_tickets_on_tickets_id"
+    t.index ["users_id"], name: "index_user_tickets_on_users_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "phone_number"
+    t.boolean "admin"
+    t.string "password"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "comments", "tickets", column: "tickets_id"
+  add_foreign_key "projects", "users", column: "users_id"
+  add_foreign_key "tasks", "tickets", column: "tickets_id"
+  add_foreign_key "tickets", "projects", column: "projects_id"
+  add_foreign_key "tickets", "users", column: "users_id"
+  add_foreign_key "user_projects", "projects", column: "projects_id"
+  add_foreign_key "user_projects", "users", column: "users_id"
+  add_foreign_key "user_tickets", "tickets", column: "tickets_id"
+  add_foreign_key "user_tickets", "users", column: "users_id"
+end
