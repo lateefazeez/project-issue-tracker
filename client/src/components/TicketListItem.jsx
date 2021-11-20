@@ -1,12 +1,12 @@
-import "./TicketListItem.scss";
+import "./ListItem.scss";
 import classNames from "classnames";
 
 const TicketListItem = (props) => {
 
   // const { title, status, start_date, end_date, duration, percentage_complete, author } = props;
 
-  const ticketClass = classNames("ticket-list__item", {
-    "ticket-list__item--selected": props.selected,
+  const ticketClass = classNames("list__item", {
+    "list__item--selected": props.selected 
   });
 
   const title = "Setup ticket list item"
@@ -17,7 +17,7 @@ const TicketListItem = (props) => {
     <li
       className={ticketClass}
       selected={props.selected}
-      //onClick={() => props.setTicket(props.name)}
+      onClick={() => console.log('Yo')}
     >
       <div>{title}</div>
       <div>{description}</div>
