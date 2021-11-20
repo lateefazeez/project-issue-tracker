@@ -1,6 +1,7 @@
 import {useEffect, useState } from 'react'
 import axios from 'axios'
 import './App.scss';
+import TicketListItem from './components/TicketListItem';
 
 function App() {
   
@@ -13,7 +14,7 @@ function App() {
   
   return (
     <div className="App">
-    <h1>data.data</h1>
+    <TicketListItem/>
     </div>
   );
 }
