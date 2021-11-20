@@ -3,15 +3,15 @@ import classNames from "classnames";
 
 const TicketListItem = (props) => {
 
-  // const { title, status, start_date, end_date, duration, percentage_complete } = props;
+  // const { title, status, start_date, end_date, duration, percentage_complete, author } = props;
 
   const ticketClass = classNames("ticket-list__item", {
     "ticket-list__item--selected": props.selected,
   });
 
   const title = "Setup ticket list item"
-  const status= "At Risk"
-  const percentage_complete="65%"
+  const description= "Setup ticket list item in storybook and front end"
+  const author= "Barney Rubble"
 
   return (
     <li
@@ -19,9 +19,10 @@ const TicketListItem = (props) => {
       selected={props.selected}
       //onClick={() => props.setTicket(props.name)}
     >
-      <p>{title}</p>
-      <p>{status}</p>
-      <p>{percentage_complete}</p>
+      <div>{title}</div>
+      <div>{description}</div>
+      <div>{author}</div>
+ 
     </li>
   );
 }
@@ -34,7 +35,7 @@ export default TicketListItem;
 //   end_date: "September 18, 2020",
 //   duration: 137,
 //   title: "Setup ticket list item",
-//   description: "Setup ticket list item",
+//   description: "Setup ticket list item in storybook and front end",
 //   status: "At Risk",
 //   percentage_complete: "65%",
 //   //author: "Barney Rubble",
