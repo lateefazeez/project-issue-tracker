@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 2021_11_20_005634) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "users_id"
-    t.bigint "project_types_id"
-    t.index ["project_types_id"], name: "index_projects_on_project_types_id"
+    t.bigint "project_type_id"
+    t.index ["project_type_id"], name: "index_projects_on_project_type_id"
     t.index ["users_id"], name: "index_projects_on_users_id"
   end
 
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 2021_11_20_005634) do
   end
 
   add_foreign_key "comments", "tickets", column: "tickets_id"
-  add_foreign_key "projects", "project_types", column: "project_types_id"
+  add_foreign_key "projects", "project_types"
   add_foreign_key "projects", "users", column: "users_id"
   add_foreign_key "tasks", "tickets", column: "tickets_id"
   add_foreign_key "tickets", "projects", column: "projects_id"
