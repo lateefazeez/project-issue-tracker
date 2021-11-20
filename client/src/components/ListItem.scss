@@ -4,30 +4,39 @@
 @import "../styles/variables.scss";
 
 
-.ticket-list {
+.list {
   &__item {
      @include fade;
 
-    color: #262525;
+    color: $text-light;
     height: 1.5rem;
     padding-left: 2rem;
+    padding-right: 2rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    background-color: $project-table-background;
+    font: $font-family;
+    justify-content: space-between;
+    padding-top: 5px;
+    border-width: 4px;
+    border-color: $text-light;
+
 
     &:hover {
-      background-color: #4D45B5;
+      background-color: $hover-color;
       cursor: pointer;
-      color: $page-dark-background;
+      color: $text-light;
       
     }
 
     &--selected {
       background-color: darken($white, 5%);
-      color: $page-dark-background;
+      color: $text-dark;
 
       &:hover {
         background-color: darken($white, 5%);
+        color: $text-dark;
       }
     }
   }

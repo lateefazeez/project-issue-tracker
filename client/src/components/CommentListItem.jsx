@@ -1,7 +1,28 @@
-const CommentListItem = () => {
-  return ( 
-    <h1>Comment List Item</h1>
-   );
+import "./ListItem.scss";
+import classNames from "classnames";
+
+const CommentListItem = (props) => {
+
+  //const { author, message } = props;
+
+  const commentClass = classNames("list__item", {
+   "list__item--selected": props.selected,
+ });
+
+ const author = "Fred Flintstone"
+ const message= "Yabba Dabba doooo!!!"
+
+ return (
+   <li
+     className={commentClass}
+     selected={props.selected}
+     onClick={() => console.log('Yo')}
+   >
+     <div>{author}</div>
+     <div>{message}</div>
+
+   </li>
+ );
 }
  
 export default CommentListItem;

@@ -1,7 +1,16 @@
-const TeamListItem = () => {
-  return ( 
-    <h2>Team List Item</h2>
-   );
+
+import React from "react";
+import TaskListItem from "./TaskListItem";
+
+
+const ListMaker = (props) => {
+  //const list = props.days.map((day) => {
+    return (
+      <TaskListItem/>
+    );
+  //});
+
+  return <ul>{list}</ul>;
 }
  
-export default TeamListItem;
+export default ListMaker;
