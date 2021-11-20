@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_19_235135) do
+ActiveRecord::Schema.define(version: 2021_11_20_005634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(version: 2021_11_19_235135) do
     t.index ["tickets_id"], name: "index_comments_on_tickets_id"
   end
 
+  create_table "project_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -33,6 +39,8 @@ ActiveRecord::Schema.define(version: 2021_11_19_235135) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "users_id"
+    t.bigint "project_types_id"
+    t.index ["project_types_id"], name: "index_projects_on_project_types_id"
     t.index ["users_id"], name: "index_projects_on_users_id"
   end
 
@@ -91,6 +99,7 @@ ActiveRecord::Schema.define(version: 2021_11_19_235135) do
   end
 
   add_foreign_key "comments", "tickets", column: "tickets_id"
+  add_foreign_key "projects", "project_types", column: "project_types_id"
   add_foreign_key "projects", "users", column: "users_id"
   add_foreign_key "tasks", "tickets", column: "tickets_id"
   add_foreign_key "tickets", "projects", column: "projects_id"
