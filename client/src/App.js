@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import {useEffect, useState } from 'react'
 import axios from 'axios'
 import './App.scss';
 
@@ -13,7 +13,7 @@ function App() {
   
   return (
     <div className="App">
-    <h1>Hey Yo</h1>
+    <h1>data.data</h1>
     </div>
   );
 }
