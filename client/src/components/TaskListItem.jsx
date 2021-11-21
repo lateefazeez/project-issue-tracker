@@ -18,8 +18,8 @@ const TaskListItem = (props) => {
       selected={props.selected}
       onClick={() => console.log('Yo')}
     >
-      <div>{title}</div>
-      <div>{percentage_complete}</div>
+      <div>{props.title}</div>
+      <div>{props.percentage_complete}</div>
  
     </li>
   );

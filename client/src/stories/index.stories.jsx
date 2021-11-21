@@ -8,7 +8,7 @@ import TeamListItem from "../components/TeamListItem";
 import TaskListItem from "../components/TaskListItem";
 import CommentListItem from "../components/CommentListItem";
 import ProjectListItem from "../components/ProjectListItem";
-import TaskList from "../components/TaskList";
+import TaskList from "../components/List";
 
   storiesOf("TicketListItem", module) //Initiates Storybook and registers our DayListItem component
   .addParameters({
@@ -35,55 +35,36 @@ import TaskList from "../components/TaskList";
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
   }) // Provides the default background color for our component
-  .add("Unselected", () => <TaskListItem first_name="Barney" last_name="Rubble" email="Brub@gmail.com" />) // To define our stories, we call add() once for each of our test states to generate a story
-  .add("Selected", () => <TaskListItem first_name="Barney" last_name="Rubble" email="Brub@gmail.com" selected />) 
+  .add("Unselected", () => <TaskListItem title="Do work" percentage_complete='50%' />) // To define our stories, we call add() once for each of our test states to generate a story
+  .add("Selected", () => <TaskListItem title="Do work" percentage_complete='50%' selected />) 
   .add("Clickable", () => (
-    <TaskListItem first_name="Barney" last_name="Rubble" email="Brub@gmail.com" setTicket={action("setTicket")} /> // action() allows us to create a callback that appears in the actions panel when clicked
+    <TaskListItem title="Do work" percentage_complete='50%' setTicket={action("setTicket")} /> // action() allows us to create a callback that appears in the actions panel when clicked
   ));
 
   storiesOf("CommentListItem", module) //Initiates Storybook and registers our DayListItem component
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
   }) // Provides the default background color for our component
-  .add("Unselected", () => <CommentListItem first_name="Barney" last_name="Rubble" email="Brub@gmail.com" />) // To define our stories, we call add() once for each of our test states to generate a story
-  .add("Selected", () => <CommentListItem first_name="Barney" last_name="Rubble" email="Brub@gmail.com" selected />) 
+  .add("Unselected", () => <CommentListItem author="Barney" message="life is rocky" />) // To define our stories, we call add() once for each of our test states to generate a story
+  .add("Selected", () => <CommentListItem author="Barney" message="life is rocky" selected />) 
   .add("Clickable", () => (
-    <CommentListItem first_name="Barney" last_name="Rubble" email="Brub@gmail.com" setTicket={action("setTicket")} /> // action() allows us to create a callback that appears in the actions panel when clicked
+    <CommentListItem author="Barney" message="life is rocky" setTicket={action("setTicket")} /> // action() allows us to create a callback that appears in the actions panel when clicked
   ));
 
   storiesOf("ProjectListItem", module) //Initiates Storybook and registers our DayListItem component
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
   }) // Provides the default background color for our component
-  .add("Unselected", () => <ProjectListItem first_name="Barney" last_name="Rubble" email="Brub@gmail.com" />) // To define our stories, we call add() once for each of our test states to generate a story
-  .add("Selected", () => <ProjectListItem first_name="Barney" last_name="Rubble" email="Brub@gmail.com" selected />) 
+  .add("Unselected", () => <ProjectListItem title="Setup ticket list item" description="Setup ticket list item in storybook and front end" status="On Track" percentage_complete="25%" />) // To define our stories, we call add() once for each of our test states to generate a story
+  .add("Selected", () => <ProjectListItem title="Setup ticket list item" description="Setup ticket list item in storybook and front end" status="On Track" percentage_complete="25%" selected />) 
   .add("Clickable", () => (
-    <ProjectListItem first_name="Barney" last_name="Rubble" email="Brub@gmail.com" setTicket={action("setTicket")} /> // action() allows us to create a callback that appears in the actions panel when clicked
+    <ProjectListItem title="Setup ticket list item" description="Setup ticket list item in storybook and front end" status="On Track" percentage_complete="25%" setTicket={action("setTicket")} /> // action() allows us to create a callback that appears in the actions panel when clicked
   ));
-
-
-  const Tasks = [
-    {
-      id: 1,
-      title: "Monday",
-      percentage_complete: 20,
-    },
-    {
-      id: 2,
-      title: "Tuesday",
-      percentage_complete: 50,
-    },
-    {
-      id: 3,
-      title: "Wednesday",
-      percentage_complete: 0,
-    },
-  ];
   
-  storiesOf("TaskList", module)
+  storiesOf("List", module)
     .addParameters({
       backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
     })
     .add("List of tasks", () => (
         <TaskList  value={"Wednesday"} onChange={action("setTask")} />
-    ));
+  ));

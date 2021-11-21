@@ -8,10 +8,10 @@ const ProjectListItem = (props) => {
     "list__item--selected": props.selected,
   });
  
-  const title= "Project Issue Tracker"
-  const description= "Finals Project for LHL"
-  const status= "AT RISK"
-  const percentage_complete= "99%"
+  // const title= "Project Issue Tracker"
+  // const description= "Finals Project for LHL"
+  // const status= "AT RISK"
+  // const percentage_complete= "99%"
 
   return (
     <li
@@ -19,10 +19,10 @@ const ProjectListItem = (props) => {
       selected={props.selected}
       onClick={() => console.log('Yo')}
     >
-      <div>{title}</div>
-      <div>{description}</div>
-      <div>{status}</div>
-      <div>{percentage_complete}</div>
+      <div>{props.title}</div>
+      <div>{props.description}</div>
+      <div>{props.status}</div>
+      <div>{props.percentage_complete}</div>
     </li>
   );
 }

@@ -3,14 +3,14 @@ import classNames from "classnames";
 
 const CommentListItem = (props) => {
 
-  //const { author, message } = props;
+  const { author, message } = props;
 
   const commentClass = classNames("list__item", {
    "list__item--selected": props.selected,
  });
 
- const author = "Fred Flintstone"
- const message= "Yabba Dabba doooo!!!"
+//  const author = "Fred Flintstone"
+//  const message= "Yabba Dabba doooo!!!"
 
  return (
    <li
@@ -18,8 +18,8 @@ const CommentListItem = (props) => {
      selected={props.selected}
      onClick={() => console.log('Yo')}
    >
-     <div>{author}</div>
-     <div>{message}</div>
+     <div>{props.author}</div>
+     <div>{props.message}</div>
 
    </li>
  );
