@@ -8,7 +8,7 @@ const TopNavigation = (props) => {
   return (
     <div className="menuicon" >
       <IconButton onClick={() => { setMenu(isOpen ? false : true);}}>
-        <MenuIcon style={{ fontSize: 40  }} />
+        <MenuIcon style={{ fontSize: 40, color:"#4D45B5" }} />
       </IconButton>
     </div>
   );

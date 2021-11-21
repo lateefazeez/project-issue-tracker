@@ -10,6 +10,9 @@ import TicketPage from './components/TicketPage';
 import Chart from './components/Chart';
 import ProgressBar from './components/ProgressBar';
 import TablePaginations from './components/slider/TablePaginations';
+import HealthPriority from './components/HealthStats/HealthPriority';
+import HealthStatus from './components/HealthStats/HealthStatus';
+import HealthType from './components/HealthStats/HealthType';
 
 function App() {
   const [projects, setProjects] = useState([])
@@ -41,6 +44,9 @@ function App() {
       <Chart />
       <ProgressBar />
       <TablePaginations />
+      <HealthPriority />
+      <HealthStatus />
+      <HealthType />
     </div>
   );
 }

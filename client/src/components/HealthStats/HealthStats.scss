@@ -1,0 +1,23 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+.container {
+  color:#BCBABA;
+  // display: flex;
+  // flex-direction: column
+}
+
+.health{
+  color: $white;
+  background-color: $nav-background;
+  width: 7%;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+
+}
+
+#status--atrisk {
+  color: red;
+}
