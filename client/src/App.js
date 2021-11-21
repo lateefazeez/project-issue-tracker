@@ -24,10 +24,9 @@ function App() {
   
   return (
     <div className="App">
-    <Navigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
-    <TopNavigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
-    <TicketPage />
-    {/* <TicketListItem/> */}
+      <Navigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
+      <TopNavigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
+      <TicketPage />
       <Chart />
       <ProgressBar />
       <TablePaginations />
