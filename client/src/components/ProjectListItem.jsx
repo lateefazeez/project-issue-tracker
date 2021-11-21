@@ -1,5 +1,6 @@
 import "./ListItem.scss";
 import classNames from "classnames";
+import { Fragment } from "react";
 
 const ProjectListItem = (props) => {
   //const { title, description, status, percentage_complete } = props;
@@ -24,6 +25,7 @@ const ProjectListItem = (props) => {
       <div>{props.status}</div>
       <div>{props.percentage_complete}</div>
     </li>
+  
   );
 }
  

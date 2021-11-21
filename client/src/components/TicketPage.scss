@@ -1,0 +1,71 @@
+@import "../styles/mixins.scss";
+@import "../styles/variables.scss";
+
+.tickets-upper{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.Team-box{
+margin-left: 1%;
+ width: 28%;
+}
+
+.Tickets-box{
+  margin-right: 1%;
+  width: 68%;
+}
+
+.tickets-lower{
+  display: flex;
+  margin-top: 50px;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: $project-table-background;
+  border-radius: 15px;
+  border: 1px solid $text-light;
+  margin-left: 1%;
+  margin-right: 1%;
+  color: $text-light;
+}
+
+.Comments-box {
+  border-radius: 1px solid $text-light;
+}
+
+.Tasks-box {
+  border-radius: 5px solid $text-light;
+}
+
+.minidiv{
+  height: 50px;
+}
+
+.top-tick {
+  height: 3em;
+  padding-top: 14px;
+  padding-left: 15px;
+  margin-bottom: 20px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border: transparent;
+  border-bottom: 1px solid $text-light;
+  background-color: $project-table-background;
+}
+
+.bottom-tick {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.right-side{
+  width: 50%;
+}
+
+.left-side{
+  width: 50%;
+}

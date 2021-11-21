@@ -1,25 +1,41 @@
 @import "styles/mixins.scss";
 @import "styles/variables.scss";
 
-.projects-box {
-  width: 70%;
+body {
+  background-color: black;
+}
 
+.projects-box {
   margin: auto;
   margin-top: 10%;
-  border: black;
   border-radius: 25%;
   border-color: $text-light;
   border-width: 5px;
 }
 
 .projects-box-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   height: 50px;
   background-color: $project-table-background;
   color: $text-light;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  border-color: $text-light;
-  border-width: 5px;
+  border: 1px solid $text-light;
+}
+
+thead {
+  width: 100%;
+}
+
+tr {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .projects-box-footer {
@@ -28,6 +44,5 @@
   color: $text-light;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
-  border-color: $text-light;
-  border-width: 5px;
+  border: 1px solid $text-light;
 }

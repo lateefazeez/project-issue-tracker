@@ -19,8 +19,8 @@
     font: $font-family;
     justify-content: space-between;
     padding-top: 5px;
-    border-width: 4px;
     border-color: $text-light;
+    border: 0.1px solid $text-light;
 
 
     &:hover {
