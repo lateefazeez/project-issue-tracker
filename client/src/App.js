@@ -6,6 +6,7 @@ import Navigation from './components/Navigation';
 import PrimaryButton from './components/PrimaryButton';
 import CreateButton from './components/CreateButton';
 import TopNavigation from './components/TopNavigation';
+import TicketPage from './components/TicketPage';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,8 +23,7 @@ function App() {
     <div className="App">
     <Navigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
     <TopNavigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
-    <PrimaryButton />
-    <CreateButton />
+    <TicketPage />
     </div>
   );
 }
