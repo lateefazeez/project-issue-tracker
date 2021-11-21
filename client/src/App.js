@@ -7,6 +7,9 @@ import PrimaryButton from './components/PrimaryButton';
 import CreateButton from './components/CreateButton';
 import TopNavigation from './components/TopNavigation';
 import TicketPage from './components/TicketPage';
+import Chart from './components/Chart';
+import ProgressBar from './components/ProgressBar';
+import TablePaginations from './components/slider/TablePaginations';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,6 +27,10 @@ function App() {
     <Navigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
     <TopNavigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
     <TicketPage />
+    {/* <TicketListItem/> */}
+      <Chart />
+      <ProgressBar />
+      <TablePaginations />
     </div>
   );
 }
