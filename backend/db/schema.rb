@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_20_005634) do
+ActiveRecord::Schema.define(version: 2021_11_21_030351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,29 @@ ActiveRecord::Schema.define(version: 2021_11_20_005634) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "tickets_id"
     t.index ["tickets_id"], name: "index_comments_on_tickets_id"
+  end
+
+  create_table "favourites", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "map_id"
+  end
+
+  create_table "maps", id: :serial, force: :cascade do |t|
+    t.string "title", limit: 255, null: false
+    t.string "description", limit: 255, null: false
+    t.integer "user_id"
+    t.string "preview_image", limit: 255, null: false
+    t.datetime "created_at"
+  end
+
+  create_table "points", id: :serial, force: :cascade do |t|
+    t.string "title", limit: 255, null: false
+    t.string "description", limit: 255, null: false
+    t.float "latitude", null: false
+    t.float "longitude", null: false
+    t.integer "map_id"
+    t.integer "user_id"
+    t.string "category", limit: 255, null: false
   end
 
   create_table "project_types", force: :cascade do |t|
@@ -65,6 +88,8 @@ ActiveRecord::Schema.define(version: 2021_11_20_005634) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "projects_id"
     t.bigint "users_id"
+    t.string "priority"
+    t.string "category"
     t.index ["projects_id"], name: "index_tickets_on_projects_id"
     t.index ["users_id"], name: "index_tickets_on_users_id"
   end
@@ -99,6 +124,8 @@ ActiveRecord::Schema.define(version: 2021_11_20_005634) do
   end
 
   add_foreign_key "comments", "tickets", column: "tickets_id"
+  add_foreign_key "favourites", "maps", name: "favourites_map_id_fkey", on_delete: :cascade
+  add_foreign_key "points", "maps", name: "points_map_id_fkey", on_delete: :cascade
   add_foreign_key "projects", "project_types"
   add_foreign_key "projects", "users", column: "users_id"
   add_foreign_key "tasks", "tickets", column: "tickets_id"

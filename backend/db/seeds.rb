@@ -39,7 +39,7 @@ Project.create!({
   description: "hahahahahahahahahahahahahah",
   start_date: "Jul 20, 2021",
   end_date: "Sept 20, 2021",
-  percentage_complete: 100,
+  percentage_complete: 75,
   status: "on track",
   users_id: 2
 })
@@ -48,9 +48,59 @@ Project.create!({
   description: "hahahahahahahahahahahahahah",
   start_date: "Jul 14, 2021",
   end_date: "Oct 20, 2021",
-  percentage_complete: 100,
+  percentage_complete: 75,
   status: "on track",
   users_id: 1
 })
-
+Ticket.create!({
+  start_date: "Jul 21, 2021",
+  end_date: "Jul 24,2021",
+  plan_duration: 360,
+  title: "Appointment List Component",
+  description: "Create a tested and 100% developed Appointment feature for the application",
+  status: "On Track",
+  category: "Feature",
+  priority: "Low",
+  percentage_complete: 75,
+  projects_id: 2,
+  users_id: 1
+})
+Ticket.create!({
+  start_date: "Jul 20, 2021",
+  end_date: "Jul 22, 2021",
+  plan_duration: 137,
+  title: "Setup ticket list item",
+  description: "Setup ticket list item",
+  status: "At Risk",
+  category: "Feature",
+  priority: "High",
+  percentage_complete: 0,
+  projects_id: 1,
+  users_id: 2
+})
+Task.create!({
+  title: "Generate component",
+  complete?: false,
+  tickets_id: 2
+})
+Task.create!({
+  title: "Generate component",
+  complete?: true,
+  tickets_id: 1
+})
+Task.create!({
+  title: "Perform unit testing",
+  complete?: true,
+  tickets_id: 1
+})
+Task.create!({
+  title: "Perform storybook testing",
+  complete?: true,
+  tickets_id: 1
+})
+Task.create!({
+  title: "Perform cypress testing",
+  complete?: false,
+  tickets_id: 1
+})
 puts "Seeding Successful!..."
