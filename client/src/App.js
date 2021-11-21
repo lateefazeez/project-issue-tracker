@@ -10,11 +10,17 @@ import TicketPage from './components/TicketPage';
 import Chart from './components/Chart';
 import ProgressBar from './components/ProgressBar';
 import TablePaginations from './components/slider/TablePaginations';
+import FormModal from './components/Form/FormModal';
+import { Button } from 'reactstrap'
+import CreateProject from './components/Form/CreateProject';
 
 function App() {
   const [projects, setProjects] = useState([])
   const [tickets, setTickets] = useState([])
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isNewProjectOpen, setIsNewProjectOpen] = useState(false);
+
+  const toggleNewProject = () => setIsNewProjectOpen(!isNewProjectOpen);
 
   
   useEffect(() => {
@@ -41,6 +47,13 @@ function App() {
       <Chart />
       <ProgressBar />
       <TablePaginations />
+      <FormModal />
+      <Button color="primary" onClick={toggleNewProject} size="sm">
+        New Project
+      </Button>
+      <FormModal handleOpen={isNewProjectOpen} onClose={toggleNewProject}>
+        <CreateProject />
+      </FormModal>
     </div>
   );
 }
