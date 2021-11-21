@@ -3,6 +3,7 @@ import axios from 'axios'
 import './App.scss';
 import TicketListItem from './components/TicketListItem';
 import Chart from './components/Chart';
+import ProgressBar from './components/ProgressBar';
 
 function App() {
   
@@ -15,9 +16,9 @@ function App() {
   
   return (
     <div className="App">
-    <TicketListItem/>
+    {/* <TicketListItem/> */}
     <Chart />
-
+    <ProgressBar />
     </div>
   );
 }
