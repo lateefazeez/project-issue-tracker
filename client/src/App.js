@@ -4,6 +4,7 @@ import './App.scss';
 import TicketListItem from './components/TicketListItem';
 import Chart from './components/Chart';
 import ProgressBar from './components/ProgressBar';
+import TablePaginations from './components/slider/TablePaginations';
 
 function App() {
   
@@ -17,8 +18,9 @@ function App() {
   return (
     <div className="App">
     {/* <TicketListItem/> */}
-    <Chart />
-    <ProgressBar />
+      <Chart />
+      <ProgressBar />
+      <TablePaginations />
     </div>
   );
 }
