@@ -2,6 +2,7 @@ import {useEffect, useState } from 'react'
 import axios from 'axios'
 import './App.scss';
 import TicketListItem from './components/TicketListItem';
+import Chart from './components/Chart';
 
 function App() {
   
@@ -15,7 +16,7 @@ function App() {
   return (
     <div className="App">
     <TicketListItem/>
-    
+    <Chart />
 
     </div>
   );
