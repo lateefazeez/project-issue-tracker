@@ -72,8 +72,86 @@ Ticket.create!({
   title: "Setup ticket list item",
   description: "Setup ticket list item",
   status: "At Risk",
-  category: "Feature",
+  category: "Bug",
   priority: "High",
+  percentage_complete: 0,
+  projects_id: 1,
+  users_id: 2
+})
+Ticket.create!({
+  start_date: "Jul 21, 2021",
+  end_date: "Jul 24,2021",
+  plan_duration: 360,
+  title: "Appointment List Component",
+  description: "Create a tested and 100% developed Appointment feature for the application",
+  status: "On Track",
+  category: "Feature Request",
+  priority: "Low",
+  percentage_complete: 75,
+  projects_id: 2,
+  users_id: 1
+})
+Ticket.create!({
+  start_date: "Sept 20, 2021",
+  end_date: "Nov 22, 2021",
+  plan_duration: 137,
+  title: "What is Lorem Ipsum?",
+  description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+  status: "At Risk",
+  category: "Feature Request",
+  priority: "High",
+  percentage_complete: 0,
+  projects_id: 1,
+  users_id: 2
+})
+Ticket.create!({
+  start_date: "Nov 21, 2021",
+  end_date: "Dec 22,2021",
+  plan_duration: 360,
+  title: "Where does it come from?",
+  description: "Contrary to popular belief, Lorem Ipsum is not simply random text",
+  status: "On Track",
+  category: "Feature",
+  priority: "Low",
+  percentage_complete: 75,
+  projects_id: 2,
+  users_id: 1
+})
+Ticket.create!({
+  start_date: "Jul 20, 2021",
+  end_date: "Jul 22, 2021",
+  plan_duration: 137,
+  title: "Why do we use it?",
+  description: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+  status: "At Risk",
+  category: "Issue",
+  priority: "Medium",
+  percentage_complete: 0,
+  projects_id: 1,
+  users_id: 2
+})
+Ticket.create!({
+  start_date: "Jul 21, 2021",
+  end_date: "Jul 24,2021",
+  plan_duration: 360,
+  title: "Appointment List Component",
+  description: "Create a tested and 100% developed Appointment feature for the application",
+  status: "On Track",
+  category: "Feature",
+  priority: "Low",
+  percentage_complete: 75,
+  projects_id: 2,
+  users_id: 1
+})
+Ticket.create!({
+  start_date: "Jul 20, 2021",
+  end_date: "Jul 22, 2021",
+  plan_duration: 137,
+  title: "Where can I get some?",
+  description: "There are many variations of passages of Lorem Ipsum available",
+  status: "At Risk",
+  category: "Bug",
+  priority: "Medium",
   percentage_complete: 0,
   projects_id: 1,
   users_id: 2

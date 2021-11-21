@@ -12,14 +12,25 @@ import ProgressBar from './components/ProgressBar';
 import TablePaginations from './components/slider/TablePaginations';
 
 function App() {
+  const [projects, setProjects] = useState([])
+  const [tickets, setTickets] = useState([])
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   
   useEffect(() => {
-    axios.get('http://localhost:3000/projects')
-    .then((response) => {
-      console.log(response.data)
-    })
+
+    const allProjectsUrl = "http://localhost:3000/projects"
+    const allTicketsUrl = "http://localhost:3000/tickets"
+
+    const getAllProjects = axios.get(allProjectsUrl)
+    const getAllTickets = axios.get(allTicketsUrl)
+
+    Promise.all([getAllProjects, getAllTickets])
+      .then((response) => {
+        console.log(response[0].data)
+        console.log(response[1].data)
+        setProjects(prevProjects => ({...prevProjects, projects: response[0].data}))
+      })
   }, [])
   
   return (
