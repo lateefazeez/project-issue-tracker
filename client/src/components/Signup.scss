@@ -81,3 +81,19 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.register_btn {
+  background-color: #4D45B5 !important;
+  color: #FFFFFF !important;;
+  padding: 0.5rem 3rem !important;;
+  margin-top: 2rem;
+  border-radius: 0.5rem !important;
+  font-size: 1.5rem !important;
+}
+
+.login__header {
+  color: #DEDBDB;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
