@@ -7,7 +7,7 @@ import './Dashboard.scss';
 const Dashboard = (props) => {
   const {projects} = props;
   return (
-    <div>
+    <div className="dash">
       <div className='topdash'>
         <h1 style={{color: "white" }}>Projects</h1>
         <CreateButton />
