@@ -1,12 +1,10 @@
 import Button from '@mui/material/Button';
 
 const PrimaryButton = (props) => {
+  const { children, style } = props
 
   return ( 
-    <div>
-      <Button style={{ backgroundColor: "#4D45B5"}} onClick={() => console.log("Cicked Cancel Button")} variant='contained'>Cancel</Button>
-      <Button style={{ backgroundColor: "#4D45B5"}} onClick={() => console.log("Cicked Confirm Button")} variant='contained'>Confirm</Button>
-    </div>
+      <Button style={style} onClick={() => console.log("Button Clicked")} variant='contained'>{ children }</Button>
    );
 }
  

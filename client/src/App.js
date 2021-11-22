@@ -13,14 +13,21 @@ import TablePaginations from './components/slider/TablePaginations';
 import FormModal from './components/Form/FormModal';
 import { Button } from 'reactstrap'
 import CreateProject from './components/Form/CreateProject';
+import CreateTicket from './components/Form/CreateTicket';
+import AddTeamMember from './components/Form/AddTeamMember';
+import SelectProject from './components/SelectProject';
 
 function App() {
   const [projects, setProjects] = useState([])
   const [tickets, setTickets] = useState([])
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isNewProjectOpen, setIsNewProjectOpen] = useState(false);
+  const [isNewTicketOpen, setIsNewTicketOpen] = useState(false);
+  const [isMemberOpen, setIsMemberOpen] = useState(false);
 
   const toggleNewProject = () => setIsNewProjectOpen(!isNewProjectOpen);
+  const toggleNewTicket = () => setIsNewTicketOpen(!isNewTicketOpen);
+  const toggleNewMember = () => setIsMemberOpen(!isMemberOpen);
 
   
   useEffect(() => {
@@ -41,7 +48,7 @@ function App() {
   
   return (
     <div className="App">
-      <Navigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
+      {/* <Navigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
       <TopNavigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
       <TicketPage />
       <Chart />
@@ -54,6 +61,19 @@ function App() {
       <FormModal handleOpen={isNewProjectOpen} onClose={toggleNewProject}>
         <CreateProject />
       </FormModal>
+      <Button color="primary" onClick={toggleNewTicket} size="sm">
+        New Ticket
+      </Button>
+      <FormModal handleOpen={isNewTicketOpen} onClose={toggleNewTicket}>
+        <CreateTicket />
+      </FormModal>
+      <Button color="primary" onClick={toggleNewMember} size="sm">
+        New Ticket
+      </Button>
+      <FormModal handleOpen={isMemberOpen} onClose={toggleNewMember}>
+        <AddTeamMember />
+      </FormModal> */}
+      <SelectProject />
     </div>
   );
 }

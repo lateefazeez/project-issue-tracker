@@ -5,7 +5,7 @@ import { Container, Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import './CreateTicket.scss'
 
 
-const CreateTicket = (props) => {
+const UpdateTicket = (props) => {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [team, setTeam] = useState([])
@@ -14,14 +14,14 @@ const CreateTicket = (props) => {
   const [priority, setPriority] = useState("High")
   const [status, setStatus] = useState("On Track")
 
-  const createTicket = () => console.log("New Ticket Created")
+  const updateCreate = () => console.log("New Ticket Created")
 
   const handleChange = () => {}
   
   return ( 
     <Container fluid>
       <Form className="ticket__form">
-      <Label className="form__header">Add New Ticket</Label>
+      <Label className="form__header">Update Ticket</Label>
         <FormGroup>
           <Label for="title" className="input-labels">Ticket Title</Label>
           <Input className="form-inputs" type="text" name="title" id="title" placeholder="Enter ticket title" bsSize="lg" value={title} />
@@ -60,8 +60,8 @@ const CreateTicket = (props) => {
 
         <div className="dual__input">
         <FormGroup className="input-select spaces">
-          <Label for="team" className="input-labels">Add Team Members</Label>
-          <Input className="form-inputs"  type="select" name="team" id="team" multiple bsSize="lg">
+          <Label for="team" className="input-labels">Update Team Members</Label>
+          <Input className="form-inputs"  type="select" name="team" id="team" multiple bsSize="lg" value={team}>
             <option className="input-select">Fred Flinstone</option>
             <option className="input-select">Barney Rubble</option>
             <option className="input-select">Aman Hundal</option>
@@ -75,7 +75,7 @@ const CreateTicket = (props) => {
         </FormGroup>
         </div>
         <FormGroup className="button-container">
-          <Button className="submit_btn" onClick={createTicket}>Submit</Button>
+          <Button className="submit_btn" onClick={updateCreate}>Submit</Button>
         </FormGroup>
        
       </Form>
@@ -83,4 +83,4 @@ const CreateTicket = (props) => {
    );
 }
  
-export default CreateTicket;
+export default UpdateTicket;
