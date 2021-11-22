@@ -7,9 +7,11 @@ import PrimaryButton from './components/PrimaryButton';
 import CreateButton from './components/CreateButton';
 import TopNavigation from './components/TopNavigation';
 import TicketPage from './components/TicketPage';
+
 import Chart from './components/Chart';
 import ProgressBar from './components/ProgressBar';
 import TablePaginations from './components/slider/TablePaginations';
+
 
 function App() {
   const [projects, setProjects] = useState([])
@@ -38,7 +40,6 @@ function App() {
       <Navigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
       <TopNavigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
       <TicketPage />
-      <Chart />
     </div>
   );
 }

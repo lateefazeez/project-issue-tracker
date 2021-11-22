@@ -6,7 +6,6 @@ import PrimaryButton from "./PrimaryButton";
 
 const TicketPage = (props) => {
 
- 
   return ( 
     <div>
       <div className="top-button"><PrimaryButton label = "+ New Ticket"/></div>
