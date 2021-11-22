@@ -14,10 +14,10 @@
   margin: auto;
   // background-color: #08071D;
   // opacity: 0.7;
-  background-color:rgba(0,0,0,0.6);
+  
 }
 
-.butter__header {
+.button__header {
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;
@@ -27,14 +27,37 @@ h2 {
   color: white;
   letter-spacing: 0.05rem;
 }
+h4 {
+  color: white;
+  letter-spacing: 0.05rem;
+}
 
+.top-logo {
+  display: flex;
+  position: absolute;
+  margin: 1rem 2rem;
+}
+
+.logo-circle {
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: #4D45B5;
+  border-radius: 50px;
+  margin-right: 0.6rem;
+}
 
 body {
   background: url("../../src/images/select-page-image.jpg") no-repeat center center fixed;
-  
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+
+.opaque-background {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color:rgba(0,0,0,0.6);
 }
 

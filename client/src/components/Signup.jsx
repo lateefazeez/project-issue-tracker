@@ -1,17 +1,12 @@
 import PrimaryButton from "./PrimaryButton";
-import './SelectProject.scss';
+import './Signup.scss';
 
-const SelectProject = () => {
+const Signup = () => {
   return (
     <div className="page-container">
-     <div className="opaque-background">
-      <div className="top-logo">
-        <div className="logo-circle"></div>
-        <h4 className="logo-text">trackIT</h4>
-      </div>
-      <div className="select--page">
+     <div className="select--page">
       <div classNames="center--items">
-        <div className="button__header">
+        <div className="butter__header">
           <h2>Select your project type</h2>
         </div>
         
@@ -24,10 +19,9 @@ const SelectProject = () => {
       </div>
      
     </div>
-     </div>
     </div> 
    
    );
 }
  
-export default SelectProject;
+export default Signup;
