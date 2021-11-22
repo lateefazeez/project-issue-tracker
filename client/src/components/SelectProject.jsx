@@ -1,6 +1,7 @@
 import PrimaryButton from "./PrimaryButton";
 import './SelectProject.scss';
 
+
 const SelectProject = () => {
   return (
     <div className="page-container">
@@ -14,11 +15,14 @@ const SelectProject = () => {
         <div className="button__header">
           <h2>Select your project type</h2>
         </div>
-        
+        <div className="action--buttons">
+          
+        </div>
         <PrimaryButton style={{ backgroundColor: "#4D45B5", marginRight: "20px", padding: "1rem 4rem", borderRadius: "0.4rem"}}>
+
           Construction
         </PrimaryButton >
-        <PrimaryButton style={{ backgroundColor: "#4D45B5", marginRight: "20px", padding: "1rem 4rem", borderRadius: "0.4rem"}}>
+        <PrimaryButton style={{ backgroundColor: "#4D45B5", marginRight: "20px", padding: "1rem 5.2rem", borderRadius: "0.4rem"}}>
         Software
         </PrimaryButton>
       </div>

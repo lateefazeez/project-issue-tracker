@@ -16,6 +16,7 @@ import CreateProject from './components/Form/CreateProject';
 import CreateTicket from './components/Form/CreateTicket';
 import AddTeamMember from './components/Form/AddTeamMember';
 import SelectProject from './components/SelectProject';
+import Signup from './components/Signup';
 
 function App() {
   const [projects, setProjects] = useState([])
@@ -73,7 +74,8 @@ function App() {
       <FormModal handleOpen={isMemberOpen} onClose={toggleNewMember}>
         <AddTeamMember />
       </FormModal> */}
-      <SelectProject />
+      {/* <SelectProject /> */}
+      <Signup />
     </div>
   );
 }
