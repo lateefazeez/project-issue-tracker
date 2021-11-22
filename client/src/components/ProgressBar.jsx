@@ -4,16 +4,16 @@ import { withStyles } from "@material-ui/core/styles";
 import LinearProgress from '@mui/material/LinearProgress';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-
+import '../styles/variables.scss';
 
 function LinearProgressWithLabel(props) {
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: "15px" }}>
-      <Box sx={{ width: '50%', mr: 1, borderRadius: '50px' }}>
+    <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: "15px"}}>
+      <Box sx={{ width: '90%', mr: 1, borderRadius: '50px'}}>
         <LinearProgress variant="determinate" {...props} />
       </Box>
       <Box sx={{ minWidth: 35 }}>
-        <Typography variant="body2" color="text.secondary">{`${Math.round(
+        <Typography variant="body2" color="$text-light">{`${Math.round(
           props.value,
         )}%`}</Typography>
       </Box>
@@ -30,47 +30,38 @@ LinearProgressWithLabel.propTypes = {
   
   value: PropTypes.number.isRequired,
 };
-const StyledLinearProgress1 = withStyles({
-  colorPrimary: {
-    backgroundColor: "#837F7F"
-  },
-  barColorPrimary: {
-    backgroundColor: "#6AD650",
-    borderRadius: "50px"
-  }
-})(LinearProgressWithLabel);
-
-const StyledLinearProgress2 = withStyles({
-  colorPrimary: {
-    backgroundColor: "#262525"
-  },
-  barColorPrimary: {
-    backgroundColor: "#D6A850",
-    borderRadius: "50px"
-  }
-})(LinearProgressWithLabel);
-
 
 const ProgressBar = (props) => {
   const [progress1, setProgress1] = useState(0);
-  const [progress2, setProgress2] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setProgress1((prevProgress) => (prevProgress >= 100 ? 100 : prevProgress + 10));
-      setProgress2((prevProgress) => (prevProgress >= 50 ? 50 : prevProgress + 10));
+      setProgress1((prevProgress) => (prevProgress >= props.percent ? props.percent : prevProgress + 10));
     }, 200);
     return () => {
       clearInterval(timer);
     };
   }, []);
 
+  const StyledLinearProgress1 = withStyles({
+    colorPrimary: {
+      backgroundColor: "#837F7F"
+    },
+    barColorPrimary: {
+      backgroundColor: props.color,
+      borderRadius: "50px"
+    }
+  })(LinearProgressWithLabel);
+
   return ( 
-    <Box sx={{ width: '100%', padding: '10px', borderRadius: '50px'}}>
-    <StyledLinearProgress1 sx={{ height: '50px', borderRadius: '50px' }} value={progress1} />
-    <StyledLinearProgress2 sx={{ height: '50px', borderRadius: '50px' }} value={progress2} />
+    <Box sx={{ width: '100%', padding: '0px', borderRadius: '50px'}}>
+    <StyledLinearProgress1 sx={{ height: props.height, borderRadius: '50px' }} value={progress1} />
   </Box>
    );
+
+ 
 }
+
+
 
 export default ProgressBar;

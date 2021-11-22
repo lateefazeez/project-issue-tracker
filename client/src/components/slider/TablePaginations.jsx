@@ -2,6 +2,8 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
 import './TablePaginations.scss'
+import "../../styles/mixins.scss";
+import "../../styles/variables.scss";
 
 
 const TablePaginations = () => {

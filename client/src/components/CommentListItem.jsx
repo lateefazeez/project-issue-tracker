@@ -14,11 +14,12 @@ const CommentListItem = (props) => {
 
  return (
    <li
+     id="commenttile"
      className={commentClass}
      selected={props.selected}
      onClick={() => console.log('Yo')}
    >
-     <div>{props.author}</div>
+     <div><strong>{props.author}</strong></div>
      <div>{props.message}</div>
 
    </li>

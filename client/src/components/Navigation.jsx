@@ -1,7 +1,7 @@
 import "./Navigation.scss";
 
 const Navigation = (props) => {
-  const { isOpen, setMenu } = props
+  const { isOpen, setMenu, } = props //user in the future
   
   return (
     <nav id="nav" className={isOpen ? "sidebar" : "closed"}>

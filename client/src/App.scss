@@ -17,12 +17,13 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 50px;
+  height: 40px;
   background-color: $project-table-background;
   color: $text-light;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   border: 1px solid $text-light;
+
 }
 
 thead {
@@ -33,16 +34,18 @@ tr {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 15px;
+  margin-top: 10px;
   padding-left: 30px;
   padding-right: 30px;
 }
 
 .projects-box-footer {
-  height: 50px;
+  display: flex;
+  align-items: flex-end;
+  height: 100px;
   background-color: $project-table-background;
   color: $text-light;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   border: 1px solid $text-light;
 }
