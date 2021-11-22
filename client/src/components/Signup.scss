@@ -24,7 +24,7 @@
   margin-bottom: 2rem;
 }
 
-h2 {
+.page-control  {
   color: white;
   letter-spacing: 0.05rem;
 }
@@ -54,13 +54,7 @@ h4 {
   margin-right: 0.6rem;
 }
 
-body {
-  background: url("../../src/images/software-page-image.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
+
 
 .opaque-background {
   position: absolute;
@@ -96,4 +90,16 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
+}
+
+.image-box {
+  background: url("../../src/images/software-page-image.jpg") no-repeat center center fixed;
+  background-size: cover;
+
+  /* Here's the same styles we applied to our content-div earlier */
+
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

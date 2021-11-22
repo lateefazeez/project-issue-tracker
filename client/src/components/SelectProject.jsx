@@ -4,7 +4,7 @@ import './SelectProject.scss';
 
 const SelectProject = () => {
   return (
-    <div className="page-container">
+    <div className="select-image-box">
      <div className="opaque-background">
       <div className="top-logo">
         <div className="logo-circle"></div>
@@ -13,7 +13,7 @@ const SelectProject = () => {
       <div className="select--page">
       <div classNames="center--items">
         <div className="button__header">
-          <h2>Select your project type</h2>
+          <h2 className="page-control">Select your project type</h2>
         </div>
         <div className="action--buttons">
           

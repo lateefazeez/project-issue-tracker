@@ -22,6 +22,7 @@ import HealthPriority from './components/HealthStats/HealthPriority';
 import HealthStatus from './components/HealthStats/HealthStatus';
 import HealthType from './components/HealthStats/HealthType';
 import Dashboard from './components/Dashboard';
+import ProjectDashboard from './components/ProjectDashboard';
 
 
 
@@ -130,11 +131,12 @@ function App() {
         <AddTeamMember />
       </FormModal> */}
       {/* <SelectProject /> */}
-      <Signup />
-      {/* <Dashboard projects={projectsTest} />
-      <Navigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
+      {/* <Signup /> */}
+      {/* <Dashboard projects={projectsTest} /> */}
+      {/* <Navigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
       <TopNavigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
       <TicketPage /> */}
+      <ProjectDashboard />
     </div>
   );
 }

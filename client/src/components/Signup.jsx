@@ -5,6 +5,7 @@ import GoogleIcon from '@mui/icons-material/Google';
 import { Button, Form, FormGroup, Input} from 'reactstrap';
 import Collapse from '@mui/material/Collapse';
 import './Signup.scss';
+import SoftwareImage from '../images/software-page-image.jpg'
 
 const Signup = () => {
   const [displayRegisterForm, setDisplayRegisterForm] = useState(false)
@@ -43,7 +44,7 @@ const Signup = () => {
   const handleLoginDisplay = () => setDisplayLoginForm(prev => !prev)
 
   return (
-    <div className="page-container">
+    <div className="image-box">
     <div className="opaque-background">
      <div className="top-logo">
        <div className="logo-circle"></div>
@@ -52,7 +53,7 @@ const Signup = () => {
      <div className="select--page">
      <div classNames="center--items">
        <div className="button__header">
-         <h2>Create your trackIT account</h2>
+         <h2 className="page-control">Create your trackIT account</h2>
        </div>
        <div className="action__buttons">
         <PrimaryButton style={{ backgroundColor: "#4D45B5", marginBottom: "15px", padding: "1rem 7rem", borderRadius: "0.4rem"}}>
@@ -91,6 +92,7 @@ const Signup = () => {
     
    </div>
     </div>
+    <div className="overlay" style={{background: `url(${SoftwareImage})`}} />
    </div> 
    
    );

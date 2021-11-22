@@ -12,10 +12,9 @@ import ProgressBar from './ProgressBar';
 
 
 export default function ProjectListTable(props) {
-   const { projects, value} = props
-   console.log(projects);
+  const { projects, value} = props
   return (
-    <TableContainer style={{ overflow: "hidden" }} >
+    <TableContainer >
       <Table className="projecttable" sx={{ height: 250}} aria-label="simple table">
         <TableHead>
           <TableRow>

@@ -12,8 +12,6 @@
   right: 0;
   
   margin: auto;
-  // background-color: #08071D;
-  // opacity: 0.7;
   
 }
 
@@ -23,7 +21,7 @@
   margin-bottom: 2rem;
 }
 
-h2 {
+.page-control {
   color: white;
   letter-spacing: 0.05rem;
 }
@@ -46,18 +44,12 @@ h4 {
   margin-right: 0.6rem;
 }
 
-body {
+.select-image-box {
   background: url("../../src/images/select-page-image.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
-}
 
-.opaque-background {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background-color:rgba(0,0,0,0.6);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-

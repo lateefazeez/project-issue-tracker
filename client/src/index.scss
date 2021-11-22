@@ -11,8 +11,10 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   font-family: $font-family;
+  margin: 0 auto;
+  background-color:$page-dark-background;
 }
 
 .layout {
