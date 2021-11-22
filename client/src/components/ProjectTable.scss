@@ -10,26 +10,28 @@
 }
 
 .bottomdash {
-  border-top: 1px solid white;
   display: flex;
   flex-direction: row;
-  background-color: $project-table-background;
+  align-items: flex-end;
   background-color: $project-table-background;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  height: 80px;
+  border-left: 1px solid $text-light;
+  border-bottom: 1px solid $text-light;;
+  border-right: 1px solid $text-light;
 }
 
-.history {
-  margin-left: 2em;
-  color: $white;
-  background-color: $nav-background;
-  width: 10%;
-  border-radius: 1em;
+.dashbuttons {
   display: flex;
-  justify-content: center;
-  text-transform: uppercase;
-  margin-bottom: 0.5em;
-  
+  margin-left: 2em;
+  justify-content: space-between;
+  color: $white;
+  margin-bottom: 0.8em;
+}
+
+.buttons {
+  display: flex;
 }
 
 .dash {

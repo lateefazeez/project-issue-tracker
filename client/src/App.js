@@ -21,7 +21,7 @@ import Signup from './components/Signup';
 import HealthPriority from './components/HealthStats/HealthPriority';
 import HealthStatus from './components/HealthStats/HealthStatus';
 import HealthType from './components/HealthStats/HealthType';
-import Dashboard from './components/Dashboard';
+import ProjectTable from './components/ProjectTable';
 
 
 
@@ -104,37 +104,7 @@ function App() {
   
   return (
     <div className="App">
-      {/* <Navigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
-      <TopNavigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
-      <TicketPage />
-      <Chart />
-      <ProgressBar />
-      <TablePaginations />
-      <FormModal />
-      <Button color="primary" onClick={toggleNewProject} size="sm">
-        New Project
-      </Button>
-      <FormModal handleOpen={isNewProjectOpen} onClose={toggleNewProject}>
-        <CreateProject />
-      </FormModal>
-      <Button color="primary" onClick={toggleNewTicket} size="sm">
-        New Ticket
-      </Button>
-      <FormModal handleOpen={isNewTicketOpen} onClose={toggleNewTicket}>
-        <CreateTicket />
-      </FormModal>
-      <Button color="primary" onClick={toggleNewMember} size="sm">
-        New Ticket
-      </Button>
-      <FormModal handleOpen={isMemberOpen} onClose={toggleNewMember}>
-        <AddTeamMember />
-      </FormModal> */}
-      {/* <SelectProject /> */}
-      <Signup />
-      {/* <Dashboard projects={projectsTest} />
-      <Navigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
-      <TopNavigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
-      <TicketPage /> */}
+      <ProjectTable projects={projectsTest} />
     </div>
   );
 }

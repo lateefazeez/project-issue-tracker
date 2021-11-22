@@ -5,7 +5,6 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import './ProjectList.scss';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import './ProjectList.scss';
 import ProgressBar from './ProgressBar';
@@ -15,24 +14,21 @@ export default function ProjectListTable(props) {
    const { projects, value} = props
    console.log(projects);
   return (
-    <TableContainer style={{ overflow: "hidden" }} >
+    <TableContainer style={{ overflow: "hidden", borderTop: "1px solid rgb(179, 174, 174)", borderLeft: "1px solid rgb(179, 174, 174)", borderRight: "1px solid rgb(179, 174, 174)", borderTopLeftRadius: 10, borderTopRightRadius: 10  }} >
       <Table className="projecttable" sx={{ height: 250}} aria-label="simple table">
         <TableHead>
-          <TableRow>
-            <TableCell className="tabletitle">Title</TableCell>
-            <TableCell className="tabletitle">Description</TableCell>
-            <TableCell className="tabletitle">Progress</TableCell>
-            <TableCell className="tabletitle">Status</TableCell>
-            <TableCell className="tabletitle">Contributors</TableCell>
-            <TableCell className="tabletitle"></TableCell>
+          <TableRow className="tabletitle">
+            <TableCell><strong>Title</strong></TableCell>
+            <TableCell><strong>Description</strong></TableCell>
+            <TableCell><strong>Progress</strong></TableCell>
+            <TableCell><strong>Status</strong></TableCell>
+            <TableCell><strong>Contributors</strong></TableCell>
+            <TableCell></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {projects.map((row) => (
-            <TableRow
-              key={row.title}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
+            <TableRow className="tabledata">
               <TableCell className="projectitle"  onClick={() => console.log('Clicked Project')} component="th" scope="row">
                 {row.title}
               </TableCell>
