@@ -1,46 +1,44 @@
 import List from "./List";
+import TablePaginations from "./slider/TablePaginations";
+
 // import { Tasks, Teams, Tickets, Comments, Projects } from "./testdata";
 
 const Header = (props) => {
   const { decider } = props;
 
-  if (props.decider == "Task") {
+  if (props.decider === "Task") {
     return (
       <thead>
         <tr>
-          <th>Title</th>
-          <th>% Complete</th>
+          <th>PROGRESS</th>
         </tr>
       </thead>
     );
-  } else if (props.decider == "Team") {
+  } else if (props.decider === "Team") {
     return (
       <thead>
         <tr>
-          <th>First Name</th>
+          <th>Team</th>
         </tr>
       </thead>
     );
-  } else if (props.decider == "Ticket") {
+  } else if (props.decider === "Ticket") {
     return (
       <thead>
         <tr>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Author</th>
+          <th>Tickets</th>
         </tr>
       </thead>
     );
-  } else if (props.decider == "Comment") {
+  } else if (props.decider === "Comment") {
     return (
       <thead>
         <tr>
-          <th>Author</th>
-          <th>Message</th>
+          <th>Comments</th>
         </tr>
       </thead>
     );
-  } else if (props.decider == "Project") {
+  } else if (props.decider === "Project") {
     return (
       <thead>
         <tr>
@@ -52,18 +50,36 @@ const Header = (props) => {
       </thead>
     );
   }
-};
+}
+
+
+const AddButtons = (props) => {
+
+  const { decider } = props;
+
+   console.log("im props " + props.decider)
+
+  if (props.decider === "Ticket" || props.decider === "Team" || props.decider === "Project"){
+    return (
+    <TablePaginations/>
+    );
+  } else {
+    return "";
+  }
+}
 
 const Table = (props) => {
   const { decider } = props;
 
   return (
     <div>
-      <div className="projects-box-header">
+      <div className="projects-box-header" id={props.decider + "-top"}>
         <Header decider={decider}/>
       </div>
-      <List decider={decider} />
-      <div className="projects-box-footer">{/* buttons go here   */}</div>
+      <List decider={decider}/>
+      <div className="projects-box-footer"id={props.decider + "-bottom"}>
+            <AddButtons decider={decider}/>
+        </div>
     </div>
   );
 };

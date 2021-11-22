@@ -39,8 +39,6 @@ function App() {
       <TopNavigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
       <TicketPage />
       <Chart />
-      <ProgressBar />
-      <TablePaginations />
     </div>
   );
 }

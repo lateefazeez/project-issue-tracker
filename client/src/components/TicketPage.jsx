@@ -1,11 +1,15 @@
 import Table from "./Table";
 import './TicketPage.scss';
 import { Fragment } from "react";
+import ProgressBar from "./ProgressBar";
+import PrimaryButton from "./PrimaryButton";
+
 const TicketPage = (props) => {
 
  
   return ( 
     <div>
+      <div className="top-button"><PrimaryButton label = "+ New Ticket"/></div>
 
       <div className="tickets-upper">
       <div className="Team-box">
@@ -20,7 +24,7 @@ const TicketPage = (props) => {
       <div className="tickets-lower">
         
         <div className="top-tick">
-          <div className="mindiv"> Ticket Information</div>
+          <div className="mindiv"> <strong>Ticket Information</strong></div>
         </div>
 
         <div className="bottom-tick">
@@ -31,7 +35,10 @@ const TicketPage = (props) => {
             </div>      
 
             <div className="left-side">
-              <div className ="Progress-Bars_box"></div>
+                <div className ="Progress-Bars_box">
+                  <ProgressBar className="Plan-bar" height="20px" color="RGB(106, 214, 80)" percent="70"/>
+                  <ProgressBar className="Actual-bar" height="20px"color="RGB(214, 168, 80)" percent="25"/>
+                </div>
               <div className="Comments-box"><Table decider ="Comment"/></div>
             </div>
         </div>
