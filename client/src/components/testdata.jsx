@@ -2,17 +2,17 @@ const Tasks = [
   {
     id: 1,
     title: "Do work",
-    percentage_complete: '20%',
+    percentage_complete: true,
   },
   {
     id: 2,
     title: "Work harder",
-    percentage_complete: '50%',
+    percentage_complete: false,
   },
   {
     id: 3,
     title: "die from overwork",
-    percentage_complete: '60%',
+    percentage_complete: false,
   },
 ];
 
@@ -82,21 +82,21 @@ const Projects = [
   title: "Setup ticket list item",
   description: "Setup ticket list item in storybook and front end",
   status: "On Track",
-  percentage_complete: "25%",
+  percentage_complete: 25,
 },
 {
   id: 2,
   title: "Setup task list item",
   description: "Setup task list item in storybook and front end",
   status: "At Risk",
-  percentage_complete: "50%",
+  percentage_complete: 50,
 },
 {
   id: 3,
   title: "Setup project list item",
   description: "Setup project list item in storybook and front end",
   status: "On Track",
-  percentage_complete: "99%",
+  percentage_complete: 99,
 },
 ];
 

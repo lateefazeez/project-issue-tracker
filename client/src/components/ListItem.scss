@@ -9,7 +9,7 @@
      @include fade;
 
     color: $text-light;
-    height: 1.5rem;
+    height: auto;
     padding-left: 2rem;
     padding-right: 2rem;
     display: flex;
@@ -18,10 +18,11 @@
     background-color: $project-table-background;
     font: $font-family;
     justify-content: space-between;
-    padding-top: 5px;
+    padding-top: 13px;
+    padding-bottom: 13px;
     border-color: $text-light;
     border: 0.1px solid $text-light;
-
+    
 
     &:hover {
       background-color: $hover-color;
@@ -40,4 +41,11 @@
       }
     }
   }
+}
+
+.Progress-Bar {
+  width: 100%;
+}
+.Plan-bar{
+  width: 100%
 }

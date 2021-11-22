@@ -7,6 +7,7 @@ import PrimaryButton from './components/PrimaryButton';
 import CreateButton from './components/CreateButton';
 import TopNavigation from './components/TopNavigation';
 import TicketPage from './components/TicketPage';
+
 import Chart from './components/Chart';
 import ProgressBar from './components/ProgressBar';
 import TablePaginations from './components/slider/TablePaginations';
@@ -14,6 +15,7 @@ import HealthPriority from './components/HealthStats/HealthPriority';
 import HealthStatus from './components/HealthStats/HealthStatus';
 import HealthType from './components/HealthStats/HealthType';
 import Dashboard from './components/Dashboard';
+
 
 
 
@@ -91,7 +93,7 @@ function App() {
       <Dashboard projects={projectsTest} />
       <Navigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
       <TopNavigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
-      <Chart />
+      <TicketPage />
     </div>
   );
 }
