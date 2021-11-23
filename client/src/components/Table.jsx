@@ -63,11 +63,11 @@ const AddButtons = (props) => {
 
 const AddList = (props) => {
 
-  const { decider, height } = props;
-
+  const { decider, height, width, mWidth } = props;
+  console.log(mWidth)
 if (props.decider === "Devs" || props.decider === "Task" || props.decider === "Comment"){
 return(
-  <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+  <Box sx={{ width: {width}, maxWidth: {mWidth}, bgcolor: 'background.paper' }}>
         <List id={props.decider + "superList"}
         sx={{
           width: '100%',
@@ -89,7 +89,7 @@ return(
 }
 
 const Table = (props) => {
-  const { decider, height } = props;
+  const { decider, height, width, mWidth } = props;
   
 
   return (
@@ -97,7 +97,7 @@ const Table = (props) => {
       <div className="projects-box-header" id={props.decider + "-top"}>
         <Header decider={decider}/>
       </div>
-      <AddList decider={decider} height={height}/>
+      <AddList decider={decider} height={height} width={width} mWidth={mWidth}/>
       <div className="projects-box-footer"id={props.decider + "-bottom"}>
             <AddButtons decider={decider}/>
         </div>

@@ -7,7 +7,7 @@ import HealthPriority from "./HealthStats/HealthPriority";
 import HealthStatus from "./HealthStats/HealthStatus";
 import HealthType from "./HealthStats/HealthType";
 import Duration from "./HealthStats/Duration";
-
+import PrimaryButton from "./PrimaryButton";
 import ProgressBar from "./ProgressBar";
 
 const TicketPage = (props) => {
@@ -29,6 +29,7 @@ const TicketPage = (props) => {
         
         <div className="top-tick">
           <h4 id="mini" className="mindiv"> <strong>Ticket Information</strong></h4>
+          <div className="new-task"><PrimaryButton children = "+ New Task"/></div>
         </div>
 
         <div className="bottom-tick">
@@ -40,8 +41,8 @@ const TicketPage = (props) => {
                 <Duration/>
 
               </div>
-              <div className="Tasks-box"><Table decider ="Task" height='150px'/></div>
-              <div className="Assignees-box"><Table decider ="Devs" height='150px'/></div>
+              <div className="Tasks-box"><Table decider ="Task" height='130px' width='90%' mWidth='90%'/></div>
+              <div className="Assignees-box"><Table decider ="Devs" height='130px' width='90%' mWidth='90%'/></div>
             </div>      
 
             <div className="left-side">
@@ -49,7 +50,7 @@ const TicketPage = (props) => {
                   <ProgressBar className="Plan-bar" height="30px" color="RGB(106, 214, 80)" percent="70"/>
                   <ProgressBar className="Actual-bar" height="30px"color="RGB(214, 168, 80)" percent="25"/>
                 </div>
-              <div className="Comments-box"><Table decider ="Comment" height='260px'/></div>
+              <div className="Comments-box"><Table decider ="Comment" height='250px' width='90%' mWidth='95%'/></div>
             </div>
         </div>
 

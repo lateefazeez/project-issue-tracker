@@ -60,6 +60,9 @@
 }
 
 .top-tick {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   padding-top: 10px;
   padding-left: 15px;
   margin-bottom: 20px;
@@ -221,17 +224,17 @@
 
 #DevssuperList {
   background-color: $project-table-background;
-  width: 200%;
+  width: 100%;
 }
 
 #TasksuperList {
   background-color: $project-table-background;
-  width: 200%;
+  width: 100%;
 }
 
 #CommentsuperList {
   background-color: $project-table-background;
-  width: 240%;
+  width: 100%;
 }
 
 .ComPost{
@@ -270,4 +273,13 @@
 
 .tktiny{
   margin-left: 70px;
+}
+
+
+.new-task {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 25px;
+  height: 45px;
 }
