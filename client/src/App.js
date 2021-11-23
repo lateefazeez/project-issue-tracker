@@ -22,6 +22,7 @@ import HealthPriority from './components/HealthStats/HealthPriority';
 import HealthStatus from './components/HealthStats/HealthStatus';
 import HealthType from './components/HealthStats/HealthType';
 import ProjectTable from './components/ProjectTable';
+import PersistentDrawerLeft from './components/Navigation2.0';
 
 
 
@@ -104,7 +105,8 @@ function App() {
   
   return (
     <div className="App">
-      <ProjectTable projects={projectsTest} />
+      {/* <ProjectTable projects={projectsTest} /> */}
+      <PersistentDrawerLeft projects={projectsTest} user={"Fred Flinstone"} />
     </div>
   );
 }
