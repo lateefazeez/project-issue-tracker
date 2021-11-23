@@ -3,9 +3,9 @@ const HealthPriority = (props) => {
   // const { ticketPriority } = props;
   return (
     <div className="container">
-      <h4>PRIORITY</h4>
+      <p className="STT2">PRIORITY</p>
       <div className="health">
-        <h4>{ticket.priority}</h4>
+        <p id="hlth">{ticket.priority}</p>
       </div>
     </div>
   );

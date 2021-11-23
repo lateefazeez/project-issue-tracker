@@ -29,3 +29,13 @@ td {
   }
 
 }
+
+tr {
+
+  &:hover {
+    background-color: $hover-color;
+    cursor: pointer;
+    color: $text-light;
+    
+  }
+}

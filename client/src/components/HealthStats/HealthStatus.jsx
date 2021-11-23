@@ -8,9 +8,9 @@ const HealthStatus = (props) => {
   const statusId = "status--atrisk"
   return (
     <div className="container">
-      <h4>STATUS</h4>
+      <p className="STT1">STATUS</p>
       <div className="health">
-        <h4 id={statusId}>{ticket.status}</h4>
+        <p id={statusId}>{ticket.status}</p>
       </div>
     </div>
   );

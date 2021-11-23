@@ -1,17 +1,17 @@
 import "./HealthStats.scss";
-const HealthType = (props) => {
-  // const { ticketType } = props;
+const Duration = (props) => {
+  // const { ticketPriority } = props;
   return (
-    <div className="container">
-      <p className="STT">TYPE</p>
-      <div className="health">
-        <p id="typ">{ticket.category}</p>
-      </div>  
+    <div className="cont">
+      <p className="STT3">Planned Duration (hrs)</p>
+      <div className="durr">
+        <p id="durr">{ticket.plan_duration}</p>
+      </div>
     </div>
   );
 }
 
-export default HealthType;
+export default Duration;
 
 const ticket = {
   start_date: "Jul 20, 2021",

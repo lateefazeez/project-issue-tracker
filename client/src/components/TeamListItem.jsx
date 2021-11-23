@@ -1,28 +1,30 @@
 import "./ListItem.scss";
 import classNames from "classnames";
+import Switch from '@mui/material/Switch';
+import { useState } from "react";
+import { getListItemSecondaryActionClassesUtilityClass } from "@mui/material";
+import Box from '@mui/material/Box';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 const TeamListItem = (props) => {
 
-    const { first_name, last_name, Email } = props;
+   const { first_name, last_name } = props;
 
-  const teamClass = classNames("list__item", {
+   const teamClass = classNames("list__item", {
     "list__item--selected": props.selected,
   });
 
-  // const first_name = "Barney"
-  // const last_name= "Rubble"
-  // const email= "Brub@gmail.com"
-
   return (
     <li
+      id="teamtile"
       className={teamClass}
       selected={props.selected}
-      onClick={() => console.log('Yo')}
+      onClick={() => console.log("yo")}
     >
-      <div>{props.first_name}</div>
-      <div>{props.last_name}</div>
-      <div>{props.email}</div>
- 
+      <div className="TmPost">
+      <div>{first_name} {last_name} </div>
+      <MoreVertIcon className="teamtiny" />
+      </div>
     </li>
   );
 }
