@@ -8,6 +8,8 @@ import TableRow from '@mui/material/TableRow';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import './ProjectList.scss';
 import ProgressBar from './ProgressBar';
+import MoreOptions from './MoreOptions';
+import { IconButton } from '@mui/material';
 
 
 export default function ProjectListTable(props) {
@@ -36,7 +38,7 @@ export default function ProjectListTable(props) {
               <TableCell onClick={() => console.log('Clicked Project')}><ProgressBar className="Actual-bar" height="20px"color="RGB(106, 214, 80)" percent="25"/></TableCell>
               <TableCell onClick={() => console.log('Clicked Project')}>{row.status}</TableCell>
               <TableCell onClick={() => console.log('Clicked Project')}>{"aman, matt, lateef"}</TableCell>
-              <TableCell onClick={() => console.log('Clicked Project')}><MoreVertIcon /></TableCell>
+              <TableCell onClick={() => console.log('Edit and Adjust Triggered')}><MoreOptions /></TableCell>
             </TableRow>
           ))}
         </TableBody>

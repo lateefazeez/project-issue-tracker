@@ -23,6 +23,7 @@ import HealthStatus from './components/HealthStats/HealthStatus';
 import HealthType from './components/HealthStats/HealthType';
 import ProjectTable from './components/ProjectTable';
 import PersistentDrawerLeft from './components/Navigation2.0';
+import MoreOptions from './components/MoreOptions';
 
 
 
