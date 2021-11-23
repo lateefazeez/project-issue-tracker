@@ -3,7 +3,8 @@ import classNames from "classnames";
 import Switch from '@mui/material/Switch';
 import { useState } from "react";
 import { getListItemSecondaryActionClassesUtilityClass } from "@mui/material";
-import Box from '@mui/material/Box';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+
 
 const TaskListItem = (props) => {
 
@@ -26,12 +27,16 @@ const TaskListItem = (props) => {
       selected={props.selected}
       onClick={() => console.log({swtch})}
     >
+      <div className="TkPost">
       <div>{title}</div>
       <div>{percentage_complete}</div>
-      <div>
-         <Switch 
-         sx={{margin: '-12px'}}{...percentage_complete} onChange={handleChange} checked={swtch} color="primary"/>
-        
+        <div className="TkPre">
+          <div>
+          <Switch 
+          sx={{margin: '-12px'}}{...percentage_complete} onChange={handleChange} checked={swtch} color="primary"/>
+          </div>
+          <MoreVertIcon className="tktiny" />
+          </div>
         </div>
     </li>
   );

@@ -9,15 +9,51 @@
 
 .health{
   color: $white;
-  background-color: $nav-background;
-  width: 7%;
+  background-color: black;
+  width: 80%;
   border-radius: 1em;
   display: flex;
   justify-content: center;
   text-transform: uppercase;
+  padding-top: 0px;
+  padding-bottom: -5px;
 
+}
+
+.STT {
+  margin-left: 26%;
+}
+
+.STT1 {
+  margin-left: 18%;
+}
+
+.STT2 {
+  margin-left: 17%;
+}
+
+.STT3 {
+  margin-left: 0%;
 }
 
 #status--atrisk {
   color: red;
+  margin-bottom: auto;
+}
+
+#hlth {
+  margin-bottom: auto;
+}
+
+#typ {
+  margin-bottom: auto;
+}
+
+.durr{
+  background-color: transparent;
+  margin-left: 30%;
+}
+
+.cont {
+  width: 150%;
 }

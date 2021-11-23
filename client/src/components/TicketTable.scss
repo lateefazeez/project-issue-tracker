@@ -5,11 +5,13 @@ table {
   background-color: $project-table-background;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  border: 1px solid $text-light 
 }
 
 th {
   color:$text-light !important;
   cursor: pointer;
+  border-top: 1px solid $text-light;
   
 }
 
@@ -18,20 +20,17 @@ th {
 
 }
 
-.projectitle {
-   color: #4D45B5 !important;
-}
-
-
 td {
-  
   cursor: pointer;
   color:$text-light !important;
 
 }
 
 tr {
-
+  border-right: 1px solid $text-light !important;
+  border-left: 1px solid $text-light !important;
+  border-right: 1px solid $text-light !important;
+  
   &:hover {
     background-color: $hover-color;
     cursor: pointer;
@@ -39,3 +38,14 @@ tr {
     
   }
 }
+
+.tabletit {
+
+
+  &:hover {
+    background-color: $project-table-background;
+    cursor: auto;
+  }
+
+}
+
