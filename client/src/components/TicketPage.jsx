@@ -1,3 +1,7 @@
+import { useState } from 'react'
+import FormModal from "./Form/FormModal";
+import CreateTask from "./Form/CreateTask"
+
 import Table from "./Table";
 import './TicketPage.scss';
 import './TicketListTable';
@@ -11,6 +15,8 @@ import PrimaryButton from "./PrimaryButton";
 import ProgressBar from "./ProgressBar";
 
 const TicketPage = (props) => {
+  const [isNewTaskOpen, setIsNewTaskOpen] = useState(false);
+  const toggleNewTask = () => setIsNewTaskOpen(!isNewTaskOpen);
 
   return ( 
     <div>
@@ -29,8 +35,11 @@ const TicketPage = (props) => {
         
         <div className="top-tick">
           <h4 id="mini" className="mindiv"> <strong>Ticket Information</strong></h4>
-          <div className="new-task"><PrimaryButton children = "+ New Task"/></div>
+          <div className="new-task"><PrimaryButton onPress={toggleNewTask} style={{backgroundColor: "#4D45B5"}} children = "+ New Task"/></div>
         </div>
+        <FormModal handleOpen={isNewTaskOpen} onClose={toggleNewTask}>
+          <CreateTask />
+        </FormModal>
 
         <div className="bottom-tick">
             <div className="right-side">

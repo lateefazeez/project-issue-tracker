@@ -1,7 +1,11 @@
+import { Fragment, useState } from "react";
 import ListMaker from "./List";
 import TablePaginations from "./slider/TablePaginations";
 import PrimaryButton from "./PrimaryButton";
 import CommentEntry from "./CommentEntry";
+import FormModal from "./Form/FormModal";
+import CreateTicket from './Form/CreateTicket'
+import AddTeamMember from './Form/AddTeamMember'
 
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
@@ -12,23 +16,45 @@ import { Button } from "@mui/material";
 const Header = (props) => {
   const { decider } = props;
 
+  const [isNewTicketOpen, setIsNewTicketOpen] = useState(false);
+  const [isNewMemberOpen, setIsNewMemberOpen] = useState(false);
+  const toggleNewTicket = () => setIsNewTicketOpen(!isNewTicketOpen);
+  const toggleNewMember = () => setIsNewMemberOpen(!isNewMemberOpen);
+
+
+
+
+
   if (props.decider === "Task") {
     return (
         <h5 class="super-head">Progress</h5>
     );
   } else if (props.decider === "Team") {
     return (
-          <div class="tick-div">
-            <h4 class="super-head">Team</h4>
-            <div className="new-ticket"><PrimaryButton children = "+ Member"/></div>
-          </div>
+      <Fragment>
+        <div class="tick-div">
+          <h4 class="super-head">Team</h4>
+          <div className="new-ticket"><PrimaryButton onPress={toggleNewMember} style={{backgroundColor: "#4D45B5"}} children = "+ Member"/></div>
+        </div>
+        <FormModal handleOpen={isNewMemberOpen} onClose={toggleNewMember}>
+          <AddTeamMember />
+        </FormModal>
+      </Fragment>
+          
     );
   } else if (props.decider === "Ticket") {
     return (
-      <div class="tick-div">
-      <h4 class="super-head">Tickets</h4>
-      <div className="new-ticket"><PrimaryButton children = "+ New Ticket"/></div>
-      </div>
+      <Fragment>
+        <div class="tick-div">
+          <h4 class="super-head">Tickets</h4>
+          <div className="new-ticket"><PrimaryButton onPress={toggleNewTicket} style={{backgroundColor: "#4D45B5"}} children = "+ New Ticket"/></div>
+        </div>
+        <FormModal handleOpen={isNewTicketOpen} onClose={toggleNewTicket}>
+          <CreateTicket />
+        </FormModal>
+      </Fragment>
+      
+      
     );
   } else if (props.decider === "Comment") {
     return (
