@@ -2,17 +2,19 @@
 import React, { useState } from "react";
 import TaskListItem from "./TaskListItem";
 import TeamListItem from "./TeamListItem";
-import TicketListItem from "./TicketListItem";
 import CommentListItem from "./CommentListItem";
-import ProjectListItem from "./ProjectListItem";
-import { Tasks, Teams, Tickets, Comments, Projects} from "./testdata"
+import TicketListTable from "./TicketListTable";
+import TeamListTable from "./TeamListTable";
+
+import { Tasks, Comments, Teams} from "./testdata"
+
 
 const ListMaker = (props) => {
 
-  let list = "";
+  let listo = "";
 
   if (props.decider == "Task") {
-     list = Tasks.map((task) => {
+     listo = Tasks.map((task) => {
       return (
         <TaskListItem
         key={task.id}
@@ -22,28 +24,15 @@ const ListMaker = (props) => {
       );
     });
   } else if (props.decider == "Team"){
-     list = Teams.map((team) => {
-      return (
-        <TeamListItem
-        key={team.id}
-        first_name={team.first_name}
-        last_name={team.last_name}
-        />
-      );
-    });
+
+      return (<TeamListTable/>);
+
   } else if (props.decider == "Ticket"){
-    list = Tickets.map((ticket) => {
-     return (
-       <TicketListItem
-       key={ticket.id}
-       title={ticket.title}
-       description={ticket.description}
-       author={ticket.author}
-       />
-     );
-   });
+
+     return (<TicketListTable/>);
+
  } else if (props.decider == "Comment"){
-  list = Comments.map((comment) => {
+  listo = Comments.map((comment) => {
    return (
      <CommentListItem
      key={comment.id}
@@ -52,22 +41,18 @@ const ListMaker = (props) => {
      />
    );
  });
-} else if (props.decider == "Project"){
-
-  list = Projects.map((project) => {
+} else if (props.decider == "Devs"){
+  listo = Teams.map((team) => {
    return (
-     <ProjectListItem
-     key={project.id}
-     title={project.title}
-     description={project.description}
-     status={project.status}
-     percentage_complete={project.percentage_complete}
+     <TeamListItem
+     key={team.id}
+     first_name={team.first_name}
+     last_name={team.last_name}
      />
    );
  });
 }
-
-  return <ul>{list}</ul>;
+  return <ul>{listo}</ul>;
 }
  
 export default ListMaker;

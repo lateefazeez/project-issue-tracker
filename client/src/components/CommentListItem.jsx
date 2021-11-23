@@ -1,5 +1,6 @@
 import "./ListItem.scss";
 import classNames from "classnames";
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 const CommentListItem = (props) => {
 
@@ -19,9 +20,13 @@ const CommentListItem = (props) => {
      selected={props.selected}
      onClick={() => console.log('Yo')}
    >
+     <div className="ComPost">
+       <div className="ComPre">
      <div><strong>{props.author}</strong></div>
      <div>{props.message}</div>
-
+     </div>
+      <MoreVertIcon className="comtiny" />
+    </div>
    </li>
  );
 }

@@ -9,6 +9,8 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import './ProjectList.scss';
 import ProgressBar from './ProgressBar';
 import { useNavigate } from "react-router-dom";
+import MoreOptions from './MoreOptions';
+import { IconButton } from '@mui/material';
 
 
 export default function ProjectListTable(props) {

@@ -18,11 +18,9 @@
     background-color: $project-table-background;
     font: $font-family;
     justify-content: space-between;
-    padding-top: 13px;
-    padding-bottom: 13px;
     border-color: $text-light;
     border: 0.1px solid $text-light;
-    
+   
 
     &:hover {
       background-color: $hover-color;

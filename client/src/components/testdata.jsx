@@ -14,25 +14,36 @@ const Tasks = [
     title: "die from overwork",
     percentage_complete: false,
   },
+  {
+    id: 4,
+    title: "scroll me",
+    percentage_complete: true,
+  },
+  {
+    id: 5,
+    title: "scroll me",
+    percentage_complete: false,
+  },
+
 ];
 
 const Teams = [
   {
     id: 1,
     first_name: "Fred",
-    flast_name: 'Flintstone',
+    last_name: 'Flintstone',
     email: "fred@gmail.com",
   },
   {
     id: 2,
     first_name: "Barney",
-    flast_name: 'Rubble',
+    last_name: 'Rubble',
     email: "barney@gmail.com",
   },
   {
     id: 3,
-    first_name: "Bam-bam",
-    flast_name: 'Rubble',
+    first_name: "Bambam",
+    last_name: 'Rubble',
     email: "bam@gmail.com",
   },
 ];

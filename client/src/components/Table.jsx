@@ -1,5 +1,11 @@
-import List from "./List";
+import ListMaker from "./List";
 import TablePaginations from "./slider/TablePaginations";
+import PrimaryButton from "./PrimaryButton";
+import CommentEntry from "./CommentEntry";
+
+import Box from '@mui/material/Box';
+import List from '@mui/material/List';
+import { Button } from "@mui/material";
 
 // import { Tasks, Teams, Tickets, Comments, Projects } from "./testdata";
 
@@ -8,46 +14,29 @@ const Header = (props) => {
 
   if (props.decider === "Task") {
     return (
-      <thead>
-        <tr>
-          <th>PROGRESS</th>
-        </tr>
-      </thead>
+        <h5 class="super-head">Progress</h5>
     );
   } else if (props.decider === "Team") {
     return (
-      <thead>
-        <tr>
-          <th>Team</th>
-        </tr>
-      </thead>
+          <div class="tick-div">
+            <h4 class="super-head">Team</h4>
+            <div className="new-ticket"><PrimaryButton children = "+ Member"/></div>
+          </div>
     );
   } else if (props.decider === "Ticket") {
     return (
-      <thead>
-        <tr>
-          <th>Tickets</th>
-        </tr>
-      </thead>
+      <div class="tick-div">
+      <h4 class="super-head">Tickets</h4>
+      <div className="new-ticket"><PrimaryButton children = "+ New Ticket"/></div>
+      </div>
     );
   } else if (props.decider === "Comment") {
     return (
-      <thead>
-        <tr>
-          <th>Comments</th>
-        </tr>
-      </thead>
+      <h4 class="super-head">Comments</h4>
     );
-  } else if (props.decider === "Project") {
+  } else if (props.decider === "Devs") {
     return (
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Status</th>
-          <th>% Complete</th>
-        </tr>
-      </thead>
+      <h5 class="super-head">Assigned Devs</h5>
     );
   }
 }
@@ -59,24 +48,56 @@ const AddButtons = (props) => {
 
    console.log("im props " + props.decider)
 
-  if (props.decider === "Ticket" || props.decider === "Team" || props.decider === "Project"){
+  if (props.decider === "Ticket" || props.decider === "Team"){
     return (
     <TablePaginations/>
+    );
+  } else if (props.decider === "Comment") {
+    return(
+    <CommentEntry/>
     );
   } else {
     return "";
   }
 }
 
+const AddList = (props) => {
+
+  const { decider, height } = props;
+
+if (props.decider === "Devs" || props.decider === "Task" || props.decider === "Comment"){
+return(
+  <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+        <List id={props.decider + "superList"}
+        sx={{
+          width: '100%',
+          bgcolor: 'background.paper',
+          position: 'relative',
+          overflow: 'auto',
+          maxHeight: {height},
+          '& ul': { padding: 0 },
+        }}
+        subheader={<li />}
+          >
+          <ListMaker decider={decider}/>
+          </List>
+        </Box>
+);
+} else {
+  return (<ListMaker decider={decider}/>);
+};
+}
+
 const Table = (props) => {
-  const { decider } = props;
+  const { decider, height } = props;
+  
 
   return (
     <div>
       <div className="projects-box-header" id={props.decider + "-top"}>
         <Header decider={decider}/>
       </div>
-      <List decider={decider}/>
+      <AddList decider={decider} height={height}/>
       <div className="projects-box-footer"id={props.decider + "-bottom"}>
             <AddButtons decider={decider}/>
         </div>

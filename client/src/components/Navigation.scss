@@ -1,37 +1,22 @@
 @import "../styles/mixins.scss";
 @import "../styles/variables.scss";
 
-.menuicon {
-  display: flex;
-  // align-items: flex-start;
-  z-index: 1; 
-  position: fixed;
-  top: 0; 
-  left: 0; 
-
+.topbar {
+  background-color: $page-dark-background;
 }
 
-.closed {
-  display: none;
-}
-
-.navuser {
+.user {
   color: #4D45B5;
-  border-bottom: 1px solid #707070;
-  font-size: 30px;
-
-  &:hover {
-    filter: brightness(130%);
-    cursor: pointer;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  border-bottom: 3px solid #707070;
+  font-size: 20px;
 }
 
 .navitems {
-  border-bottom: 1px solid #707070;
-}
-
-
-.item-hov{
+  color: $text-light;
   &:hover {
     color: $hover-color;
     cursor: pointer;
@@ -39,23 +24,24 @@
   }
 }
 
-.sidebar {
-  @include fade;
-  height: 100%;  
-  width: 15%;  
-  position: fixed; 
-  top: 0; 
-  left: 0; 
-  background-color: $nav-background; 
-  box-shadow: 0px 4px 8px rgba($nav-background, 0.5);
-  transition: .5s ease; 
-  overflow-x: hidden; 
-  padding-top: 20px; 
-  display: flex; 
-  flex-direction: column; 
-  align-items: center;
-  font-size: 20px;
-  color: $text-dark;
-  border-bottom: 1px solid #707070;
+// .closebutton {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: flex-start;
+// }
 
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navfooter {
+  font-size: small;
+  color: $text-light;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 20px;
 }

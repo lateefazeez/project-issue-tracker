@@ -6,6 +6,7 @@ import SelectProject from './components/SelectProject';
 import Signup from './components/Signup';
 import ProjectDashboard from './components/ProjectDashboard';
 import TicketPage from './components/TicketPage'
+import PersistentDrawerLeft from './components/Navigation2.0'
 
 
 
@@ -37,7 +38,7 @@ function App() {
       <Routes>
         <Route path="/" element={<SelectProject />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/dashboard" element={<ProjectDashboard />} />
+        <Route path="/navigation" element={<PersistentDrawerLeft />} />
         <Route path="/tickets" element={<TicketPage />} />
       </Routes>
       
