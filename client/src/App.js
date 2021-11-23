@@ -1,91 +1,20 @@
 import {useEffect, useState } from 'react';
 import axios from 'axios';
+import { Routes, Route, Link } from "react-router-dom";
 import './App.scss';
-import TicketListItem from './components/TicketListItem';
-import Navigation from './components/Navigation';
-import PrimaryButton from './components/PrimaryButton';
-import CreateButton from './components/CreateButton';
-import TopNavigation from './components/TopNavigation';
-import TicketPage from './components/TicketPage';
-
-import Chart from './components/Chart';
-import ProgressBar from './components/ProgressBar';
-import TablePaginations from './components/slider/TablePaginations';
-import FormModal from './components/Form/FormModal';
-import { Button } from 'reactstrap'
-import CreateProject from './components/Form/CreateProject';
-import CreateTicket from './components/Form/CreateTicket';
-import AddTeamMember from './components/Form/AddTeamMember';
 import SelectProject from './components/SelectProject';
 import Signup from './components/Signup';
-import HealthPriority from './components/HealthStats/HealthPriority';
-import HealthStatus from './components/HealthStats/HealthStatus';
-import HealthType from './components/HealthStats/HealthType';
-import Dashboard from './components/Dashboard';
 import ProjectDashboard from './components/ProjectDashboard';
+import TicketPage from './components/TicketPage'
 
 
 
 
 
 function App() {
-  const projectsTest = [{
-    title: "Wikimap app",
-    description: "hahahahahahahahahahahahahah",
-    start_date: "Jul 14, 2021",
-    end_date: "Oct 20, 2021",
-    percentage_complete: 75,
-    status: "on track",
-    users_id: 1
-  },
-  {
-    title: "Scheduler app",
-    description: "hahahahahahahahahahahahahah",
-    start_date: "Jul 20, 2021",
-    end_date: "Sept 20, 2021",
-    percentage_complete: 75,
-    status: "on track",
-    users_id: 2
-  }, 
-  {
-    title: "Project tracking app",
-    description: "hahahahahahahahahahahahahah",
-    start_date: "Aug 19, 2021",
-    end_date: "Nov 25, 2021",
-    percentage_complete: 50,
-    status: "on track",
-    users_id: 1
-  },
-  {
-    title: "Project tracking app",
-    description: "hahahahahahahahahahahahahah",
-    start_date: "Aug 19, 2021",
-    end_date: "Nov 25, 2021",
-    percentage_complete: 50,
-    status: "on track",
-    users_id: 1
-  },
-  {
-    title: "Project tracking app",
-    description: "hahahahahahahahahahahahahah",
-    start_date: "Aug 19, 2021",
-    end_date: "Nov 25, 2021",
-    percentage_complete: 50,
-    status: "on track",
-    users_id: 1
-  },
-  ];
+
   const [projects, setProjects] = useState([])
   const [tickets, setTickets] = useState([])
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isNewProjectOpen, setIsNewProjectOpen] = useState(false);
-  const [isNewTicketOpen, setIsNewTicketOpen] = useState(false);
-  const [isMemberOpen, setIsMemberOpen] = useState(false);
-
-  const toggleNewProject = () => setIsNewProjectOpen(!isNewProjectOpen);
-  const toggleNewTicket = () => setIsNewTicketOpen(!isNewTicketOpen);
-  const toggleNewMember = () => setIsMemberOpen(!isMemberOpen);
-
   
   useEffect(() => {
 
@@ -105,38 +34,13 @@ function App() {
   
   return (
     <div className="App">
-      {/* <Navigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
-      <TopNavigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
-      <TicketPage />
-      <Chart />
-      <ProgressBar />
-      <TablePaginations />
-      <FormModal />
-      <Button color="primary" onClick={toggleNewProject} size="sm">
-        New Project
-      </Button>
-      <FormModal handleOpen={isNewProjectOpen} onClose={toggleNewProject}>
-        <CreateProject />
-      </FormModal>
-      <Button color="primary" onClick={toggleNewTicket} size="sm">
-        New Ticket
-      </Button>
-      <FormModal handleOpen={isNewTicketOpen} onClose={toggleNewTicket}>
-        <CreateTicket />
-      </FormModal>
-      <Button color="primary" onClick={toggleNewMember} size="sm">
-        New Ticket
-      </Button>
-      <FormModal handleOpen={isMemberOpen} onClose={toggleNewMember}>
-        <AddTeamMember />
-      </FormModal> */}
-      {/* <SelectProject /> */}
-      {/* <Signup /> */}
-      {/* <Dashboard projects={projectsTest} /> */}
-      {/* <Navigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
-      <TopNavigation isOpen={isMenuOpen} setMenu={setIsMenuOpen} />
-      <TicketPage /> */}
-      <ProjectDashboard />
+      <Routes>
+        <Route path="/" element={<SelectProject />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/dashboard" element={<ProjectDashboard />} />
+        <Route path="/tickets" element={<TicketPage />} />
+      </Routes>
+      
     </div>
   );
 }

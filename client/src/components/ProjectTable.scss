@@ -4,36 +4,38 @@
 .topdash {
   display: flex;
   justify-content: space-between;
-  margin-top: 2em;
-  margin-left: 2em;
+  margin-top: 1em;
   margin-bottom: 1em;
   background-color: $page-dark-background;
 }
 
 .bottomdash {
-  border-top: 1px solid white;
   display: flex;
   flex-direction: row;
+  align-items: flex-end;
   background-color: $project-table-background;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  height: 80px;
+  border-left: 1px solid $text-light;
+  border-bottom: 1px solid $text-light;;
+  border-right: 1px solid $text-light;
 }
 
-.history {
-  margin-left: 2em;
-  color: $white;
-  background-color: $nav-background;
-  width: 10%;
-  border-radius: 1em;
+.dashbuttons {
   display: flex;
-  justify-content: center;
-  text-transform: uppercase;
-  margin-bottom: 0.5em;
-  
+  justify-content: space-between;
+  color: $white;
+}
+
+.buttons {
+  display: flex;
+  padding-bottom: 1rem;
 }
 
 .dash {
   // margin: 1%;
+  // box-shadow: 10px 10px 8px 10px #888888;
 }
 
 
@@ -80,4 +82,15 @@ tr {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   border: 1px solid $text-light;
+}
+
+.active--view {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+  background-color: #393941;
+  margin-right: 1rem;
+  border-radius: 0.2rem;
+  border: 0.3px solid #707070;
+  padding: 0.4rem 0.7rem;
 }

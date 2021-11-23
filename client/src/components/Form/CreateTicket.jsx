@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react'
 import { Container, Button, Form, FormGroup, Label, Input} from 'reactstrap';
+import PrimaryButton from '../PrimaryButton';
 
 import './CreateTicket.scss'
 
@@ -21,6 +22,7 @@ const CreateTicket = (props) => {
   return ( 
     <Container fluid>
       <Form className="ticket__form">
+      
       <Label className="form__header">Add New Ticket</Label>
         <FormGroup>
           <Label for="title" className="input-labels">Ticket Title</Label>
@@ -28,7 +30,7 @@ const CreateTicket = (props) => {
         </FormGroup>
         <FormGroup>
           <Label for="description" className="input-labels">Ticket Description</Label>
-          <Input className="form-inputs"  type="textarea" name="description" id="description" rows="5" placeholder="Enter description" bsSize="lg" value={description}/>
+          <Input className="form-inputs"  type="textarea" name="description" id="description" rows="2" placeholder="Enter description" bsSize="lg" value={description}/>
         </FormGroup>
         <div className="dual__input">
           <FormGroup className="input-select space">

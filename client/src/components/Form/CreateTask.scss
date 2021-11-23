@@ -1,5 +1,5 @@
-.ticket__form {
-  margin-top: 1.5rem;
+.task__form {
+  margin-top: 0.8rem;
 }
 
 .input-labels {
@@ -19,16 +19,12 @@
 //   height: 3.2rem;
 // }
 
-.dual__input {
+.date__input {
   display: flex;
 }
 
-.space {
+.start__date {
   margin-right: 1.2rem;
-}
-
-.spaces {
-  margin-right: 1.9rem;
 }
 .submit_btn {
   background-color: #4D45B5 !important;
@@ -50,4 +46,9 @@
 
 .input-select {
   color: #A29F9F;
+}
+
+.closeForm {
+  display: flex;
+  justify-content: flex-end;
 }

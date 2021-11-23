@@ -3,31 +3,30 @@
 
 table {
   background-color: $project-table-background;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
 }
 
 th {
   color:$text-light !important;
-  cursor: pointer;
   
 }
 
 .tabletitle {
-  text-transform: uppercase
-
+  text-transform: uppercase;
 }
-
-.projectitle {
-  color: #4D45B5 !important;
-}
-
-
-
 
 td {
-  
-  cursor: pointer;
   color:$text-light !important;
+}
+
+
+.tabledata {
+  color:$text-light !important;
+  border: 0.2 solid #707070;
+  &:hover {
+    background-color: $hover-color;
+    cursor: pointer;
+    color: $text-light;
+    opacity: 0.5;
+  }
 
 }

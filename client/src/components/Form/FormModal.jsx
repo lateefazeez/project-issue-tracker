@@ -2,6 +2,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import PrimaryButton from '../PrimaryButton';
 import { useState } from 'react';
 
 import './FormModal.scss'
@@ -34,6 +35,9 @@ const FormModal = (props) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+        <div className="closeForm">
+          <PrimaryButton style={{borderRadius: "50px", padding: "0", backgroundColor: "red"}} onPress={onClose}>X</PrimaryButton>
+        </div>
         { children }
         </Box>
       </Modal>

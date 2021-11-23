@@ -33,10 +33,17 @@ h4 {
   letter-spacing: 0.05rem;
 }
 
-.top-logo {
+.top-logo-signup {
   display: flex;
-  position: absolute;
+  justify-content: space-between;
   margin: 1rem 2rem;
+}
+.logos {
+  display: flex;
+}
+
+.home__icon {
+  z-index: 100
 }
 
 .logo-circle {
@@ -76,7 +83,7 @@ h4 {
   flex-direction: column;
 }
 
-.register_btn {
+.login_btn {
   background-color: #4D45B5 !important;
   color: #FFFFFF !important;;
   padding: 0.5rem 3rem !important;;
@@ -101,5 +108,10 @@ h4 {
   min-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.button-container {
+  display: flex;
   justify-content: center;
 }

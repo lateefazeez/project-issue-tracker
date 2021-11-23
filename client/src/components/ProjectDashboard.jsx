@@ -1,10 +1,10 @@
-import Dashboard from "./Dashboard";
-import CreateButton from "./CreateButton";
+import ProjectTable from "./ProjectTable";
 
 import './ProjectDashboard.scss'
+import Chart from "./Chart";
 
 const ProjectDashboard = () => {
-  const projectsTest = [{
+  const projects = [{
     title: "Wikimap app",
     description: "hahahahahahahahahahahahahah",
     start_date: "Jul 14, 2021",
@@ -53,8 +53,41 @@ const ProjectDashboard = () => {
 
   return ( 
     <div className="project--dashboard">
-  
-      <Dashboard projects={projectsTest}/>
+        <ProjectTable projects={projects} />
+        <div className="chart--group">
+          <Chart
+            title={"Type"}
+            colors={[
+              '#4D45B5',
+              '#EF3C3C',
+              '#D6A850'
+            ]}
+            chartLabels={['Issue', 'Bug', 'Feature Request']}
+            chartData={[65, 59, 80]}
+          />
+          <Chart 
+            title={"Priority"}
+            colors={[
+              '#4D45B5',
+              '#EF3C3C',
+              '#D6A850',
+              '#6AD650'
+            ]}
+            chartLabels={['Immediate', 'High', 'Medium', 'Low']}
+            chartData={[65, 59, 40, 40]}
+          />
+          <Chart 
+            title={"Status"}
+            colors={[
+              '#4D45B5',
+              '#EF3C3C',
+              '#D6A850'
+            ]}
+            chartLabels={['At Risk', 'On Track', 'New']}
+            chartData={[65, 59, 80]}
+          />
+        </div>
+        
     </div>
    );
 }

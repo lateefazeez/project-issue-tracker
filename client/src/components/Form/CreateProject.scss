@@ -1,12 +1,12 @@
 .project__form {
-  margin-top: 2.5rem;
+  margin-top: 1.5rem;
 }
 
 .input-labels {
   font-size: 1.4rem;
   color: #A29F9F;
   letter-spacing: 0.07rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .form__header {
@@ -29,10 +29,10 @@
 .submit_btn {
   background-color: #4D45B5 !important;
   color: #FFFFFF !important;;
-  padding: 0.7rem 5rem !important;;
+  padding: 0.5rem 2rem !important;;
   margin-top: 2rem;
   border-radius: 0.5rem !important;
-  font-size: 1.5rem !important;
+  font-size: 1rem !important;
 }
 .button-container {
   display: flex;
@@ -46,4 +46,9 @@
 
 .input-select {
   color: #A29F9F;
+}
+
+.closeForm {
+  display: flex;
+  justify-content: flex-end;
 }

@@ -1,4 +1,5 @@
 import PrimaryButton from "./PrimaryButton";
+import { Link } from "react-router-dom";
 import './SelectProject.scss';
 
 
@@ -22,9 +23,13 @@ const SelectProject = () => {
 
           Construction
         </PrimaryButton >
-        <PrimaryButton style={{ backgroundColor: "#4D45B5", marginRight: "20px", padding: "1rem 5.2rem", borderRadius: "0.4rem"}}>
-        Software
-        </PrimaryButton>
+        
+        <Link to="signup">
+          <PrimaryButton style={{ backgroundColor: "#4D45B5", marginRight: "20px", padding: "1rem 5.2rem", borderRadius: "0.4rem"}}>
+          Software
+          </PrimaryButton>
+        </Link>
+        
       </div>
      
     </div>

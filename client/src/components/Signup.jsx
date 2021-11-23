@@ -4,8 +4,10 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import GoogleIcon from '@mui/icons-material/Google';
 import { Button, Form, FormGroup, Input} from 'reactstrap';
 import Collapse from '@mui/material/Collapse';
+import { Link } from "react-router-dom";
+import HomeIcon from '@mui/icons-material/Home';
 import './Signup.scss';
-import SoftwareImage from '../images/software-page-image.jpg'
+
 
 const Signup = () => {
   const [displayRegisterForm, setDisplayRegisterForm] = useState(false)
@@ -22,7 +24,7 @@ const Signup = () => {
           <Input className="form-inputs"  type="password" name="password" id="password" rows="5" placeholder="Password" bsSize="lg"/>
         </FormGroup>
         <FormGroup className="button-container">
-          <Button className="register_btn" onClick={registerUser}>Register</Button>
+          <Button className="login_btn" onClick={registerUser}>Register</Button>
         </FormGroup>
       </Form>
   )
@@ -35,7 +37,9 @@ const Signup = () => {
           <Input className="form-inputs"  type="password" name="password" id="password" rows="5" placeholder="Password" bsSize="lg"/>
         </FormGroup>
         <FormGroup className="button-container">
-          <Button className="register_btn" onClick={registerUser}>Register</Button>
+          <Link to="/dashboard">
+            <Button className="login_btn" onClick={registerUser}>Login</Button>
+          </Link>
         </FormGroup>
       </Form>
   )
@@ -46,10 +50,22 @@ const Signup = () => {
   return (
     <div className="image-box">
     <div className="opaque-background">
-     <div className="top-logo">
-       <div className="logo-circle"></div>
-       <h4 className="logo-text">trackIT</h4>
-     </div>
+    
+      <div className="top-logo-signup">
+        <div className="logos">
+          <div className="logo-circle"></div>
+          <h4 className="logo-text">trackIT</h4>
+        </div>
+        <Link to="/dashboard">
+          <HomeIcon className="home__icon"/>
+        </Link>
+        
+      </div>
+  
+ 
+     
+    
+    
      <div className="select--page">
      <div classNames="center--items">
        <div className="button__header">
@@ -87,12 +103,11 @@ const Signup = () => {
           </div>
         </PrimaryButton >
         <Collapse in={displayLoginForm}>{LoginForm}</Collapse>
-      
+        
      </div>
     
    </div>
     </div>
-    <div className="overlay" style={{background: `url(${SoftwareImage})`}} />
    </div> 
    
    );
