@@ -1,9 +1,9 @@
 class UsersTicketsController < ApplicationController
 
-  # def index
-  #   @usertickets = UserTicket.all
-  #   render json: @usertickets
-  # end
+  def index
+    @usertickets = UserTicket.all
+    render json: @usertickets
+  end
 
   def show
     usertickets = UserTicket.where(tickets_id: params[:id])

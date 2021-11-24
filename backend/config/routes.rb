@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :tasks
   resources :comments
   resources :users_tickets, only: [:index, :show]
+  resources :users
 end
