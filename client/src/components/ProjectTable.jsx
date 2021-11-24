@@ -6,13 +6,17 @@ import './ProjectTable.scss';
 import PrimaryButton from "./PrimaryButton";
 import FormModal from "./Form/FormModal";
 import CreateProject from "./Form/CreateProject";
+import { getPercentageComplete } from '../helpers/getAllTicketCategories'
 
 const ProjectTable= (props) => {
   const [isNewProjectOpen, setIsNewProjectOpen] = useState(false);
 
   const toggleNewProject = () => setIsNewProjectOpen(!isNewProjectOpen);
 
-  const {projects} = props;
+  const { projects, createProject } = props;
+  const percentageComplete = getPercentageComplete(projects)
+
+ 
   return (
     <div className="dash">
       <div className='topdash'>
@@ -30,13 +34,13 @@ const ProjectTable= (props) => {
           <div>
             <CreateButton buttonClick={toggleNewProject}/>
             <FormModal handleOpen={isNewProjectOpen} onClose={toggleNewProject}>
-              <CreateProject />
+              <CreateProject onClose={toggleNewProject} createProject={createProject}/>
             </FormModal>
           </div>
           
       </div>
       <div className="middledash">
-        <ProjectListTable projects={projects} />
+        <ProjectListTable projects={projects} value={percentageComplete} />
       </div>
       <div className="bottomdash">
         <TablePaginations />

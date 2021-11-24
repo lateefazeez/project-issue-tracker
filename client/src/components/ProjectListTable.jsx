@@ -13,7 +13,10 @@ import MoreOptions from './MoreOptions';
 import { IconButton } from '@mui/material';
 
 
+
 export default function ProjectListTable(props) {
+  
+
   const { projects, value} = props
   let navigate = useNavigate()
   return (
@@ -31,12 +34,12 @@ export default function ProjectListTable(props) {
         </TableHead>
         <TableBody>
           {projects.map((row) => (
-            <TableRow className="tabledata">
+            <TableRow key={row.id} className="tabledata">
               <TableCell className="projectitle"  onClick={() => navigate("/tickets")} component="th" scope="row">
                 {row.title}
               </TableCell>
               <TableCell onClick={() => navigate("/tickets")}>{row.description}</TableCell>
-              <TableCell onClick={() => navigate("/tickets")}><ProgressBar className="Actual-bar" height="20px"color="RGB(106, 214, 80)" percent="25"/></TableCell>
+              <TableCell onClick={() => navigate("/tickets")}><ProgressBar className="Actual-bar" height="20px"color="RGB(106, 214, 80)" percent={row.percentage_complete}/></TableCell>
               <TableCell onClick={() => navigate("/tickets")}>{row.status}</TableCell>
               <TableCell onClick={() => navigate("/tickets")}>{"aman, matt, lateef"}</TableCell>
               <TableCell onClick={() => console.log("icon clicked")}><MoreVertIcon /></TableCell>

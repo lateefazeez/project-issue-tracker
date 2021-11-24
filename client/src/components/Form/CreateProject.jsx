@@ -1,48 +1,58 @@
+import axios from 'axios';
 import { useState, useEffect } from 'react'
 import { Container, Button, Form, FormGroup, Label, Input} from 'reactstrap';
-import PrimaryButton from '../PrimaryButton';
 
 import './CreateProject.scss'
 
 
 const CreateProject = (props) => {
-  const [title, setTitle] = useState("")
-  const [description, setDescription] = useState("")
-  const [team, setTeam] = useState([])
-  const [startDate, setStartDate] = useState("2021-01-01")
-  const [targetDate, setTargetDate] = useState("2030-01-01")
+  // const [title, setTitle] = useState("")
+  // const [description, setDescription] = useState("")
+  // const [team, setTeam] = useState([])
+  // const [startDate, setStartDate] = useState("2021-01-01")
+  // const [targetDate, setTargetDate] = useState("2030-01-01")
+  const [project, setProject] = useState({})
 
+  const { onClose, createProject } = props
 
-  const createProject = () => console.log("New Project Created")
+  const handleChange = (e) => {
+    e.preventDefault()
+    setProject(Object.assign({}, project, {[e.target.name]: e.target.value}))
+  }
 
-  const handleChange = () => {}
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    
+    createProject(project)
+    onClose()
+  }
   
   return ( 
     <Container fluid>
-      <Form className="project__form">
+      <Form className="project__form" onSubmit={handleSubmit}>
         <Label className="form__header">Add New Project</Label>
         <FormGroup>
           <Label for="title" className="input-labels">Project Title</Label>
-          <Input className="form-inputs" type="text" name="title" id="title" placeholder="Enter project title" bsSize="lg" value={title} />
+          <Input className="form-inputs" type="text" name="title" id="title" placeholder="Enter project title" bsSize="lg" onChange={handleChange} value={project.title}/>
         </FormGroup>
         <FormGroup>
           <Label for="description" className="input-labels">Project Description</Label>
-          <Input className="form-inputs"  type="textarea" name="description" id="description" rows="3" placeholder="Enter description" bsSize="lg" value={description}/>
+          <Input className="form-inputs"  type="textarea" name="description" id="description" rows="3" placeholder="Enter description" bsSize="lg" onChange={handleChange} value={project.description}/>
         </FormGroup>
         <div className="date__input">
           <FormGroup className="start__date">
             <Label for="start" className="input-labels">Start Date</Label>
-            <Input className="form-inputs"  type="date" name="start" id="start" placeholder="date placeholder" bsSize="lg" value={startDate}/>
+            <Input className="form-inputs"  type="date" name="start" id="start" placeholder="date placeholder" bsSize="lg" onChange={handleChange} value={project.start_date}/>
           </FormGroup>
           <FormGroup>
             <Label for="target" className="input-labels">Target Date</Label>
-            <Input className="form-inputs"  type="date" name="target" id="target" placeholder="date placeholder" bsSize="lg" value={targetDate}/>
+            <Input className="form-inputs"  type="date" name="target" id="target" placeholder="date placeholder" bsSize="lg" onChange={handleChange} value={project.target_date}/>
           </FormGroup>
         </div>
         
         <FormGroup className="input-select">
           <Label for="team" className="input-labels">Add Team Members</Label>
-          <Input className="form-inputs"  type="select" name="team" id="team" multiple bsSize="lg" >
+          <Input className="form-inputs"  type="select" name="team" id="team" multiple bsSize="lg">
             <option className="input-select">Fred Flinstone</option>
             <option className="input-select">Barney Rubble</option>
             <option className="input-select">Aman Hundal</option>
@@ -51,7 +61,7 @@ const CreateProject = (props) => {
           </Input>
         </FormGroup>
         <FormGroup className="button-container">
-          <Button className="submit_btn" onClick={createProject}>Submit</Button>
+          <Button className="submit_btn">Submit</Button>
         </FormGroup>
         
       </Form>

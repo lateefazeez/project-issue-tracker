@@ -1,4 +1,4 @@
-
+import axios from 'axios'
 import ProjectTable from "./ProjectTable";
 import {useEffect, useState} from 'react';
 import axios from 'axios';
@@ -6,14 +6,17 @@ import axios from 'axios';
 import './ProjectDashboard.scss'
 import Chart from "./Chart";
 
-const ProjectDashboard = (props) => {
 
-  const { projects } = props
+const ProjectDashboard = (props) => {
+  const { chartData, projects, createProject } = props
+
+  
+
 
   return ( 
     <div className="project--dashboard">
-        <ProjectTable projects={projects}/>
-        <div className="chart--group">
+     { projects && <ProjectTable projects={projects} createProject={ createProject} />}
+     { projects && <div className="chart--group">
           <Chart
             title={"Type"}
             colors={[
@@ -22,7 +25,7 @@ const ProjectDashboard = (props) => {
               '#D6A850'
             ]}
             chartLabels={['Issue', 'Bug', 'Feature Request']}
-            chartData={[65, 59, 80]}
+            chartData={[chartData.Issues, chartData.Bugs, chartData.FeatureRequests]}
           />
           <Chart 
             title={"Priority"}
@@ -33,19 +36,21 @@ const ProjectDashboard = (props) => {
               '#6AD650'
             ]}
             chartLabels={['Immediate', 'High', 'Medium', 'Low']}
-            chartData={[65, 59, 40, 40]}
+            chartData={[chartData.Immediate, chartData.High, chartData.Medium, chartData.Low]}
           />
           <Chart 
             title={"Status"}
             colors={[
-              '#4D45B5',
               '#EF3C3C',
+              '#4D45B5',
               '#D6A850'
             ]}
             chartLabels={['At Risk', 'On Track', 'New']}
-            chartData={[65, 59, 80]}
+            chartData={[chartData.AtRisk, chartData.OnTrack, chartData.New]}
           />
-        </div>
+        </div>}
+        
+        
         
     </div>
    );

@@ -4,10 +4,11 @@ Rails.application.routes.draw do
 
   root to: 'projects#index'
 
-  resources :projects
-  resources :tickets
-  resources :tasks
-  resources :comments
-  resources :users_tickets, only: [:index, :show]
-  resources :users
+  # namespace :api do
+    resources :projects, only: [:index, :show, :create, :update, :destroy]
+    resources :tickets, only: [:index, :create]
+    resources :tasks
+    resources :comments
+    resources :users_tickets, only: [:index, :show]
+    resources :users
 end
