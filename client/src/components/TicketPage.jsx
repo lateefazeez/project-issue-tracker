@@ -16,14 +16,20 @@ import ProgressBar from "./ProgressBar";
 
 
 
+
 import { TaskProgressCalulator, TicketProgressCalulator, Tasks2, Tickets2 } from "../helpers/barChartHelpers";
+import { useLocation } from 'react-router';
 
 
 const TicketPage = (props) => {
   const [isNewTaskOpen, setIsNewTaskOpen] = useState(false);
   const toggleNewTask = () => setIsNewTaskOpen(!isNewTaskOpen);
 
-  const { data, projectId } = props;
+  const { data } = props;
+  
+  const { state } = useLocation()
+  const { id } = state;
+  console.log("ID: ", id)
 
   console.log("hey", data)
   console.log("projectId:", projectId)

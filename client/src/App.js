@@ -46,7 +46,7 @@ function App() {
     Promise.all([getAllProjects, getAllTickets, getAllUsers, getAllTasks, getAllComments, getAllUserTickets])
       .then((response) => {
         console.log(response[2].data)
-        setData(prev => ({...prev, projects: response[0].data, tickets: response[1].data, users: response[2].data, tasks: response[3].data, comments: response[4].data, userTickets: response[5].data}))
+        setData(prev => ({...prev, projects: response[0].data.reverse(), tickets: response[1].data, users: response[2].data, tasks: response[3].data, comments: response[4].data, userTickets: response[5].data}))
       })
       .catch((error) => {
         console.error(error)
@@ -71,8 +71,14 @@ function App() {
 
     return axios.post("http://localhost:3000/projects", { title: project.title, description: project.description })
     .then(response => {
-      // const returnedProjects = [...state.projects, response.data]
-      console.log(response.data)
+      setData(prevProjects => ({...prevProjects, projects: [response.data, ...prevProjects.projects]}))
+    })
+  }
+
+  const updateProject = (project) => {
+
+    return axios.post("http://localhost:3000/projects", { title: project.title, description: project.description })
+    .then(response => {
       setData(prevProjects => ({...prevProjects, projects: [response.data, ...prevProjects.projects]}))
     })
   }
@@ -83,8 +89,8 @@ function App() {
       <Routes>
         <Route path="/" element={<SelectProject/>} />
         <Route path="/signup" element={<Signup/>} />
-        <Route path="/navigation" element={<PersistentDrawerLeft projects={data.projects} user={data.users} chartData={chartData} createProject={createProject}/>} />
-        <Route path="/tickets" element={<TicketPage data={data} projectId={selectedProject} changeProjectId={changeProjectId}/>} />
+        <Route path="/navigation" element={<PersistentDrawerLeft projects={data.projects} user={data.users} chartData={chartData} createProject={createProject} updateProject={updateProject}/>} />
+        <Route path="/tickets" element={<TicketPage data={data}/>} />
       </Routes>
       
     </div>
