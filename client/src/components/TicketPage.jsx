@@ -10,8 +10,15 @@ import Duration from "./HealthStats/Duration";
 import PrimaryButton from "./PrimaryButton";
 import ProgressBar from "./ProgressBar";
 
-const TicketPage = (props) => {
+import axios from 'axios';
+import {useState, useEffect} from 'react';
 
+import { TaskProgressCalulator, TicketProgressCalulator, Tasks2, Tickets2 } from "../helpers/barChartHelpers";
+
+
+const TicketPage = (props) => {
+  const api = "http://localhost:3000/"
+ 
   return ( 
     <div>
       
@@ -47,8 +54,8 @@ const TicketPage = (props) => {
 
             <div className="left-side">
                 <div className ="Progress-Bars_box">
-                  <ProgressBar className="Plan-bar" height="30px" color="RGB(106, 214, 80)" percent="70"/>
-                  <ProgressBar className="Actual-bar" height="30px"color="RGB(214, 168, 80)" percent="25"/>
+                  <ProgressBar className="Plan-bar" height="30px" color="RGB(106, 214, 80)" percent={TicketProgressCalulator(Tickets2, 2)}/>
+                  <ProgressBar className="Actual-bar" height="30px"color="RGB(214, 168, 80)" percent={TaskProgressCalulator(Tasks2)}/>
                 </div>
               <div className="Comments-box"><Table decider ="Comment" height='250px' width='90%' mWidth='95%'/></div>
             </div>
