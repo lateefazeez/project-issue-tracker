@@ -23,10 +23,10 @@ const TicketPage = (props) => {
   const [isNewTaskOpen, setIsNewTaskOpen] = useState(false);
   const toggleNewTask = () => setIsNewTaskOpen(!isNewTaskOpen);
 
-  const { data } = props;
+  const { data, projectId } = props;
 
   console.log("hey", data)
-  const api = "http://localhost:3000/"
+  console.log("projectId:", projectId)
  
   return ( 
     <div>

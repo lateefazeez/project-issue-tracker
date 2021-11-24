@@ -11,13 +11,15 @@ import ProgressBar from './ProgressBar';
 import { useNavigate } from "react-router-dom";
 import MoreOptions from './MoreOptions';
 import { IconButton } from '@mui/material';
+import { useState } from 'react';
 
 
 
 export default function ProjectListTable(props) {
   
 
-  const { projects, value} = props
+  const { projects } = props
+
   let navigate = useNavigate()
   return (
     <TableContainer style={{ overflow: "hidden", borderTop: "0.2px solid rgb(112, 112, 112)", borderLeft: "0.2px solid rgb(112, 112, 112)", borderRight: "0.2px solid rgb(112, 112, 112)", borderTopLeftRadius: 10, borderTopRightRadius: 10  }} >

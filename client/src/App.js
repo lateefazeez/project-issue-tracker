@@ -19,6 +19,14 @@ function App() {
     userTickets: []
   })
 
+  const [selectedProject, setSelectedProject] = useState(0);
+  
+  const changeProjectId = function(projectId) {
+    setSelectedProject(prev => {
+      prev = projectId;
+    })
+  }
+
   useEffect(() => {
 
     const allProjectsUrl = "http://localhost:3000/projects"
@@ -76,7 +84,7 @@ function App() {
         <Route path="/" element={<SelectProject/>} />
         <Route path="/signup" element={<Signup/>} />
         <Route path="/navigation" element={<PersistentDrawerLeft projects={data.projects} user={data.users} chartData={chartData} createProject={createProject}/>} />
-        <Route path="/tickets" element={<TicketPage data={data}/>} />
+        <Route path="/tickets" element={<TicketPage data={data} projectId={selectedProject} changeProjectId={changeProjectId}/>} />
       </Routes>
       
     </div>
