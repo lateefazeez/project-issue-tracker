@@ -24,6 +24,9 @@ default: &default
   username: development
   password: development
 
+  # username: matthewfreeman
+  # password: 
+
 development:
   <<: *default
   database: backend_development

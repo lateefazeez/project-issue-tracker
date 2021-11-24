@@ -53,5 +53,7 @@ class ProjectsController < ApplicationController
       :status,
       :users_id
     )
+  def new 
+    
   end
 end

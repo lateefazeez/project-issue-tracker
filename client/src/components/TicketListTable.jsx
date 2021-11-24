@@ -9,9 +9,17 @@ import './TicketTable.scss';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import './TableHeader.scss';
 import ProgressBar from './ProgressBar';
-import { Tasks, Teams, Tickets, Comments} from "./testdata"
+import { Tasks, Teams, Tickets, Comments} from "./testdata";
+import axios from 'axios';
+import {useState, useEffect} from 'react';
 
-export default function TicketListTable() {
+export default function TicketListTable(props) {
+
+  const {ticketsInfo, selectedId} = props;
+
+  const [selectedTicket, setSelectedTicket] = useState("");
+  const [selectedProject, setSelectedProject] = useState("")
+  
   return (
     <TableContainer style={{ overflow: "hidden" }} >
       <Table className="projecttable" sx={{ height: 0}} aria-label="simple table">
@@ -31,12 +39,12 @@ export default function TicketListTable() {
               key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell onClick={() => console.log('Clicked Project')} component="th" scope="row">
+              <TableCell onClick={(event) => selectedId(row.id)} component="th" scope="row">
                 {row.title}
               </TableCell>
  
-              <TableCell onClick={() => console.log('Clicked Project')}>{row.description}</TableCell>
-              <TableCell onClick={() => console.log('Clicked Project')}>{row.author}</TableCell>
+              <TableCell onClick={() => selectedId(row.id)}>{row.description}</TableCell>
+              <TableCell onClick={() => selectedId(row.id)}>{row.author}</TableCell>
               <TableCell onClick={() => console.log('Clicked Vert')}><MoreVertIcon /></TableCell>
             </TableRow>
           ))}

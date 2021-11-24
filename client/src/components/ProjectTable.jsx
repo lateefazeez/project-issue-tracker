@@ -6,7 +6,7 @@ import './ProjectTable.scss';
 import PrimaryButton from "./PrimaryButton";
 import FormModal from "./Form/FormModal";
 import CreateProject from "./Form/CreateProject";
-import { getPercentageComplete } from './helpers/getAllTicketCategories'
+import { getPercentageComplete } from '../helpers/getAllTicketCategories'
 
 const ProjectTable= (props) => {
   const [isNewProjectOpen, setIsNewProjectOpen] = useState(false);

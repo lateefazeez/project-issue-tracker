@@ -22,6 +22,7 @@ import Button from "./PrimaryButton";
 import './Navigation.scss'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ProjectDashboard from './ProjectDashboard';
+import TicketPage from './TicketPage';
 
 
 const drawerWidth = 240;
@@ -72,7 +73,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft(props) {
-  const {projects, user} = props;
+  const {projects, user, data, chartData, createProject} = props;
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -121,7 +122,7 @@ export default function PersistentDrawerLeft(props) {
         </DrawerHeader>
           <div className="user">
           <AccountCircleIcon sx={{fontSize: 100}} />
-          <h3>{user}</h3>
+          <h3>Fred</h3>
           </div>
         <br></br>
         <List>
@@ -139,8 +140,9 @@ export default function PersistentDrawerLeft(props) {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-          {/* <ProjectTable projects={projects} /> */}
-          <ProjectDashboard />
+          <ProjectDashboard projects={projects} chartData={chartData} createProject={createProject}/>
+        <TicketPage data={data}/>
+          
       </Main>
     </Box>
   );
