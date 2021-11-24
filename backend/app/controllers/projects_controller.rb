@@ -3,4 +3,8 @@ class ProjectsController < ApplicationController
     @projects = Project.all
     render json: @projects
   end
+
+  def new 
+    
+  end
 end
