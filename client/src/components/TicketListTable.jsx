@@ -23,10 +23,10 @@ export default function TicketListTable() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(api + `tickets/${selectedTicket}`),
-      axios.get(api + `tasks/${selectedTicket}`),
-      axios.get(api + `comments/${selectedTicket}`),
-      axios.get(api + `users_tickets/${selectedTicket}`)
+      axios.get(api + "tickets"),
+      axios.get(api + "tasks"),
+      axios.get(api + "comments"),
+      axios.get(api + "users_tickets")
     ])
     .then((all) => {
       console.log("RESPONSE", all);
@@ -34,7 +34,7 @@ export default function TicketListTable() {
     .catch((error) => {
       console.error(error)
     })
-  },[selectedTicket])
+  },[])
   
 
   return (
