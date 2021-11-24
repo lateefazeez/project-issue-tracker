@@ -1,5 +1,5 @@
 import { Doughnut } from 'react-chartjs-2'
-import { Card, CardHeader, CardActions, CardContent, Button, Typography, Box } from '@mui/material';
+import { Box } from '@mui/material';
 import './Chart.scss'
 
 const Chart = (props) => {
