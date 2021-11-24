@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
   end
 
   def show #comment/ticket_id/id
-    @comment = Comment.find_by_tickets_id params[:id]
+    @comment = Comment.where(tickets_id: params[:id])
     render json: @comment
   end
 
