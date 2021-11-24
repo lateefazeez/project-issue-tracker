@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   end
 
   def show #task/ticket_id/id
-    @task = Task.find_by_tickets_id params[:id]
+    @task = Task.where(tickets_id: params[:id])
     render json: @task
   end
 
