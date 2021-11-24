@@ -26,7 +26,7 @@ td {
     background-color: $hover-color;
     cursor: pointer;
     color: $text-light;
-    opacity: 0.5;
+    opacity: 0.9;
   }
 
 }
@@ -39,4 +39,8 @@ tr {
     color: $text-light;
     
   }
+}
+
+.more-options {
+  z-index: 1;
 }
