@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   root to: 'projects#index'
 
-  resources :projects, only: [:index]
-  resources :tickets, only: [:index]
+  # namespace :api do
+    resources :projects, only: [:index, :show, :create, :update, :destroy]
+    resources :tickets, only: [:index, :create]
+  # end
 end

@@ -24,6 +24,7 @@ User.create({
   phone_number: "555-555-5544",
   admin: false
 })
+
 Project.destroy_all
 Project.create!({
   title: "Project tracking app",
@@ -52,6 +53,8 @@ Project.create!({
   status: "on track",
   users_id: 1
 })
+
+Ticket.destroy_all
 Ticket.create!({
   start_date: "Jul 21, 2021",
   end_date: "Jul 24,2021",
@@ -59,7 +62,7 @@ Ticket.create!({
   title: "Appointment List Component",
   description: "Create a tested and 100% developed Appointment feature for the application",
   status: "On Track",
-  category: "Feature",
+  category: "Feature Request",
   priority: "Low",
   percentage_complete: 75,
   projects_id: 2,
@@ -111,7 +114,7 @@ Ticket.create!({
   title: "Where does it come from?",
   description: "Contrary to popular belief, Lorem Ipsum is not simply random text",
   status: "On Track",
-  category: "Feature",
+  category: "Feature Request",
   priority: "Low",
   percentage_complete: 75,
   projects_id: 2,
@@ -137,7 +140,7 @@ Ticket.create!({
   title: "Appointment List Component",
   description: "Create a tested and 100% developed Appointment feature for the application",
   status: "On Track",
-  category: "Feature",
+  category: "Feature Request",
   priority: "Low",
   percentage_complete: 75,
   projects_id: 2,
@@ -156,6 +159,8 @@ Ticket.create!({
   projects_id: 1,
   users_id: 2
 })
+
+Task.destroy_all
 Task.create!({
   title: "Generate component",
   complete?: false,
