@@ -37,7 +37,7 @@ const Signup = () => {
           <Input className="form-inputs"  type="password" name="password" id="password" rows="5" placeholder="Password" bsSize="lg"/>
         </FormGroup>
         <FormGroup className="button-container">
-          <Link to="/dashboard">
+          <Link to="/navigation">
             <Button className="login_btn" onClick={registerUser}>Login</Button>
           </Link>
         </FormGroup>

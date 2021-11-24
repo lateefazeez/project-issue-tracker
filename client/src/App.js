@@ -10,10 +10,7 @@ import PersistentDrawerLeft from './components/Navigation2.0'
 
 function App() {
 
-  const [projects, setProjects] = useState([])
-  const [tickets, setTickets] = useState([])
-  
-  const [data ,setData] = useState({
+  const [data, setData] = useState({
     projects: [],
     tickets: [],
     users: [],
@@ -21,8 +18,6 @@ function App() {
     comments: [],
     userTickets: []
   })
-
-  console.log(data)
 
   useEffect(() => {
 
@@ -42,20 +37,21 @@ function App() {
 
     Promise.all([getAllProjects, getAllTickets, getAllUsers, getAllTasks, getAllComments, getAllUserTickets])
       .then((response) => {
+        console.log(response[2].data)
         setData(prev => ({...prev, projects: response[0].data, tickets: response[1].data, users: response[2].data, tasks: response[3].data, comments: response[4].data, userTickets: response[5].data}))
       })
       .catch((error) => {
         console.error(error)
       })
   }, [])
-  
+
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<SelectProject />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/navigation" element={<PersistentDrawerLeft />} />
-        <Route path="/tickets" element={<TicketPage />} />
+        <Route path="/" element={<SelectProject/>} />
+        <Route path="/signup" element={<Signup/>} />
+        <Route path="/navigation" element={<PersistentDrawerLeft data={data} projects={data.projects} user={data.users}/>} />
+        <Route path="/tickets" element={<TicketPage data={data}/>} />
       </Routes>
       
     </div>

@@ -17,6 +17,10 @@ import { TaskProgressCalulator, TicketProgressCalulator, Tasks2, Tickets2 } from
 
 
 const TicketPage = (props) => {
+
+  const { data } = props;
+
+  console.log("hey", data)
   const api = "http://localhost:3000/"
  
   return ( 
