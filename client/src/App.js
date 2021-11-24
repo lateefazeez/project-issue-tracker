@@ -75,7 +75,7 @@ function App() {
       <Routes>
         <Route path="/" element={<SelectProject/>} />
         <Route path="/signup" element={<Signup/>} />
-        <Route path="/navigation" element={<PersistentDrawerLeft data={data} projects={data.projects} user={data.users} charData={chartData} createProject={createProject}/>} />
+        <Route path="/navigation" element={<PersistentDrawerLeft projects={data.projects} user={data.users} chartData={chartData} createProject={createProject}/>} />
         <Route path="/tickets" element={<TicketPage data={data}/>} />
       </Routes>
       

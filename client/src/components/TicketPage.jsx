@@ -14,8 +14,7 @@ import Duration from "./HealthStats/Duration";
 import PrimaryButton from "./PrimaryButton";
 import ProgressBar from "./ProgressBar";
 
-import axios from 'axios';
-import {useState, useEffect} from 'react';
+
 
 import { TaskProgressCalulator, TicketProgressCalulator, Tasks2, Tickets2 } from "../helpers/barChartHelpers";
 
