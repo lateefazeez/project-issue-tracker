@@ -169,7 +169,7 @@ Task.create!({
 Task.create!({
   title: "Perform unit testing",
   complete?: true,
-  tickets_id: 1
+  tickets_id: 3
 })
 Task.create!({
   title: "Perform storybook testing",
@@ -180,5 +180,37 @@ Task.create!({
   title: "Perform cypress testing",
   complete?: false,
   tickets_id: 1
+})
+Comment.create!({
+  message: "Hellooo 2",
+  tickets_id: 2
+})
+Comment.create!({
+  message: "Hellooo 1",
+  tickets_id: 1
+})
+Comment.create!({
+  message: "Hellooo 3",
+  tickets_id: 3
+})
+UserTicket.create!({
+  tickets_id: 2,
+  users_id: 1
+})
+UserTicket.create!({
+  tickets_id: 3,
+  users_id: 1
+})
+UserTicket.create!({
+  tickets_id: 2,
+  users_id: 2
+})
+UserTicket.create!({
+  tickets_id: 1,
+  users_id: 1
+})
+UserTicket.create!({
+  tickets_id: 3,
+  users_id: 2
 })
 puts "Seeding Successful!..."
