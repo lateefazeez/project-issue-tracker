@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import FormModal from "./Form/FormModal";
-import CreateTask from "./Form/CreateTask"
+import CreateTask from "./Form/CreateTask";
+import axios from 'axios';
 
 import Table from "./Table";
 import './TicketPage.scss';
@@ -24,26 +25,27 @@ import { useLocation } from 'react-router';
 const TicketPage = (props) => {
   const [isNewTaskOpen, setIsNewTaskOpen] = useState(false);
   const toggleNewTask = () => setIsNewTaskOpen(!isNewTaskOpen);
-
   const { data } = props;
-  
   const { state } = useLocation()
   const { id } = state;
   console.log("ID: ", id)
 
   console.log("hey", data)
-  console.log("projectId:", projectId)
+
+
+
+
  
   return ( 
     <div>
       
       <div className="tickets-upper">
       <div className="Team-box">
-      <Table decider ="Team"/>
+      <Table projectId={id} data={data} decider ="Team"/>
       </div>
 
        <div className="Tickets-box">
-      <Table decider ="Ticket"/>
+      <Table projectId={id} data={data} decider ="Ticket"/>
       </div>
       </div>
 

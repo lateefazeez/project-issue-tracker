@@ -221,4 +221,20 @@ UserTicket.create!({
   tickets_id: 3,
   users_id: 2
 })
+UserProject.create!({
+  projects_id: 1,
+  users_id: 2
+})
+UserProject.create!({
+  projects_id: 1,
+  users_id: 1
+})
+UserProject.create!({
+  projects_id: 2,
+  users_id: 2
+})
+UserProject.create!({
+  projects_id: 3,
+  users_id: 2
+})
 puts "Seeding Successful!..."

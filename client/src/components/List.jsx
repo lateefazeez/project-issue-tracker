@@ -13,7 +13,7 @@ const ListMaker = (props) => {
 
   let listo = "";
 
-  if (props.decider == "Task") {
+  if (props.decider === "Task") {
      listo = Tasks.map((task) => {
       return (
         <TaskListItem
@@ -23,15 +23,15 @@ const ListMaker = (props) => {
         />
       );
     });
-  } else if (props.decider == "Team"){
+  } else if (props.decider === "Team"){
 
-      return (<TeamListTable/>);
+      return (<TeamListTable projectId={props.projectId} data={props.data} />);
 
-  } else if (props.decider == "Ticket"){
+  } else if (props.decider === "Ticket"){
 
-     return (<TicketListTable/>);
+     return (<TicketListTable projectId={props.projectId} data={props.data}/>);
 
- } else if (props.decider == "Comment"){
+ } else if (props.decider === "Comment"){
   listo = Comments.map((comment) => {
    return (
      <CommentListItem
@@ -41,7 +41,7 @@ const ListMaker = (props) => {
      />
    );
  });
-} else if (props.decider == "Devs"){
+} else if (props.decider === "Devs"){
   listo = Teams.map((team) => {
    return (
      <TeamListItem

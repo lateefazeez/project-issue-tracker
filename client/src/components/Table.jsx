@@ -13,6 +13,23 @@ import { Button } from "@mui/material";
 
 // import { Tasks, Teams, Tickets, Comments, Projects } from "./testdata";
 
+const Table = (props) => {
+  const {  data, projectId, decider, height, width, mWidth } = props;
+  
+
+  return (
+    <div>
+      <div className="projects-box-header" id={props.decider + "-top"}>
+        <Header decider={decider}/>
+      </div>
+      <AddList projectId={projectId} data={data} decider={decider} height={height} width={width} mWidth={mWidth}/>
+      <div className="projects-box-footer"id={props.decider + "-bottom"}>
+            <AddButtons decider={decider}/>
+        </div>
+    </div>
+  );
+};
+
 const Header = (props) => {
   const { decider } = props;
 
@@ -88,9 +105,8 @@ const AddButtons = (props) => {
 }
 
 const AddList = (props) => {
-
-  const { decider, height, width, mWidth } = props;
-  console.log(mWidth)
+  
+  const { data, projectId, decider, height, width, mWidth } = props;
 if (props.decider === "Devs" || props.decider === "Task" || props.decider === "Comment"){
 return(
   <Box sx={{ width: {width}, maxWidth: {mWidth}, bgcolor: 'background.paper' }}>
@@ -110,25 +126,7 @@ return(
         </Box>
 );
 } else {
-  return (<ListMaker decider={decider}/>);
+  return (<ListMaker projectId={projectId} data={data} decider={decider}/>);
 };
 }
-
-const Table = (props) => {
-  const { decider, height, width, mWidth } = props;
-  
-
-  return (
-    <div>
-      <div className="projects-box-header" id={props.decider + "-top"}>
-        <Header decider={decider}/>
-      </div>
-      <AddList decider={decider} height={height} width={width} mWidth={mWidth}/>
-      <div className="projects-box-footer"id={props.decider + "-bottom"}>
-            <AddButtons decider={decider}/>
-        </div>
-    </div>
-  );
-};
-
 export default Table;
