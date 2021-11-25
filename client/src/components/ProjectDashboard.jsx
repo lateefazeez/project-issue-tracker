@@ -6,14 +6,14 @@ import Chart from "./Chart";
 
 
 const ProjectDashboard = (props) => {
-  const { chartData, projects, createProject } = props
+  const { chartData, projects, createProject, updateProject } = props
 
   
 
 
   return ( 
     <div className="project--dashboard">
-     { projects && <ProjectTable projects={projects} createProject={ createProject} />}
+     { projects && <ProjectTable projects={projects} createProject={ createProject} updateProject={updateProject} />}
      { projects && <div className="chart--group">
           <Chart
             title={"Type"}

@@ -38,7 +38,7 @@ function App() {
     Promise.all([getAllProjects, getAllTickets, getAllUsers, getAllTasks, getAllComments, getAllUserTickets])
       .then((response) => {
         console.log(response[2].data)
-        setData(prev => ({...prev, projects: response[0].data.reverse(), tickets: response[1].data, users: response[2].data, tasks: response[3].data, comments: response[4].data, userTickets: response[5].data}))
+        setData(prev => ({...prev, projects: response[0].data, tickets: response[1].data, users: response[2].data, tasks: response[3].data, comments: response[4].data, userTickets: response[5].data}))
       })
       .catch((error) => {
         console.error(error)
@@ -63,15 +63,29 @@ function App() {
 
     return axios.post("http://localhost:3000/projects", { title: project.title, description: project.description })
     .then(response => {
-      setData(prevProjects => ({...prevProjects, projects: [response.data, ...prevProjects.projects]}))
+      setData(prevProjects => ({...prevProjects, projects: [...prevProjects.projects, response.data]}))
     })
   }
 
-  const updateProject = (project) => {
+  const updateProject = (project, id) => {
 
-    return axios.post("http://localhost:3000/projects", { title: project.title, description: project.description })
+    return axios.put(`http://localhost:3000/projects/${id}`, { project })
     .then(response => {
-      setData(prevProjects => ({...prevProjects, projects: [response.data, ...prevProjects.projects]}))
+      const filteredProjects = data.projects.filter((project) => {
+        return project.id !== response.data.id
+      })
+      setData(prev => ({...prev, projects: [...filteredProjects, response.data]}))
+    })
+  }
+
+  const deleteProject = (project, id) => {
+
+    return axios.delete(`http://localhost:3000/projects/${id}`, { project })
+    .then(response => {
+      const filteredProjects = data.projects.filter((project) => {
+        return project.id !== response.data.id
+      })
+      setData(prev => ({...prev, projects: [...filteredProjects]}))
     })
   }
 

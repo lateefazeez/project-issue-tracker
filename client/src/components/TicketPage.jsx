@@ -29,9 +29,7 @@ const TicketPage = (props) => {
   
   const { state } = useLocation()
   const { id } = state;
-  console.log("ID: ", id)
-
-  console.log("hey", data)
+  
   const api = "http://localhost:3000/"
  
   return ( 

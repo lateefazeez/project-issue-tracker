@@ -73,7 +73,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft(props) {
-  const {projects, user, data, chartData, createProject} = props;
+  const {projects, user, data, chartData, createProject, updateProject} = props;
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -140,8 +140,11 @@ export default function PersistentDrawerLeft(props) {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-          <ProjectDashboard projects={projects} chartData={chartData} createProject={createProject}/>
-    
+          <ProjectDashboard 
+            projects={projects} 
+            chartData={chartData} 
+            createProject={createProject} 
+            updateProject={updateProject}/>
       </Main>
     </Box>
   );
