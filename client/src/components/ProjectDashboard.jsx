@@ -1,5 +1,7 @@
 import axios from 'axios'
 import ProjectTable from "./ProjectTable";
+import {useEffect, useState} from 'react';
+
 
 import './ProjectDashboard.scss'
 import Chart from "./Chart";
@@ -7,6 +9,7 @@ import Chart from "./Chart";
 
 const ProjectDashboard = (props) => {
   const { chartData, projects, createProject } = props
+  console.log("PROJECT DASHBOARD", projects)
 
   
 

@@ -23,13 +23,13 @@ const ListMaker = (props) => {
         />
       );
     });
-  } else if (props.decider == "Team"){
+  } else if (props.decider === "Team"){
 
-      return (<TeamListTable/>);
+      return (<TeamListTable projectId={props.projectId} data={props.data} />);
 
-  } else if (props.decider == "Ticket"){
+  } else if (props.decider === "Ticket"){
 
-     return (<TicketListTable getTicketId={props.getTicketId} data={props.data}/>);
+     return (<TicketListTable projectId={props.projectId} getTicketId={props.getTicketId} data={props.data}/>);
 
  } else if (props.decider == "Comment"){
   listo = props.data.map((comment) => {

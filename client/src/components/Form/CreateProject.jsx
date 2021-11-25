@@ -6,11 +6,6 @@ import './CreateProject.scss'
 
 
 const CreateProject = (props) => {
-  // const [title, setTitle] = useState("")
-  // const [description, setDescription] = useState("")
-  // const [team, setTeam] = useState([])
-  // const [startDate, setStartDate] = useState("2021-01-01")
-  // const [targetDate, setTargetDate] = useState("2030-01-01")
   const [project, setProject] = useState({})
 
   const { onClose, createProject } = props

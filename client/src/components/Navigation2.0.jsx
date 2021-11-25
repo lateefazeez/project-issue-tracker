@@ -141,7 +141,6 @@ export default function PersistentDrawerLeft(props) {
       <Main open={open}>
         <DrawerHeader />
           <ProjectDashboard projects={projects} chartData={chartData} createProject={createProject}/>
-    
       </Main>
     </Box>
   );

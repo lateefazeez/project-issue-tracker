@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import FormModal from "./Form/FormModal";
-import CreateTask from "./Form/CreateTask"
+import CreateTask from "./Form/CreateTask";
+import axios from 'axios';
 
 import Table from "./Table";
 import './TicketPage.scss';
@@ -18,12 +19,16 @@ import ProgressBar from "./ProgressBar";
 
 import { TaskProgressCalulator, TicketProgressCalulator } from "../helpers/barChartHelpers";
 import { getTicketById, getTasksByTicketId, getDevsByTicketId, getCommentsByTicketId } from "../helpers/ticketPageHelpers";
+import { useLocation } from 'react-router';
+
 
 const TicketPage = (props) => {
   const [isNewTaskOpen, setIsNewTaskOpen] = useState(false);
   const toggleNewTask = () => setIsNewTaskOpen(!isNewTaskOpen);
-
   const { data } = props;
+  const { state } = useLocation()
+  const { id } = state;
+
 
   const [LoneTicket, setLoneTicket] = useState([]);
   const [TicketTasks, setTicketTasks] = useState([]);
@@ -49,11 +54,11 @@ const TicketPage = (props) => {
       
       <div className="tickets-upper">
       <div className="Team-box">
-      <Table decider ="Team"/>
+      <Table projectId={id} data={data} decider ="Team"/>
       </div>
 
        <div className="Tickets-box">
-      <Table decider ="Ticket" getTicketId={getTicketId}/>
+      <Table decider ="Ticket" getTicketId={getTicketId} projectId={id} data={data}/>
       </div>
       </div>
 

@@ -14,15 +14,15 @@ import { Button } from "@mui/material";
 // import { Tasks, Teams, Tickets, Comments, Projects } from "./testdata";
 
 const Table = (props) => {
-  const { decider, height, width, mWidth, getTicketId, data } = props;
-  
+
+  const { data, projectId, decider, height, width, mWidth, getTicketId } = props;
 
   return (
     <div>
       <div className="projects-box-header" id={props.decider + "-top"}>
         <Header decider={decider}/>
       </div>
-      <AddList decider={decider} getTicketId={getTicketId} data={data} height={height} width={width} mWidth={mWidth}/>
+      <AddList projectId={projectId} data={data} decider={decider} getTicketId={getTicketId} data={data} height={height} width={width} mWidth={mWidth}/>
       <div className="projects-box-footer"id={props.decider + "-bottom"}>
             <AddButtons decider={decider}/>
         </div>
@@ -101,7 +101,7 @@ const AddButtons = (props) => {
 
 const AddList = (props) => {
 
-  const { decider, height, width, mWidth, getTicketId, data } = props;
+  const { data, projectId, decider, height, width, mWidth, getTicketId } = props;
 
 if (props.decider === "Devs" || props.decider === "Task" || props.decider === "Comment"){
 return(
@@ -122,10 +122,8 @@ return(
         </Box>
 );
 } else {
-  return (<ListMaker decider={decider} getTicketId={getTicketId}/>);
+  return (<ListMaker projectId={projectId} data={data} decider={decider} getTicketId={getTicketId}/>);
 };
 }
-
-
 
 export default Table;
