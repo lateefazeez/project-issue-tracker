@@ -4,20 +4,30 @@ class TasksController < ApplicationController
     render json:@tasks
   end
 
-  def show #task/ticket_id/id
-    @task = Task.where(tickets_id: params[:id])
-    render json: @task
+  def show
+    task = Task.find(params[:id])
+    render json: task
   end
-
+  
   def create #/post id
   end
   
   def destroy #/delete id
   end
 
-end
+  def update
+    task = Task.find(params[:id])
 
-private
-def task_params
-  params.require(:task).permit(:title, :complete?, :tickets_id)
+    if task.update(task_params)
+      render json: task
+    else
+      render json: {error: task.errors.messages}, status: 422
+    end
+  end
+
+  private
+  def task_params
+    params.require(:task).permit(:title, :complete?, :tickets_id)
+  end
+
 end

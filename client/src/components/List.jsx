@@ -14,35 +14,35 @@ const ListMaker = (props) => {
   let listo = "";
 
   if (props.decider == "Task") {
-     listo = Tasks.map((task) => {
+     listo = props.data.map((task) => {
       return (
         <TaskListItem
         key={task.id}
         title={task.title}
-        percentage_complete={task.percentage_complete}
+        percentage_complete={task['complete?']}
         />
       );
     });
-  } else if (props.decider == "Team"){
+  } else if (props.decider === "Team"){
 
-      return (<TeamListTable/>);
+      return (<TeamListTable projectId={props.projectId} data={props.data} />);
 
-  } else if (props.decider == "Ticket"){
+  } else if (props.decider === "Ticket"){
 
-     return (<TicketListTable/>);
+     return (<TicketListTable projectId={props.projectId} getTicketId={props.getTicketId} data={props.data}/>);
 
  } else if (props.decider == "Comment"){
-  listo = Comments.map((comment) => {
+  listo = props.data.map((comment) => {
    return (
      <CommentListItem
      key={comment.id}
-     author={comment.author}
+     author={comment.title}
      message={comment.message}
      />
    );
  });
 } else if (props.decider == "Devs"){
-  listo = Teams.map((team) => {
+  listo = props.data.map((team) => {
    return (
      <TeamListItem
      key={team.id}

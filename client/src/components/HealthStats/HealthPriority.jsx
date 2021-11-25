@@ -1,11 +1,13 @@
 import "./HealthStats.scss";
 const HealthPriority = (props) => {
-  // const { ticketPriority } = props;
+  
+  const { data } = props;
+
   return (
     <div className="container">
       <p className="STT2">PRIORITY</p>
       <div className="health">
-        <p id="hlth">{ticket.priority}</p>
+        <p id="hlth">{ data.length && data[0].priority }</p>
       </div>
     </div>
   );
@@ -13,16 +15,3 @@ const HealthPriority = (props) => {
 
 export default HealthPriority;
 
-const ticket = {
-  start_date: "Jul 20, 2021",
-  end_date: "Jul 22, 2021",
-  plan_duration: 137,
-  title: "Where can I get some?",
-  description: "There are many variations of passages of Lorem Ipsum available",
-  status: "At Risk",
-  category: "Bug",
-  priority: "Medium",
-  percentage_complete: 0,
-  projects_id: 1,
-  users_id: 2
-};
