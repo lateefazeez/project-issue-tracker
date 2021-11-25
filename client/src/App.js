@@ -60,7 +60,8 @@ function App() {
     Low : getTicketByPriority(data, "low"),
     AtRisk : getTicketByStatus(data, "at risk"),
     OnTrack : getTicketByStatus(data, "ontrack"),
-    New : getTicketByStatus(data, "new")
+    New : getTicketByStatus(data, "new"),
+    ProjectStatus : getTicketByStatus(data, "at risk")
 
   }
   
@@ -68,15 +69,29 @@ function App() {
 
     return axios.post("http://localhost:3000/projects", { title: project.title, description: project.description })
     .then(response => {
-      setData(prevProjects => ({...prevProjects, projects: [response.data, ...prevProjects.projects]}))
+      setData(prevProjects => ({...prevProjects, projects: [...prevProjects.projects, response.data]}))
     })
   }
 
-  const updateProject = (project) => {
+  const updateProject = (project, id) => {
 
-    return axios.post("http://localhost:3000/projects", { title: project.title, description: project.description })
+    return axios.put(`http://localhost:3000/projects/${id}`, { project })
     .then(response => {
-      setData(prevProjects => ({...prevProjects, projects: [response.data, ...prevProjects.projects]}))
+      const filteredProjects = data.projects.filter((project) => {
+        return project.id !== response.data.id
+      })
+      setData(prev => ({...prev, projects: [...filteredProjects, response.data]}))
+    })
+  }
+
+  const deleteProject = (projectId) => {
+
+    return axios.delete(`http://localhost:3000/projects/${projectId}`)
+    .then(response => {
+      const filteredProjects = data.projects.filter((project) => {
+        return project.id !== projectId
+      })
+      setData(prev => ({...prev, projects: [...filteredProjects]}))
     })
   }
 
@@ -84,10 +99,32 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<SelectProject/>} />
+        <Route 
+          path="/" 
+          element={
+            <SelectProject/>
+            } 
+        />
         <Route path="/signup" element={<Signup/>} />
-        <Route path="/navigation" element={<PersistentDrawerLeft projects={data.projects} user={data.users} chartData={chartData} createProject={createProject} updateProject={updateProject}/>} />
-        <Route path="/tickets" element={<TicketPage data={data}/>} />
+        <Route 
+          path="/navigation" 
+          element={
+            <PersistentDrawerLeft 
+              projects={data.projects}
+              tickets={data.tickets} 
+              user={data.users} 
+              chartData={chartData} 
+              createProject={createProject} 
+              updateProject={updateProject} 
+              deleteProject={deleteProject}
+            />} />
+        <Route 
+          path="/tickets" 
+          element={
+            <TicketPage 
+              data={data}
+              />
+              } />
       </Routes>
       
     </div>

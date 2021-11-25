@@ -38,3 +38,17 @@ export const getPercentageComplete = (projectData) => {
   }
   return percentComplete
 }
+
+export const getProjectStatus = (targetDate) => {
+  let status;
+  let today = new Date()
+  if (targetDate > today) {
+    status = "in progress"
+  }
+  if (targetDate < today) {
+    status = "closed"
+  }
+  if (targetDate == today) {
+    status = "on track"
+  }
+}

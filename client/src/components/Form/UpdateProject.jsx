@@ -5,7 +5,9 @@ import './CreateProject.scss'
 
 
 const UpdateProject = (props) => {
-  const { projectData, updateProject, onClose } = props
+  const { projectData, updateProject, onClose, id } = props
+  
+
   const [project, setProject] = useState({
     title: projectData.title,
     description: projectData.description,
@@ -13,18 +15,27 @@ const UpdateProject = (props) => {
     target_date: projectData.target_date,
     team: projectData.team
   })
-  console.log("PROJECT DATA2: ", project.title)
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    
-    updateProject(projectData)
+    const updatedProject = {
+      title: project.title,
+      description: project.description,
+      start_date: project.start_date,
+      target_date: project.target_date,
+      team: project.team
+    }
+    updateProject(updatedProject, id)
     onClose()
   }
 
-  const handleChange = (e) => {
-    e.preventDefault()
-    setProject(Object.assign({}, project, {[e.target.name]: e.target.value}))
+  const handleChange = (e) => { 
+    setProject({
+      ...project,
+      [e.target.id] : e.target.value
+    })
   }
+
   
   return ( 
     <Container fluid>

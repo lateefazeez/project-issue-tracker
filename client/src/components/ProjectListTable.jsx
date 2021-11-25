@@ -19,7 +19,7 @@ import UpdateProject from './Form/UpdateProject'
 export default function ProjectListTable(props) {
   const [selectedProjectId, setSelectedProjectId] = useState(false)
   const [isEditProjectOpen, setIsEditProjectOpen] = useState(false);
-  const [selectedProjectData, setSelectedProjectData] = useState([]);
+  const [selectedProjectData, setSelectedProjectData] = useState(false);
   const [selectedProjectTeam, setSelectedProjectTeam] = useState([]);
 
   useEffect(() => {
@@ -29,8 +29,7 @@ export default function ProjectListTable(props) {
 
     Promise.all([getSingleProject])
       .then((response) => {
-        console.log("PROJECT DATA: ", response[0].data)
-        setSelectedProjectData(response[0].data)
+        setSelectedProjectData(response[0].data) 
       })
       .catch((error) => {
         console.error(error)
@@ -38,16 +37,52 @@ export default function ProjectListTable(props) {
   }, [selectedProjectId])
   
 
-  const { projects } = props
+  const { 
+    projects, 
+    tickets,
+    value, 
+    updateProject, 
+    deleteProject,
+    projectStatus
+  } = props
 
   let navigate = useNavigate()
 
   const setProjectId = (e) => setSelectedProjectId(e.target.id)
-  const toggleEditProject = () => setIsEditProjectOpen(!isEditProjectOpen);
-  const deleteProject = (id) => console.log(id)
+  const toggleEditProject = () => {
+
+    setIsEditProjectOpen(!isEditProjectOpen);
+
+  }
+ 
   const resetProjectId = () => setSelectedProjectId(null);
 
+  const getProjectStatus = (project) => {
+    const totalTickets = tickets.length
 
+    let projectStatus;
+    let riskCount = 0
+    for (const eachTicket of tickets) {
+      if (eachTicket.projects_id == project.id) {
+        if (eachTicket.status == "at risk") {
+          riskCount += 1
+        }
+      }
+    }
+
+    if ((riskCount / totalTickets) >= 0.5) {
+      projectStatus = "At Risk"
+    } else {
+      projectStatus = "On Track"
+    }
+
+    console.log("STATUS:", riskCount)
+    return projectStatus
+
+  }
+
+
+  console.log("TOTAL Tickets:", tickets)
 
 
   return (
@@ -66,16 +101,16 @@ export default function ProjectListTable(props) {
         </TableHead>
         <TableBody>
           {projects.map((project) => (
-            <TableRow key={project.id} className="tabledata" id={project.id}>
+            <TableRow key={project.id} className="tabledata" id={project.id} >
               <TableCell className="projectitle"  onClick={() => navigate("/tickets", { state: { id: project.id} })} component="th" scope="project">
                 {project.title}
               </TableCell>
               <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{project.description}</TableCell>
               <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} ><ProgressBar className="Actual-bar" height="20px"color="RGB(106, 214, 80)" percent={project.percentage_complete}/></TableCell>
-              <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{project.status}</TableCell>
+              <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{ getProjectStatus(project)}</TableCell>
               <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{"aman, matt, lateef"}</TableCell>
               <TableCell>
-                <UncontrolledDropdown onClick={(e) => setProjectId(e)}>
+                <UncontrolledDropdown >
                   <DropdownToggle
                     className="btn-icon-only text-light"
                     role=""
@@ -83,10 +118,11 @@ export default function ProjectListTable(props) {
                     color="#585858"
                     backgroundColor="#585858"
                     id={project.id}
+                    
                   >
                     <MoreVertIcon className="more-options" />
                   </DropdownToggle>
-                  <DropdownMenu className="dropdown-menu-arrow" end>
+                  <DropdownMenu className="dropdown-menu-arrow" end onClick={(e) => setProjectId(e)}>
                     <DropdownItem id={project.id} onClick={toggleEditProject} >
                       Edit Project
                     </DropdownItem>
@@ -103,11 +139,13 @@ export default function ProjectListTable(props) {
     </TableContainer>
     <FormModal handleOpen={isEditProjectOpen} onClose={toggleEditProject}>
       { selectedProjectData && <UpdateProject
+        id={selectedProjectId}
         onClose={toggleEditProject} 
         projects={projects} 
         resetProjectId={resetProjectId} 
         projectData={selectedProjectData}
         projectTeam={selectedProjectTeam}
+        updateProject={updateProject}
         // allUsers={allUsers} 
         />}
     </FormModal>

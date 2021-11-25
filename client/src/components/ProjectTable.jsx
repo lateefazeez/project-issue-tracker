@@ -13,7 +13,14 @@ const ProjectTable= (props) => {
 
   const toggleNewProject = () => setIsNewProjectOpen(!isNewProjectOpen);
 
-  const { projects, createProject } = props;
+  const { 
+    projects, 
+    tickets,
+    createProject, 
+    updateProject, 
+    deleteProject,
+    projectStatus 
+  } = props;
   const percentageComplete = getPercentageComplete(projects)
 
  
@@ -40,7 +47,13 @@ const ProjectTable= (props) => {
           
       </div>
       <div className="middledash">
-        <ProjectListTable projects={projects} value={percentageComplete} />
+        <ProjectListTable 
+          projects={projects}
+          tickets={tickets} 
+          value={percentageComplete} 
+          updateProject={updateProject} 
+          deleteProject={deleteProject}
+          projectStatus={projectStatus} />
       </div>
       <div className="bottomdash">
         <TablePaginations />
