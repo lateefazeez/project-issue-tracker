@@ -16,8 +16,8 @@ import ProgressBar from "./ProgressBar";
 
 
 
-import { TaskProgressCalulator, TicketProgressCalulator, Tasks2, Tickets2 } from "../helpers/barChartHelpers";
-
+import { TaskProgressCalulator, TicketProgressCalulator } from "../helpers/barChartHelpers";
+import { getTicketById, getTasksByTicketId, getDevsByTicketId, getCommentsByTicketId } from "../helpers/ticketPageHelpers";
 
 const TicketPage = (props) => {
   const [isNewTaskOpen, setIsNewTaskOpen] = useState(false);
@@ -25,9 +25,25 @@ const TicketPage = (props) => {
 
   const { data } = props;
 
-  console.log("hey", data)
-  const api = "http://localhost:3000/"
- 
+  const [LoneTicket, setLoneTicket] = useState([]);
+  const [TicketTasks, setTicketTasks] = useState([]);
+  const [TicketDevs, setTicketDevs] = useState([]);
+  const [TicketComments, setTicketComments] = useState([]);
+  const [TimeBar, setTimeBar] = useState(0);
+  const [TaskBar, setTaskBar] = useState(0);
+
+  const getTicketId = (id) => {
+
+    setLoneTicket(getTicketById(data, id))
+    setTicketTasks(getTasksByTicketId(data, id))
+    setTicketDevs(getDevsByTicketId(data, id))
+    setTicketComments(getCommentsByTicketId(data, id))
+    setTimeBar(TicketProgressCalulator(getTicketById(data, id)))
+    setTaskBar((TaskProgressCalulator(getTasksByTicketId(data, id))))
+
+  };
+  
+
   return ( 
     <div>
       
@@ -37,7 +53,7 @@ const TicketPage = (props) => {
       </div>
 
        <div className="Tickets-box">
-      <Table decider ="Ticket"/>
+      <Table decider ="Ticket" getTicketId={getTicketId}/>
       </div>
       </div>
 
@@ -54,22 +70,22 @@ const TicketPage = (props) => {
         <div className="bottom-tick">
             <div className="right-side">
               <div className="Health-box">
-                <HealthStatus/>
-                <HealthPriority/>
-                <HealthType/>
-                <Duration/>
+                <HealthStatus data={LoneTicket}/>
+                <HealthPriority data={LoneTicket}/>
+                <HealthType data={LoneTicket}/>
+                <Duration data={LoneTicket}/>
 
               </div>
-              <div className="Tasks-box"><Table decider ="Task" height='130px' width='90%' mWidth='90%'/></div>
-              <div className="Assignees-box"><Table decider ="Devs" height='130px' width='90%' mWidth='90%'/></div>
+              <div className="Tasks-box"><Table decider="Task" data={TicketTasks} height='130px' width='90%' mWidth='90%'/></div>
+              <div className="Assignees-box"><Table decider="Devs" data={TicketDevs} height='130px' width='90%' mWidth='90%'/></div>
             </div>      
 
             <div className="left-side">
                 <div className ="Progress-Bars_box">
-                  <ProgressBar className="Plan-bar" height="30px" color="RGB(106, 214, 80)" percent={TicketProgressCalulator(Tickets2, 2)}/>
-                  <ProgressBar className="Actual-bar" height="30px"color="RGB(214, 168, 80)" percent={TaskProgressCalulator(Tasks2)}/>
+                  <ProgressBar className="Plan-bar" height="30px" color="RGB(106, 214, 80)" percent={TimeBar}/>
+                  <ProgressBar className="Actual-bar" height="30px"color="RGB(214, 168, 80)" percent={TaskBar}/>
                 </div>
-              <div className="Comments-box"><Table decider ="Comment" height='250px' width='90%' mWidth='95%'/></div>
+              <div className="Comments-box"><Table decider="Comment" data={TicketComments} height='250px' width='90%' mWidth='95%'/></div>
             </div>
         </div>
 
