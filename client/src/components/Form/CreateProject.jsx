@@ -21,6 +21,8 @@ const CreateProject = (props) => {
     createProject(project)
     onClose()
   }
+
+
   
   return ( 
     <Container fluid>

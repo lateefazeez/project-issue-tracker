@@ -37,7 +37,15 @@ export default function ProjectListTable(props) {
   }, [selectedProjectId])
   
 
-  const { projects, value, updateProject} = props
+  const { 
+    projects, 
+    tickets,
+    value, 
+    updateProject, 
+    deleteProject,
+    projectStatus
+  } = props
+
   let navigate = useNavigate()
 
   const setProjectId = (e) => setSelectedProjectId(e.target.id)
@@ -46,10 +54,35 @@ export default function ProjectListTable(props) {
     setIsEditProjectOpen(!isEditProjectOpen);
 
   }
-  const deleteProject = (id) => console.log(id)
+ 
   const resetProjectId = () => setSelectedProjectId(null);
 
+  const getProjectStatus = (project) => {
+    const totalTickets = tickets.length
 
+    let projectStatus;
+    let riskCount = 0
+    for (const eachTicket of tickets) {
+      if (eachTicket.projects_id == project.id) {
+        if (eachTicket.status == "at risk") {
+          riskCount += 1
+        }
+      }
+    }
+
+    if ((riskCount / totalTickets) >= 0.5) {
+      projectStatus = "At Risk"
+    } else {
+      projectStatus = "On Track"
+    }
+
+    console.log("STATUS:", riskCount)
+    return projectStatus
+
+  }
+
+
+  console.log("TOTAL Tickets:", tickets)
 
 
   return (
@@ -74,7 +107,7 @@ export default function ProjectListTable(props) {
               </TableCell>
               <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{project.description}</TableCell>
               <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} ><ProgressBar className="Actual-bar" height="20px"color="RGB(106, 214, 80)" percent={project.percentage_complete}/></TableCell>
-              <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{project.status}</TableCell>
+              <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{ getProjectStatus(project)}</TableCell>
               <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{"aman, matt, lateef"}</TableCell>
               <TableCell>
                 <UncontrolledDropdown >

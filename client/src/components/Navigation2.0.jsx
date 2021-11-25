@@ -67,13 +67,22 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
   justifyContent: 'flex-end',
 }));
 
 export default function PersistentDrawerLeft(props) {
-  const {projects, user, data, chartData, createProject, updateProject} = props;
+  const {
+    projects,
+    tickets, 
+    user, 
+    data, 
+    chartData, 
+    createProject, 
+    updateProject, 
+    deleteProject
+  } = props;
+  
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -141,10 +150,12 @@ export default function PersistentDrawerLeft(props) {
       <Main open={open}>
         <DrawerHeader />
           <ProjectDashboard 
-            projects={projects} 
+            projects={projects}
+            tickets={tickets} 
             chartData={chartData} 
             createProject={createProject} 
-            updateProject={updateProject}/>
+            updateProject={updateProject}
+            deleteProject={deleteProject}/>
       </Main>
     </Box>
   );

@@ -55,7 +55,8 @@ function App() {
     Low : getTicketByPriority(data, "low"),
     AtRisk : getTicketByStatus(data, "at risk"),
     OnTrack : getTicketByStatus(data, "ontrack"),
-    New : getTicketByStatus(data, "new")
+    New : getTicketByStatus(data, "new"),
+    ProjectStatus : getTicketByStatus(data, "at risk")
 
   }
   
@@ -78,12 +79,12 @@ function App() {
     })
   }
 
-  const deleteProject = (project, id) => {
+  const deleteProject = (projectId) => {
 
-    return axios.delete(`http://localhost:3000/projects/${id}`, { project })
+    return axios.delete(`http://localhost:3000/projects/${projectId}`)
     .then(response => {
       const filteredProjects = data.projects.filter((project) => {
-        return project.id !== response.data.id
+        return project.id !== projectId
       })
       setData(prev => ({...prev, projects: [...filteredProjects]}))
     })
@@ -93,10 +94,32 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<SelectProject/>} />
+        <Route 
+          path="/" 
+          element={
+            <SelectProject/>
+            } 
+        />
         <Route path="/signup" element={<Signup/>} />
-        <Route path="/navigation" element={<PersistentDrawerLeft projects={data.projects} user={data.users} chartData={chartData} createProject={createProject} updateProject={updateProject}/>} />
-        <Route path="/tickets" element={<TicketPage data={data}/>} />
+        <Route 
+          path="/navigation" 
+          element={
+            <PersistentDrawerLeft 
+              projects={data.projects}
+              tickets={data.tickets} 
+              user={data.users} 
+              chartData={chartData} 
+              createProject={createProject} 
+              updateProject={updateProject} 
+              deleteProject={deleteProject}
+            />} />
+        <Route 
+          path="/tickets" 
+          element={
+            <TicketPage 
+              data={data}
+              />
+              } />
       </Routes>
       
     </div>
