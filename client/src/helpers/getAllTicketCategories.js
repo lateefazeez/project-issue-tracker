@@ -1,7 +1,7 @@
 
 
 export const getTicketByCategories = (state, cat) => {
-  let totalIssues = 0
+  let totalIssues;
   for (const ticket of state.tickets) {
     if (ticket.category.toLowerCase() == cat) {
       totalIssues += 1

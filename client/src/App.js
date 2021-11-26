@@ -197,12 +197,22 @@ function App() {
 
     return axios.put(`http://localhost:3000/tickets/${id}`, { ticket })
     .then(response => {
+
+      setData(prev => {
+
       const filteredTickets = data.tickets.filter((ticket) => {
         return ticket.id !== response.data.id
-      })
-      setData(prev => ({...prev, tickets: [...filteredTickets, response.data]}))
-    })
-  }
+      });
+
+     const newData = {...prev,
+       tickets: [...filteredTickets, response.data]};
+
+       const ticketId = LoneTicket[0].id
+          setTimeBar(TicketProgressCalulator(getTicketById(newData, ticketId)));
+           return newData  
+    });
+  });
+  };
 
   const deleteTicket = (ticketId) => {
 
