@@ -5,12 +5,25 @@ import './CreateTask.scss'
 
 
 
-const CreateTask = () => {
-  const [task, setTask] = useState("")
+const CreateTask = (props) => {
 
-  const createTask = () => console.log("New Task Created")
+  const [task, setTask] = useState({})
 
-  const handleChange = () => {}
+  const { onClose, taskCreate, projectId, ticketId } = props
+
+  console.log(ticketId)
+
+  const handleChange = (e) => {
+    e.preventDefault()
+    setTask(Object.assign({}, task, {[e.target.name]: e.target.value}))
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    
+    taskCreate(task, ticketId[0].id)
+    onClose()
+  }
 
   return ( 
     <Container fluid>
@@ -18,11 +31,11 @@ const CreateTask = () => {
         <Label className="form__header">Add New Task</Label>
         <FormGroup>
           <Label for="title" className="input-labels">Task Description</Label>
-          <Input className="form-inputs" type="text" name="task" id="task" placeholder="Enter a short task description" bsSize="lg" />
+          <Input className="form-inputs" type="text" name="title" id="title" value={task.title} placeholder="Enter a short task description" bsSize="lg" onChange={handleChange}/>
         </FormGroup>
   
         <FormGroup className="button-container">
-          <Button className="submit_btn" onClick={createTask}>Add Task</Button>
+          <Button className="submit_btn" onClick={handleSubmit}>Add Task</Button>
         </FormGroup>
         
       </Form>

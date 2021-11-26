@@ -45,7 +45,7 @@ export default function ProjectListTable(props) {
     tickets,
     updateProject, 
     deleteProject,
-    reload
+    onClose
   } = props
 
   let navigate = useNavigate()
@@ -108,7 +108,7 @@ export default function ProjectListTable(props) {
         <TableBody>
           {projects.map((project) => (
             <TableRow key={project.id} className="tabledata" id={project.id} >
-              <TableCell className="projectitle"  onClick={() => navigate("/tickets", { state: { id: project.id} })} component="th" scope="project">
+              <TableCell className="projectitle"  onClick={() => navigate("/tickets", { state: { id: project.id}, onClose: { onClose: onClose } })} component="th" scope="project">
                 {project.title}
               </TableCell>
               <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{project.description}</TableCell>
@@ -152,7 +152,6 @@ export default function ProjectListTable(props) {
         projectData={selectedProjectData}
         projectTeam={selectedProjectTeam}
         updateProject={updateProject}
-        reload={reload}
         />}
     </FormModal>
     </Fragment>

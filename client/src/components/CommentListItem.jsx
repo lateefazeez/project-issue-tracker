@@ -1,6 +1,7 @@
 import "./ListItem.scss";
 import classNames from "classnames";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { DropdownMenu, DropdownItem, UncontrolledDropdown, DropdownToggle } from "reactstrap";
 
 const CommentListItem = (props) => {
 
@@ -9,9 +10,6 @@ const CommentListItem = (props) => {
   const commentClass = classNames("list__item", {
    "list__item--selected": props.selected,
  });
-
-//  const author = "Fred Flintstone"
-//  const message= "Yabba Dabba doooo!!!"
 
  return (
    <li
@@ -25,7 +23,23 @@ const CommentListItem = (props) => {
      <div><strong>{props.author}</strong></div>
      <div>{props.message}</div>
      </div>
-      <MoreVertIcon className="comtiny" />
+     <UncontrolledDropdown onClick={(e) => e.stopPropagation()}>
+                  <DropdownToggle
+                    className="btn-icon-only text-light"
+                    role=""
+                    size="sm"
+                    color="#585858"
+                    backgroundColor="#585858"
+                    id={"hi"}
+                  >
+                    <MoreVertIcon className="comtiny" />
+                  </DropdownToggle>
+                  <DropdownMenu className="dropdown-menu-arrow" end onClick={(e) => console.log(e)}>
+                    <DropdownItem onClick={() => { console.log("hi")}}>
+                      Delete Comment
+                    </DropdownItem>
+                  </DropdownMenu>     
+                </UncontrolledDropdown>
     </div>
    </li>
  );

@@ -8,11 +8,26 @@ class TasksController < ApplicationController
     @task = Task.where(tickets_id: params[:id])
     render json: @task
   end
+  
+  def create
+    @task = Task.new(task_params)
 
-  def create #/post id
+    if @task.save
+      render json: @task, status: :created
+    else
+      render json: {error: @task.errors.messages}, status: 422
+    end
+
   end
   
-  def destroy #/delete id
+  def destroy 
+    @task = Task.find(params[:id])
+
+    if @task.destroy
+      head :no_content
+    else
+      render json: {error: @task.errors.messages}, status: 422
+    end
   end
 
 end

@@ -11,7 +11,35 @@ import './TableHeader.scss';
 import ProgressBar from './ProgressBar';
 import { Tasks, Teams, Tickets, Comments} from "./testdata"
 
-export default function TeamListTable() {
+export default function TeamListTable(props) {
+  
+
+  const { projectId, data, userTicketCreate } = props;
+
+  const getUsersByProjectID = function(projectId, userProjects, users) {
+    const projectUsers =[];
+    const userIds = [];
+
+    const filteredUserProjects = userProjects.filter((elm) => {
+      return elm.projects_id === projectId;
+    });
+
+    for (const obj of filteredUserProjects) {
+      userIds.push(obj.users_id);
+    }
+
+    for (const user of users) {
+      if (userIds.includes(Number(user.id))) {
+        projectUsers.push(user);
+      }
+    }
+    
+    return projectUsers;
+  }
+
+  
+
+  const teams = getUsersByProjectID(projectId, data.userProjects, data.users)
   return (
     <TableContainer style={{ overflow: "hidden" }} >
       <Table className="projecttable" sx={{ height: 0}} aria-label="simple table">
@@ -31,13 +59,13 @@ export default function TeamListTable() {
               key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell onClick={() => console.log('Clicked Project')} component="th" scope="row">
+              <TableCell onClick={() => userTicketCreate(row.id)} component="th" scope="row">
                 {row.first_name}
               </TableCell>
  
-              <TableCell onClick={() => console.log('Clicked Project')}>{row.last_name}</TableCell>
-              <TableCell onClick={() => console.log('Clicked Project')}>{row.email}</TableCell>
-              <TableCell onClick={() => console.log('Clicked Vert')}><MoreVertIcon /></TableCell>
+              <TableCell onClick={() => userTicketCreate(row.id)}>{row.last_name}</TableCell>
+              <TableCell onClick={() => userTicketCreate(row.id)}>{row.email}</TableCell>
+              <TableCell onClick={() => userTicketCreate(row.id)}><MoreVertIcon /></TableCell>
             </TableRow>
           ))}
         </TableBody>

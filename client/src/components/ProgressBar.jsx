@@ -34,6 +34,10 @@ LinearProgressWithLabel.propTypes = {
 const ProgressBar = (props) => {
   const [progress1, setProgress1] = useState(0);
 
+  // const convertNum = Number(props.percent)
+
+  // console.log("bar", convertNum, progress1)
+
   useEffect(() => {
     const timer = setInterval(() => {
       setProgress1((prevProgress) => (prevProgress >= props.percent ? props.percent : prevProgress + 10));

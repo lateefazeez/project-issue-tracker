@@ -13,8 +13,26 @@ import { Button } from "@mui/material";
 
 // import { Tasks, Teams, Tickets, Comments, Projects } from "./testdata";
 
+const Table = (props) => {
+
+  const { data, projectId, decider, height, width, mWidth, getTicketId, taskUpdate, taskDelete, userTicketCreate, userTicketDelete, createTicket, updateTicket, deleteTicket } = props;
+
+
+  return (
+    <div>
+      <div className="projects-box-header" id={props.decider + "-top"}>
+        <Header projectId={projectId} createTicket={createTicket} decider={decider}/>
+      </div>
+      <AddList userTicketDelete={userTicketDelete} userTicketCreate={userTicketCreate} taskUpdate={taskUpdate} taskDelete={taskDelete} projectId={projectId} data={data} decider={decider} getTicketId={getTicketId} data={data} height={height} width={width} mWidth={mWidth} updateTicket={updateTicket} deleteTicket={deleteTicket}/>
+      <div className="projects-box-footer"id={props.decider + "-bottom"}>
+            <AddButtons decider={decider}/>
+        </div>
+    </div>
+  );
+};
+
 const Header = (props) => {
-  const { decider } = props;
+  const { decider, projectId, createTicket, updateTicket, deleteTicket} = props;
 
   const [isNewTicketOpen, setIsNewTicketOpen] = useState(false);
   const [isNewMemberOpen, setIsNewMemberOpen] = useState(false);
@@ -50,7 +68,7 @@ const Header = (props) => {
           <div className="new-ticket"><PrimaryButton onPress={toggleNewTicket} style={{backgroundColor: "#4D45B5"}} children = "+ New Ticket"/></div>
         </div>
         <FormModal handleOpen={isNewTicketOpen} onClose={toggleNewTicket}>
-          <CreateTicket />
+          <CreateTicket onClose={toggleNewTicket} projectId={projectId} createTicket={createTicket} />
         </FormModal>
       </Fragment>
       
@@ -89,8 +107,9 @@ const AddButtons = (props) => {
 
 const AddList = (props) => {
 
-  const { decider, height, width, mWidth } = props;
-  console.log(mWidth)
+  const { data, projectId, decider, height, width, mWidth, getTicketId, taskUpdate, taskDelete, userTicketCreate, userTicketDelete, updateTicket, deleteTicket} = props;
+
+
 if (props.decider === "Devs" || props.decider === "Task" || props.decider === "Comment"){
 return(
   <Box sx={{ width: {width}, maxWidth: {mWidth}, bgcolor: 'background.paper' }}>
@@ -105,30 +124,13 @@ return(
         }}
         subheader={<li />}
           >
-          <ListMaker decider={decider}/>
+          <ListMaker taskUpdate={taskUpdate} taskDelete={taskDelete} decider={decider} getTicketId={getTicketId} data={data} userTicketDelete={userTicketDelete} updateTicket={updateTicket} deleteTicket={deleteTicket}/>
           </List>
         </Box>
 );
 } else {
-  return (<ListMaker decider={decider}/>);
+  return (<ListMaker projectId={projectId} data={data} decider={decider} getTicketId={getTicketId} userTicketCreate={userTicketCreate} updateTicket={updateTicket} deleteTicket={deleteTicket}/>);
 };
 }
-
-const Table = (props) => {
-  const { decider, height, width, mWidth } = props;
-  
-
-  return (
-    <div>
-      <div className="projects-box-header" id={props.decider + "-top"}>
-        <Header decider={decider}/>
-      </div>
-      <AddList decider={decider} height={height} width={width} mWidth={mWidth}/>
-      <div className="projects-box-footer"id={props.decider + "-bottom"}>
-            <AddButtons decider={decider}/>
-        </div>
-    </div>
-  );
-};
 
 export default Table;
