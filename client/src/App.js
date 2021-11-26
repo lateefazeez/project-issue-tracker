@@ -92,11 +92,11 @@ function App() {
   };
 
   const createProject = (project) => {
-    return axios.post("http://localhost:3000/projects", { project })
+    return axios.post("http://localhost:3000/projects", { project, team: project.team })
     .then(response => {
       console.log("NEW PROJECT: ", response.data)
       setData(prevProjects => ({...prevProjects, projects: [...prevProjects.projects, response.data]}))
-      return response.data
+    
     })
   }
 
@@ -189,19 +189,7 @@ function App() {
   }
 
 
-  const addTeamMember = (team, projectId) => {
-    const headers = {
-      'Content-Type': 'application/json;charset=UTF-8',
-      "Access-Control-Allow-Origin": "*",
-    }
 
-    team.forEach(team => {
-      return axios.post("http://localhost:3000/user_projects", { users_id: team, projects_id: projectId, headers: headers })
-      .then(response => {
-        console.log("RESPONSE", response.data)
-      })
-    })
-  }
 
   const updateTicket = (ticket, id) => {
 
@@ -335,7 +323,6 @@ function App() {
               createProject={createProject} 
               updateProject={updateProject} 
               deleteProject={deleteProject}
-              addTeamMember={addTeamMember}
             />} />
         <Route 
           path="/tickets" 

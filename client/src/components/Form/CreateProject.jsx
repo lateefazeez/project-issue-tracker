@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 import { useState } from 'react'
 import { Container, Button, Form, FormGroup, Label, Input} from 'reactstrap';
 
@@ -50,30 +50,11 @@ const CreateProject = (props) => {
 
   }
 
-  // const handleChangeMulti = (e) => {
-  //   let opts = [], opt;
-  //   for (let i = 0, len = e.target.options.length; i < len; i++) {
-  //     opt = e.target.options[i];
-      
-  //     if (opt.selected) {
-  //       opts.push(opt.value);
-  //     }
-  //   }
-  //   setValues({
-  //     ...values,
-  //     [e.target.name] : opts
-  //   });
-  // }
+
 
   const handleSubmit = (e) => {
     e.preventDefault()
     createProject(values)
-    .then(response => {
-      if (response) {
-        addTeamMember(values.team, JSON.stringify(response.id))
-      }
-    })
-    // addTeamMembersToProject()
     onClose()
   }
  
