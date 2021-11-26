@@ -6,7 +6,6 @@ import CommentListItem from "./CommentListItem";
 import TicketListTable from "./TicketListTable";
 import TeamListTable from "./TeamListTable";
 
-import { Tasks, Comments, Teams} from "./testdata"
 
 const ListMaker = (props) => {
 
@@ -25,11 +24,11 @@ const ListMaker = (props) => {
         />
       );
     });
-  } else if (props.decider === "Team"){
+  } else if (props.decider == "Team"){
 
       return (<TeamListTable projectId={props.projectId} data={props.data} userTicketCreate={props.userTicketCreate}/>);
 
-  } else if (props.decider === "Ticket"){
+  } else if (props.decider == "Ticket"){
 
      return (<TicketListTable updateTicket={props.updateTicket} deleteTicket={props.deleteTicket} projectId={props.projectId} getTicketId={props.getTicketId} data={props.data}/>);
 

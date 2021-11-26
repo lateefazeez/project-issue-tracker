@@ -11,17 +11,22 @@ import { getPercentageComplete } from '../helpers/getAllTicketCategories'
 const ProjectTable= (props) => {
   const [isNewProjectOpen, setIsNewProjectOpen] = useState(false);
 
-  const toggleNewProject = () => setIsNewProjectOpen(!isNewProjectOpen);
-
   const { 
     projects, 
     tickets,
+    users,
     createProject, 
     updateProject, 
     deleteProject,
-    projectStatus 
+    projectStatus,
+    addTeamMember
   } = props;
+
   const percentageComplete = getPercentageComplete(projects)
+  const toggleNewProject = () => {
+    setIsNewProjectOpen(!isNewProjectOpen);
+  }
+  
 
  
   return (
@@ -41,7 +46,11 @@ const ProjectTable= (props) => {
           <div>
             <CreateButton buttonClick={toggleNewProject}/>
             <FormModal handleOpen={isNewProjectOpen} onClose={toggleNewProject}>
-              <CreateProject onClose={toggleNewProject} createProject={createProject}/>
+              <CreateProject 
+                onClose={toggleNewProject} 
+                createProject={createProject} 
+                users={users}
+                addTeamMember={addTeamMember}/>
             </FormModal>
           </div>
           

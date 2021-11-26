@@ -86,24 +86,19 @@ function App() {
     Medium: getTicketByPriority(data, "medium"),
     Low: getTicketByPriority(data, "low"),
     AtRisk: getTicketByStatus(data, "at risk"),
-    OnTrack: getTicketByStatus(data, "ontrack"),
+    OnTrack: getTicketByStatus(data, "on track"),
     New: getTicketByStatus(data, "new"),
     ProjectStatus: getTicketByStatus(data, "at risk"),
   };
 
   const createProject = (project) => {
-    return axios
-      .post("http://localhost:3000/projects", {
-        title: project.title,
-        description: project.description,
-      })
-      .then((response) => {
-        setData((prevProjects) => ({
-          ...prevProjects,
-          projects: [...prevProjects.projects, response.data],
-        }));
-      });
-  };
+    return axios.post("http://localhost:3000/projects", { project })
+    .then(response => {
+      console.log("NEW PROJECT: ", response.data)
+      setData(prevProjects => ({...prevProjects, projects: [...prevProjects.projects, response.data]}))
+      return response.data
+    })
+  }
 
   const updateProject = (project, id) => {
     return axios
@@ -193,16 +188,41 @@ function App() {
     })
   }
 
+
+  const addTeamMember = (team, projectId) => {
+    const headers = {
+      'Content-Type': 'application/json;charset=UTF-8',
+      "Access-Control-Allow-Origin": "*",
+    }
+
+    team.forEach(team => {
+      return axios.post("http://localhost:3000/user_projects", { users_id: team, projects_id: projectId, headers: headers })
+      .then(response => {
+        console.log("RESPONSE", response.data)
+      })
+    })
+  }
+
   const updateTicket = (ticket, id) => {
 
     return axios.put(`http://localhost:3000/tickets/${id}`, { ticket })
     .then(response => {
+
+      setData(prev => {
+
       const filteredTickets = data.tickets.filter((ticket) => {
         return ticket.id !== response.data.id
-      })
-      setData(prev => ({...prev, tickets: [...filteredTickets, response.data]}))
-    })
-  }
+      });
+
+     const newData = {...prev,
+       tickets: [...filteredTickets, response.data]};
+
+       const ticketId = LoneTicket[0].id
+          setTimeBar(TicketProgressCalulator(getTicketById(newData, ticketId)));
+           return newData
+    });
+  });
+  };
 
   const deleteTicket = (ticketId) => {
 
@@ -309,16 +329,16 @@ function App() {
             <PersistentDrawerLeft
               projects={data.projects}
               tickets={data.tickets}
-              user={data.users}
-              chartData={chartData}
-              createProject={createProject}
-              updateProject={updateProject}
+              users={data.users} 
+              user={data.users} 
+              chartData={chartData} 
+              createProject={createProject} 
+              updateProject={updateProject} 
               deleteProject={deleteProject}
-            />
-          }
-        />
-        <Route
-          path="/tickets"
+              addTeamMember={addTeamMember}
+            />} />
+        <Route 
+          path="/tickets" 
           element={
             <TicketPage
               data={data}

@@ -6,10 +6,13 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.css';
 import reportWebVitals from './reportWebVitals';
 
+import LoadingIndicator from './components/LoadingIndicator';
+
 
 ReactDOM.render(
   <BrowserRouter>
     <App />
+    <LoadingIndicator />
   </BrowserRouter>,
   document.getElementById('root')
 );

@@ -1,5 +1,4 @@
 
-
 const getTicketById = (data, id) => {
   let ticket = [];
  

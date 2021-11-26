@@ -8,8 +8,6 @@ import TableRow from '@mui/material/TableRow';
 import './TicketTable.scss';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import './TableHeader.scss';
-import ProgressBar from './ProgressBar';
-import { Tasks, Teams, Tickets, Comments} from "./testdata"
 
 export default function TeamListTable(props) {
   
@@ -33,7 +31,7 @@ export default function TeamListTable(props) {
         projectUsers.push(user);
       }
     }
-    
+
     return projectUsers;
   }
 

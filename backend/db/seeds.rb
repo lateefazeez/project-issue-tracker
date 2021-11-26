@@ -237,4 +237,5 @@ UserProject.create!({
   projects_id: 3,
   users_id: 2
 })
+
 puts "Seeding Successful!..."

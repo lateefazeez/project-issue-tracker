@@ -1,6 +1,5 @@
-import axios from 'axios'
 import ProjectTable from "./ProjectTable";
-import {useEffect, useState} from 'react';
+
 
 
 import './ProjectDashboard.scss'
@@ -11,22 +10,30 @@ const ProjectDashboard = (props) => {
   const { 
     chartData, 
     projects,
-    tickets, 
+    tickets,
+    users, 
     createProject, 
     updateProject,
-    deleteProject 
+    deleteProject,
+    addTeamMember 
   } = props
+  const reload = () =>window.location.reload();
 
   return ( 
     <div className="project--dashboard">
      { projects && 
       <ProjectTable 
       projects={projects}
-      tickets={tickets} 
+      tickets={tickets}
+      users={users} 
       projectStatus={chartData.ProjectStatus} 
       createProject={createProject} 
       updateProject={updateProject} 
-      deleteProject={deleteProject} />}
+      deleteProject={deleteProject}
+      addTeamMember={addTeamMember}
+       />
+       }
+
      { projects && <div className="chart--group">
           <Chart
             title={"Type"}
@@ -60,9 +67,6 @@ const ProjectDashboard = (props) => {
             chartData={[chartData.AtRisk, chartData.OnTrack, chartData.New]}
           />
         </div>}
-        
-        
-        
     </div>
    );
 }

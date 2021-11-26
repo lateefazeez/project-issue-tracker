@@ -1,4 +1,3 @@
-
 const TaskProgressCalulator = (taskData) => {
 
   if (taskData.length > 0) {
@@ -8,7 +7,7 @@ const TaskProgressCalulator = (taskData) => {
 
   // //Gets Number of Tasks where value is true
   taskData.forEach((task) => {
-  
+
     if (task['complete?'] === true) {
       CompletedTasks += 1;
     }
@@ -28,15 +27,13 @@ const TaskProgressCalulator = (taskData) => {
     return "0";
 };
 
-
- 
 const TicketProgressCalulator = (ticketsData) => {
 
   if (ticketsData.length > 0) {
     let instance = Date.now();
     let endDate = Date.parse(ticketsData[0].end_date);
     let startDate = Date.parse(ticketsData[0].start_date);
-  
+
   //Calculate Time Parameters
     let hundredPercent = endDate - startDate
     let timeElapsed = instance - startDate

@@ -8,8 +8,6 @@ import TableRow from '@mui/material/TableRow';
 import './TicketTable.scss';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import './TableHeader.scss';
-import ProgressBar from './ProgressBar';
-import { Tasks, Teams, Tickets, Comments} from "./testdata";
 import axios from 'axios';
 import {useState, useEffect, Fragment} from 'react';
 import FormModal from './Form/FormModal';
@@ -24,13 +22,7 @@ export default function TicketListTable(props) {
   const [isEditTicketOpen, setIsEditTicketOpen] = useState(false);
   const [selectedTicketId, setSelectedTicketId] = useState("");
 
-  console.log(updateTicket)
-  console.log(deleteTicket)
-
-  // const setTicketId = (event) => {
-  //   console.log(event.target.id)
-  //   setSelectedTicketId(event.target.id)
-  // }
+  console.log("WTF IS GETTICKET ID", getTicketId)
 
   const toggleEditTicket = () => {
 
@@ -156,5 +148,3 @@ export default function TicketListTable(props) {
   );
 }
 
-// e.preventDefault();
-// e.stopPropagation();

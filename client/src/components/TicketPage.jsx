@@ -13,17 +13,6 @@ import HealthType from "./HealthStats/HealthType";
 import Duration from "./HealthStats/Duration";
 import PrimaryButton from "./PrimaryButton";
 import ProgressBar from "./ProgressBar";
-
-import {
-  TaskProgressCalulator,
-  TicketProgressCalulator,
-} from "../helpers/barChartHelpers";
-import {
-  getTicketById,
-  getTasksByTicketId,
-  getDevsByTicketId,
-  getCommentsByTicketId,
-} from "../helpers/ticketPageHelpers";
 import { useLocation } from "react-router";
 
 const TicketPage = (props) => {
@@ -47,6 +36,8 @@ const TicketPage = (props) => {
     updateTicket, 
     deleteTicket 
   } = props;
+
+  console.log("WTF IS LONE TICKT", LoneTicket)
 
   const { state } = useLocation();
   const { id } = state;
