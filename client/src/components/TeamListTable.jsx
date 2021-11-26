@@ -14,8 +14,7 @@ import { Tasks, Teams, Tickets, Comments} from "./testdata"
 export default function TeamListTable(props) {
   
 
-  const { projectId, data } = props;
-  console.log("AMAN TEAMS", data, projectId)
+  const { projectId, data, userTicketCreate } = props;
 
   const getUsersByProjectID = function(projectId, userProjects, users) {
     const projectUsers =[];
@@ -60,13 +59,13 @@ export default function TeamListTable(props) {
               key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell onClick={() => console.log('Clicked Project')} component="th" scope="row">
+              <TableCell onClick={() => userTicketCreate(row.id)} component="th" scope="row">
                 {row.first_name}
               </TableCell>
  
-              <TableCell onClick={() => console.log('Clicked Project')}>{row.last_name}</TableCell>
-              <TableCell onClick={() => console.log('Clicked Project')}>{row.email}</TableCell>
-              <TableCell onClick={() => console.log('Clicked Vert')}><MoreVertIcon /></TableCell>
+              <TableCell onClick={() => userTicketCreate(row.id)}>{row.last_name}</TableCell>
+              <TableCell onClick={() => userTicketCreate(row.id)}>{row.email}</TableCell>
+              <TableCell onClick={() => userTicketCreate(row.id)}><MoreVertIcon /></TableCell>
             </TableRow>
           ))}
         </TableBody>

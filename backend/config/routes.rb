@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :tickets, only: [:index, :create]
     resources :tasks
     resources :comments
-    resources :users_tickets, only: [:index, :show]
+    resources :users_tickets, only: [:index, :show, :create, :destroy]
     resources :users
     resources :user_projects, only: [:index, :show]
 end

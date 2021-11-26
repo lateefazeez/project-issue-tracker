@@ -9,10 +9,25 @@ class TasksController < ApplicationController
     render json: task
   end
   
-  def create #/post id
+  def create
+    @task = Task.new(task_params)
+
+    if @task.save
+      render json: @task, status: :created
+    else
+      render json: {error: @task.errors.messages}, status: 422
+    end
+
   end
   
-  def destroy #/delete id
+  def destroy 
+    @task = Task.find(params[:id])
+
+    if @task.destroy
+      head :no_content
+    else
+      render json: {error: @task.errors.messages}, status: 422
+    end
   end
 
   def update

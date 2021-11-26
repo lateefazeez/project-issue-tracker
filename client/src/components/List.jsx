@@ -8,24 +8,26 @@ import TeamListTable from "./TeamListTable";
 
 import { Tasks, Comments, Teams} from "./testdata"
 
-
 const ListMaker = (props) => {
 
   let listo = "";
 
   if (props.decider == "Task") {
-     listo = props.data.map((task) => {
+     listo = props.data && props.data.map((task) => {
       return (
         <TaskListItem
         key={task.id}
+        id={task.id}
         title={task.title}
         percentage_complete={task['complete?']}
+        taskUpdate={props.taskUpdate}
+        taskDelete={props.taskDelete}
         />
       );
     });
   } else if (props.decider === "Team"){
 
-      return (<TeamListTable projectId={props.projectId} data={props.data} />);
+      return (<TeamListTable projectId={props.projectId} data={props.data} userTicketCreate={props.userTicketCreate}/>);
 
   } else if (props.decider === "Ticket"){
 
@@ -33,10 +35,11 @@ const ListMaker = (props) => {
 
  } else if (props.decider == "Comment"){
   listo = props.data.map((comment) => {
+
    return (
      <CommentListItem
      key={comment.id}
-     author={comment.title}
+     author={comment.author.first_name + " " + comment.author.last_name}
      message={comment.message}
      />
    );
@@ -46,8 +49,10 @@ const ListMaker = (props) => {
    return (
      <TeamListItem
      key={team.id}
+     id={team.devId}
      first_name={team.first_name}
      last_name={team.last_name}
+     userTicketDelete={props.userTicketDelete}
      />
    );
  });

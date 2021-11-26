@@ -20,9 +20,6 @@ export default function TicketListTable(props) {
   const [selectedTicket, setSelectedTicket] = useState("");
   const [selectedProject, setSelectedProject] = useState("")
 
-  console.log("AMAN DATA", data)
-  console.log("AMAN projectID", projectId)
-
   const getTicketsByProjectID = function(projectId, tickets) {
     const projectTickets = [];
     for (const ticket of tickets) {
@@ -47,15 +44,6 @@ export default function TicketListTable(props) {
     });
     return revisedTickets;
   }
-
-
-  //   const getTicketAuthor = function(ticket, users) {
-  //   for (const user of users) {
-  //     if (ticket.users_id === user.id) {
-  //       return user.first_name + " " + user.last_name;
-  //     }
-  //   }
-  // }
 
   const projectTickets =  getTicketsByProjectID(projectId, data.tickets);
 
