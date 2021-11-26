@@ -1,11 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Container, Button, Form, FormGroup, Label, Input} from 'reactstrap';
 
 import './CreateProject.scss'
 
 
 const UpdateProject = (props) => {
-  const { projectData, updateProject, onClose, id } = props
+  const { 
+    projectData, 
+    updateProject, 
+    onClose, 
+    id
+
+  } = props
   
 
   const [project, setProject] = useState({
@@ -59,6 +65,11 @@ const UpdateProject = (props) => {
             <Input className="form-inputs"  type="date" name="target" id="target" placeholder="date placeholder" bsSize="lg" value={project.target_date} onChange={handleChange}/>
           </FormGroup>
         </div>
+
+        <FormGroup>
+          <Label for="progress" className="input-labels">Progress in %</Label>
+          <Input className="form-inputs" type="text" name="progress" id="progress" placeholder="Enter current progress" bsSize="lg" value={project.percentage_complete} onChange={handleChange}/>
+        </FormGroup>
         
         <FormGroup className="input-select">
           <Label for="team" className="input-labels">Update Team Members</Label>

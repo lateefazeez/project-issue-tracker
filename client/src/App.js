@@ -59,7 +59,7 @@ function App() {
     Medium : getTicketByPriority(data, "medium"),
     Low : getTicketByPriority(data, "low"),
     AtRisk : getTicketByStatus(data, "at risk"),
-    OnTrack : getTicketByStatus(data, "ontrack"),
+    OnTrack : getTicketByStatus(data, "on track"),
     New : getTicketByStatus(data, "new"),
     ProjectStatus : getTicketByStatus(data, "at risk")
 
@@ -67,9 +67,26 @@ function App() {
   
   const createProject = (project) => {
 
-    return axios.post("http://localhost:3000/projects", { title: project.title, description: project.description })
+    return axios.post("http://localhost:3000/projects", { project })
     .then(response => {
+      console.log("NEW PROJECT: ", response.data)
       setData(prevProjects => ({...prevProjects, projects: [...prevProjects.projects, response.data]}))
+      return response.data
+    })
+
+  }
+
+  const addTeamMember = (team, projectId) => {
+    const headers = {
+      'Content-Type': 'application/json;charset=UTF-8',
+      "Access-Control-Allow-Origin": "*",
+    }
+
+    team.forEach(team => {
+      return axios.post("http://localhost:3000/user_projects", { users_id: team, projects_id: projectId, headers: headers })
+      .then(response => {
+        console.log("RESPONSE", response.data)
+      })
     })
   }
 
@@ -111,12 +128,14 @@ function App() {
           element={
             <PersistentDrawerLeft 
               projects={data.projects}
-              tickets={data.tickets} 
+              tickets={data.tickets}
+              users={data.users} 
               user={data.users} 
               chartData={chartData} 
               createProject={createProject} 
               updateProject={updateProject} 
               deleteProject={deleteProject}
+              addTeamMember={addTeamMember}
             />} />
         <Route 
           path="/tickets" 

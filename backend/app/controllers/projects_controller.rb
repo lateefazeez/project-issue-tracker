@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
 
-    render json: @projects
+    render json: @project
   end
 
   def create
@@ -33,7 +33,6 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project = Project.find(params[:id])
-
     if @project.destroy
       head :no_content
     else

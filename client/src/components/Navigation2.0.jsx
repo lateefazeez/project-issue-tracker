@@ -75,12 +75,13 @@ export default function PersistentDrawerLeft(props) {
   const {
     projects,
     tickets, 
-    user, 
+    users, 
     data, 
     chartData, 
     createProject, 
     updateProject, 
-    deleteProject
+    deleteProject,
+    addTeamMember
   } = props;
   
   const theme = useTheme();
@@ -151,11 +152,13 @@ export default function PersistentDrawerLeft(props) {
         <DrawerHeader />
           <ProjectDashboard 
             projects={projects}
-            tickets={tickets} 
+            tickets={tickets}
+            users={users} 
             chartData={chartData} 
             createProject={createProject} 
             updateProject={updateProject}
-            deleteProject={deleteProject}/>
+            deleteProject={deleteProject}
+            addTeamMember={addTeamMember}/>
       </Main>
     </Box>
   );

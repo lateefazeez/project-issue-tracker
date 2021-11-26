@@ -114,3 +114,4 @@ ActiveRecord::Schema.define(version: 2021_11_24_190701) do
   add_foreign_key "user_tickets", "tickets", column: "tickets_id"
   add_foreign_key "user_tickets", "users", column: "users_id"
 end
+8
