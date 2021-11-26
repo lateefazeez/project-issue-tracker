@@ -40,7 +40,20 @@ const getCommentsByTicketId = (data, id) => {
     }
   });
 
-  return comments
+    const revisedComments = comments.map((comment) => {
+      let resultingData = {...comment};
+
+      const foundUser = data.users.find((user) => {
+        if (user.id === comment.users_id) {
+          return user.first_name + " " + user.last_name;
+        }
+      });
+      resultingData.author = foundUser || null;
+
+      return resultingData;
+    });
+ 
+    return revisedComments
 };
 
 
@@ -56,7 +69,8 @@ const getDevsByTicketId = (data, id) => {
 
        users.forEach((person) => {
         if (person.id === userId) {
-          devs.push(person)
+          const devObj = {devId: dev.id, ...person}
+          devs.push(devObj)
         }
   });
 }

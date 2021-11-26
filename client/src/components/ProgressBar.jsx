@@ -37,6 +37,8 @@ const ProgressBar = (props) => {
 
   const convertNum = Number(props.percent)
 
+  console.log("bar", convertNum, progress1)
+
   useEffect(() => {
 
     const timer = setInterval(() => {

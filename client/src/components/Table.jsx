@@ -15,14 +15,15 @@ import { Button } from "@mui/material";
 
 const Table = (props) => {
 
-  const { data, projectId, decider, height, width, mWidth, getTicketId, createTicket, updateTicket, deleteTicket } = props;
+  const { data, projectId, decider, height, width, mWidth, getTicketId, taskUpdate, taskDelete, userTicketCreate, userTicketDelete, createTicket, updateTicket, deleteTicket } = props;
+
 
   return (
     <div>
       <div className="projects-box-header" id={props.decider + "-top"}>
         <Header projectId={projectId} createTicket={createTicket} decider={decider}/>
       </div>
-      <AddList projectId={projectId} updateTicket={updateTicket} deleteTicket={deleteTicket} data={data} decider={decider} getTicketId={getTicketId} height={height} width={width} mWidth={mWidth}/>
+      <AddList userTicketDelete={userTicketDelete} userTicketCreate={userTicketCreate} taskUpdate={taskUpdate} taskDelete={taskDelete} projectId={projectId} data={data} decider={decider} getTicketId={getTicketId} data={data} height={height} width={width} mWidth={mWidth} updateTicket={updateTicket} deleteTicket={deleteTicket}/>
       <div className="projects-box-footer"id={props.decider + "-bottom"}>
             <AddButtons decider={decider}/>
         </div>
@@ -101,7 +102,8 @@ const AddButtons = (props) => {
 
 const AddList = (props) => {
 
-  const { data, projectId, decider, height, width, mWidth, getTicketId, updateTicket, deleteTicket } = props;
+  const { data, projectId, decider, height, width, mWidth, getTicketId, taskUpdate, taskDelete, userTicketCreate, userTicketDelete, updateTicket, deleteTicket} = props;
+
 
 if (props.decider === "Devs" || props.decider === "Task" || props.decider === "Comment"){
 return(
@@ -117,12 +119,12 @@ return(
         }}
         subheader={<li />}
           >
-          <ListMaker decider={decider} getTicketId={getTicketId} updateTicket={updateTicket} deleteTicket={deleteTicket} data={data}/>
+          <ListMaker taskUpdate={taskUpdate} taskDelete={taskDelete} decider={decider} getTicketId={getTicketId} data={data} userTicketDelete={userTicketDelete} updateTicket={updateTicket} deleteTicket={deleteTicket}/>
           </List>
         </Box>
 );
 } else {
-  return (<ListMaker projectId={projectId} data={data} decider={decider} getTicketId={getTicketId} updateTicket={updateTicket} deleteTicket={deleteTicket}/>);
+  return (<ListMaker projectId={projectId} data={data} decider={decider} getTicketId={getTicketId} userTicketCreate={userTicketCreate} updateTicket={updateTicket} deleteTicket={deleteTicket}/>);
 };
 }
 

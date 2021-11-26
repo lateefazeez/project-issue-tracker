@@ -56,7 +56,6 @@ export default function TicketListTable(props) {
   }, [selectedTicketId])
  
 
-
   const getTicketsByProjectID = function(projectId, tickets) {
     const projectTickets = [];
     for (const ticket of tickets) {
