@@ -15,9 +15,10 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
 
     if @project.save
-      # params[:id].each do |id|
-      #   UserProject.create!(users_id: id, projects_id: @project.id)
-      # end
+      users = User.where(id: params[:team])
+      users.each do |user|
+        @project.users << user
+      end
       render json: @project, status: :created
     else
       render json: {error: @project.errors.messages}, status: 422

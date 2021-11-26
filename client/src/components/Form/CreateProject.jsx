@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useState } from 'react'
 import { Container, Button, Form, FormGroup, Label, Input} from 'reactstrap';
 
@@ -17,7 +16,6 @@ const CreateProject = (props) => {
   const { 
     onClose, 
     createProject,
-    addTeamMember,
     users
   } = props
 
@@ -68,12 +66,6 @@ const CreateProject = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     createProject(values)
-    .then(response => {
-      if (response) {
-        addTeamMember(values.team, JSON.stringify(response.id))
-      }
-    })
-    // addTeamMembersToProject()
     onClose()
   }
  
