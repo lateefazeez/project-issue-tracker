@@ -57,6 +57,7 @@ const CreateTicket = (props) => {
           <FormGroup className="input-select space">
             <Label for="category" className="input-labels">Category</Label>
             <Input className="form-inputs"  type="select" name="category" id="category" bsSize="lg" onChange={handleChange} value={ticket.category}>
+            <option className="input-select">Select</option>
             <option className="input-select">Issue</option>
             <option className="input-select">Bug</option>
             <option className="input-select">Feature Request</option>
@@ -65,6 +66,7 @@ const CreateTicket = (props) => {
           <FormGroup className="input-select space">
             <Label for="priority" className="input-labels">Priority</Label>
             <Input className="form-inputs"  type="select" name="priority" id="priority" bsSize="lg" onChange={handleChange} value={ticket.priority}>
+            <option className="input-select">Select</option>
             <option className="input-select">High</option>
             <option className="input-select">Medium</option>
             <option className="input-select">Low</option>
@@ -73,6 +75,7 @@ const CreateTicket = (props) => {
           <FormGroup className="input-select">
             <Label for="status" className="input-labels">Status</Label>
             <Input className="form-inputs"  type="select" name="status" id="status" bsSize="lg" onChange={handleChange} value={ticket.status}>
+            <option className="input-select">Select</option>
             <option className="input-select">On Track</option>
             <option className="input-select">At Risk</option>
           </Input>
