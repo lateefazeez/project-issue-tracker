@@ -53,7 +53,8 @@ const ProjectTable= (props) => {
           value={percentageComplete} 
           updateProject={updateProject} 
           deleteProject={deleteProject}
-          projectStatus={projectStatus} />
+          projectStatus={projectStatus}
+          onClose={toggleNewProject} />
       </div>
       <div className="bottomdash">
         <TablePaginations />

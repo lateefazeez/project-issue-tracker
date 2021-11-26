@@ -43,7 +43,8 @@ export default function ProjectListTable(props) {
     value, 
     updateProject, 
     deleteProject,
-    projectStatus
+    projectStatus,
+    onClose
   } = props
 
   let navigate = useNavigate()

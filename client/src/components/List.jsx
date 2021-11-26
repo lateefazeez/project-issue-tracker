@@ -29,7 +29,7 @@ const ListMaker = (props) => {
 
   } else if (props.decider === "Ticket"){
 
-     return (<TicketListTable projectId={props.projectId} getTicketId={props.getTicketId} data={props.data}/>);
+     return (<TicketListTable updateTicket={props.updateTicket} deleteTicket={props.deleteTicket} projectId={props.projectId} getTicketId={props.getTicketId} data={props.data}/>);
 
  } else if (props.decider == "Comment"){
   listo = props.data.map((comment) => {

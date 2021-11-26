@@ -25,9 +25,10 @@ import { useLocation } from 'react-router';
 const TicketPage = (props) => {
   const [isNewTaskOpen, setIsNewTaskOpen] = useState(false);
   const toggleNewTask = () => setIsNewTaskOpen(!isNewTaskOpen);
-  const { data } = props;
+  const { data, createTicket, updateTicket, deleteTicket } = props;
   const { state } = useLocation()
   const { id } = state;
+  
 
 
   const [LoneTicket, setLoneTicket] = useState([]);
@@ -54,11 +55,11 @@ const TicketPage = (props) => {
       
       <div className="tickets-upper">
       <div className="Team-box">
-      <Table projectId={id} data={data} decider ="Team"/>
+      <Table projectId={id} createTicket={createTicket} updateTicket={updateTicket} deleteTicket={deleteTicket}  data={data} decider ="Team"/>
       </div>
 
        <div className="Tickets-box">
-      <Table decider ="Ticket" getTicketId={getTicketId} projectId={id} data={data}/>
+      <Table decider ="Ticket" createTicket={createTicket} updateTicket={updateTicket} deleteTicket={deleteTicket} getTicketId={getTicketId} projectId={id} data={data}/>
       </div>
       </div>
 

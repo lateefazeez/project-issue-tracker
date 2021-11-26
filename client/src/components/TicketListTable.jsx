@@ -11,17 +11,51 @@ import './TableHeader.scss';
 import ProgressBar from './ProgressBar';
 import { Tasks, Teams, Tickets, Comments} from "./testdata";
 import axios from 'axios';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, Fragment} from 'react';
+import FormModal from './Form/FormModal';
+import { DropdownMenu, DropdownItem, UncontrolledDropdown, DropdownToggle } from "reactstrap";
+import UpdateTicket from './Form/UpdateTicket';
 
 export default function TicketListTable(props) {
 
-  const { ticketsInfo, selectedId, data, projectId, getTicketId } = props;
+  const {  data, projectId, getTicketId, updateTicket, deleteTicket } = props;
 
-  const [selectedTicket, setSelectedTicket] = useState("");
-  const [selectedProject, setSelectedProject] = useState("")
+  const [selectedTicketData, setSelectedTicketData] = useState(false);
+  const [isEditTicketOpen, setIsEditTicketOpen] = useState(false);
+  const [selectedTicketId, setSelectedTicketId] = useState("");
 
-  console.log("AMAN DATA", data)
-  console.log("AMAN projectID", projectId)
+  console.log(updateTicket)
+  console.log(deleteTicket)
+
+  // const setTicketId = (event) => {
+  //   console.log(event.target.id)
+  //   setSelectedTicketId(event.target.id)
+  // }
+
+  const toggleEditTicket = () => {
+
+    setIsEditTicketOpen(!isEditTicketOpen);
+
+  }
+
+  const resetTicketId = () => setSelectedTicketId(null);
+
+  useEffect(() => {
+
+    const singleTicketURL = `http://localhost:3000/tickets/${selectedTicketId}`
+    const getSingleTicket = axios.get(singleTicketURL)
+
+    Promise.all([getSingleTicket])
+      .then((response) => {
+        setSelectedTicketData(response[0].data)
+        // console.log("UPDATE TICKET RES", response[0].data) 
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }, [selectedTicketId])
+ 
+
 
   const getTicketsByProjectID = function(projectId, tickets) {
     const projectTickets = [];
@@ -48,20 +82,11 @@ export default function TicketListTable(props) {
     return revisedTickets;
   }
 
-
-  //   const getTicketAuthor = function(ticket, users) {
-  //   for (const user of users) {
-  //     if (ticket.users_id === user.id) {
-  //       return user.first_name + " " + user.last_name;
-  //     }
-  //   }
-  // }
-
   const projectTickets =  getTicketsByProjectID(projectId, data.tickets);
-
   const tickets = projectUsersRevised(projectTickets, data.users);
 
   return (
+    <Fragment>
     <TableContainer style={{ overflow: "hidden" }} >
       <Table className="projecttable" sx={{ height: 0}} aria-label="simple table">
     
@@ -86,12 +111,49 @@ export default function TicketListTable(props) {
  
               <TableCell onClick={() => getTicketId(row.id)}>{row.description}</TableCell>
               <TableCell onClick={() => getTicketId(row.id)}>{row.author.first_name + " " + row.author.last_name}</TableCell>
-              <TableCell onClick={() => console.log('Clicked Vert')}><MoreVertIcon /></TableCell>
+              <TableCell>                
+              <UncontrolledDropdown >
+                  <DropdownToggle
+                    className="btn-icon-only text-light"
+                    role=""
+                    size="sm"
+                    color="#585858"
+                    backgroundColor="#585858"
+                    id={row.id}
+                    onClick={() => setSelectedTicketId(row.id)}
+                    
+                  >
+                    <MoreVertIcon className="more-options" />
+                  </DropdownToggle>
+                  <DropdownMenu className="dropdown-menu-arrow" end>
+                    <DropdownItem id={row.id} onClick={toggleEditTicket} >
+                      Edit Ticket
+                    </DropdownItem>
+                    <DropdownItem onClick={() => console.log("DELETE TICKET", row.id)}>
+                      Delete Ticket
+                    </DropdownItem>
+                  </DropdownMenu>     
+                </UncontrolledDropdown></TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
+    <FormModal handleOpen={isEditTicketOpen} onClose={toggleEditTicket}>
+      { selectedTicketData && 
+      <UpdateTicket
+        id={selectedTicketId}
+        onClose={toggleEditTicket} 
+        tickets={tickets} 
+        resetTicketId={resetTicketId} 
+        ticketData={selectedTicketData}
+        // ticketTeam={selectedTicketTeam}
+        updateTicket={updateTicket}
+        // allUsers={allUsers} 
+        />
+        }
+    </FormModal>
+    </Fragment>
   );
 }
 
