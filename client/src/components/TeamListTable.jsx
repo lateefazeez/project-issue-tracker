@@ -11,36 +11,7 @@ import './TableHeader.scss';
 import ProgressBar from './ProgressBar';
 import { Tasks, Teams, Tickets, Comments} from "./testdata"
 
-export default function TeamListTable(props) {
-  
-
-  const { projectId, data } = props;
-  console.log("AMAN TEAMS", data, projectId)
-
-  const getUsersByProjectID = function(projectId, userProjects, users) {
-    const projectUsers =[];
-    const userIds = [];
-
-    const filteredUserProjects = userProjects.filter((elm) => {
-      return elm.projects_id === projectId;
-    });
-
-    for (const obj of filteredUserProjects) {
-      userIds.push(obj.users_id);
-    }
-
-    for (const user of users) {
-      if (userIds.includes(Number(user.id))) {
-        projectUsers.push(user);
-      }
-    }
-    
-    return projectUsers;
-  }
-
-  
-
-  const teams = getUsersByProjectID(projectId, data.userProjects, data.users)
+export default function TeamListTable() {
   return (
     <TableContainer style={{ overflow: "hidden" }} >
       <Table className="projecttable" sx={{ height: 0}} aria-label="simple table">
@@ -55,7 +26,7 @@ export default function TeamListTable(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {teams.map((row) => (
+          {Teams.map((row) => (
             <TableRow
               key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

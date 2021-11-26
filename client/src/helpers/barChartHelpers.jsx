@@ -1,42 +1,103 @@
+const Tickets2 = [
+  {
+    id: 1,
+    title: "Setup ticket list item",
+    description: "Setup ticket list item in storybook and front end",
+    author: "Barney Rubble",
+    startDate: "Tue Nov 23 2021 10:00:00",
+    endDate: "Fri Dec 10 2021 14:00:00",
+  },
+  {
+    id: 2,
+    title: "Setup task list item",
+    description: "Setup task list item in storybook and front end",
+    author: "Barney Rubble",
+    startDate: "Mon Nov 8 2021 10:00:00",
+    endDate: "Fri Nov 26 2021 14:00:00",
+  },
+  {
+    id: 3,
+    title: "Setup project list item",
+    description: "Setup project list item in storybook and front end",
+    author: "Fred Flinststone",
+    startDate: "Mon Dec 6 2021 10:00:00",
+    endDate: "Mon Dec 20 2021 14:00:00",
+  },
+];
 
-const TaskProgressCalulator = (taskData) => {
+const Tasks2 = [
+  {
+    id: 1,
+    title: "Do work",
+    percentage_complete: true,
+  },
+  {
+    id: 2,
+    title: "Work harder",
+    percentage_complete: false,
+  },
+  {
+    id: 3,
+    title: "die from overwork",
+    percentage_complete: false,
+  },
+  {
+    id: 4,
+    title: "scroll me",
+    percentage_complete: true,
+  },
+  {
+    id: 5,
+    title: "scroll me too!",
+    percentage_complete: false,
+  },
+];
 
-  if (taskData.length > 0) {
-
+const TaskProgressCalulator = (TaskData) => {
   let CompletedTasks = 0;
   let TotalTasks = 0;
 
-  // //Gets Number of Tasks where value is true
-  taskData.forEach((task) => {
-  
-    if (task['complete?'] === true) {
+  //Gets Number of Tasks where value is true
+  TaskData.forEach((task) => {
+    if (task["percentage_complete"] === true) {
       CompletedTasks += 1;
     }
   });
 
   //Gets Total Number of Tasks
-  taskData.forEach((task) => {
+  TaskData.forEach((task) => {
     if (task["id"]) {
       TotalTasks += 1;
     }
   });
 
-  const progress = Math.floor((CompletedTasks / TotalTasks) * 100)
-
+  let progress = (CompletedTasks / TotalTasks) * 100
+  
+  console.log(progress.toString());
   return progress.toString();
-}
-    return "0";
 };
 
+ TaskProgressCalulator(Tasks2);
 
- 
-const TicketProgressCalulator = (ticketsData) => {
 
-  if (ticketsData.length > 0) {
+const TicketProgressCalulator = (TicketsData, id) => {
+
+
     let instance = Date.now();
-    let endDate = Date.parse(ticketsData[0].end_date);
-    let startDate = Date.parse(ticketsData[0].start_date);
-  
+    let endDate;
+    let startDate;
+
+ //Gets Ticket by Id
+ TicketsData.forEach((ticket) => {
+
+  // Get Stat and End Dates for Ticket
+  if (ticket["id"] === id) {
+
+    endDate = Date.parse(ticket["endDate"]);
+    startDate =  Date.parse(ticket["startDate"]);
+  }
+});
+
   //Calculate Time Parameters
     let hundredPercent = endDate - startDate
     let timeElapsed = instance - startDate
@@ -49,9 +110,12 @@ const TicketProgressCalulator = (ticketsData) => {
       PercentVal = 100
     }
 
+    console.log(PercentVal.toString())
     return PercentVal.toString();
 }
-      return "0";
-}
 
-module.exports = { TaskProgressCalulator, TicketProgressCalulator };
+TicketProgressCalulator(Tickets2, 1)
+TicketProgressCalulator(Tickets2, 2)
+TicketProgressCalulator(Tickets2, 3)
+
+module.exports = { TaskProgressCalulator, TicketProgressCalulator, Tasks2 ,Tickets2};

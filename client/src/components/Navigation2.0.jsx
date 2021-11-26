@@ -83,7 +83,7 @@ export default function PersistentDrawerLeft(props) {
     deleteProject,
     addTeamMember
   } = props;
-  
+
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 

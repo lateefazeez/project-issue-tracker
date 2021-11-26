@@ -188,18 +188,15 @@ Task.create!({
 })
 Comment.create!({
   message: "Hellooo 2",
-  tickets_id: 2,
-  users_id: 1
+  tickets_id: 2
 })
 Comment.create!({
   message: "Hellooo 1",
-  tickets_id: 1,
-  users_id: 2
+  tickets_id: 1
 })
 Comment.create!({
   message: "Hellooo 3",
-  tickets_id: 3,
-  users_id: 1
+  tickets_id: 3
 })
 UserTicket.create!({
   tickets_id: 2,
@@ -219,22 +216,6 @@ UserTicket.create!({
 })
 UserTicket.create!({
   tickets_id: 3,
-  users_id: 2
-})
-UserProject.create!({
-  projects_id: 1,
-  users_id: 2
-})
-UserProject.create!({
-  projects_id: 1,
-  users_id: 1
-})
-UserProject.create!({
-  projects_id: 2,
-  users_id: 2
-})
-UserProject.create!({
-  projects_id: 3,
   users_id: 2
 })
 puts "Seeding Successful!..."

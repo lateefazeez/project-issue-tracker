@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
   def index
-    @projects = Project.all
+    @projects = Project.order(id: :desc).all
     render json: @projects
   end
 

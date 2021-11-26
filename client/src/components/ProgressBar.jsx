@@ -7,7 +7,6 @@ import Box from '@mui/material/Box';
 import '../styles/variables.scss';
 
 function LinearProgressWithLabel(props) {
-
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: "15px"}}>
       <Box sx={{ width: '90%', mr: 1, borderRadius: '50px'}}>
@@ -35,17 +34,14 @@ LinearProgressWithLabel.propTypes = {
 const ProgressBar = (props) => {
   const [progress1, setProgress1] = useState(0);
 
-  const convertNum = Number(props.percent)
-
   useEffect(() => {
-
     const timer = setInterval(() => {
-      setProgress1((prevProgress) => (prevProgress >= convertNum ? convertNum : prevProgress + 1));
-    }, 10);
+      setProgress1((prevProgress) => (prevProgress >= props.percent ? props.percent : prevProgress + 10));
+    }, 200);
     return () => {
       clearInterval(timer);
     };
-  }, [convertNum]);
+  }, []);
 
   const StyledLinearProgress1 = withStyles({
     colorPrimary: {

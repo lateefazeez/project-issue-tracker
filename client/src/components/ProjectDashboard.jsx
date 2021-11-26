@@ -7,7 +7,6 @@ import Chart from "./Chart";
 
 
 const ProjectDashboard = (props) => {
-
   const { 
     chartData, 
     projects,
