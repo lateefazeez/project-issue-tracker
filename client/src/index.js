@@ -1,18 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BroswerRouter, BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import './index.scss';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.css';
 import reportWebVitals from './reportWebVitals';
 
-import LoadingIndicator from './components/LoadingIndicator';
 
 
 ReactDOM.render(
   <BrowserRouter>
     <App />
-    <LoadingIndicator />
   </BrowserRouter>,
   document.getElementById('root')
 );

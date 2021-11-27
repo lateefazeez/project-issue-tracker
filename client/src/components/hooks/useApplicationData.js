@@ -10,6 +10,7 @@ import {
   getTasksByTicketId,
   getDevsByTicketId,
   getCommentsByTicketId,
+  updateStatus,
 } from "../../helpers/ticketPageHelpers";
 import {
   TaskProgressCalulator,
@@ -145,6 +146,7 @@ export default function Application () {
   const [TicketComments, setTicketComments] = useState([]);
   const [TimeBar, setTimeBar] = useState(0);
   const [TaskBar, setTaskBar] = useState(0);
+  
 
   const getTicketId = (id) => {
 
@@ -159,9 +161,11 @@ export default function Application () {
 
   const userTicketCreate = (userId) => {
 
-    const ticketId = LoneTicket[0].id
 
-    if (ticketId) {
+    if (!LoneTicket[0]) {
+      return
+    }
+    const ticketId = LoneTicket[0].id
     return axios
       .post("http://localhost:3000/users_tickets", {
         users_id: userId,
@@ -181,7 +185,6 @@ export default function Application () {
            return newData
       });
     });
-  }
   };
 
   const userTicketDelete = (id) => {
@@ -271,6 +274,8 @@ export default function Application () {
            return newData
       });
     });
+
+   
   };
 
 
@@ -320,8 +325,54 @@ export default function Application () {
     });
   };
 
+  const statusUpdate = (id, stat) => {
 
-  
+    return axios.put(`http://localhost:3000/tickets/${id}`, { status: stat })
+    .then(response => {
+
+      setData(prev => {
+
+      const filteredTickets = data.tickets.filter((ticket) => {
+        return ticket.id !== response.data.id
+      });
+
+     const newData = {...prev,
+       tickets: [...filteredTickets, response.data]};
+           return newData
+    });
+  });
+
+  }
+
+  const commentCreate = (userId, commentText) => {
+
+    if (!LoneTicket[0]) {
+      return
+    }
+    const ticketId = LoneTicket[0].id
+    return axios
+      .post("http://localhost:3000/comments", {
+        users_id: userId,
+        tickets_id: ticketId,
+        message: commentText
+
+      })
+      .then((response) => {
+        setData((prev) => {
+
+          const filteredCommentss = prev.comments.filter((comment) => {
+            return Comment.id !== response.data.id;
+          });
+         
+          const newData = {...prev,
+            comments: [...filteredTasks, response.data]}
+            setTicketComments(getCommentsByTicketId(newData, ticketId));
+           return newData
+      });
+    });
+  };
+
+
   return { 
     data: data,
     projects: data.projects,
@@ -349,7 +400,11 @@ export default function Application () {
     chartData,
     createProject,
     updateProject,
-    deleteProject
+    deleteProject,
+    updateStatus,
+    statusUpdate,
+    commentCreate,
+
   }
 }
  
