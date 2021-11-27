@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FormModal from "./Form/FormModal";
 import CreateTask from "./Form/CreateTask";
 
@@ -39,7 +39,6 @@ const TicketPage = (props) => {
     statusUpdate,
     commentCreate,
     commentDelete,
- 
 
   } = props;
 
@@ -57,8 +56,10 @@ const TicketPage = (props) => {
       }
     });
   
-    return project[0].title
+    return project[0] && project[0].title
   };
+
+  useEffect(() => {getTicketId(null) }, []);
 
   return (
     <div>

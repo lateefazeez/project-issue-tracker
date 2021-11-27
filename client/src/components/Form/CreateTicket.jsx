@@ -20,7 +20,7 @@ const CreateTicket = (props) => {
   console.log("CREATE TICKET PROJIT", projectId)
   const handleChange = (e) => {
     e.preventDefault()
-    setTicket(Object.assign({}, ticket, {[e.target.name]: e.target.value}, {projects_id: projectId},  {users_id: 2}))
+    setTicket(Object.assign({}, ticket, {[e.target.name]: e.target.value}, {projects_id: projectId},  {users_id: 2}, {duration: duration}))
   }
 
   const handleSubmit = (e) => {
@@ -100,8 +100,8 @@ const CreateTicket = (props) => {
 
         <div className="dual__input">
         <FormGroup>
-          <Label for="time" className="input-labels">Time Estimate (hours)</Label>
-          <Input className="form-inputs" type="text" name="time" id="time" placeholder="Enter estimated hours" bsSize="lg" onChange={handleChange} value={duration} />
+          <Label for="duration" className="input-labels">Time Estimate (hours)</Label>
+          <Input className="form-inputs" type="text" name="duration" id="duration" placeholder="Enter estimated hours" bsSize="lg" onChange={handleChange} value={duration} />
         </FormGroup>
         </div>
         <FormGroup className="button-container">

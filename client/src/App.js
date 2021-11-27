@@ -42,7 +42,6 @@ function App() {
     statusUpdate,
     commentCreate,
     commentDelete,
-
     chartData
   } = useApplication()
 
