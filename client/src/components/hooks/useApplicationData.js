@@ -344,6 +344,34 @@ export default function Application () {
 
   }
 
+  const commentCreate = (userId, commentText) => {
+
+    if (!LoneTicket[0]) {
+      return
+    }
+    const ticketId = LoneTicket[0].id
+    return axios
+      .post("http://localhost:3000/comments", {
+        users_id: userId,
+        tickets_id: ticketId,
+        message: commentText
+
+      })
+      .then((response) => {
+        setData((prev) => {
+
+          const filteredCommentss = prev.comments.filter((comment) => {
+            return Comment.id !== response.data.id;
+          });
+         
+          const newData = {...prev,
+            comments: [...filteredTasks, response.data]}
+            setTicketComments(getCommentsByTicketId(newData, ticketId));
+           return newData
+      });
+    });
+  };
+
 
   return { 
     data: data,
@@ -375,6 +403,7 @@ export default function Application () {
     deleteProject,
     updateStatus,
     statusUpdate,
+    commentCreate,
 
   }
 }

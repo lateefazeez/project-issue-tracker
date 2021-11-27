@@ -37,6 +37,7 @@ const TicketPage = (props) => {
     deleteTicket,
     updateStatus,
     statusUpdate,
+    commentCreate,
 
   } = props;
 
@@ -137,6 +138,8 @@ const TicketPage = (props) => {
               <Table
                 decider="Comment"
                 data={TicketComments}
+                commentCreate={commentCreate}
+                LoneTicket={LoneTicket}
                 height="250px"
                 width="90%"
                 mWidth="95%"
