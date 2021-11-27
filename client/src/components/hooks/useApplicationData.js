@@ -241,7 +241,7 @@ export default function Application () {
 
     return axios.delete(`http://localhost:3000/tickets/${ticketId}`)
     .then(response => {
-      const filteredTickets = data.projects.filter((ticket) => {
+      const filteredTickets = data.tickets.filter((ticket) => {
         return ticket.id !== ticketId
       })
       setData(prev => ({...prev, tickets: [...filteredTickets]}))

@@ -120,7 +120,7 @@ export default function TicketListTable(props) {
                     <DropdownItem id={row.id} onClick={toggleEditTicket} >
                       Edit Ticket
                     </DropdownItem>
-                    <DropdownItem onClick={() => console.log("DELETE TICKET", row.id)}>
+                    <DropdownItem onClick={() => deleteTicket(row.id)}>
                       Delete Ticket
                     </DropdownItem>
                   </DropdownMenu>     

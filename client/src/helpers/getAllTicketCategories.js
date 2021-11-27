@@ -3,7 +3,7 @@
 export const getTicketByCategories = (state, cat) => {
   let totalIssues = 0
   for (const ticket of state.tickets) {
-    if (ticket.category.toLowerCase() == cat) {
+    if (ticket.category && ticket.category.toLowerCase() == cat) {
       totalIssues += 1
     }
   }
@@ -14,7 +14,7 @@ export const getTicketByCategories = (state, cat) => {
 export const getTicketByPriority = (state, ticketPriority) => {
   let totalPriority = 0
   for (const ticket of state.tickets) {
-    if (ticket.priority.toLowerCase() == ticketPriority) {
+    if (ticket.priority && ticket.priority.toLowerCase() == ticketPriority) {
       totalPriority += 1
     }
   }
@@ -24,7 +24,7 @@ export const getTicketByPriority = (state, ticketPriority) => {
 export const getTicketByStatus = (state, ticketStatus) => {
   let totalStatus = 0
   for (const ticket of state.tickets) {
-    if (ticket.status.toLowerCase() == ticketStatus) {
+    if (ticket.status && ticket.status.toLowerCase() == ticketStatus) {
       totalStatus += 1
     }
   }
