@@ -9,16 +9,16 @@ const UpdateProject = (props) => {
     projectData, 
     updateProject, 
     onClose, 
-    id
-
+    id,
+    users
   } = props
   
-
   const [project, setProject] = useState({
     title: projectData.title,
     description: projectData.description,
     start_date: projectData.start_date,
-    target_date: projectData.target_date,
+    end_date: projectData.end_date,
+    percentage_complete: projectData.percentage_complete,
     team: projectData.team
   })
 
@@ -28,7 +28,8 @@ const UpdateProject = (props) => {
       title: project.title,
       description: project.description,
       start_date: project.start_date,
-      target_date: project.target_date,
+      end_date: project.end_date,
+      percentage_complete: project.percentage_complete,
       team: project.team
     }
     updateProject(updatedProject, id)
@@ -41,6 +42,11 @@ const UpdateProject = (props) => {
       [e.target.id] : e.target.value
     })
   }
+
+  const projectUsers = (projectObject) => {
+    return users.filter((user) => user.projects_id === projectObject.id)
+  }
+
 
   
   return ( 
@@ -57,24 +63,24 @@ const UpdateProject = (props) => {
         </FormGroup>
         <div className="date__input">
           <FormGroup className="start__date">
-            <Label for="start" className="input-labels">Start Date</Label>
-            <Input className="form-inputs"  type="date" name="start" id="start" placeholder="date placeholder" bsSize="lg" value={project.start_date} onChange={handleChange}/>
+            <Label for="start_date" className="input-labels">Start Date</Label>
+            <Input className="form-inputs"  type="date" name="start_date" id="start_date" placeholder="date placeholder" bsSize="lg" value={project.start_date} onChange={handleChange}/>
           </FormGroup>
           <FormGroup>
-            <Label for="target" className="input-labels">Target Date</Label>
-            <Input className="form-inputs"  type="date" name="target" id="target" placeholder="date placeholder" bsSize="lg" value={project.target_date} onChange={handleChange}/>
+            <Label for="end_date" className="input-labels">Target Date</Label>
+            <Input className="form-inputs"  type="date" name="end_date" id="end_date" placeholder="date placeholder" bsSize="lg" value={project.end_date} onChange={handleChange}/>
           </FormGroup>
         </div>
 
         <FormGroup>
-          <Label for="progress" className="input-labels">Progress in %</Label>
-          <Input className="form-inputs" type="text" name="progress" id="progress" placeholder="Enter current progress" bsSize="lg" value={project.percentage_complete} onChange={handleChange}/>
+          <Label for="percentage_complete" className="input-labels">Progress in %</Label>
+          <Input className="form-inputs" type="text" name="percentage_complete" id="percentage_complete" placeholder="Enter current progress" bsSize="lg" value={project.percentage_complete} onChange={handleChange}/>
         </FormGroup>
         
         <FormGroup className="input-select">
           <Label for="team" className="input-labels">Update Team Members</Label>
           <Input className="form-inputs"  type="select" name="team" id="team" multiple bsSize="lg" value={project.team}>
-            { project.team && project.team.map((member) => {
+            { projectUsers(project) && projectUsers(project).map((member) => {
               return <option className="input-select">{member.first_name} {member.last_name}</option>})
             }
           </Input>

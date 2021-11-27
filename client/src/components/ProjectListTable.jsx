@@ -45,7 +45,10 @@ export default function ProjectListTable(props) {
     tickets,
     updateProject, 
     deleteProject,
-    onClose
+    onClose,
+    users,
+    userProjects,
+    availableUsers
   } = props
 
   let navigate = useNavigate()
@@ -53,7 +56,6 @@ export default function ProjectListTable(props) {
   const resetProjectId = () => setSelectedProjectId(null);
 
   const setProjectId = (event) => {
-    resetProjectId()
     setSelectedProjectId(event.target.id)
   }
 
@@ -90,6 +92,22 @@ export default function ProjectListTable(props) {
 
   }
 
+  // const availableUsers = (projectObject) => {
+  //   let usersProject;
+  //   let projectUsers = [];
+  //   if (userProjects) {
+  //     usersProject = userProjects.filter((userProject) => userProject.projects_id === projectObject.id)
+  //   }
+
+  //   users.forEach(user => {
+  //     usersProject.forEach(avUser => {
+  //       if (user.id === avUser.users_id) {
+  //         projectUsers.push(user.first_name)
+  //       }
+  //     })
+  //   })
+  //   return projectUsers.join(", ")
+  // }
 
   return (
     <Fragment>
@@ -114,9 +132,9 @@ export default function ProjectListTable(props) {
               <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{project.description}</TableCell>
               <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} ><ProgressBar className="Actual-bar" height="20px"color={ getProjectStatus(project).barColor}percent={project.percentage_complete}/></TableCell>
               <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{ getProjectStatus(project).projectStatus}</TableCell>
-              <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{"aman, matt, lateef"}</TableCell>
+              <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{availableUsers(project) }</TableCell>
               <TableCell>
-                <UncontrolledDropdown  >
+                <UncontrolledDropdown onClick={(e) => setProjectId(e)} >
                   <DropdownToggle
                     className="btn-icon-only text-light"
                     role=""
@@ -126,9 +144,9 @@ export default function ProjectListTable(props) {
                     id={project.id}
                     onClick={(e) => setProjectId(e)}
                   >
-                    <MoreVertIcon className="more-options" id={project.id} />
+                    <MoreVertIcon className="more-options" id={project.id} onClick={(e) => setProjectId(e)} />
                   </DropdownToggle>
-                  <DropdownMenu className="dropdown-menu-arrow" end >
+                  <DropdownMenu className="dropdown-menu-arrow" end onClick={(e) => setProjectId(e)} >
                     <DropdownItem id={project.id} onClick={toggleEditProject}>
                       Edit Project
                     </DropdownItem>
@@ -152,6 +170,7 @@ export default function ProjectListTable(props) {
         projectData={selectedProjectData}
         projectTeam={selectedProjectTeam}
         updateProject={updateProject}
+        users={users}
         />}
     </FormModal>
     </Fragment>

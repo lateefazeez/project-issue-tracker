@@ -19,12 +19,30 @@ const ProjectTable= (props) => {
     updateProject, 
     deleteProject,
     projectStatus,
-    addTeamMember
+    addTeamMember,
+    userProjects
   } = props;
 
   const percentageComplete = getPercentageComplete(projects)
   const toggleNewProject = () => {
     setIsNewProjectOpen(!isNewProjectOpen);
+  }
+
+  const availableUsers = (projectObject) => {
+    let usersProject;
+    let projectUsers = [];
+    if (userProjects) {
+      usersProject = userProjects.filter((userProject) => userProject.projects_id === projectObject.id)
+    }
+
+    users.forEach(user => {
+      usersProject.forEach(avUser => {
+        if (user.id === avUser.users_id) {
+          projectUsers.push(user.first_name)
+        }
+      })
+    })
+    return projectUsers.join(", ")
   }
   
 
@@ -50,7 +68,8 @@ const ProjectTable= (props) => {
                 onClose={toggleNewProject} 
                 createProject={createProject} 
                 users={users}
-                addTeamMember={addTeamMember}/>
+                addTeamMember={addTeamMember}
+                availableUsers={availableUsers}/>
             </FormModal>
           </div>
           
@@ -63,7 +82,12 @@ const ProjectTable= (props) => {
           updateProject={updateProject} 
           deleteProject={deleteProject}
           projectStatus={projectStatus}
-          onClose={toggleNewProject} />
+          onClose={toggleNewProject}
+          users={users} 
+          userProjects={userProjects}
+          availableUsers={availableUsers}
+          />
+          
       </div>
       <div className="bottomdash">
         <TablePaginations />

@@ -29,6 +29,10 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
 
     if @project.update(project_params)
+      users = User.where(id: params[:team])
+      users.each do |user|
+        @project.users << user
+      end
       render json: @project
     else
       render json: {error: @project.errors.messages}, status: 422

@@ -17,8 +17,8 @@ const CreateProject = (props) => {
   const { 
     onClose, 
     createProject,
-    addTeamMember,
-    users
+    users,
+    availableUsers,
   } = props
 
   const handleChange = (event) => {
@@ -55,6 +55,7 @@ const CreateProject = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     createProject(values)
+    .then(response => availableUsers(response))
     onClose()
   }
  

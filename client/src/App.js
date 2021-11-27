@@ -58,6 +58,7 @@ function App() {
               createProject={createProject} 
               updateProject={updateProject} 
               deleteProject={deleteProject}
+              userProjects={userProjects}
             />} />
         <Route 
           path="/tickets" 

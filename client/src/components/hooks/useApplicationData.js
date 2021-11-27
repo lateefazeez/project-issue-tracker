@@ -17,7 +17,6 @@ import {
 } from "../../helpers/barChartHelpers"
 
 
-
 export default function Application () {
   const [data, setData] = useState({
     projects: [],
@@ -56,7 +55,6 @@ export default function Application () {
       getAllUserProjects,
     ])
       .then((response) => {
-        console.log(response[2].data);
         setData((prev) => ({
           ...prev,
           projects: response[0].data.reverse(),
@@ -108,15 +106,16 @@ export default function Application () {
   const createProject = (project) => {
     return axios.post("http://localhost:3000/projects", { project, team: project.team })
     .then(response => {
-      console.log("NEW PROJECT: ", response.data)
-      setData(prevProjects => ({...prevProjects, projects: [...prevProjects.projects, response.data]}))
+   
+      setData(prev => ({...prev, projects: [...prev.projects, response.data], userProjects: [...prev.userProjects, {users_id: project.team[0], projects_id: response.data.id }, {users_id: project.team[1], projects_id: response.data.id}]}))
+      return response.data
     
     })
   }
   
   const updateProject = (project, id) => {
     return axios
-      .put(`http://localhost:3000/projects/${id}`, { project })
+      .put(`http://localhost:3000/projects/${id}`, { project, team: project.team })
       .then((response) => {
         const filteredProjects = data.projects.filter((project) => {
           return project.id !== response.data.id;
