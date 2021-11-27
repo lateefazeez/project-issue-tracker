@@ -34,15 +34,17 @@ const TicketPage = (props) => {
     userTicketDelete,
     createTicket, 
     updateTicket, 
-    deleteTicket 
+    deleteTicket,
+    updateStatus,
+    statusUpdate,
+    commentCreate,
+
   } = props;
 
-  console.log("WTF IS LONE TICKT", LoneTicket)
 
   const { state } = useLocation();
   const { id } = state;
   
-
   return (
     <div>
       <div className="tickets-upper">
@@ -89,7 +91,7 @@ const TicketPage = (props) => {
         <div className="bottom-tick">
           <div className="right-side">
             <div className="Health-box">
-              <HealthStatus data={LoneTicket} />
+              <HealthStatus data={LoneTicket} timeStat={TimeBar} taskStat={TaskBar} updateStatus={updateStatus} statusUpdate={statusUpdate}/>
               <HealthPriority data={LoneTicket} />
               <HealthType data={LoneTicket} />
               <Duration data={LoneTicket} />
@@ -136,6 +138,8 @@ const TicketPage = (props) => {
               <Table
                 decider="Comment"
                 data={TicketComments}
+                commentCreate={commentCreate}
+                LoneTicket={LoneTicket}
                 height="250px"
                 width="90%"
                 mWidth="95%"

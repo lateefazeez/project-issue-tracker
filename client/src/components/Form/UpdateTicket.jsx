@@ -43,6 +43,30 @@ const UpdateTicket = (props) => {
     })
   }
 
+   //new
+   const estimatedhours = (start, end) => {
+
+    if (!start || !end){
+      return
+    }
+
+    let hundredPercent = Date.parse(end) - Date.parse(start)
+    let hours = Math.floor(hundredPercent / (1000 * 60 * 60));
+
+    return Number(hours);
+
+}
+  const [duration, setDuration] = useState(0);
+
+  useEffect(() => {
+    setDuration(estimatedhours(ticket.start_date, ticket.end_date))
+  }, [ticket.start_date]);
+
+  useEffect(() => {
+    setDuration(estimatedhours(ticket.start_date, ticket.end_date))
+  }, [ticket.end_date]);
+
+
   
   return ( 
     <Container fluid>
@@ -72,16 +96,7 @@ const UpdateTicket = (props) => {
             <option className="input-select">Medium</option>
             <option className="input-select">Low</option>
           </Input>
-        </FormGroup>
-          {/* <FormGroup className="input-select">
-            <Label for="status" className="input-labels">Status</Label>
-            <Input className="form-inputs"  type="select" name="status" id="status" bsSize="lg" value={status}>
-            <option className="input-select">On Track</option>
-            <option className="input-select">In Progress</option>
-            <option className="input-select">At Risk</option>
-          </Input>
-        </FormGroup> */}
-          
+        </FormGroup>     
         </div>
 
         <div className="date__input">
@@ -96,19 +111,9 @@ const UpdateTicket = (props) => {
         </div>
 
         <div className="dual__input">
-        <FormGroup className="input-select spaces">
-          <Label for="team" className="input-labels">Update Team Members</Label>
-          <Input className="form-inputs"  type="select" name="team" id="team" multiple bsSize="lg" value={ticket.team}>
-            <option className="input-select">Fred Flinstone</option>
-            <option className="input-select">Barney Rubble</option>
-            <option className="input-select">Aman Hundal</option>
-            <option className="input-select">Matt Freeman</option>
-            <option className="input-select">Lateef Azeez</option>
-          </Input>
-        </FormGroup>
         <FormGroup>
           <Label for="plan_duration" className="input-labels">Time Estimate (hours)</Label>
-          <Input className="form-inputs" type="text" name="plan_duration" id="plan_duration" placeholder="Enter estimated hours" bsSize="lg" onChange={handleChange} value={ticket.plan_duration} />
+          <Input className="form-inputs" type="text" name="plan_duration" id="plan_duration" placeholder="Enter estimated hours" bsSize="lg" onChange={handleChange} value={duration} />
         </FormGroup>
         </div>
         <FormGroup className="button-container">

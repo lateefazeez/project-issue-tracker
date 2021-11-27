@@ -78,10 +78,24 @@ const getDevsByTicketId = (data, id) => {
   return devs
 };
 
+const updateStatus = ( TimeBarVal, TaskbarVal ) => {
+
+  let status
+ 
+      if (Math.floor(TimeBarVal) > TaskbarVal){
+        status = "AT RISK"
+      } else {
+        status = "On Track"
+      }
+    
+    return status
+}
+
 
 module.exports = {
   getTicketById,
   getTasksByTicketId,
   getDevsByTicketId,
   getCommentsByTicketId,
+  updateStatus,
 };

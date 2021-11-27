@@ -13,17 +13,17 @@ import List from '@mui/material/List';
 
 const Table = (props) => {
 
-  const { data, projectId, decider, height, width, mWidth, getTicketId, taskUpdate, taskDelete, userTicketCreate, userTicketDelete, createTicket, updateTicket, deleteTicket } = props;
-
+  const { data, projectId, decider, height, width, mWidth, getTicketId, taskUpdate, taskDelete, userTicketCreate, userTicketDelete, createTicket, updateTicket, deleteTicket, commentCreate } = props;
 
   return (
     <div>
       <div className="projects-box-header" id={props.decider + "-top"}>
         <Header projectId={projectId} createTicket={createTicket} decider={decider}/>
       </div>
-      <AddList userTicketDelete={userTicketDelete} userTicketCreate={userTicketCreate} taskUpdate={taskUpdate} taskDelete={taskDelete} projectId={projectId} data={data} decider={decider} getTicketId={getTicketId} height={height} width={width} mWidth={mWidth} updateTicket={updateTicket} deleteTicket={deleteTicket}/>
+      <AddList userTicketDelete={userTicketDelete} userTicketCreate={userTicketCreate} taskUpdate={taskUpdate} taskDelete={taskDelete} projectId={projectId} data={data} decider={decider} 
+      getTicketId={getTicketId} height={height} width={width} mWidth={mWidth} updateTicket={updateTicket} deleteTicket={deleteTicket}/>
       <div className="projects-box-footer"id={props.decider + "-bottom"}>
-            <AddButtons decider={decider}/>
+            <AddButtons decider={decider} commentCreate={commentCreate} LoneTicket={LoneTicket}/>
         </div>
     </div>
   );
@@ -82,8 +82,8 @@ const Header = (props) => {
 
 
 const AddButtons = (props) => {
-
-  const { decider } = props;
+  
+  const { decider, commentCreate } = props;
 
    console.log("im props " + props.decider)
 
@@ -93,7 +93,7 @@ const AddButtons = (props) => {
     );
   } else if (decider === "Comment") {
     return(
-    <CommentEntry/>
+    <CommentEntry commentCreate={commentCreate} LoneTicket={LoneTicket}/>
     );
   } else {
     return "";
