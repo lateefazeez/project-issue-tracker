@@ -19,6 +19,7 @@ const CreateProject = (props) => {
     createProject,
     users,
     availableUsers,
+    reload
   } = props
 
   const handleChange = (event) => {
@@ -56,6 +57,7 @@ const CreateProject = (props) => {
     e.preventDefault()
     createProject(values)
     .then(response => availableUsers(response))
+    reload()
     onClose()
   }
  

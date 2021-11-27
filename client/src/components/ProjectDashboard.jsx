@@ -16,9 +16,9 @@ const ProjectDashboard = (props) => {
     updateProject,
     deleteProject,
     addTeamMember,
-    userProjects 
+    userProjects,
+    reload 
   } = props
-  const reload = () =>window.location.reload();
 
   return ( 
     <div className="project--dashboard">
@@ -33,6 +33,7 @@ const ProjectDashboard = (props) => {
       deleteProject={deleteProject}
       addTeamMember={addTeamMember}
       userProjects={userProjects}
+      reload={reload}
        />
        }
 

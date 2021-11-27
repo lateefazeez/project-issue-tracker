@@ -41,6 +41,8 @@ function App() {
     chartData
   } = useApplication()
 
+  const reload = () => window.location.reload()
+
   return (
     <div className="App">
       <Routes>
@@ -59,6 +61,7 @@ function App() {
               updateProject={updateProject} 
               deleteProject={deleteProject}
               userProjects={userProjects}
+              reload={reload}
             />} />
         <Route 
           path="/tickets" 

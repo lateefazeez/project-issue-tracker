@@ -20,7 +20,8 @@ const ProjectTable= (props) => {
     deleteProject,
     projectStatus,
     addTeamMember,
-    userProjects
+    userProjects,
+    reload
   } = props;
 
   const percentageComplete = getPercentageComplete(projects)
@@ -45,7 +46,6 @@ const ProjectTable= (props) => {
     return projectUsers.join(", ")
   }
   
-
  
   return (
     <div className="dash">
@@ -69,7 +69,8 @@ const ProjectTable= (props) => {
                 createProject={createProject} 
                 users={users}
                 addTeamMember={addTeamMember}
-                availableUsers={availableUsers}/>
+                availableUsers={availableUsers}
+                reload={reload}/>
             </FormModal>
           </div>
           
@@ -86,6 +87,7 @@ const ProjectTable= (props) => {
           users={users} 
           userProjects={userProjects}
           availableUsers={availableUsers}
+          reload={reload}
           />
           
       </div>

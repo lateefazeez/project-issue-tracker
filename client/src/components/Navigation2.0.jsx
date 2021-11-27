@@ -82,7 +82,8 @@ export default function PersistentDrawerLeft(props) {
     updateProject, 
     deleteProject,
     addTeamMember,
-    userProjects
+    userProjects,
+    reload
   } = props;
 
   const theme = useTheme();
@@ -160,7 +161,8 @@ export default function PersistentDrawerLeft(props) {
             updateProject={updateProject}
             deleteProject={deleteProject}
             addTeamMember={addTeamMember}
-            userProjects={userProjects}/>
+            userProjects={userProjects}
+            reload={reload}/>
       </Main>
     </Box>
   );

@@ -92,23 +92,6 @@ export default function ProjectListTable(props) {
 
   }
 
-  // const availableUsers = (projectObject) => {
-  //   let usersProject;
-  //   let projectUsers = [];
-  //   if (userProjects) {
-  //     usersProject = userProjects.filter((userProject) => userProject.projects_id === projectObject.id)
-  //   }
-
-  //   users.forEach(user => {
-  //     usersProject.forEach(avUser => {
-  //       if (user.id === avUser.users_id) {
-  //         projectUsers.push(user.first_name)
-  //       }
-  //     })
-  //   })
-  //   return projectUsers.join(", ")
-  // }
-
   return (
     <Fragment>
     <TableContainer style={{ overflow: "hidden", borderTop: "0.2px solid rgb(112, 112, 112)", borderLeft: "0.2px solid rgb(112, 112, 112)", borderRight: "0.2px solid rgb(112, 112, 112)", borderTopLeftRadius: 10, borderTopRightRadius: 10  }} >
