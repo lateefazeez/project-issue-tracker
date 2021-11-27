@@ -15,7 +15,7 @@ const getTicketById = (data, id) => {
 
 const getTasksByTicketId = (data, id) => {
   let tasks = [];
-
+  console.log("DATA_ID: ", data, id)
   let list = data.tasks;
 
   list.forEach((task) => {
