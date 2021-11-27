@@ -13,7 +13,7 @@ import List from '@mui/material/List';
 
 const Table = (props) => {
 
-  const { data, projectId, decider, height, width, mWidth, getTicketId, taskUpdate, taskDelete, userTicketCreate, userTicketDelete, createTicket, updateTicket, deleteTicket, commentCreate } = props;
+  const { data, projectId, decider, height, width, mWidth, getTicketId, taskUpdate, taskDelete, userTicketCreate, userTicketDelete, createTicket, updateTicket, deleteTicket, commentCreate, LoneTicket } = props;
 
   return (
     <div>
@@ -83,7 +83,7 @@ const Header = (props) => {
 
 const AddButtons = (props) => {
   
-  const { decider, commentCreate } = props;
+  const { decider, commentCreate, LoneTicket } = props;
 
    console.log("im props " + props.decider)
 

@@ -4,6 +4,7 @@ import PrimaryButton from "./PrimaryButton";
 const CommentEntry = (props) => {
 
   const { commentCreate, LoneTicket } = props;
+  const [comment, setComment] = useState("")
 
   return ( 
     <Fragment>

@@ -364,7 +364,7 @@ export default function Application () {
           });
          
           const newData = {...prev,
-            comments: [...filteredTasks, response.data]}
+            comments: [...filteredCommentss, response.data]}
             setTicketComments(getCommentsByTicketId(newData, ticketId));
            return newData
       });
