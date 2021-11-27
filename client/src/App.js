@@ -40,6 +40,8 @@ function App() {
     deleteTicket,
     updateStatus,
     statusUpdate,
+    commentCreate,
+    commentDelete,
 
     chartData
   } = useApplication()
@@ -88,6 +90,8 @@ function App() {
               deleteTicket={deleteTicket}
               updateStatus={updateStatus}
               statusUpdate={statusUpdate}
+              commentCreate={commentCreate}
+              commentDelete={commentDelete}
             />
           }
         />

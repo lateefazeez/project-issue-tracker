@@ -13,7 +13,7 @@ import List from '@mui/material/List';
 
 const Table = (props) => {
 
-  const { data, projectId, decider, height, width, mWidth, getTicketId, taskUpdate, taskDelete, userTicketCreate, userTicketDelete, createTicket, updateTicket, deleteTicket, commentCreate, LoneTicket } = props;
+  const { data, projectId, decider, height, width, mWidth, getTicketId, taskUpdate, taskDelete, userTicketCreate, userTicketDelete, createTicket, updateTicket, deleteTicket, commentCreate, commentDelete, LoneTicket } = props;
 
   return (
     <div>
@@ -21,7 +21,7 @@ const Table = (props) => {
         <Header projectId={projectId} createTicket={createTicket} decider={decider}/>
       </div>
       <AddList userTicketDelete={userTicketDelete} userTicketCreate={userTicketCreate} taskUpdate={taskUpdate} taskDelete={taskDelete} projectId={projectId} data={data} decider={decider} 
-      getTicketId={getTicketId} height={height} width={width} mWidth={mWidth} updateTicket={updateTicket} deleteTicket={deleteTicket}/>
+      getTicketId={getTicketId} height={height} width={width} mWidth={mWidth} updateTicket={updateTicket} deleteTicket={deleteTicket} commentDelete={commentDelete}/>
       <div className="projects-box-footer"id={props.decider + "-bottom"}>
             <AddButtons decider={decider} commentCreate={commentCreate} LoneTicket={LoneTicket}/>
         </div>
@@ -102,7 +102,7 @@ const AddButtons = (props) => {
 
 const AddList = (props) => {
 
-  const { data, projectId, decider, height, width, mWidth, getTicketId, taskUpdate, taskDelete, userTicketCreate, userTicketDelete, updateTicket, deleteTicket} = props;
+  const { data, projectId, decider, height, width, mWidth, getTicketId, taskUpdate, taskDelete, userTicketCreate, userTicketDelete, updateTicket, deleteTicket, commentDelete} = props;
 
 
 if (props.decider === "Devs" || props.decider === "Task" || props.decider === "Comment"){
@@ -119,7 +119,7 @@ return(
         }}
         subheader={<li />}
           >
-          <ListMaker taskUpdate={taskUpdate} taskDelete={taskDelete} decider={decider} getTicketId={getTicketId} data={data} userTicketDelete={userTicketDelete} updateTicket={updateTicket} deleteTicket={deleteTicket}/>
+          <ListMaker taskUpdate={taskUpdate} taskDelete={taskDelete} decider={decider} getTicketId={getTicketId} data={data} userTicketDelete={userTicketDelete} updateTicket={updateTicket} deleteTicket={deleteTicket} commentDelete={commentDelete}/>
           </List>
         </Box>
 );

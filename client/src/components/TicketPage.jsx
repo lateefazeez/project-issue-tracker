@@ -38,15 +38,31 @@ const TicketPage = (props) => {
     updateStatus,
     statusUpdate,
     commentCreate,
+    commentDelete,
+ 
 
   } = props;
 
-
   const { state } = useLocation();
   const { id } = state;
+
+  const getProjById = (data, id) => {
+    let project = [];
+   
+    let list = data.projects;
+   
+    list.forEach((proj) => {
+      if (proj.id === id) {
+        project.push(proj);
+      }
+    });
   
+    return project[0].title
+  };
+
   return (
     <div>
+      <h2 className="project-header">Project Name: {getProjById(data, id)}</h2>
       <div className="tickets-upper">
         <div className="Team-box">
           <Table projectId={id} data={data} decider="Team" userTicketCreate={userTicketCreate} createTicket={createTicket} updateTicket={updateTicket} deleteTicket={deleteTicket} />
@@ -69,7 +85,7 @@ const TicketPage = (props) => {
         <div className="top-tick">
           <h4 id="mini" className="mindiv">
             {" "}
-            <strong>Ticket Information</strong>
+            <strong>Ticket Information: {LoneTicket[0] && LoneTicket[0].title}</strong>
           </h4>
           <div className="new-task">
             <PrimaryButton
@@ -140,6 +156,7 @@ const TicketPage = (props) => {
                 data={TicketComments}
                 commentCreate={commentCreate}
                 LoneTicket={LoneTicket}
+                commentDelete={commentDelete}
                 height="250px"
                 width="90%"
                 mWidth="95%"

@@ -5,7 +5,7 @@ import { DropdownMenu, DropdownItem, UncontrolledDropdown, DropdownToggle } from
 
 const CommentListItem = (props) => {
 
-  const { author, message } = props;
+  const { id, author, message, commentDelete } = props;
 
   const commentClass = classNames("list__item", {
    "list__item--selected": props.selected,
@@ -20,8 +20,8 @@ const CommentListItem = (props) => {
    >
      <div className="ComPost">
        <div className="ComPre">
-     <div><strong>{props.author}</strong></div>
-     <div>{props.message}</div>
+     <div><strong>{author}</strong></div>
+     <div>{message}</div>
      </div>
      <UncontrolledDropdown onClick={(e) => e.stopPropagation()}>
                   <DropdownToggle
@@ -35,7 +35,7 @@ const CommentListItem = (props) => {
                     <MoreVertIcon className="comtiny" />
                   </DropdownToggle>
                   <DropdownMenu className="dropdown-menu-arrow" end onClick={(e) => console.log(e)}>
-                    <DropdownItem onClick={() => { console.log("hi")}}>
+                    <DropdownItem onClick={() => {commentDelete(id)}}>
                       Delete Comment
                     </DropdownItem>
                   </DropdownMenu>     
