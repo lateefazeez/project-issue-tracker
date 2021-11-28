@@ -42,6 +42,8 @@ function App() {
     statusUpdate,
     commentCreate,
     commentDelete,
+    userProjectCreate,
+    userProjectDelete,
     chartData
   } = useApplication()
 
@@ -91,6 +93,8 @@ function App() {
               statusUpdate={statusUpdate}
               commentCreate={commentCreate}
               commentDelete={commentDelete}
+              userProjectCreate={userProjectCreate}
+              userProjectDelete={userProjectDelete}
             />
           }
         />

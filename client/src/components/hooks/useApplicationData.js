@@ -388,6 +388,46 @@ export default function Application () {
     });
   };
 
+
+  const userProjectCreate = (userId, projId) => {
+
+    return axios
+      .post("http://localhost:3000/user_projects", {
+        users_id: userId,
+        projects_id: projId
+      })
+      .then((response) => {
+        setData((prev) => {
+
+          const filteredUserProjects = prev.userProjects.filter((userProject) => {
+            return userProject.id !== response.data.id;
+          });
+         
+          const newData = {...prev,
+            userProjects: [...filteredUserProjects, response.data]}
+           return newData
+      });
+    });
+  };
+
+  const userProjectDelete = (id) => {
+    return axios
+      .delete(`http://localhost:3000/users_projects/${id}`)
+      .then((response) => {
+        
+        setData((prev) => {
+
+          const filteredUserProjects = data.userProjectts.filter((userProject) => {
+            return userProject.id !== id;
+          });
+
+         const newData = { ...prev, 
+          userProjects: [...filteredUserProjects]};
+           return newData
+      });
+    });
+  };
+
   return { 
     data: data,
     projects: data.projects,
@@ -420,6 +460,8 @@ export default function Application () {
     statusUpdate,
     commentCreate,
     commentDelete,
+    userProjectCreate,
+    userProjectDelete,
 
   }
 }

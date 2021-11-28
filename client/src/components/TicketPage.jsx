@@ -32,14 +32,15 @@ const TicketPage = (props) => {
     getTicketId,
     userTicketCreate,
     userTicketDelete,
-    createTicket, 
-    updateTicket, 
+    createTicket,
+    updateTicket,
     deleteTicket,
     updateStatus,
     statusUpdate,
     commentCreate,
     commentDelete,
-
+    userProjectCreate,
+    userProjectDelete,
   } = props;
 
   const { state } = useLocation();
@@ -47,26 +48,44 @@ const TicketPage = (props) => {
 
   const getProjById = (data, id) => {
     let project = [];
-   
+
     let list = data.projects;
-   
+
     list.forEach((proj) => {
       if (proj.id === id) {
         project.push(proj);
       }
     });
-  
-    return project[0] && project[0].title
+
+    return project[0] && project[0].title;
   };
 
-  useEffect(() => {getTicketId(null) }, []);
+  const getUsers = (data) => {
+    return data.users;
+  };
+
+  const availableUsers = getUsers(data);
+
+  useEffect(() => {
+    getTicketId(null);
+  }, []);
 
   return (
     <div>
       <h2 className="project-header">Project Name: {getProjById(data, id)}</h2>
       <div className="tickets-upper">
         <div className="Team-box">
-          <Table projectId={id} data={data} decider="Team" userTicketCreate={userTicketCreate} createTicket={createTicket} updateTicket={updateTicket} deleteTicket={deleteTicket} />
+          <Table
+            projectId={id}
+            data={data}
+            decider="Team"
+            userTicketCreate={userTicketCreate}
+            createTicket={createTicket}
+            updateTicket={updateTicket}
+            deleteTicket={deleteTicket}
+            availableUsers={availableUsers}
+            userProjectCreate={userProjectCreate}
+          />
         </div>
 
         <div className="Tickets-box">
@@ -75,8 +94,8 @@ const TicketPage = (props) => {
             getTicketId={getTicketId}
             projectId={id}
             data={data}
-            createTicket={createTicket} 
-            updateTicket={updateTicket} 
+            createTicket={createTicket}
+            updateTicket={updateTicket}
             deleteTicket={deleteTicket}
           />
         </div>
@@ -86,7 +105,9 @@ const TicketPage = (props) => {
         <div className="top-tick">
           <h4 id="mini" className="mindiv">
             {" "}
-            <strong>Ticket Information: {LoneTicket[0] && LoneTicket[0].title}</strong>
+            <strong>
+              Ticket Information: {LoneTicket[0] && LoneTicket[0].title}
+            </strong>
           </h4>
           <div className="new-task">
             <PrimaryButton
@@ -108,7 +129,13 @@ const TicketPage = (props) => {
         <div className="bottom-tick">
           <div className="right-side">
             <div className="Health-box">
-              <HealthStatus data={LoneTicket} timeStat={TimeBar} taskStat={TaskBar} updateStatus={updateStatus} statusUpdate={statusUpdate}/>
+              <HealthStatus
+                data={LoneTicket}
+                timeStat={TimeBar}
+                taskStat={TaskBar}
+                updateStatus={updateStatus}
+                statusUpdate={statusUpdate}
+              />
               <HealthPriority data={LoneTicket} />
               <HealthType data={LoneTicket} />
               <Duration data={LoneTicket} />
