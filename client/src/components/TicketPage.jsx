@@ -85,6 +85,7 @@ const TicketPage = (props) => {
             deleteTicket={deleteTicket}
             availableUsers={availableUsers}
             userProjectCreate={userProjectCreate}
+            userProjectDelete={userProjectDelete}
           />
         </div>
 

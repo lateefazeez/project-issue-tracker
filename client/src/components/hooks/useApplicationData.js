@@ -390,6 +390,20 @@ export default function Application () {
     });
   };
 
+  const createUser = (user) => {
+    return axios.post("http://localhost:3000/users", { user })
+    .then(response => {
+      setData(prev => ({...prev, users: [...prev.users, response.data]}))
+    })
+  }
+
+  const loginUser = (user) => {
+    return axios.post("http://localhost:3000/sessions", { user })
+    .then(result => {
+      console.log("USER:", result.data)
+      setData(prev => ({...prev, users: [...prev.users, result.data]}))
+    })
+  }
 
   const userProjectCreate = (userId, projId) => {
 
@@ -412,29 +426,16 @@ export default function Application () {
     });
   };
 
-  const createUser = (user) => {
-    return axios.post("http://localhost:3000/users", { user })
-    .then(response => {
-      setData(prev => ({...prev, users: [...prev.users, response.data]}))
-    })
-  }
-
-  const loginUser = (user) => {
-    return axios.post("http://localhost:3000/sessions", { user })
-    .then(result => {
-      console.log("USER:", result.data)
-      setData(prev => ({...prev, users: [...prev.users, result.data]}))
-    })
-  }
-
+  
   const userProjectDelete = (id) => {
+
     return axios
-      .delete(`http://localhost:3000/users_projects/${id}`)
+      .delete(`http://localhost:3000/user_projects/${id}`)
       .then((response) => {
         
         setData((prev) => {
 
-          const filteredUserProjects = data.userProjectts.filter((userProject) => {
+          const filteredUserProjects = data.userProjects.filter((userProject) => {
             return userProject.id !== id;
           });
 
