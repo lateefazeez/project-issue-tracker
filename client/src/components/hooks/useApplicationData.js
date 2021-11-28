@@ -211,7 +211,7 @@ export default function Application () {
 
   const createTicket = (ticket) => {
 
-    return axios.post("http://localhost:3000/tickets", { title: ticket.title, description: ticket.description, category: ticket.category, priority: ticket.priority, status: ticket.status, plan_duration: ticket.time, start_date: ticket.start, end_date: ticket.end_date, projects_id: ticket.projects_id, users_id: ticket.users_id })
+    return axios.post("http://localhost:3000/tickets", { title: ticket.title, description: ticket.description, category: ticket.category, priority: ticket.priority, status: ticket.status, plan_duration: ticket.duration, start_date: ticket.start, end_date: ticket.end_date, projects_id: ticket.projects_id, users_id: ticket.users_id })
     .then(response => {
       setData(prevTickets=> ({...prevTickets, tickets: [...prevTickets.tickets, response.data]}))
     })
@@ -345,17 +345,14 @@ export default function Application () {
 
   }
 
-  const commentCreate = (userId, commentText) => {
+  const commentCreate = (commentText) => {
 
-    if (!LoneTicket[0]) {
-      return
-    }
-    const ticketId = LoneTicket[0].id
     return axios
       .post("http://localhost:3000/comments", {
-        users_id: userId,
-        tickets_id: ticketId,
-        message: commentText
+        users_id: commentText.users_id,
+        tickets_id: commentText.tickets_id,
+        message: commentText.message
+
       })
       .then((response) => {
         setData((prev) => {
@@ -366,7 +363,50 @@ export default function Application () {
          
           const newData = {...prev,
             comments: [...filteredCommentss, response.data]}
-            setTicketComments(getCommentsByTicketId(newData, ticketId));
+            setTicketComments(getCommentsByTicketId(newData, commentText.tickets_id));
+           return newData
+      });
+    });
+  };
+
+  const commentDelete = (id) => {
+    return axios
+      .delete(`http://localhost:3000/comments/${id}`)
+      .then((response) => {
+        
+        setData((prev) => {
+
+          const filteredComments = data.comments.filter((comment) => {
+            return comment.id !== id;
+          });
+
+         const newData = { ...prev, 
+          comments: [...filteredComments]};
+           
+           const ticketId = LoneTicket[0].id
+           setTicketComments(getCommentsByTicketId(newData, ticketId));
+           return newData
+      });
+    });
+  };
+
+
+  const userProjectCreate = (userId, projId) => {
+
+    return axios
+      .post("http://localhost:3000/user_projects", {
+        users_id: userId,
+        projects_id: projId
+      })
+      .then((response) => {
+        setData((prev) => {
+
+          const filteredUserProjects = prev.userProjects.filter((userProject) => {
+            return userProject.id !== response.data.id;
+          });
+         
+          const newData = {...prev,
+            userProjects: [...filteredUserProjects, response.data]}
            return newData
       });
     });
@@ -387,6 +427,23 @@ export default function Application () {
     })
   }
 
+  const userProjectDelete = (id) => {
+    return axios
+      .delete(`http://localhost:3000/users_projects/${id}`)
+      .then((response) => {
+        
+        setData((prev) => {
+
+          const filteredUserProjects = data.userProjectts.filter((userProject) => {
+            return userProject.id !== id;
+          });
+
+         const newData = { ...prev, 
+          userProjects: [...filteredUserProjects]};
+           return newData
+      });
+    });
+  };
 
   return { 
     data: data,
@@ -421,7 +478,11 @@ export default function Application () {
     commentCreate,
     isLoading:data.isLoading,
     createUser,
-    loginUser
+    loginUser,
+    commentDelete,
+    userProjectCreate,
+    userProjectDelete,
+
   }
 }
  

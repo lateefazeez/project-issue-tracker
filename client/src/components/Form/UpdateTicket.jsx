@@ -29,7 +29,7 @@ const UpdateTicket = (props) => {
       category: ticket.category,
       end_date: ticket.end_date,
       priority: ticket.priority,
-      plan_duration: ticket.plan_duration,
+      plan_duration: duration,
       start_date: ticket.start_date
     }
     updateTicket(updatedticket, id)
@@ -112,8 +112,8 @@ const UpdateTicket = (props) => {
 
         <div className="dual__input">
         <FormGroup>
-          <Label for="plan_duration" className="input-labels">Time Estimate (hours)</Label>
-          <Input className="form-inputs" type="text" name="plan_duration" id="plan_duration" placeholder="Enter estimated hours" bsSize="lg" onChange={handleChange} value={duration} />
+          <Label for="duration" className="input-labels">Time Estimate (hours)</Label>
+          <Input className="form-inputs" type="text" name="duration" id="duration" placeholder="Enter estimated hours" bsSize="lg" onChange={handleChange} value={duration} />
         </FormGroup>
         </div>
         <FormGroup className="button-container">

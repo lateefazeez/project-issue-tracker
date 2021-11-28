@@ -14,7 +14,7 @@ const HealthStatus = (props) => {
       let TicketId = data[0].id 
       setStatus(updateStatus(timeStat, taskStat))
       statusUpdate(TicketId, updateStatus(timeStat, taskStat))
-    
+
   }, [taskStat]);
 
   useEffect(() => {
@@ -24,18 +24,22 @@ const HealthStatus = (props) => {
       let TicketId =  data[0].id 
       setStatus(updateStatus(timeStat, taskStat))
       statusUpdate(TicketId, updateStatus(timeStat, taskStat))
-    
-    
+
   }, [timeStat]);
 
+    let color
+  if (status === "AT RISK") {
+    color = "RED"
+  } 
 
-  
-  const statusId = "status--atrisk"
+      const statClass = classNames("healthy", 
+      {"healthy-atrisk": color});
+
   return (
     <div className="container">
-      <p className="STT1">STATUS</p>
-      <div className="health">
-        <p id={statusId}>{status}</p>
+      <p className="STT">STATUS</p>
+      <div id="help2" className="health">
+        <p className={statClass}>{status}</p>
       </div>
     </div>
   );

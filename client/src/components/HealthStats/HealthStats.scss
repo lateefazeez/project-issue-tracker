@@ -1,3 +1,4 @@
+
 @import "../../styles/mixins.scss";
 @import "../../styles/variables.scss";
 
@@ -8,38 +9,44 @@
 }
 
 .health{
-  color: $white;
+  color: $text-light;
   background-color: black;
-  width: 80%;
+  width: 100%;
   border-radius: 1em;
   display: flex;
   justify-content: center;
   text-transform: uppercase;
-  padding-top: 0px;
-  padding-bottom: -5px;
+
 
 }
+
+.healthy {
+  color: green;
+  margin-bottom: auto;
+
+  &-atrisk {
+    color: red;
+    margin-bottom: auto;
+  }
+}
+
+#help{
+  height: 24px;
+  width: 50%;
+}
+
+
 
 .STT {
-  margin-left: 26%;
+  display: flex;
+  width: 100%;
+  align-content: center;
+  justify-content: center;
 }
 
-.STT1 {
-  margin-left: 18%;
-}
 
-.STT2 {
-  margin-left: 17%;
-}
 
-.STT3 {
-  margin-left: 0%;
-}
 
-#status--atrisk {
-  color: red;
-  margin-bottom: auto;
-}
 
 #hlth {
   margin-bottom: auto;
@@ -55,5 +62,9 @@
 }
 
 .cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
   width: 150%;
 }

@@ -45,7 +45,11 @@ function App() {
     isLoading,
     chartData,
     createUser,
-    loginUser
+    loginUser,
+    commentCreate,
+    commentDelete,
+    userProjectCreate,
+    userProjectDelete,
   } = useApplication()
 
   const reload = () => window.location.reload()
@@ -101,6 +105,10 @@ function App() {
               deleteTicket={deleteTicket}
               updateStatus={updateStatus}
               statusUpdate={statusUpdate}
+              commentCreate={commentCreate}
+              commentDelete={commentDelete}
+              userProjectCreate={userProjectCreate}
+              userProjectDelete={userProjectDelete}
             />
           }
         />

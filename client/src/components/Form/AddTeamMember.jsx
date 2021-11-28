@@ -6,26 +6,70 @@ import './CreateProject.scss'
 
 
 const AddTeamMember = (props) => {
-  const [team, setTeam] = useState([])
+ 
+  const [values, setValues] = useState({ 
+    team: []
+  })
 
-  const addMembers = () => console.log("New Member Added")
+  const { 
+    onClose,
+    availableUsers,
+    userProjectCreate,
+    projectId,
+    reload
+  } = props
+
+  const handleChange = (event) => {
+    //  event.preventDefault()
+    let opts = [], opt;
+    if (
+      event.target.type === "select" || event.target.type === "select-multiple") {
+      
+      for (let i = 0, len = event.target.options.length; i < len; i++) {
+        opt = event.target.options[i];
+      
+        if (opt.selected) {
+          opts.push(opt.value);
+        }
+      }
+      setValues({
+        [event.target.name] : opts
+      });
+      
+    }    
+  }
+
+  console.log(values)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+      userProjectCreate(values, projectId)
+    onClose()
+  }
+ 
   
   return ( 
     <Container fluid>
-      <Form className="project__form">
+      <Form className="project__form" onSubmit={handleSubmit}>
       <Label className="form__header">Add Member</Label>
         <FormGroup className="input-select">
           <Label for="team" className="input-labels">Available Users</Label>
-          <Input className="form-inputs"  type="select" name="team" id="team" multiple bsSize="lg" >
-            <option className="input-select">Fred Flinstone</option>
-            <option className="input-select">Barney Rubble</option>
-            <option className="input-select">Aman Hundal</option>
-            <option className="input-select">Matt Freeman</option>
-            <option className="input-select">Lateef Azeez</option>
+          <Input className="form-inputs"  type="select" name="team" id="team" multiple bsSize="lg" onChange={handleChange}>
+          { availableUsers && availableUsers.map((user, index) => (
+              <option 
+                id={index}
+                name="team"
+                key={user.id} 
+                value={user.id}
+                className="input-select"
+                >
+                  {user.first_name} {user.last_name}
+              </option>
+            ))}
           </Input>
         </FormGroup>
         <FormGroup className="button-container">
-          <Button className="submit_btn" onClick={addMembers}>Add Selected</Button>
+          <Button className="submit_btn">Add Selected</Button>
         </FormGroup>
         
       </Form>

@@ -3,7 +3,7 @@ const HealthPriority = (props) => {
   const {data} = props;
   return (
     <div className="container">
-      <p className="STT2">PRIORITY</p>
+      <p className="STT">PRIORITY</p>
       <div className="health">
         <p id="hlth">{data.length && data[0].priority}</p>
       </div>

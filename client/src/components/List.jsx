@@ -38,8 +38,10 @@ const ListMaker = (props) => {
    return (
      <CommentListItem
      key={comment.id}
+     id={comment.id}
      author={comment.author.first_name + " " + comment.author.last_name}
      message={comment.message}
+     commentDelete={props.commentDelete}
      />
    );
  });

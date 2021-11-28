@@ -74,7 +74,7 @@ export default function TicketListTable(props) {
   }
 
   const projectTickets =  getTicketsByProjectID(projectId, data.tickets);
-  const tickets = projectUsersRevised(projectTickets, data.users);
+  const tickets = projectUsersRevised(projectTickets, data.users).sort((a,b) => a.id -b.id);
 
   return (
     <Fragment>
