@@ -107,7 +107,7 @@ export default function ProjectListTable(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {projects.map((project) => (
+          {!projects ? "Loading..." : projects.map((project) => (
             <TableRow key={project.id} className="tabledata" id={project.id} >
               <TableCell className="projectitle"  onClick={() => navigate("/tickets", { state: { id: project.id}, onClose: { onClose: onClose } })} component="th" scope="project">
                 {project.title}

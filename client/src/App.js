@@ -1,4 +1,4 @@
-
+import { useState } from "react"
 import { Routes, Route } from "react-router-dom";
 import SelectProject from "./components/SelectProject"
 import Signup from "./components/Signup"
@@ -10,6 +10,8 @@ import useApplication from "./components/hooks/useApplicationData";
 import "./App.scss"
 
 function App() {
+
+  // const [isLoading, setIsLoading] = useState("true")
 
   const {
     data,
@@ -40,17 +42,27 @@ function App() {
     deleteTicket,
     updateStatus,
     statusUpdate,
-
-    chartData
+    isLoading,
+    chartData,
+    createUser,
+    loginUser
   } = useApplication()
 
   const reload = () => window.location.reload()
 
   return (
+    //  isLoading ? "Loading..." :  
     <div className="App">
       <Routes>
         <Route path="/" element={<SelectProject />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route 
+          path="/signup" 
+          element={
+            <Signup 
+              createUser={createUser}
+              loginUser={loginUser} 
+            />
+            } />
         <Route
           path="/navigation"
           element={
@@ -65,7 +77,8 @@ function App() {
               deleteProject={deleteProject}
               userProjects={userProjects}
               reload={reload}
-            />} />
+              isLoading={isLoading}
+            /> } />
         <Route 
           path="/tickets" 
           element={
@@ -92,7 +105,10 @@ function App() {
           }
         />
       </Routes>
+      setIsLoading(false)
     </div>
+    
+    
   );
 }
 

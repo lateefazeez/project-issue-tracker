@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -6,6 +7,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
+import PropTypes from "prop-types"
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
@@ -23,6 +25,7 @@ import './Navigation.scss'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ProjectDashboard from './ProjectDashboard';
 import TicketPage from './TicketPage';
+
 
 
 const drawerWidth = 240;
@@ -83,7 +86,11 @@ export default function PersistentDrawerLeft(props) {
     deleteProject,
     addTeamMember,
     userProjects,
-    reload
+    reload,
+    isLoading,
+    loggedIn, 
+    name, 
+    imageUrl 
   } = props;
 
   const theme = useTheme();
@@ -145,12 +152,17 @@ export default function PersistentDrawerLeft(props) {
           ))}
         </List>
         {/* <Divider light={false} /> */}<br></br>
-        <div className='login'><Button children={"Logout"} /></div>
+        <div className='login'>
+          <Link to="/logout">
+            <Button children={"Logout"} />
+          </Link>
+        </div>
         <div className="navfooter">
           <p>Powered by Lateef, Matt, and Aman</p>
         </div>
       </Drawer>
-      <Main open={open}>
+      {/* { loggedIn ? ( */}
+        <Main open={open}>
         <DrawerHeader />
           <ProjectDashboard 
             projects={projects}
@@ -162,8 +174,26 @@ export default function PersistentDrawerLeft(props) {
             deleteProject={deleteProject}
             addTeamMember={addTeamMember}
             userProjects={userProjects}
-            reload={reload}/>
+            reload={reload}
+            isLoading={isLoading}/>
       </Main>
+      {/* ) : (
+        <Link to="/" />
+      )} */}
+      
     </Box>
   );
 }
+
+
+PersistentDrawerLeft.defaultProps = {
+  loggedIn: false
+  
+}
+
+PersistentDrawerLeft.propTypes = {
+  loggedIn: PropTypes.bool,
+  name: PropTypes.string,
+  imageUrl: PropTypes.string
+}
+ 

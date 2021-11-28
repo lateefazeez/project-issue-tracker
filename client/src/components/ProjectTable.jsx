@@ -21,7 +21,8 @@ const ProjectTable= (props) => {
     projectStatus,
     addTeamMember,
     userProjects,
-    reload
+    reload,
+    isLoading
   } = props;
 
   const percentageComplete = getPercentageComplete(projects)
@@ -48,6 +49,7 @@ const ProjectTable= (props) => {
   
  
   return (
+    
     <div className="dash">
       <div className='topdash'>
         <h4 style={{color: "white" }}>Projects</h4>
@@ -94,6 +96,7 @@ const ProjectTable= (props) => {
       <div className="bottomdash">
         <TablePaginations />
       </div>
+      
     </div>
   );
 }

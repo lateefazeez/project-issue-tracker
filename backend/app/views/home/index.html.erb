@@ -1,0 +1,2 @@
+<%= javascript_pack_tag 'application' %>
+<%= react_component('Signup', { name: current_user&.name, imageUrl: current_user&.image_url, loggedIn: logged_in?}) %>

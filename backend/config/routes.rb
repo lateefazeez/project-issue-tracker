@@ -4,6 +4,14 @@ Rails.application.routes.draw do
 
   root to: 'projects#index'
 
+  # Routes for Google authentication
+  get "/login", to: redirect("/auth/google_oauth2")
+  get "/logout", to: "sessions#destroy"
+  get "/navigation", to: "dashboard#index"
+  get "/auth/google_oauth2/callback", to: "sessions#googleAuth"
+  get 'auth/failure', to: redirect('/')
+  resource :sessions, only: [:create, :destroy, :googleAuth]
+
   # namespace :api do
     resources :projects, only: [:index, :show, :create, :update, :destroy]
     resources :tickets, only: [:index, :create, :update, :show, :destroy]

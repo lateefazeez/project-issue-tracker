@@ -17,23 +17,25 @@ const ProjectDashboard = (props) => {
     deleteProject,
     addTeamMember,
     userProjects,
-    reload 
+    reload,
+    isLoading
   } = props
 
   return ( 
     <div className="project--dashboard">
      { projects && 
       <ProjectTable 
-      projects={projects}
-      tickets={tickets}
-      users={users} 
-      projectStatus={chartData.ProjectStatus} 
-      createProject={createProject} 
-      updateProject={updateProject} 
-      deleteProject={deleteProject}
-      addTeamMember={addTeamMember}
-      userProjects={userProjects}
-      reload={reload}
+        projects={projects}
+        tickets={tickets}
+        users={users} 
+        projectStatus={chartData.ProjectStatus} 
+        createProject={createProject} 
+        updateProject={updateProject} 
+        deleteProject={deleteProject}
+        addTeamMember={addTeamMember}
+        userProjects={userProjects}
+        reload={reload}
+        isLoading={isLoading}
        />
        }
 

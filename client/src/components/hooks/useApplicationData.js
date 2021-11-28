@@ -27,6 +27,7 @@ export default function Application () {
     comments: [],
     userTickets: [],
     userProjects: [],
+    isLoading: true
   });
 
   useEffect(() => {
@@ -65,6 +66,7 @@ export default function Application () {
           comments: response[4].data,
           userTickets: response[5].data,
           userProjects: response[6].data,
+          isLoading: false
         }));
       })
       .catch((error) => {
@@ -108,7 +110,7 @@ export default function Application () {
     return axios.post("http://localhost:3000/projects", { project, team: project.team })
     .then(response => {
    
-      setData(prev => ({...prev, projects: [...prev.projects, response.data], userProjects: [...prev.userProjects, {users_id: project.team[0], projects_id: response.data.id }, {users_id: project.team[1], projects_id: response.data.id}]}))
+      setData(prev => ({...prev, projects: [...prev.projects, response.data]}))
       return response.data
     
     })
@@ -354,7 +356,6 @@ export default function Application () {
         users_id: userId,
         tickets_id: ticketId,
         message: commentText
-
       })
       .then((response) => {
         setData((prev) => {
@@ -370,6 +371,21 @@ export default function Application () {
       });
     });
   };
+
+  const createUser = (user) => {
+    return axios.post("http://localhost:3000/users", { user })
+    .then(response => {
+      setData(prev => ({...prev, users: [...prev.users, response.data]}))
+    })
+  }
+
+  const loginUser = (user) => {
+    return axios.post("http://localhost:3000/sessions", { user })
+    .then(result => {
+      console.log("USER:", result.data)
+      setData(prev => ({...prev, users: [...prev.users, result.data]}))
+    })
+  }
 
 
   return { 
@@ -403,7 +419,9 @@ export default function Application () {
     updateStatus,
     statusUpdate,
     commentCreate,
-
+    isLoading:data.isLoading,
+    createUser,
+    loginUser
   }
 }
  

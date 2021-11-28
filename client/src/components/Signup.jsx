@@ -6,39 +6,73 @@ import { Button, Form, FormGroup, Input} from 'reactstrap';
 import Collapse from '@mui/material/Collapse';
 import { Link } from "react-router-dom";
 import HomeIcon from '@mui/icons-material/Home';
+
 import './Signup.scss';
 
 
-const Signup = () => {
+const Signup = (props) => {
   const [displayRegisterForm, setDisplayRegisterForm] = useState(false)
   const [displayLoginForm, setDisplayLoginForm] = useState(false)
 
-  const registerUser = () => console.log("New User Registered")
+  const { createUser, loginUser } = props
+
+  const [user, setUser] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: ""
+  })
+
+  const handleChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name] : e.target.value
+    });
+  }
+
+  const registerUser = () => {
+    createUser(user)
+    handleFormDisplay()
+  }
+
+  const userLogin = () => {
+    loginUser(user)
+    handleFormDisplay()
+  }
+
 
   const registerForm = (
     <Form>
         <FormGroup>
-          <Input className="form-inputs" type="email" name="email" id="email" placeholder="Enter your email" bsSize="lg" />
+          <Input className="form-inputs" type="text" name="first_name" id="first_name" placeholder="First Name" bsSize="lg" value={user.first_name} onChange={handleChange} />
         </FormGroup>
         <FormGroup>
-          <Input className="form-inputs"  type="password" name="password" id="password" rows="5" placeholder="Password" bsSize="lg"/>
+          <Input className="form-inputs" type="text" name="last_name" id="last_name" placeholder="Last Name" bsSize="lg" value={user.last_name} onChange={handleChange}  />
+        </FormGroup>
+        <FormGroup>
+          <Input className="form-inputs" type="email" name="email" id="email" placeholder="Email" bsSize="lg" value={user.email} onChange={handleChange}  />
+        </FormGroup>
+        <FormGroup>
+          <Input className="form-inputs"  type="password" name="password" id="password" rows="5" placeholder="Password" bsSize="lg" value={user.password} onChange={handleChange} />
         </FormGroup>
         <FormGroup className="button-container">
-          <Button className="login_btn" onClick={registerUser}>Register</Button>
+          <Link to="/navigation">
+            <Button className="login_btn" onClick={registerUser}>Register</Button>
+          </Link>
         </FormGroup>
       </Form>
   )
   const LoginForm = (
     <Form>
         <FormGroup>
-          <Input className="form-inputs" type="email" name="email" id="email" placeholder="Enter your email" bsSize="lg" />
+          <Input className="form-inputs" type="email" name="email" id="email" placeholder="Enter your email" bsSize="lg" value={user.email} onChange={handleChange}/>
         </FormGroup>
         <FormGroup>
-          <Input className="form-inputs"  type="password" name="password" id="password" rows="5" placeholder="Password" bsSize="lg"/>
+          <Input className="form-inputs"  type="password" name="password" id="password" rows="5" placeholder="Password" bsSize="lg" value={user.password} onChange={handleChange}/>
         </FormGroup>
         <FormGroup className="button-container">
           <Link to="/navigation">
-            <Button className="login_btn" onClick={registerUser}>Login</Button>
+            <Button className="login_btn" onClick={userLogin}>Login</Button>
           </Link>
         </FormGroup>
       </Form>
@@ -78,12 +112,15 @@ const Signup = () => {
             <h6>Continue with Github</h6>
           </div>
         </PrimaryButton >
-        <PrimaryButton style={{ backgroundColor: "#262525", marginBottom: "20px", padding: "1rem 7rem", borderRadius: "0.4rem"}}>
-          <div className="signup-label">
-            <GoogleIcon className="git-icon" />
-            <h6>Continue with Google</h6>
-          </div>
-        </PrimaryButton >
+        <Link to="/login">
+          <PrimaryButton style={{ backgroundColor: "#262525", marginBottom: "20px", padding: "1rem 7rem", borderRadius: "0.4rem"}}>
+            <div className="signup-label">
+              <GoogleIcon className="git-icon" />
+              <h6>Continue with Google</h6>
+            </div>
+          </PrimaryButton >
+        </Link>
+     
 
         <PrimaryButton style={{ backgroundColor: "#262525", marginBottom: "20px", padding: "1rem 7rem", borderRadius: "0.4rem"}}>
           <div className="signup-label" onClick={handleFormDisplay}>
@@ -112,5 +149,5 @@ const Signup = () => {
    
    );
 }
- 
+
 export default Signup;

@@ -55,9 +55,10 @@ const CreateProject = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    // reload()
     createProject(values)
     .then(response => availableUsers(response))
-    reload()
+    
     onClose()
   }
  
