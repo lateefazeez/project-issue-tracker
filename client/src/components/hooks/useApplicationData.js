@@ -89,24 +89,7 @@ export default function Application () {
     New: getTicketByStatus(data, "new"),
     ProjectStatus: getTicketByStatus(data, "at risk"),
   };
-  useEffect(() => {
-    const allProjectsUrl = "http://localhost:3000/projects";
 
-    const getAllProjects = axios.get(allProjectsUrl);
-
-    Promise.all([
-      getAllProjects,
-    ])
-      .then((response) => {
-        setData((prev) => ({
-          ...prev,
-          projects: response[0].data.reverse(),
-        }));
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
 
   const createProject = (project) => {
     return axios.post("http://localhost:3000/projects", { project, team: project.team })
@@ -114,7 +97,7 @@ export default function Application () {
    
       setData(prev => ({...prev, projects: [...prev.projects, response.data]}))
       return response.data
-    
+      
     })
   }
   
@@ -139,7 +122,7 @@ export default function Application () {
         const filteredProjects = data.projects.filter((project) => {
           return project.id !== projectId;
         });
-        setData((prev) => ({ ...prev, projects: [...filteredProjects] }));
+        setData((prev) => ({ ...prev, projects: [...filteredProjects] }))
       });
   };
 
@@ -247,12 +230,20 @@ export default function Application () {
 
     return axios.delete(`http://localhost:3000/tickets/${ticketId}`)
     .then(response => {
-      const filteredTickets = data.tickets.filter((ticket) => {
-        return ticket.id !== ticketId
-      })
-      setData(prev => ({...prev, tickets: [...filteredTickets]}))
-    })
-  }
+
+      setData(prev => {
+        const filteredTickets = prev.tickets.filter((ticket) => {
+          return ticket.id !== ticketId
+          });
+
+          const newData ={...prev, 
+            tickets: [...filteredTickets]}
+
+            getTicketId(null)
+            return newData
+    });
+  });
+  };
 
   const taskCreate = (task, ticketId) => {
     return axios

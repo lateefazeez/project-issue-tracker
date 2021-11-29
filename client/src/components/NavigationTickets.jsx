@@ -98,7 +98,7 @@ export default function PersistentDrawerTicket(props) {
     commentDelete,
     userProjectCreate,
     userProjectDelete,
-    loggedInUser
+    loggedInUser,
   } = props;
 
   const theme = useTheme();

@@ -42,6 +42,7 @@ const TicketPage = (props) => {
     commentDelete,
     userProjectCreate,
     userProjectDelete,
+    loggedInUser,
   } = props;
 
   const { state } = useLocation();
@@ -84,7 +85,10 @@ const TicketPage = (props) => {
 
   return (
     <div>
+      <div className="tiptop">
       <h2 className="project-header">Project Name: {getProjById(data, id)}</h2>
+      <h4 className="loggedin">Logged In As: {loggedInUser}</h4>
+      </div>
       <div className="tickets-upper">
         <div className="Team-box">
           <Table
@@ -200,6 +204,7 @@ const TicketPage = (props) => {
                 commentCreate={commentCreate}
                 LoneTicket={LoneTicket}
                 commentDelete={commentDelete}
+                loggedInUser={loggedInUser}
                 height="250px"
                 width="90%"
                 mWidth="95%"

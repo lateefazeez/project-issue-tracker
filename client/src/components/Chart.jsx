@@ -3,7 +3,7 @@ import { Box } from '@mui/material';
 import './Chart.scss'
 
 const Chart = (props) => {
-  const { title, colors, chartLabels, chartData } = props
+  const { title, colors, chartLabels, chartData, hoverColors } = props
 
   const bull = (
     <Box
@@ -20,11 +20,7 @@ const Chart = (props) => {
       {
         label: 'Rainfall',
         backgroundColor: colors,
-        hoverBackgroundColor: [
-        '#4D45B5',
-        '#B42D2D',
-        '#A5813D'
-        ],
+        hoverBackgroundColor: hoverColors,
         data: chartData
       }
     ]

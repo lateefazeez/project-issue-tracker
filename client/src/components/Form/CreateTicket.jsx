@@ -16,11 +16,12 @@ const CreateTicket = (props) => {
   const [ticket, setTicket] = useState({});
 
   const { createTicket, projectId, onClose } = props;
-  // console.log("CREATE TICKET FUNC", createTicket)
-  console.log("CREATE TICKET PROJIT", projectId)
+ 
+  const loggedInUserId = window.sessionStorage.getItem("userId")
+
   const handleChange = (e) => {
     e.preventDefault()
-    setTicket(Object.assign({}, ticket, {[e.target.name]: e.target.value}, {projects_id: projectId},  {users_id: 2}, {duration: duration}))
+    setTicket(Object.assign({}, ticket, {[e.target.name]: e.target.value}, {projects_id: projectId},  {users_id: loggedInUserId}, {duration: duration}))
   }
 
   const handleSubmit = (e) => {

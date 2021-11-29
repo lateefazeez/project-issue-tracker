@@ -98,10 +98,12 @@ export default function ProjectListTable(props) {
     }
     return { projectStatus, barColor }
   }
+  const loggedInUser = window.sessionStorage.getItem("userName")
 
   return (
+    
     <Fragment>
-    <TableContainer style={{ overflow: "hidden", borderTop: "0.2px solid rgb(112, 112, 112)", borderLeft: "0.2px solid rgb(112, 112, 112)", borderRight: "0.2px solid rgb(112, 112, 112)", borderTopLeftRadius: 10, borderTopRightRadius: 10  }} >
+     <TableContainer style={{ overflow: "hidden", borderTop: "0.2px solid rgb(112, 112, 112)", borderLeft: "0.2px solid rgb(112, 112, 112)", borderRight: "0.2px solid rgb(112, 112, 112)", borderTopLeftRadius: 10, borderTopRightRadius: 10  }} >
       <Table className="projecttable" sx={{ height: 250}} aria-label="simple table">
         <TableHead className="tabletitle">
           <TableRow className="tabletitle">
@@ -161,6 +163,7 @@ export default function ProjectListTable(props) {
         </TableBody>
       </Table>
     </TableContainer>
+    
     <FormModal handleOpen={isEditProjectOpen} onClose={toggleEditProject}>
       { selectedProjectData && <UpdateProject
         id={selectedProjectId}

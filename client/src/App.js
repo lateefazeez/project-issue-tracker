@@ -59,7 +59,6 @@ function App() {
   const reload = () => window.location.reload()
 
   const loggedInUser = window.sessionStorage.getItem("userName")
-  console.log("CURRENT USER", loggedInUser)
   
 
   return (
