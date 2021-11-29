@@ -13,9 +13,12 @@ import {
   updateStatus,
 } from "../../helpers/ticketPageHelpers";
 import {
+  getProjectById,
+} from "../../helpers/projectPageHelpers";
+import {
   TaskProgressCalulator,
   TicketProgressCalulator,
-} from "../../helpers/barChartHelpers"
+} from "../../helpers/barChartHelpers";
 
 
 
@@ -90,17 +93,52 @@ export default function Application () {
     ProjectStatus: getTicketByStatus(data, "at risk"),
   };
 
+  const [projectId, setProjectId] = useState([])
+  const [projectTeam, setProjectTeam] = useState([])
+
+
+  const availableUsers = (projectObject) => {
+    let usersProject;
+    let projectUsers = [];
+
+
+    console.log(projectObject)
+  
+      usersProject = data.userProjects.filter((userProject) => userProject.projects_id === projectObject)
+    
+  
+    data.users.forEach(user => {
+      usersProject.forEach(avUser => {
+        if (user.id === avUser.users_id) {
+          projectUsers.push(user.first_name)
+        }
+      })
+    })
+    return projectUsers.join(", ")
+  };
+
+  // let userId = window.sessionStorage.getItem('userId')
+
+  let clickedProject;
+
+  const getProjectId = (projectId) => {
+    clickedProject = setProjectId(projectId)
+  }
 
   const createProject = (project) => {
     return axios.post("http://localhost:3000/projects", { project, team: project.team })
     .then(response => {
    
-      setData(prev => ({...prev, projects: [...prev.projects, response.data]}))
-      return response.data
+      setData(prev => {
+
+      const newData = {...prev, projects: [...prev.projects, response.data]}
+      availableUsers(getProjectById(newData, clickedProject));
+      return newData
       
-    })
-  }
-  
+    });
+  });
+};
+
   const updateProject = (project, id) => {
     return axios
       .put(`http://localhost:3000/projects/${id}`, { project, team: project.team })
@@ -132,6 +170,8 @@ export default function Application () {
   const [TicketComments, setTicketComments] = useState([]);
   const [TimeBar, setTimeBar] = useState(0);
   const [TaskBar, setTaskBar] = useState(0);
+
+ 
   
 
   const getTicketId = (id) => {
@@ -465,6 +505,7 @@ export default function Application () {
     taskUpdate,
     taskDelete,
     getTicketId,
+    getProjectId,
     userTicketCreate,
     userTicketDelete,
     TaskBar,
@@ -490,6 +531,7 @@ export default function Application () {
     userProjectCreate,
     userProjectDelete,
     logoutUser,
+    availableUsers,
 
   }
 }

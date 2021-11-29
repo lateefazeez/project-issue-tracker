@@ -36,6 +36,7 @@ export default function ProjectListTable(props) {
     availableUsers,
     page,
     rowsPerPage,
+    getProjectId,
   } = props
 
   useEffect(() => {
@@ -97,6 +98,11 @@ export default function ProjectListTable(props) {
     return { projectStatus, barColor }
   }
 
+  const doBoth = (id) => {
+    getProjectId(id)
+    navigate("/tickets", { state: { id: id} })
+  }
+
   return (
     
     <Fragment>
@@ -119,10 +125,10 @@ export default function ProjectListTable(props) {
               <TableCell className="projectitle"  onClick={() => navigate("/tickets", { state: { id: project.id}, onClose: { onClose: onClose } })} component="th" scope="project">
                 {project.title}
               </TableCell>
-              <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{project.description}</TableCell>
+              <TableCell onClick={() => doBoth(project.id)} >{project.description}</TableCell>
               <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} ><ProgressBar className="Actual-bar" height="20px"color={ getProjectStatus(project).barColor}percent={project.percentage_complete}/></TableCell>
               <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{ getProjectStatus(project).projectStatus}</TableCell>
-              <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{availableUsers(project) }</TableCell>
+              <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{availableUsers(project.id) }</TableCell>
               <TableCell>
                 <UncontrolledDropdown onClick={(e) => setProjectId(e)} >
                   <DropdownToggle

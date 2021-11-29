@@ -22,7 +22,9 @@ const ProjectTable= (props) => {
     addTeamMember,
     userProjects,
     reload,
-    loggedInUser
+    loggedInUser,
+    getProjectId,
+    availableUsers
   } = props;
 
   //pagination
@@ -45,22 +47,22 @@ const ProjectTable= (props) => {
     setIsNewProjectOpen(!isNewProjectOpen);
   }
 
-  const availableUsers = (projectObject) => {
-    let usersProject;
-    let projectUsers = [];
-    if (userProjects) {
-      usersProject = userProjects.filter((userProject) => userProject.projects_id === projectObject.id)
-    }
+  // const availableUsers = (projectObject) => {
+  //   let usersProject;
+  //   let projectUsers = [];
+  //   if (userProjects) {
+  //     usersProject = userProjects.filter((userProject) => userProject.projects_id === projectObject.id)
+  //   }
 
-    users.forEach(user => {
-      usersProject.forEach(avUser => {
-        if (user.id === avUser.users_id) {
-          projectUsers.push(user.first_name)
-        }
-      })
-    })
-    return projectUsers.join(", ")
-  }
+  //   users.forEach(user => {
+  //     usersProject.forEach(avUser => {
+  //       if (user.id === avUser.users_id) {
+  //         projectUsers.push(user.first_name)
+  //       }
+  //     })
+  //   })
+  //   return projectUsers.join(", ")
+  // }
 
  
   return (
@@ -109,6 +111,7 @@ const ProjectTable= (props) => {
           page={page}
           rowsPerPage={rowsPerPage}
           emptyRows={emptyRows}
+          getProjectId={getProjectId}
           />     
       </div>
       <div className="bottomdash">

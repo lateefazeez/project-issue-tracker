@@ -27,6 +27,7 @@ function App() {
     taskUpdate,
     taskDelete,
     getTicketId,
+    getProjectId,
     userTicketCreate,
     userTicketDelete,
     TaskBar,
@@ -50,7 +51,8 @@ function App() {
     userProjectDelete,
     logoutUser,
     RegisteredUser,
-    getLoggedInUser
+    getLoggedInUser,
+    availableUsers
   } = useApplication()
 
   const reload = () => window.location.reload()
@@ -81,6 +83,7 @@ function App() {
           path="/navigation"
           element={
             <ProjectDashboard
+              getProjectId={getProjectId}
               projects={projects}
               tickets={tickets}
               users={users} 
@@ -94,6 +97,7 @@ function App() {
               isLoading={isLoading}
               logoutUser={logoutUser}
               loggedInUser={loggedInUser}
+              availableUsers={availableUsers}
             /> } />
         <Route 
           path="/tickets" 

@@ -18,7 +18,9 @@ const ProjectDashboard = (props) => {
     addTeamMember,
     userProjects,
     reload,
-    loggedInUser
+    loggedInUser,
+    getProjectId,
+    availableUsers
   } = props
 
   return ( 
@@ -37,6 +39,8 @@ const ProjectDashboard = (props) => {
               userProjects={userProjects}
               reload={reload}
               loggedInUser={loggedInUser}
+              getProjectId={getProjectId}
+              availableUsers={availableUsers}
             />
             }
           { projects && <div className="chart--group">
