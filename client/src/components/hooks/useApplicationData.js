@@ -230,12 +230,20 @@ export default function Application () {
 
     return axios.delete(`http://localhost:3000/tickets/${ticketId}`)
     .then(response => {
-      const filteredTickets = data.tickets.filter((ticket) => {
-        return ticket.id !== ticketId
-      })
-      setData(prev => ({...prev, tickets: [...filteredTickets]}))
-    })
-  }
+
+      setData(prev => {
+        const filteredTickets = prev.tickets.filter((ticket) => {
+          return ticket.id !== ticketId
+          });
+
+          const newData ={...prev, 
+            tickets: [...filteredTickets]}
+
+            getTicketId(null)
+            return newData
+    });
+  });
+  };
 
   const taskCreate = (task, ticketId) => {
     return axios
