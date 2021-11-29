@@ -31,6 +31,7 @@ export default function Application () {
     userProjects: [],
     isLoading: true
   });
+  const [loggedUser, setLoggedUser] = useState(null)
 
   useEffect(() => {
     const allProjectsUrl = "http://localhost:3000/projects";
@@ -94,9 +95,9 @@ export default function Application () {
   const createProject = (project) => {
     return axios.post("http://localhost:3000/projects", { project, team: project.team })
     .then(response => {
-   
-      setData(prev => ({...prev, projects: [...prev.projects, response.data]}))
-      return response.data
+      console.log("RESPONSE: ", response.data)
+      setData(prev => ({...prev, projects: [...prev.projects, response.data.project], userProjects: [...prev.userProjects, ...response.data.user_projects]}))
+      return response.data.project
       
     })
   }
@@ -196,7 +197,7 @@ export default function Application () {
 
   const createTicket = (ticket) => {
 
-    return axios.post("http://localhost:3000/tickets", { title: ticket.title, description: ticket.description, category: ticket.category, priority: ticket.priority, status: ticket.status, plan_duration: ticket.duration, start_date: ticket.start, end_date: ticket.end_date, projects_id: ticket.projects_id, users_id: ticket.users_id })
+    return axios.post("http://localhost:3000/tickets", { title: ticket.title, description: ticket.description, category: ticket.category, priority: ticket.priority, status: ticket.status, plan_duration: ticket.duration, start_date: ticket.start_date, end_date: ticket.end_date, projects_id: ticket.projects_id, users_id: ticket.users_id })
     .then(response => {
       setData(prevTickets=> ({...prevTickets, tickets: [...prevTickets.tickets, response.data]}))
     })

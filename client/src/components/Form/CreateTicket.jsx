@@ -7,13 +7,12 @@ const CreateTicket = (props) => {
 
   const [ticket, setTicket] = useState({});
 
-  const { createTicket, projectId, onClose } = props;
- 
-  const loggedInUserId = window.sessionStorage.getItem("userId")
+  const { createTicket, projectId, onClose, userIdFromSession } = props;
+
 
   const handleChange = (e) => {
     e.preventDefault()
-    setTicket(Object.assign({}, ticket, {[e.target.name]: e.target.value}, {projects_id: projectId},  {users_id: loggedInUserId}, {duration: duration}))
+    setTicket(Object.assign({}, ticket, {[e.target.name]: e.target.value}, {projects_id: projectId},  {users_id: userIdFromSession}, {duration: duration}))
   }
 
   const handleSubmit = (e) => {
@@ -39,11 +38,11 @@ const CreateTicket = (props) => {
   const [duration, setDuration] = useState(0);
 
   useEffect(() => {
-    setDuration(estimatedhours(ticket.start, ticket.end_date))
-  }, [ticket.start]);
+    setDuration(estimatedhours(ticket.start_date, ticket.end_date))
+  }, [ticket.start_end]);
 
   useEffect(() => {
-    setDuration(estimatedhours(ticket.start, ticket.end_date))
+    setDuration(estimatedhours(ticket.start_date, ticket.end_date))
   }, [ticket.end_date]);
 
 

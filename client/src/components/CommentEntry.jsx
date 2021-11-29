@@ -3,7 +3,7 @@ import PrimaryButton from "./PrimaryButton";
 
 const CommentEntry = (props) => {
 
-  const { commentCreate, LoneTicket } = props;
+  const { commentCreate, LoneTicket, loggedInUser, userIdFromSession, userNameFromSession } = props;
   const [comment, setComment] = useState({tickets_id: "", users_id: "", message: ""})
   const [inputVal, setInputval] = useState("")
 
@@ -12,15 +12,12 @@ const CommentEntry = (props) => {
   }
 
   let ticketId = LoneTicket[0].id
-  let userId = window.sessionStorage.getItem('userId')
-
-  console.log("user?", userId)
 
   const handleChange = (e) => {
     setComment({
       ...comment,
       tickets_id: ticketId,
-      users_id: userId,
+      users_id: userIdFromSession,
       [e.target.name] : e.target.value
     })
   }

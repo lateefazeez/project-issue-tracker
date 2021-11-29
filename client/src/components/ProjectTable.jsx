@@ -22,7 +22,10 @@ const ProjectTable= (props) => {
     addTeamMember,
     userProjects,
     reload,
-    loggedInUser
+    loggedInUser,
+    projectUsers,
+    userIdFromSession,
+    userNameFromSession
   } = props;
 
   //pagination
@@ -62,13 +65,14 @@ const ProjectTable= (props) => {
     return projectUsers.join(", ")
   }
 
+  
  
   return (
     
     <div className="dash">
       <div className='topdash'>
         <h4 style={{color: "#DEDBDB" }}>Projects</h4>
-        <h6 style={{color: "#DEDBDB" }}>Logged In As: {loggedInUser}</h6>
+        {loggedInUser ? <h6 style={{color: "#DEDBDB" }}>Logged In As: {loggedInUser.name}</h6> : <h6 style={{color: "#DEDBDB" }}>Logged In As: {userNameFromSession}</h6>}
       </div>
       <div className="dashbuttons">
           <div className='buttons'>
@@ -109,17 +113,12 @@ const ProjectTable= (props) => {
           page={page}
           rowsPerPage={rowsPerPage}
           emptyRows={emptyRows}
+          projectUsers={projectUsers}
+          loggedInUser={loggedInUser}
           />     
       </div>
       <div className="bottomdash">
       <TablePaginations
-        rowsPerPageOptions={[5, 10, 25]}
-        component="div"
-        count={projects.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onChangePage={handleChangePage}
-        onChangeRowsPerPage={handleChangeRowsPerPage}
       />
       </div>
       

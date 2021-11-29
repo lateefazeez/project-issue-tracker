@@ -36,6 +36,7 @@ export default function ProjectListTable(props) {
     availableUsers,
     page,
     rowsPerPage,
+    projectUsers
   } = props
 
   useEffect(() => {
@@ -122,7 +123,7 @@ export default function ProjectListTable(props) {
               <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{project.description}</TableCell>
               <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} ><ProgressBar className="Actual-bar" height="20px"color={ getProjectStatus(project).barColor}percent={project.percentage_complete}/></TableCell>
               <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{ getProjectStatus(project).projectStatus}</TableCell>
-              <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{availableUsers(project) }</TableCell>
+              <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{availableUsers(project)}</TableCell>
               <TableCell>
                 <UncontrolledDropdown onClick={(e) => setProjectId(e)} >
                   <DropdownToggle

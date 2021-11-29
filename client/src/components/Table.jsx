@@ -33,6 +33,8 @@ const Table = (props) => {
     userProjectCreate,
     userProjectDelete,
     loggedInUser,
+    userIdFromSession,
+    userNameFromSession
   } = props;
 
   return (
@@ -44,6 +46,9 @@ const Table = (props) => {
           decider={decider}
           availableUsers={availableUsers}
           userProjectCreate={userProjectCreate}
+          loggedInUser={loggedInUser}
+          userIdFromSession={userIdFromSession}
+          userNameFromSession={userNameFromSession}
         />
       </div>
       <AddList
@@ -70,6 +75,8 @@ const Table = (props) => {
           commentCreate={commentCreate}
           LoneTicket={LoneTicket}
           loggedInUser={loggedInUser}
+          userIdFromSession={userIdFromSession}
+          userNameFromSession={userNameFromSession}
         />
       </div>
     </div>
@@ -82,6 +89,9 @@ const Header = (props) => {
     createTicket,
     availableUsers,
     userProjectCreate,
+    loggedInUser,
+    userIdFromSession,
+    userNameFromSession
   } = props;
 
   const [isNewTicketOpen, setIsNewTicketOpen] = useState(false);
@@ -132,6 +142,9 @@ const Header = (props) => {
             onClose={toggleNewTicket}
             projectId={projectId}
             createTicket={createTicket}
+            loggedInUser={loggedInUser}
+            userIdFromSession={userIdFromSession}
+            userNameFromSession={userNameFromSession}
           />
         </FormModal>
       </Fragment>
@@ -144,13 +157,13 @@ const Header = (props) => {
 };
 
 const AddButtons = (props) => {
-  const { decider, commentCreate, LoneTicket, loggedInUser } = props;
+  const { decider, commentCreate, LoneTicket, loggedInUser, userIdFromSession, userNameFromSession } = props;
 
   if (decider === "Ticket" || decider === "Team") {
     return <TablePaginations />;
   } else if (decider === "Comment") {
     return (
-      <CommentEntry commentCreate={commentCreate} LoneTicket={LoneTicket} loggedInUser={loggedInUser}/>
+      <CommentEntry commentCreate={commentCreate} LoneTicket={LoneTicket} loggedInUser={loggedInUser} userIdFromSession={userIdFromSession} userNameFromSession={userNameFromSession}/>
     );
   } else {
     return "";

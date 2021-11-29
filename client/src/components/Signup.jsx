@@ -15,7 +15,7 @@ const Signup = (props) => {
   const [displayRegisterForm, setDisplayRegisterForm] = useState(false)
   const [displayLoginForm, setDisplayLoginForm] = useState(false)
 
-  const { createUser, loginUser, users,  reload } = props
+  const { createUser, loginUser, users, setLoggedInUser } = props
 
   const [user, setUser] = useState({
     first_name: "",
@@ -41,16 +41,14 @@ const Signup = (props) => {
         const userId = response.user.id
         window.sessionStorage.setItem("userName", userName);
         window.sessionStorage.setItem("userId", userId);
+        setLoggedInUser({name: userName, id: userId})
         navigate("/navigation")
-        reload()
       } else {
         return
       }
     })
     handleFormDisplay()
   }
-
-
 
   const userLogin = () => {
     loginUser(user)
@@ -62,8 +60,8 @@ const Signup = (props) => {
             const userName = dbUser.first_name
             window.sessionStorage.setItem("userName", userName);
             window.sessionStorage.setItem("userId", userId);
+            setLoggedInUser({name: userName, id: userId})
             navigate("/navigation");
-            reload()
           } else {
             return
           }

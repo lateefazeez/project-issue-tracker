@@ -54,10 +54,14 @@ export default function PersistentDrawerTicket(props) {
     userProjectCreate,
     userProjectDelete,
     loggedInUser,
+    logoutUser,
+    setLoggedInUser,
+    userIdFromSession,
+    userNameFromSession
   } = props;
 
   return (
-    <PersistentDrawerLeft>
+    <PersistentDrawerLeft logoutUser={logoutUser} loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} userIdFromSession={userIdFromSession} userNameFromSession={userNameFromSession}>
       <TicketPage
               data={data}
               taskCreate={taskCreate}
@@ -81,7 +85,9 @@ export default function PersistentDrawerTicket(props) {
               commentDelete={commentDelete}
               userProjectCreate={userProjectCreate}
               userProjectDelete={userProjectDelete}
-              loggedInUser={loggedInUser} />
+              loggedInUser={loggedInUser}
+              userIdFromSession={userIdFromSession}
+              userNameFromSession={userNameFromSession} />
       
     </PersistentDrawerLeft>
   );

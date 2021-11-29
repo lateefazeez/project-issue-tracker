@@ -101,8 +101,8 @@ const UpdateTicket = (props) => {
 
         <div className="date__input">
           <FormGroup className="start__date">
-            <Label for="start" className="input-labels">Start Date</Label>
-            <Input className="form-inputs"  type="date" name="start_date" id="start" placeholder="date placeholder" bsSize="lg" onChange={handleChange} value={ticket.start_date}/>
+            <Label for="start_date" className="input-labels">Start Date</Label>
+            <Input className="form-inputs"  type="date" name="start_date" id="start_date" placeholder="date placeholder" bsSize="lg" onChange={handleChange} value={ticket.start_date}/>
           </FormGroup>
           <FormGroup>
             <Label for="end_date" className="input-labels">End Date</Label>

@@ -43,6 +43,8 @@ const TicketPage = (props) => {
     userProjectCreate,
     userProjectDelete,
     loggedInUser,
+    userIdFromSession,
+    userNameFromSession
   } = props;
 
   const { state } = useLocation();
@@ -72,9 +74,6 @@ const TicketPage = (props) => {
     getTicketId(null);
   }, []);
 
-
-  const loggedInUserName = window.sessionStorage.getItem("userName")
-
   let color
   if (!LoneTicket[0]) {
     color = "auto"
@@ -87,7 +86,7 @@ const TicketPage = (props) => {
     <div>
       <div className="tiptop">
       <h4 className="project-header">Project Name: {getProjById(data, id)}</h4>
-      <h6 className="loggedin">Logged In As: {loggedInUser}</h6>
+      {loggedInUser ? <h6 className="loggedin">Logged In As: {loggedInUser.name}</h6> : <h6 className="loggedin">Logged In As: {userNameFromSession}</h6> }
       </div>
       <div className="tickets-upper">
         <div className="Team-box">
@@ -102,6 +101,9 @@ const TicketPage = (props) => {
             availableUsers={availableUsers}
             userProjectCreate={userProjectCreate}
             userProjectDelete={userProjectDelete}
+            loggedInUser={loggedInUser}
+            userIdFromSession={userIdFromSession}
+            userNameFromSession={userNameFromSession}
           />
         </div>
 
@@ -114,6 +116,9 @@ const TicketPage = (props) => {
             createTicket={createTicket}
             updateTicket={updateTicket}
             deleteTicket={deleteTicket}
+            loggedInUser={loggedInUser}
+            userIdFromSession={userIdFromSession}
+            userNameFromSession={userNameFromSession}
           />
         </div>
       </div>
@@ -142,6 +147,9 @@ const TicketPage = (props) => {
             taskCreate={taskCreate}
             onClose={toggleNewTask}
             ticketId={LoneTicket}
+            loggedInUser={loggedInUser}
+            userIdFromSession={userIdFromSession}
+            userNameFromSession={userNameFromSession}
           />
         </FormModal>
 
@@ -205,6 +213,8 @@ const TicketPage = (props) => {
                 LoneTicket={LoneTicket}
                 commentDelete={commentDelete}
                 loggedInUser={loggedInUser}
+                userIdFromSession={userIdFromSession}
+                userNameFromSession={userNameFromSession}
                 height="250px"
                 width="90%"
                 mWidth="95%"
