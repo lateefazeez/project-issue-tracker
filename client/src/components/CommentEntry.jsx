@@ -12,12 +12,15 @@ const CommentEntry = (props) => {
   }
 
   let ticketId = LoneTicket[0].id
+  let userId = window.sessionStorage.getItem('userId')
+
+  console.log("user?", userId)
 
   const handleChange = (e) => {
     setComment({
       ...comment,
       tickets_id: ticketId,
-      users_id: 2,
+      users_id: userId,
       [e.target.name] : e.target.value
     })
   }

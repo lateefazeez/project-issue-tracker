@@ -32,6 +32,7 @@ const Table = (props) => {
     availableUsers,
     userProjectCreate,
     userProjectDelete,
+    loggedInUser,
   } = props;
 
   return (
@@ -68,6 +69,7 @@ const Table = (props) => {
           decider={decider}
           commentCreate={commentCreate}
           LoneTicket={LoneTicket}
+          loggedInUser={loggedInUser}
         />
       </div>
     </div>
@@ -145,13 +147,13 @@ const Header = (props) => {
 };
 
 const AddButtons = (props) => {
-  const { decider, commentCreate, LoneTicket } = props;
+  const { decider, commentCreate, LoneTicket, loggedInUser } = props;
 
   if (decider === "Ticket" || decider === "Team") {
     return <TablePaginations />;
   } else if (decider === "Comment") {
     return (
-      <CommentEntry commentCreate={commentCreate} LoneTicket={LoneTicket} />
+      <CommentEntry commentCreate={commentCreate} LoneTicket={LoneTicket} loggedInUser={loggedInUser}/>
     );
   } else {
     return "";
