@@ -121,11 +121,13 @@ const TicketPage = (props) => {
             </strong>
           </h4>
           <div className="new-task">
-            <PrimaryButton
+            <div className={heightClass}>
+            <PrimaryButton 
               onPress={toggleNewTask}
               style={{ backgroundColor: "#4D45B5" }}
               children="+ New Task"
             />
+            </div>
           </div>
         </div>
         <FormModal handleOpen={isNewTaskOpen} onClose={toggleNewTask}>
