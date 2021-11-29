@@ -40,7 +40,7 @@ const ProjectDashboard = (props) => {
        }
 
      { projects && <div className="chart--group">
-          <Chart
+          <Chart className="chart"
             title={"Type"}
             colors={[
               '#4D45B5',
@@ -50,7 +50,7 @@ const ProjectDashboard = (props) => {
             chartLabels={['Issue', 'Bug', 'Feature Request']}
             chartData={[chartData.Issues, chartData.Bugs, chartData.FeatureRequests]}
           />
-          <Chart 
+          <Chart className="chart"
             title={"Priority"}
             colors={[
               '#4D45B5',
@@ -58,17 +58,17 @@ const ProjectDashboard = (props) => {
               '#D6A850',
               '#6AD650'
             ]}
-            chartLabels={['Immediate', 'High', 'Medium', 'Low']}
+            chartLabels={['High', 'Medium', 'Low']}
             chartData={[chartData.Immediate, chartData.High, chartData.Medium, chartData.Low]}
           />
-          <Chart 
+          <Chart className="chart"
             title={"Status"}
             colors={[
               '#EF3C3C',
               '#4D45B5',
               '#D6A850'
             ]}
-            chartLabels={['At Risk', 'On Track', 'New']}
+            chartLabels={['At Risk', 'On Track']}
             chartData={[chartData.AtRisk, chartData.OnTrack, chartData.New]}
           />
         </div>}

@@ -23,7 +23,7 @@ const TeamListItem = (props) => {
       onClick={() => console.log("yo")}
     >
       <div className="TmPost">
-      <div>{first_name} {last_name} </div>
+      <div className="noPointer">{first_name} {last_name} </div>
       <UncontrolledDropdown onClick={(e) => e.stopPropagation()}>
                   <DropdownToggle
                     className="btn-icon-only text-light"

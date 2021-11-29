@@ -7,54 +7,35 @@ import './CreateProject.scss'
 
 const AddTeamMember = (props) => {
  
-  const [values, setValues] = useState({ 
-    team: []
-  })
+  const [values, setValues] = useState(null)
 
   const { 
-    onClose,
     availableUsers,
     userProjectCreate,
     projectId,
-    reload
   } = props
 
   const handleChange = (event) => {
     //  event.preventDefault()
-    let opts = [], opt;
-    if (
-      event.target.type === "select" || event.target.type === "select-multiple") {
-      
-      for (let i = 0, len = event.target.options.length; i < len; i++) {
-        opt = event.target.options[i];
-      
-        if (opt.selected) {
-          opts.push(opt.value);
-        }
-      }
-      setValues({
-        [event.target.name] : opts
-      });
-      
-    }    
+      setValues(event.target.value); 
+       
   }
 
-  console.log(values)
+  console.log(values, projectId)
 
   const handleSubmit = (e) => {
     e.preventDefault()
       userProjectCreate(values, projectId)
-    onClose()
   }
  
   
   return ( 
     <Container fluid>
-      <Form className="project__form" onSubmit={handleSubmit}>
+      <Form className="project__form">
       <Label className="form__header">Add Member</Label>
         <FormGroup className="input-select">
-          <Label for="team" className="input-labels">Available Users</Label>
-          <Input className="form-inputs"  type="select" name="team" id="team" multiple bsSize="lg" onChange={handleChange}>
+          <Label for="users_id" className="input-labels">Available Users (click to add)</Label>
+          <Input className="form-inputs"  type="select" name="users_id" id="users_id" multiple bsSize="lg" onChange={handleChange}>
           { availableUsers && availableUsers.map((user, index) => (
               <option 
                 id={index}
@@ -62,16 +43,13 @@ const AddTeamMember = (props) => {
                 key={user.id} 
                 value={user.id}
                 className="input-select"
+                onClick={handleSubmit}
                 >
                   {user.first_name} {user.last_name}
               </option>
             ))}
           </Input>
-        </FormGroup>
-        <FormGroup className="button-container">
-          <Button className="submit_btn">Add Selected</Button>
-        </FormGroup>
-        
+        </FormGroup> 
       </Form>
     </Container>
    );

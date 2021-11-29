@@ -13,16 +13,17 @@ import {useState, useEffect, Fragment} from 'react';
 import FormModal from './Form/FormModal';
 import { DropdownMenu, DropdownItem, UncontrolledDropdown, DropdownToggle } from "reactstrap";
 import UpdateTicket from './Form/UpdateTicket';
+import classNames from "classnames";
 
 export default function TicketListTable(props) {
 
-  const {  data, projectId, getTicketId, updateTicket, deleteTicket } = props;
+  const {  data, projectId, getTicketId, updateTicket, deleteTicket, LoneTicket } = props;
+
+
 
   const [selectedTicketData, setSelectedTicketData] = useState(false);
   const [isEditTicketOpen, setIsEditTicketOpen] = useState(false);
   const [selectedTicketId, setSelectedTicketId] = useState("");
-
-  console.log("WTF IS GETTICKET ID", getTicketId)
 
   const toggleEditTicket = () => {
 
@@ -34,13 +35,14 @@ export default function TicketListTable(props) {
 
   useEffect(() => {
 
+    console.log()
     const singleTicketURL = `http://localhost:3000/tickets/${selectedTicketId}`
     const getSingleTicket = axios.get(singleTicketURL)
 
     Promise.all([getSingleTicket])
       .then((response) => {
         setSelectedTicketData(response[0].data)
-        // console.log("UPDATE TICKET RES", response[0].data) 
+    
       })
       .catch((error) => {
         console.error(error)
@@ -76,13 +78,18 @@ export default function TicketListTable(props) {
   const projectTickets =  getTicketsByProjectID(projectId, data.tickets);
   const tickets = projectUsersRevised(projectTickets, data.users).sort((a,b) => a.id -b.id);
 
+  const ticketClass = classNames("list__item", {
+    "list__item--selected": props.selected,
+  });
+
+  
   return (
     <Fragment>
     <TableContainer style={{ overflow: "hidden" }} >
       <Table className="projecttable" sx={{ height: 140}} aria-label="simple table">
     
         <TableHead>
-          <TableRow className="tabletit">
+          <TableRow className="tabletitle">
        
             <TableCell className="tabletitle">Title</TableCell>
             <TableCell className="tabletitle">Description</TableCell>
@@ -93,7 +100,10 @@ export default function TicketListTable(props) {
         <TableBody>
           {tickets.map((row) => (
             <TableRow
+              className={ticketClass}
+              selected={row.id === selectedTicketId}
               key={row.id}
+              onClick={() => setSelectedTicketId(row.id)}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell onClick={() => getTicketId(row.id)} component="th" scope="row">

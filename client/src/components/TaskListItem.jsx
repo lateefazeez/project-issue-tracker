@@ -34,8 +34,8 @@ const TaskListItem = (props) => {
       onClick={() => handleChange()}
     >
       <div className="TkPost">
-      <div>{title}</div>
-      <div>{percentage_complete}</div>
+      <div className="noPointer">{title}</div>
+      <div className="noPointer">{percentage_complete}</div>
         <div className="TkPre">
           <div>
           <Switch 

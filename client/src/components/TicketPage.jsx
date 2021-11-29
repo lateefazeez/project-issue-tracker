@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import FormModal from "./Form/FormModal";
 import CreateTask from "./Form/CreateTask";
+import classNames from "classnames";
 
 import Table from "./Table";
 import "./TicketPage.scss";
@@ -70,6 +71,15 @@ const TicketPage = (props) => {
     getTicketId(null);
   }, []);
 
+
+  let color
+  if (!LoneTicket[0]) {
+    color = "auto"
+  } 
+
+      const heightClass = classNames("bottom-tick", 
+      {"bottom-tick-hide": color});
+
   return (
     <div>
       <h2 className="project-header">Project Name: {getProjById(data, id)}</h2>
@@ -85,6 +95,7 @@ const TicketPage = (props) => {
             deleteTicket={deleteTicket}
             availableUsers={availableUsers}
             userProjectCreate={userProjectCreate}
+            userProjectDelete={userProjectDelete}
           />
         </div>
 
@@ -126,7 +137,7 @@ const TicketPage = (props) => {
           />
         </FormModal>
 
-        <div className="bottom-tick">
+        <div className={heightClass}>
           <div className="right-side">
             <div className="Health-box">
               <HealthStatus

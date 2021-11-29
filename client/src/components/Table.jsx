@@ -31,6 +31,7 @@ const Table = (props) => {
     LoneTicket,
     availableUsers,
     userProjectCreate,
+    userProjectDelete,
   } = props;
 
   return (
@@ -59,6 +60,8 @@ const Table = (props) => {
         updateTicket={updateTicket}
         deleteTicket={deleteTicket}
         commentDelete={commentDelete}
+        LoneTicket={LoneTicket}
+        userProjectDelete={userProjectDelete}
       />
       <div className="projects-box-footer" id={props.decider + "-bottom"}>
         <AddButtons
@@ -144,8 +147,6 @@ const Header = (props) => {
 const AddButtons = (props) => {
   const { decider, commentCreate, LoneTicket } = props;
 
-  console.log("im props " + props.decider);
-
   if (decider === "Ticket" || decider === "Team") {
     return <TablePaginations />;
   } else if (decider === "Comment") {
@@ -173,6 +174,8 @@ const AddList = (props) => {
     updateTicket,
     deleteTicket,
     commentDelete,
+    LoneTicket,
+    userProjectDelete,
   } = props;
 
   if (
@@ -210,6 +213,7 @@ const AddList = (props) => {
             updateTicket={updateTicket}
             deleteTicket={deleteTicket}
             commentDelete={commentDelete}
+            
           />
         </List>
       </Box>
@@ -224,6 +228,8 @@ const AddList = (props) => {
         userTicketCreate={userTicketCreate}
         updateTicket={updateTicket}
         deleteTicket={deleteTicket}
+        LoneTicket={LoneTicket}
+        userProjectDelete={userProjectDelete}
       />
     );
   }
