@@ -15,13 +15,13 @@ const TablePaginations = (props) => {
       <Stack spacing={2}>
         <Pagination
           component={component}
-          count={100}
+          count={2}
           page={page}
           onPageChange={onPageChange}
           rowsPerPage={rowsPerPage}
           onRowsPerPageChange={onRowsPerPageChange}
           variant="outlined" 
-          color="primary" 
+          color="secondary" 
           size="large" 
         />
       </Stack>

@@ -62,7 +62,7 @@ tr {
     background-color: $project-table-background;
     font: $font-family;
     justify-content: space-between;
-    border-color: transparent;
+    border: 0.2px solid #707070;
     // border: 0.1px solid $text-light;
    
 
@@ -86,8 +86,9 @@ tr {
 }
 
 .MuiTableRow-root {
-
+  
   &.Mui-selected.list__item{ 
+    
 
     background-color: $text-light;
         color: black;

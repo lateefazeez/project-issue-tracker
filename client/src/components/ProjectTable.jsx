@@ -68,8 +68,8 @@ const ProjectTable= (props) => {
     
     <div className="dash">
       <div className='topdash'>
-        <h4 style={{color: "white" }}>Projects</h4>
-        <h6 style={{color: "white" }}>Logged In As: {loggedInUser}</h6>
+        <h4 style={{color: "#DEDBDB" }}>Projects</h4>
+        <h6 style={{color: "#DEDBDB" }}>Logged In As: {loggedInUser}</h6>
       </div>
       <div className="dashbuttons">
           <div className='buttons'>

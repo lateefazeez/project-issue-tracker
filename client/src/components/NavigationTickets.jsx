@@ -25,6 +25,7 @@ import './Navigation.scss'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ProjectDashboard from './ProjectDashboard';
 import TicketPage from './TicketPage';
+import PersistentDrawerLeft from './Navigation2.0';
 
 
 
@@ -101,78 +102,9 @@ export default function PersistentDrawerTicket(props) {
     loggedInUser,
   } = props;
 
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar position="fixed" open={open}>
-        <Toolbar className="topbar">
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{ mr: 2, ...(open && { display: 'none' }) }}
-          >
-            <MenuIcon  style={{ fontSize: 40,}} />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-      <Drawer className="navbar"
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-            backgroundColor: '#212129',
-          },
-        }}
-        variant="persistent"
-        anchor="left"
-        open={open}
-      >
-        <DrawerHeader >
-          <IconButton onClick={handleDrawerClose} className="closebutton">
-            <MenuIcon style={{ fontSize: 40, color: 'white'}} />
-          </IconButton>
-        </DrawerHeader>
-          <div className="user">
-          <AccountCircleIcon sx={{fontSize: 100}} />
-          <h3>{loggedInUser}</h3>
-          </div>
-        <br></br>
-        <List>
-          {['Dashboard', 'My account', 'My issues', "Chat", "Board", "Archive"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemText primary={text} className="navitems" />
-            </ListItem>
-          ))}
-        </List>
-        {/* <Divider light={false} /> */}<br></br>
-        <div className='login'>
-          <Link to="/logout">
-            <Button children={"Logout"} />
-          </Link>
-        </div>
-        <div className="navfooter">
-          <p>Powered by Lateef, Matt, and Aman</p>
-        </div>
-      </Drawer>
-      {/* { loggedIn ? ( */}
-        <Main open={open}>
-        <DrawerHeader />
-          <TicketPage
+    <PersistentDrawerLeft>
+      <TicketPage
               data={data}
               taskCreate={taskCreate}
               taskUpdate={taskUpdate}
@@ -196,24 +128,9 @@ export default function PersistentDrawerTicket(props) {
               userProjectCreate={userProjectCreate}
               userProjectDelete={userProjectDelete}
               loggedInUser={loggedInUser} />
-      </Main>
-      {/* ) : (
-        <Link to="/" />
-      )} */}
       
-    </Box>
+    </PersistentDrawerLeft>
   );
 }
 
-
-PersistentDrawerTicket.defaultProps = {
-  loggedIn: false
-  
-}
-
-PersistentDrawerTicket.propTypes = {
-  loggedIn: PropTypes.bool,
-  name: PropTypes.string,
-  imageUrl: PropTypes.string
-}
  

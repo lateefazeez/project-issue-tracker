@@ -26,6 +26,10 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ProjectDashboard from './ProjectDashboard';
 import TicketPage from './TicketPage';
 import { useNavigate } from "react-router-dom";
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import ChatIcon from '@mui/icons-material/Chat';
+import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
 
 
 
@@ -94,7 +98,7 @@ export default function PersistentDrawerLeft(props) {
     name, 
     imageUrl,
     logoutUser,
-    loggedInUser
+    children
   } = props;
 
   const theme = useTheme();
@@ -114,8 +118,9 @@ export default function PersistentDrawerLeft(props) {
     sessionStorage.clear();
     logoutUser()
     navigate("/signup")
-
   }
+
+  const loggedInUser = window.sessionStorage.getItem("userName")
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -153,46 +158,38 @@ export default function PersistentDrawerLeft(props) {
           </IconButton>
         </DrawerHeader>
           <div className="user">
-          <AccountCircleIcon sx={{fontSize: 100}} />
-          <h3>{loggedInUser}</h3>
+          <AccountCircleIcon sx={{fontSize: 80}} />
+          <h3 className="logged-user">{loggedInUser}</h3>
           </div>
-        <br></br>
-        <List>
-          {['Dashboard', 'My account', 'My issues', "Chat", "Board", "Archive"].map((text, index) => (
-            <ListItem button key={text}>
+        <hr className="divider" ></hr>
+        <List className="navitems">
+          {[ <Link to="/navigation">Dashboard</Link>, 'My account', 'My issues', "Chat", "Board", "Archive"].map((text, index) => (
+            <ListItem button key={text} style={{color: "#BCBABA"}}>
+              <ListItemIcon>
+                { index % 2 === 0 ? <DashboardIcon style={{color: "#BCBABA"}} /> : <FormatListBulletedIcon style={{color: "#BCBABA"}} />}
+              </ListItemIcon>
               <ListItemText primary={text} className="navitems" />
             </ListItem>
           ))}
         </List>
-        {/* <Divider light={false} /> */}<br></br>
-        <div className='login'>
-          <Button children={"Logout"} onPress={logout} />
+        <Divider className="divider"/><br></br>
+        <div className="trademark--logout">
+        <div className='logout-button'>
+          <Button style={{backgroundColor: "red"}} children={"Logout"} onPress={logout} />
         </div>
-        <div className="navfooter">
-          <p>Powered by Lateef, Matt, and Aman</p>
+    
+          <div className="navfooter">
+            <p>Powered by:</p>
+            <p>Lateef, Matt, & Aman</p>
+          </div>
+   
         </div>
+      
       </Drawer>
-      {/* { loggedIn ? ( */}
         <Main open={open}>
         <DrawerHeader />
-          <ProjectDashboard 
-            projects={projects}
-            tickets={tickets}
-            users={users} 
-            chartData={chartData} 
-            createProject={createProject} 
-            updateProject={updateProject}
-            deleteProject={deleteProject}
-            addTeamMember={addTeamMember}
-            userProjects={userProjects}
-            reload={reload}
-            isLoading={isLoading}
-            loggedInUser={loggedInUser}/>
-      </Main>
-      {/* ) : (
-        <Link to="/" />
-      )} */}
-      
+          { children }
+        </Main>      
     </Box>
   );
 }

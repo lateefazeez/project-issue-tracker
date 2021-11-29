@@ -36,7 +36,7 @@ const CommentEntry = (props) => {
     <Fragment>
       <div className="commentZone">
        <input name="message" id="commentInput" placeholder="Comment Away..." onChange={handleChange} value={comment.message}></input>
-       <div className="new-comment"><PrimaryButton onPress={handleSubmit} style={{backgroundColor: "#4D45B5"}} id="buthead" children = "+ Comment"/></div>
+       <PrimaryButton onPress={handleSubmit} style={{backgroundColor: "#4D45B5", height: "inherit", borderRadius: "30px", width: "12rem"}} id="buthead" children = "+ Comment"/>
       </div>
     </Fragment>
    

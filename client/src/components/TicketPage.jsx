@@ -86,8 +86,8 @@ const TicketPage = (props) => {
   return (
     <div>
       <div className="tiptop">
-      <h2 className="project-header">Project Name: {getProjById(data, id)}</h2>
-      <h4 className="loggedin">Logged In As: {loggedInUser}</h4>
+      <h4 className="project-header">Project Name: {getProjById(data, id)}</h4>
+      <h6 className="loggedin">Logged In As: {loggedInUser}</h6>
       </div>
       <div className="tickets-upper">
         <div className="Team-box">
@@ -120,12 +120,12 @@ const TicketPage = (props) => {
 
       <div className="tickets-lower">
         <div className="top-tick">
-          <h4 id="mini" className="mindiv">
+          <h5 id="mini" className="mindiv">
             {" "}
             <strong>
               Ticket Information: {LoneTicket[0] && LoneTicket[0].title}
             </strong>
-          </h4>
+          </h5>
           <div className="new-task">
             <div className={heightClass}>
             <PrimaryButton 

@@ -22,7 +22,6 @@ td {
 
 .tabledata {
   color:$text-light !important;
-  // border: 0.2 solid #707070;
   &:hover {
     background-color: $hover-color;
     cursor: pointer;
@@ -31,16 +30,6 @@ td {
   }
 
 }
-
-// tr {
-
-//   &:hover {
-//     background-color: $hover-color;
-//     cursor: pointer;
-//     color: $text-light;
-    
-//   }
-// }
 
 .more-options {
   z-index: 1;

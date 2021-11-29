@@ -9,6 +9,7 @@ import useApplication from "./components/hooks/useApplicationData";
 
 import "./App.scss"
 import PersistentDrawerTicket from "./components/NavigationTickets";
+import ProjectDashboard from "./components/ProjectDashboard";
 
 function App() {
 
@@ -77,12 +78,13 @@ function App() {
               getLoggedInUser={getLoggedInUser}
               reload={reload}
               users={users}
+              loggedInUser={loggedInUser}
             />
             } />
         <Route
           path="/navigation"
           element={
-            <PersistentDrawerLeft
+            <ProjectDashboard
               projects={projects}
               tickets={tickets}
               users={users} 

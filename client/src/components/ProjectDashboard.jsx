@@ -2,6 +2,7 @@ import { useState } from "react"
 import ProjectTable from "./ProjectTable";
 import './ProjectDashboard.scss'
 import Chart from "./Chart";
+import PersistentDrawerLeft from "./Navigation2.0";
 
 
 const ProjectDashboard = (props) => {
@@ -21,7 +22,7 @@ const ProjectDashboard = (props) => {
   } = props
 
   return ( 
- 
+    <PersistentDrawerLeft>
       <div className="project--dashboard">
           { projects && 
             <ProjectTable 
@@ -38,7 +39,6 @@ const ProjectDashboard = (props) => {
               loggedInUser={loggedInUser}
             />
             }
-
           { projects && <div className="chart--group">
                 <Chart className="chart"
                   title={"Type"}
@@ -82,7 +82,8 @@ const ProjectDashboard = (props) => {
                 />
               </div>}
           </div>
- 
+    </PersistentDrawerLeft>
+
    );
 }
  

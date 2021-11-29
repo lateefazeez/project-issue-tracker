@@ -13,7 +13,7 @@ import './ProjectList.scss';
 import ProgressBar from './ProgressBar';
 import { useNavigate } from "react-router-dom";
 import { DropdownMenu, DropdownItem, UncontrolledDropdown, DropdownToggle } from "reactstrap";
-import TablePaginations from './slider/TablePaginations';
+
 
 
 

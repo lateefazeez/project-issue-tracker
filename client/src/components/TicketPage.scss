@@ -226,15 +226,16 @@
 }
 
 #commentInput{
-  width: 90%;
-  height: 60px;
+  width: inherit;
+  height: 50px;
   border-radius: 30px;
   background-color: black;
   color: $text-light;
   margin-bottom:30px;
   margin-top: 0px;
-  margin-left: 10px;
- 
+  padding-left: 1rem;
+  outline: none;
+  border:inherit;
 }
 
 .commentZone {
@@ -242,13 +243,18 @@
   flex-direction: row;
   justify-content: space-between;
   width: 98%;
-
+  height: 50px;
+  border-radius: 30px;
+  background-color: black;
+  margin-bottom: 2rem;
+  margin: 1rem;
+ 
 }
 
 .new-comment {
-  margin-left: 20px;
+  // margin-left: 20px;
   width: 150px;
-  height: 50px;
+  height: inherit !important;
   padding: 3px;
 }
 

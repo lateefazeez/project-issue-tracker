@@ -5,23 +5,40 @@
   background-color: $page-dark-background;
 }
 
+// .navbox {
+//   border-right: 1px solid #BCBABA;
+// }
+
 .user {
-  color: #4D45B5;
+  color: #BCBABA;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
-  border-bottom: 3px solid #707070;
+  // border-bottom: 3px solid #707070;
   font-size: 20px;
 }
 
+.logged-user {
+  color: #5E6DCB;
+}
+
 .navitems {
-  color: $text-light;
-  &:hover {
-    color: $hover-color;
-    cursor: pointer;
-    color: $text-light;
+  color: "#BCBABA";
+  :hover {
+    color: white !important
   }
+}
+
+a {
+  color: #BCBABA !important;
+  text-decoration: none !important;
+}
+
+a:hover {
+  color:white !important; 
+  text-decoration:none; 
+  cursor:pointer;  
 }
 
 // .closebutton {
@@ -31,17 +48,32 @@
 // }
 
 
-.login {
+.trademark--logout {
   display: flex;
   flex-direction: column;
+  height: 40rem;
+  justify-content: space-between;
   align-items: center;
+  padding-top: 2rem;
 }
 
 .navfooter {
+  display: flex;
+  flex-direction: column;
   font-size: small;
   color: $text-light;
-  display: flex;
-  flex-direction: row;
   justify-content: center;
-  padding-top: 20px;
+  align-items: center;
+  font-weight: bold;
 }
+
+.divider {
+  margin-top: 5rem;
+  color: #BCBABA;
+  height: 0.2px
+}
+
+// .lists-items {
+//   margin-left: 2rem;
+//   color: green;
+// }
