@@ -86,7 +86,7 @@ const UpdateTicket = (props) => {
             <Input className="form-inputs"  type="select" name="category" id="category" bsSize="lg" onChange={handleChange} value={ticket.category}>
             <option className="input-select">Issue</option>
             <option className="input-select">Bug</option>
-            <option className="input-select">Feature Request</option>
+            <option className="input-select">Feature</option>
           </Input>
         </FormGroup>
           <FormGroup className="input-select space">

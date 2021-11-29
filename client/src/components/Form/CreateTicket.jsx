@@ -85,7 +85,7 @@ const CreateTicket = (props) => {
             <option className="input-select">Select</option>
             <option className="input-select">Issue</option>
             <option className="input-select">Bug</option>
-            <option className="input-select">Feature Request</option>
+            <option className="input-select">Feature</option>
           </Input>
         </FormGroup>
           <FormGroup className="input-select space">
