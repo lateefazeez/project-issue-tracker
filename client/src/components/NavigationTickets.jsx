@@ -98,6 +98,7 @@ export default function PersistentDrawerTicket(props) {
     commentDelete,
     userProjectCreate,
     userProjectDelete,
+    loggedInUser
   } = props;
 
   const theme = useTheme();
@@ -148,7 +149,7 @@ export default function PersistentDrawerTicket(props) {
         </DrawerHeader>
           <div className="user">
           <AccountCircleIcon sx={{fontSize: 100}} />
-          <h3>Fred</h3>
+          <h3>{loggedInUser}</h3>
           </div>
         <br></br>
         <List>
@@ -193,7 +194,8 @@ export default function PersistentDrawerTicket(props) {
               commentCreate={commentCreate}
               commentDelete={commentDelete}
               userProjectCreate={userProjectCreate}
-              userProjectDelete={userProjectDelete} />
+              userProjectDelete={userProjectDelete}
+              loggedInUser={loggedInUser} />
       </Main>
       {/* ) : (
         <Link to="/" />
