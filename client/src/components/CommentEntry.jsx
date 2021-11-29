@@ -5,7 +5,6 @@ const CommentEntry = (props) => {
 
   const { commentCreate, LoneTicket } = props;
   const [comment, setComment] = useState({tickets_id: "", users_id: "", message: ""})
-  const [inputVal, setInputval] = useState("")
 
   if (!LoneTicket[0]){
     return null

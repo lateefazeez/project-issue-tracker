@@ -72,7 +72,7 @@ const TicketPage = (props) => {
     getTicketId(null);
   }, []);
 
-  const loggedInUserId = window.sessionStorage.getItem("userId")
+
   const loggedInUserName = window.sessionStorage.getItem("userName")
 
   let color
@@ -87,7 +87,7 @@ const TicketPage = (props) => {
     <div>
       <div className="tiptop">
       <h2 className="project-header">Project Name: {getProjById(data, id)}</h2>
-      <h4 className="loggedin">Logged In As: {loggedInUser}</h4>
+      <h4 className="loggedin">Logged In As: {loggedInUserName}</h4>
       </div>
       <div className="tickets-upper">
         <div className="Team-box">

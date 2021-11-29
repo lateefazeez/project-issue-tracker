@@ -78,11 +78,8 @@ const Table = (props) => {
 
 const Header = (props) => {
   const {
-    decider,
     projectId,
     createTicket,
-    updateTicket,
-    deleteTicket,
     availableUsers,
     userProjectCreate,
   } = props;

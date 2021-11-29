@@ -9,7 +9,7 @@ import './TicketTable.scss';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import './TableHeader.scss';
 import axios from 'axios';
-import {useState, useEffect, Fragment} from 'react';
+import {useState, useEffect} from 'react';
 import { DropdownMenu, DropdownItem, UncontrolledDropdown, DropdownToggle } from "reactstrap";
 
 
@@ -40,7 +40,6 @@ export default function TeamListTable(props) {
     return devs
   };
 
-  const [isEditUserProjectOpen, setIsEditUserProjectOpen] = useState(false);
   const [selectedUserProjectId, setSelectedUserProjectId] = useState("");
  
   useEffect(() => {
