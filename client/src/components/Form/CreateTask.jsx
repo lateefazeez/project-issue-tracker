@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Container, Button, Form, FormGroup, Label, Input} from 'reactstrap';
 
 import './CreateTask.scss'
@@ -9,7 +9,7 @@ const CreateTask = (props) => {
 
   const [task, setTask] = useState({})
 
-  const { onClose, taskCreate, projectId, ticketId } = props
+  const { onClose, taskCreate, ticketId } = props
 
   console.log(ticketId)
 

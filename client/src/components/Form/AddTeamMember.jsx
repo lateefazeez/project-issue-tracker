@@ -1,6 +1,6 @@
 
-import { useState, useEffect } from 'react'
-import { Container, Button, Form, FormGroup, Label, Input} from 'reactstrap';
+import { useState } from 'react'
+import { Container, Form, FormGroup, Label, Input} from 'reactstrap';
 
 import './CreateProject.scss'
 
@@ -32,7 +32,7 @@ const AddTeamMember = (props) => {
   return ( 
     <Container fluid>
       <Form className="project__form">
-      <Label className="form__header">Add Member</Label>
+      <Label className="form__header"><strong>Add Member</strong></Label>
         <FormGroup className="input-select">
           <Label for="users_id" className="input-labels">Available Users (click to add)</Label>
           <Input className="form-inputs"  type="select" name="users_id" id="users_id" multiple bsSize="lg" onChange={handleChange}>

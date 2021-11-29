@@ -78,11 +78,8 @@ const Table = (props) => {
 
 const Header = (props) => {
   const {
-    decider,
     projectId,
     createTicket,
-    updateTicket,
-    deleteTicket,
     availableUsers,
     userProjectCreate,
   } = props;
@@ -98,7 +95,7 @@ const Header = (props) => {
     return (
       <Fragment>
         <div class="tick-div">
-          <h4 class="super-head">Team</h4>
+          <h5 class="super-head">Team</h5>
           <div className="new-ticket">
             <PrimaryButton
               onPress={toggleNewMember}
@@ -121,7 +118,7 @@ const Header = (props) => {
     return (
       <Fragment>
         <div class="tick-div">
-          <h4 class="super-head">Tickets</h4>
+          <h5 class="super-head">Tickets</h5>
           <div className="new-ticket">
             <PrimaryButton
               onPress={toggleNewTicket}
@@ -140,7 +137,7 @@ const Header = (props) => {
       </Fragment>
     );
   } else if (props.decider === "Comment") {
-    return <h4 class="super-head">Comments</h4>;
+    return <h5 class="super-head">Comments</h5>;
   } else if (props.decider === "Devs") {
     return <h5 class="super-head">Assigned Devs</h5>;
   }

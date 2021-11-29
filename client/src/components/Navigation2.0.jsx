@@ -82,21 +82,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export default function PersistentDrawerLeft(props) {
   const {
-    projects,
-    tickets, 
-    users, 
-    data, 
-    chartData, 
-    createProject, 
-    updateProject, 
-    deleteProject,
-    addTeamMember,
-    userProjects,
-    reload,
-    isLoading,
-    loggedIn, 
-    name, 
-    imageUrl,
     logoutUser,
     children
   } = props;

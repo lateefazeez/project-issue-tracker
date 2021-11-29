@@ -52,8 +52,8 @@ const ProjectDashboard = (props) => {
                     '#982929',
                     '#9A7B41'
                     ]}
-                  chartLabels={['Issue', 'Bug', 'Feature Request']}
-                  chartData={[chartData.Issues, chartData.Bugs, chartData.FeatureRequests]}
+                  chartLabels={['Issue', 'Bug', 'Feature']}
+                  chartData={[chartData.Issues, chartData.Bugs, chartData.Feature]}
                 />
                 <Chart className="chart"
                   title={"Priority"}

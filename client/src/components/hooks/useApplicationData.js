@@ -16,7 +16,7 @@ import {
   TaskProgressCalulator,
   TicketProgressCalulator,
 } from "../../helpers/barChartHelpers"
-import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -78,7 +78,7 @@ export default function Application () {
 
   const chartData = {
     Issues: getTicketByCategories(data, "issue"),
-    FeatureRequests: getTicketByCategories(data, "feature request"),
+    Feature: getTicketByCategories(data, "feature"),
     Bugs: getTicketByCategories(data, "bug"),
     Immediate: getTicketByPriority(data, "immediate"),
     High: getTicketByPriority(data, "high"),
@@ -220,6 +220,7 @@ export default function Application () {
        tickets: [...filteredTickets, response.data]};
 
        const ticketId = LoneTicket[0].id
+          setLoneTicket(getTicketById(newData, ticketId));
           setTimeBar(TicketProgressCalulator(getTicketById(newData, ticketId)));
            return newData
     });

@@ -72,7 +72,7 @@ const TicketPage = (props) => {
     getTicketId(null);
   }, []);
 
-  const loggedInUserId = window.sessionStorage.getItem("userId")
+
   const loggedInUserName = window.sessionStorage.getItem("userName")
 
   let color

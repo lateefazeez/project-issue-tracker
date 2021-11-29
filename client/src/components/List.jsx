@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import TaskListItem from "./TaskListItem";
 import TeamListItem from "./TeamListItem";
 import CommentListItem from "./CommentListItem";
@@ -8,7 +8,7 @@ import TeamListTable from "./TeamListTable";
 const ListMaker = (props) => {
   let listo = "";
 
-  if (props.decider == "Task") {
+  if (props.decider === "Task") {
     listo =
       props.data &&
       props.data.map((task) => {
@@ -23,7 +23,7 @@ const ListMaker = (props) => {
           />
         );
       });
-  } else if (props.decider == "Team") {
+  } else if (props.decider === "Team") {
     return (
       <TeamListTable
         projectId={props.projectId}
@@ -32,7 +32,7 @@ const ListMaker = (props) => {
         userProjectDelete={props.userProjectDelete}
       />
     );
-  } else if (props.decider == "Ticket") {
+  } else if (props.decider === "Ticket") {
     return (
       <TicketListTable
         updateTicket={props.updateTicket}
@@ -43,7 +43,7 @@ const ListMaker = (props) => {
         LoneTicket={props.LoneTicket}
       />
     );
-  } else if (props.decider == "Comment") {
+  } else if (props.decider === "Comment") {
     listo = props.data.map((comment) => {
       return (
         <CommentListItem
@@ -55,7 +55,7 @@ const ListMaker = (props) => {
         />
       );
     });
-  } else if (props.decider == "Devs") {
+  } else if (props.decider === "Devs") {
     listo = props.data.map((team) => {
       return (
         <TeamListItem

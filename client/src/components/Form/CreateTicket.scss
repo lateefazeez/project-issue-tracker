@@ -21,14 +21,28 @@
 
 .dual__input {
   display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.estimate {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.date__input {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .space {
-  margin-right: 1.2rem;
+  // margin-right: 1.2rem;
 }
 
 .spaces {
-  margin-right: 1.9rem;
+  // margin-right: 2.2rem;
 }
 .submit_btn {
   background-color: #4D45B5 !important;
@@ -50,4 +64,10 @@
 
 .input-select {
   color: #A29F9F;
+  width: 48%
+}
+
+.start__date {
+  color: #A29F9F;
+  width: 48%
 }

@@ -15,7 +15,7 @@ const Signup = (props) => {
   const [displayRegisterForm, setDisplayRegisterForm] = useState(false)
   const [displayLoginForm, setDisplayLoginForm] = useState(false)
 
-  const { createUser, loginUser, users,  reload, getLoggedInUser } = props
+  const { createUser, loginUser, users,  reload } = props
 
   const [user, setUser] = useState({
     first_name: "",

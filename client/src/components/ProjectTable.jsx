@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import ProjectListTable from "./ProjectListTable";
 import TablePaginations from "./slider/TablePaginations";
 import CreateButton from "./CreateButton";
@@ -22,7 +22,6 @@ const ProjectTable= (props) => {
     addTeamMember,
     userProjects,
     reload,
-    isLoading,
     loggedInUser
   } = props;
 

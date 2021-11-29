@@ -4,15 +4,7 @@ import './CreateTicket.scss'
 
 
 const CreateTicket = (props) => {
-  // const [title, setTitle] = useState("")
-  // const [description, setDescription] = useState("")
-  // const [team, setTeam] = useState([])
-  // const [timeEstimate, setTimeEstimate] = useState("")
-  // const [category, setCategory] = useState("Issue")
-  // const [priority, setPriority] = useState("High")
-  // const [status, setStatus] = useState("On Track")
-  // const [start_date, setStartDate] = useState("")
-  // const [end_date, setEndDate] = useState("")
+
   const [ticket, setTicket] = useState({});
 
   const { createTicket, projectId, onClose } = props;
@@ -70,10 +62,10 @@ const CreateTicket = (props) => {
         </FormGroup>
         <div className="date__input">
           <FormGroup className="start__date">
-            <Label for="start" className="input-labels">Start Date</Label>
-            <Input className="form-inputs"  type="date" name="start" id="start" placeholder="date placeholder" bsSize="lg" onChange={handleChange} value={ticket.start}/>
+            <Label for="start_date" className="input-labels">Start Date</Label>
+            <Input className="form-inputs"  type="date" name="start_date" id="start_date" placeholder="date placeholder" bsSize="lg" onChange={handleChange} value={ticket.start}/>
           </FormGroup>
-          <FormGroup>
+          <FormGroup >
             <Label for="end_date" className="input-labels">End Date</Label>
             <Input className="form-inputs"  type="date" name="end_date" id="end_date" placeholder="date placeholder" bsSize="lg" onChange={handleChange} value={ticket.end_date}/>
           </FormGroup>
@@ -85,7 +77,7 @@ const CreateTicket = (props) => {
             <option className="input-select">Select</option>
             <option className="input-select">Issue</option>
             <option className="input-select">Bug</option>
-            <option className="input-select">Feature Request</option>
+            <option className="input-select">Feature</option>
           </Input>
         </FormGroup>
           <FormGroup className="input-select space">
@@ -99,7 +91,7 @@ const CreateTicket = (props) => {
         </FormGroup>
         </div>
 
-        <div className="dual__input">
+        <div className="estimate">
         <FormGroup>
           <Label for="duration" className="input-labels">Time Estimate (hours)</Label>
           <Input className="form-inputs" type="text" name="duration" id="duration" placeholder="Enter estimated hours" bsSize="lg" onChange={handleChange} value={duration} />

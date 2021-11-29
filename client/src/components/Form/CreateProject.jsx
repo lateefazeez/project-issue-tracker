@@ -4,6 +4,7 @@ import { Container, Button, Form, FormGroup, Label, Input} from 'reactstrap';
 
 import './CreateProject.scss'
 
+const loggedInUserId = window.sessionStorage.getItem("userId")
 
 const CreateProject = (props) => {
   const [values, setValues] = useState({ 
@@ -11,6 +12,7 @@ const CreateProject = (props) => {
     description: "",
     start_date: "",
     end_date: "",
+    users_id: loggedInUserId,
     team: []
   })
 
@@ -19,7 +21,6 @@ const CreateProject = (props) => {
     createProject,
     users,
     availableUsers,
-    reload
   } = props
 
   const handleChange = (event) => {
@@ -50,7 +51,7 @@ const CreateProject = (props) => {
     }
 
   }
-  const loggedInUserId = window.sessionStorage.getItem("userId")
+
 
 
   const handleSubmit = (e) => {

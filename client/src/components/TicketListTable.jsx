@@ -17,7 +17,7 @@ import classNames from "classnames";
 
 export default function TicketListTable(props) {
 
-  const {  data, projectId, getTicketId, updateTicket, deleteTicket, LoneTicket } = props;
+  const {  data, projectId, getTicketId, updateTicket, deleteTicket } = props;
 
 
 

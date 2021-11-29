@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import SelectProject from "./components/SelectProject"
 import Signup from "./components/Signup"
 import PersistentDrawerLeft from "./components/Navigation2.0"
-import TicketPage from "./components/TicketPage";
 import useApplication from "./components/hooks/useApplicationData";
 
 
@@ -23,9 +22,6 @@ function App() {
     deleteProject,
     tickets,
     users,
-    tasks,
-    comments,
-    userTickets,
     userProjects,
     taskCreate,
     taskUpdate,

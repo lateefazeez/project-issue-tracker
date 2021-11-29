@@ -33,11 +33,9 @@ export default function ProjectListTable(props) {
     deleteProject,
     onClose,
     users,
-    userProjects,
     availableUsers,
     page,
     rowsPerPage,
-    emptyRows
   } = props
 
   useEffect(() => {
@@ -79,8 +77,8 @@ export default function ProjectListTable(props) {
     let riskCount = 0
     let barColor;
     for (const eachTicket of tickets) {
-      if (eachTicket.projects_id == project.id) {
-        if (eachTicket.status.toLowerCase() == "at risk") {
+      if (eachTicket.projects_id === project.id) {
+        if (eachTicket.status.toLowerCase() === "at risk") {
           riskCount += 1
         }
       }
@@ -89,7 +87,7 @@ export default function ProjectListTable(props) {
     if ((riskCount / totalTickets) > 0.5) {
       projectStatus = "At Risk"
       barColor = "#EF3C3C"
-    } else if ((riskCount / totalTickets) == 0.5) {
+    } else if ((riskCount / totalTickets) === 0.5) {
       projectStatus = "In Progress"
       barColor = "#DD851E"
     } else {
@@ -98,7 +96,6 @@ export default function ProjectListTable(props) {
     }
     return { projectStatus, barColor }
   }
-  const loggedInUser = window.sessionStorage.getItem("userName")
 
   return (
     
@@ -151,15 +148,6 @@ export default function ProjectListTable(props) {
               </TableCell>
             </TableRow>
           ))}
-          {/* {emptyRows > 0 && (
-                <TableRow
-                  // style={{
-                  //   height: (dense ? 33 : 53) * emptyRows,
-                  // }}
-                >
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )} */}
         </TableBody>
       </Table>
     </TableContainer>
