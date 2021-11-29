@@ -79,7 +79,7 @@ export default function TicketListTable(props) {
   return (
     <Fragment>
     <TableContainer style={{ overflow: "hidden" }} >
-      <Table className="projecttable" sx={{ height: 0}} aria-label="simple table">
+      <Table className="projecttable" sx={{ height: 140}} aria-label="simple table">
     
         <TableHead>
           <TableRow className="tabletit">
