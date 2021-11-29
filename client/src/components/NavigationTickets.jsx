@@ -149,7 +149,7 @@ export default function PersistentDrawerTicket(props) {
         </DrawerHeader>
           <div className="user">
           <AccountCircleIcon sx={{fontSize: 100}} />
-          <h3>Fred</h3>
+          <h3>{loggedInUser}</h3>
           </div>
         <br></br>
         <List>
