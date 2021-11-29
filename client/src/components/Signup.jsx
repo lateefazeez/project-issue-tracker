@@ -6,6 +6,7 @@ import { Button, Form, FormGroup, Input} from 'reactstrap';
 import Collapse from '@mui/material/Collapse';
 import { Link } from "react-router-dom";
 import HomeIcon from '@mui/icons-material/Home';
+import { useNavigate } from "react-router-dom";
 
 import './Signup.scss';
 
@@ -14,7 +15,7 @@ const Signup = (props) => {
   const [displayRegisterForm, setDisplayRegisterForm] = useState(false)
   const [displayLoginForm, setDisplayLoginForm] = useState(false)
 
-  const { createUser, loginUser } = props
+  const { createUser, loginUser, users,  RegisteredUser, getLoggedInUser } = props
 
   const [user, setUser] = useState({
     first_name: "",
@@ -30,13 +31,41 @@ const Signup = (props) => {
     });
   }
 
+  let navigate = useNavigate()
+
   const registerUser = () => {
     createUser(user)
+    .then(response => {
+      if (response.user) {
+        console.log("RESPONSE:", response)
+        const userName = response.user.first_name
+        const userId = response.user.id
+        window.sessionStorage.setItem("userName", userName);
+        window.sessionStorage.setItem("userId", userId);
+        navigate("/navigation")
+      } else {
+        return
+      }
+    })
     handleFormDisplay()
   }
 
+
+
   const userLogin = () => {
     loginUser(user)
+    .then(response => {
+      users.forEach(user => {
+        if(user.email == response.email) {
+          sessionStorage.clear();
+          const userName = response.first_name
+          const userId = response.id
+          window.sessionStorage.setItem("userName", userName);
+          window.sessionStorage.setItem("userId", userId);
+          navigate(navigate("/navigation"));
+        }
+      })
+    })
     handleFormDisplay()
   }
 
@@ -56,9 +85,9 @@ const Signup = (props) => {
           <Input className="form-inputs"  type="password" name="password" id="password" rows="5" placeholder="Password" bsSize="lg" value={user.password} onChange={handleChange} />
         </FormGroup>
         <FormGroup className="button-container">
-          <Link to="/navigation">
+    
             <Button className="login_btn" onClick={registerUser}>Register</Button>
-          </Link>
+
         </FormGroup>
       </Form>
   )
@@ -113,7 +142,7 @@ const Signup = (props) => {
           </div>
         </PrimaryButton >
         <Link to="/login">
-          <PrimaryButton style={{ backgroundColor: "#262525", marginBottom: "20px", padding: "1rem 7rem", borderRadius: "0.4rem"}}>
+          <PrimaryButton style={{ backgroundColor: "#262525", marginBottom: "20px", padding: "1rem 9rem", borderRadius: "0.4rem"}}>
             <div className="signup-label">
               <GoogleIcon className="git-icon" />
               <h6>Continue with Google</h6>
@@ -134,7 +163,7 @@ const Signup = (props) => {
        <div className="login__header">
          <h5>Already a user? Login below!</h5>
        </div>
-       <PrimaryButton style={{ backgroundColor: "#262525", marginBottom: "20px", padding: "1rem 9rem", borderRadius: "0.4rem"}}>
+       <PrimaryButton style={{ backgroundColor: "#262525", marginBottom: "20px", padding: "1rem 10rem", borderRadius: "0.4rem"}}>
           <div className="signup-label" onClick={handleLoginDisplay}>
             <h6>Login to your account</h6>
           </div>
@@ -149,5 +178,6 @@ const Signup = (props) => {
    
    );
 }
+
 
 export default Signup;

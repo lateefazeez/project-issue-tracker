@@ -28,6 +28,7 @@ import TicketPage from './TicketPage';
 
 
 
+
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -90,7 +91,9 @@ export default function PersistentDrawerLeft(props) {
     isLoading,
     loggedIn, 
     name, 
-    imageUrl 
+    imageUrl,
+    logout,
+    loggedInUser
   } = props;
 
   const theme = useTheme();
@@ -141,7 +144,7 @@ export default function PersistentDrawerLeft(props) {
         </DrawerHeader>
           <div className="user">
           <AccountCircleIcon sx={{fontSize: 100}} />
-          <h3>Fred</h3>
+          <h3>{loggedInUser}</h3>
           </div>
         <br></br>
         <List>
@@ -153,8 +156,8 @@ export default function PersistentDrawerLeft(props) {
         </List>
         {/* <Divider light={false} /> */}<br></br>
         <div className='login'>
-          <Link to="/logout">
-            <Button children={"Logout"} />
+          <Link to="/signup">
+            <Button children={"Logout"} onClick={logout} />
           </Link>
         </div>
         <div className="navfooter">
@@ -175,7 +178,8 @@ export default function PersistentDrawerLeft(props) {
             addTeamMember={addTeamMember}
             userProjects={userProjects}
             reload={reload}
-            isLoading={isLoading}/>
+            isLoading={isLoading}
+            loggedInUser={loggedInUser}/>
       </Main>
       {/* ) : (
         <Link to="/" />

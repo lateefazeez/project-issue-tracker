@@ -412,17 +412,29 @@ export default function Application () {
     });
   };
 
+  let RegisteredUser;
+
   const createUser = (user) => {
-    return axios.post("http://localhost:3000/users", { user })
+    return axios.post("http://localhost:3000/registrations", { first_name: user.first_name, last_name: user.last_name, email: user.email, password: user.password })
     .then(response => {
       setData(prev => ({...prev, users: [...prev.users, response.data]}))
+      return response.data
     })
   }
+
+  
 
   const loginUser = (user) => {
     return axios.post("http://localhost:3000/sessions", { user })
     .then(result => {
-      console.log("USER:", result.data)
+      setData(prev => ({...prev, users: [...prev.users, result.data]}))
+      return user
+    })
+  }
+
+  const logoutUser = (user) => {
+    return axios.delete("http://localhost:3000/sessions")
+    .then(result => {
       setData(prev => ({...prev, users: [...prev.users, result.data]}))
     })
   }
@@ -444,6 +456,17 @@ export default function Application () {
       });
     });
   };
+
+  
+
+  // const getRegisteredUser = (userData) => {
+  //   console.log("USERDATA:", userData)
+  //   RegisteredUser = userData
+  // }
+
+  const getLoggedInUser = (userData) => {
+    console.log("Logged In: ", userData)
+  }
 
   return { 
     data: data,
@@ -482,6 +505,9 @@ export default function Application () {
     commentDelete,
     userProjectCreate,
     userProjectDelete,
+    logoutUser,
+    RegisteredUser,
+    getLoggedInUser
 
   }
 }

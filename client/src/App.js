@@ -1,4 +1,4 @@
-import { useState } from "react"
+
 import { Routes, Route } from "react-router-dom";
 import SelectProject from "./components/SelectProject"
 import Signup from "./components/Signup"
@@ -50,9 +50,16 @@ function App() {
     commentDelete,
     userProjectCreate,
     userProjectDelete,
+    logoutUser,
+    RegisteredUser,
+    getLoggedInUser
   } = useApplication()
 
   const reload = () => window.location.reload()
+
+  const loggedInUser = window.sessionStorage.getItem("userName")
+  console.log("CURRENT USER", loggedInUser)
+  
 
   return (
     //  isLoading ? "Loading..." :  
@@ -65,6 +72,11 @@ function App() {
             <Signup 
               createUser={createUser}
               loginUser={loginUser} 
+              logoutUser={logoutUser}
+              RegisteredUser={RegisteredUser}
+              getLoggedInUser={getLoggedInUser}
+              reload={reload}
+              users={users}
             />
             } />
         <Route
@@ -82,6 +94,8 @@ function App() {
               userProjects={userProjects}
               reload={reload}
               isLoading={isLoading}
+              logoutUser={logoutUser}
+              loggedInUser={loggedInUser}
             /> } />
         <Route 
           path="/tickets" 
@@ -109,6 +123,7 @@ function App() {
               commentDelete={commentDelete}
               userProjectCreate={userProjectCreate}
               userProjectDelete={userProjectDelete}
+              loggedInUser={loggedInUser}
             />
           }
         />

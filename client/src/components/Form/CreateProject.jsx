@@ -50,7 +50,7 @@ const CreateProject = (props) => {
     }
 
   }
-
+  const loggedInUserId = window.sessionStorage.getItem("userId")
 
 
   const handleSubmit = (e) => {

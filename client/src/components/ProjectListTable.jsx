@@ -13,6 +13,7 @@ import './ProjectList.scss';
 import ProgressBar from './ProgressBar';
 import { useNavigate } from "react-router-dom";
 import { DropdownMenu, DropdownItem, UncontrolledDropdown, DropdownToggle } from "reactstrap";
+import TablePaginations from './slider/TablePaginations';
 
 
 
@@ -22,6 +23,22 @@ export default function ProjectListTable(props) {
   const [isEditProjectOpen, setIsEditProjectOpen] = useState(false);
   const [selectedProjectData, setSelectedProjectData] = useState({});
   const [selectedProjectTeam, setSelectedProjectTeam] = useState([]);
+
+ 
+
+  const { 
+    projects, 
+    tickets,
+    updateProject, 
+    deleteProject,
+    onClose,
+    users,
+    userProjects,
+    availableUsers,
+    page,
+    rowsPerPage,
+    emptyRows
+  } = props
 
   useEffect(() => {
 
@@ -40,16 +57,7 @@ export default function ProjectListTable(props) {
   }, [selectedProjectId])
   
 
-  const { 
-    projects, 
-    tickets,
-    updateProject, 
-    deleteProject,
-    onClose,
-    users,
-    userProjects,
-    availableUsers
-  } = props
+  
 
   let navigate = useNavigate()
 
@@ -89,7 +97,6 @@ export default function ProjectListTable(props) {
       barColor = "#6AD650"
     }
     return { projectStatus, barColor }
-
   }
 
   return (
@@ -107,7 +114,8 @@ export default function ProjectListTable(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {!projects ? "Loading..." : projects.map((project) => (
+          {projects && projects.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            .map((project, index) => (
             <TableRow key={project.id} className="tabledata" id={project.id} >
               <TableCell className="projectitle"  onClick={() => navigate("/tickets", { state: { id: project.id}, onClose: { onClose: onClose } })} component="th" scope="project">
                 {project.title}
@@ -141,6 +149,15 @@ export default function ProjectListTable(props) {
               </TableCell>
             </TableRow>
           ))}
+          {/* {emptyRows > 0 && (
+                <TableRow
+                  // style={{
+                  //   height: (dense ? 33 : 53) * emptyRows,
+                  // }}
+                >
+                  <TableCell colSpan={6} />
+                </TableRow>
+              )} */}
         </TableBody>
       </Table>
     </TableContainer>

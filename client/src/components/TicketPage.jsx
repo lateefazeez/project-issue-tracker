@@ -70,6 +70,9 @@ const TicketPage = (props) => {
     getTicketId(null);
   }, []);
 
+  const loggedInUserId = window.sessionStorage.getItem("userId")
+  const loggedInUserName = window.sessionStorage.getItem("userName")
+
   return (
     <div>
       <h2 className="project-header">Project Name: {getProjById(data, id)}</h2>

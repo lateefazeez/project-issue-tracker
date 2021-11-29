@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  
+include UserConcern
 
   def create
     # Check if user is authenticated
@@ -7,13 +7,30 @@ class SessionsController < ApplicationController
       # save the user id inside the browser cookie. This is how we keep the user 
       # logged in when they navigate around our website.
       session[:user_id] = @user.id
-      redirect_to "/navigation"
+      render json: {
+        status: :created,
+        logged_in: true,
+        user: @user
+      }
     else
       # if user's login doesn't work, send them back to the login form
-      redirect_to "/"
+      render json: { status: 401}
     end
   end
 
+  def logout
+    reset_session
+    render json: { status: 200, logged_out: true }
+  end
+
+  def logged_in 
+    if @current_user
+      render json: {
+        user: @current_user,
+        logged_in: true
+      }
+    end
+  end
   # def googleAuth
   #   # Get access tokens from the google server
   #   access_token = request.env["omniauth.auth"]
@@ -36,8 +53,5 @@ class SessionsController < ApplicationController
 
 
 
-  def destroy
-    session.delete(:user_id)
-    redirect_to "/login"
-  end
+
 end

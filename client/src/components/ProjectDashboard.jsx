@@ -18,7 +18,8 @@ const ProjectDashboard = (props) => {
     addTeamMember,
     userProjects,
     reload,
-    isLoading
+    isLoading,
+    loggedInUser
   } = props
 
   return ( 
@@ -36,6 +37,7 @@ const ProjectDashboard = (props) => {
         userProjects={userProjects}
         reload={reload}
         isLoading={isLoading}
+        loggedInUser={loggedInUser}
        />
        }
 

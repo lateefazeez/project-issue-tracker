@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import ProjectListTable from "./ProjectListTable";
 import TablePaginations from "./slider/TablePaginations";
 import CreateButton from "./CreateButton";
@@ -22,8 +22,24 @@ const ProjectTable= (props) => {
     addTeamMember,
     userProjects,
     reload,
-    isLoading
+    isLoading,
+    loggedInUser
   } = props;
+
+  //pagination
+  const [page, setPage] = useState(0)
+  const [rowsPerPage, setRowsPerPage] = useState(5)
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage)
+  }
+
+  const handleChangeRowsPerPage = event => {
+    setRowsPerPage(parseInt(event.target.value, 5))
+    setPage(0)
+  }
+
+  const emptyRows = rowsPerPage - Math.min(rowsPerPage, projects.length - page * rowsPerPage)
 
   const percentageComplete = getPercentageComplete(projects)
   const toggleNewProject = () => {
@@ -46,13 +62,14 @@ const ProjectTable= (props) => {
     })
     return projectUsers.join(", ")
   }
-  
+
  
   return (
     
     <div className="dash">
       <div className='topdash'>
         <h4 style={{color: "white" }}>Projects</h4>
+        <h6 style={{color: "white" }}>Logged In As: {loggedInUser}</h6>
       </div>
       <div className="dashbuttons">
           <div className='buttons'>
@@ -90,11 +107,21 @@ const ProjectTable= (props) => {
           userProjects={userProjects}
           availableUsers={availableUsers}
           reload={reload}
-          />
-          
+          page={page}
+          rowsPerPage={rowsPerPage}
+          emptyRows={emptyRows}
+          />     
       </div>
       <div className="bottomdash">
-        <TablePaginations />
+      <TablePaginations
+        rowsPerPageOptions={[5, 10, 25]}
+        component="div"
+        count={projects.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onChangePage={handleChangePage}
+        onChangeRowsPerPage={handleChangeRowsPerPage}
+      />
       </div>
       
     </div>
