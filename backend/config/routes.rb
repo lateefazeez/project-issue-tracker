@@ -25,5 +25,5 @@ Rails.application.routes.draw do
     resources :comments
     resources :users_tickets, only: [:index, :show, :create, :destroy]
     resources :users
-    resources :user_projects, only: [:index, :show, :create, :update]
+    resources :user_projects, only: [:index, :show, :create, :update, :destroy]
 end

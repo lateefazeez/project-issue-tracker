@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import FormModal from "./Form/FormModal";
 import CreateTask from "./Form/CreateTask";
+import classNames from "classnames";
 
 import Table from "./Table";
 import "./TicketPage.scss";
@@ -73,6 +74,14 @@ const TicketPage = (props) => {
   const loggedInUserId = window.sessionStorage.getItem("userId")
   const loggedInUserName = window.sessionStorage.getItem("userName")
 
+  let color
+  if (!LoneTicket[0]) {
+    color = "auto"
+  } 
+
+      const heightClass = classNames("bottom-tick", 
+      {"bottom-tick-hide": color});
+
   return (
     <div>
       <h2 className="project-header">Project Name: {getProjById(data, id)}</h2>
@@ -88,6 +97,7 @@ const TicketPage = (props) => {
             deleteTicket={deleteTicket}
             availableUsers={availableUsers}
             userProjectCreate={userProjectCreate}
+            userProjectDelete={userProjectDelete}
           />
         </div>
 
@@ -113,11 +123,13 @@ const TicketPage = (props) => {
             </strong>
           </h4>
           <div className="new-task">
-            <PrimaryButton
+            <div className={heightClass}>
+            <PrimaryButton 
               onPress={toggleNewTask}
               style={{ backgroundColor: "#4D45B5" }}
               children="+ New Task"
             />
+            </div>
           </div>
         </div>
         <FormModal handleOpen={isNewTaskOpen} onClose={toggleNewTask}>
@@ -129,7 +141,7 @@ const TicketPage = (props) => {
           />
         </FormModal>
 
-        <div className="bottom-tick">
+        <div className={heightClass}>
           <div className="right-side">
             <div className="Health-box">
               <HealthStatus

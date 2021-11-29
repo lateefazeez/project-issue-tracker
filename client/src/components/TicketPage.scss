@@ -84,6 +84,12 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+
+    &-hide {
+      height: 0px;
+      visibility: hidden;
+    }
+  
 }
 
 .right-side{
@@ -173,10 +179,16 @@
   margin-bottom: 5px;
   width: 95%;
   margin-left: 2.5%;
-  cursor: default;
+  cursor: pointer;
 
   &:hover {
     background-color: $project-table-background;
+  }
+}
+
+.noPointer{
+  &:hover {
+    cursor: default;
   }
 }
 

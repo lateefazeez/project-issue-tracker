@@ -8,6 +8,7 @@ import useApplication from "./components/hooks/useApplicationData";
 
 
 import "./App.scss"
+import PersistentDrawerTicket from "./components/NavigationTickets";
 
 function App() {
 
@@ -100,7 +101,7 @@ function App() {
         <Route 
           path="/tickets" 
           element={
-            <TicketPage
+            <PersistentDrawerTicket
               data={data}
               taskCreate={taskCreate}
               taskUpdate={taskUpdate}
@@ -128,7 +129,7 @@ function App() {
           }
         />
       </Routes>
-      setIsLoading(false)
+
     </div>
     
     

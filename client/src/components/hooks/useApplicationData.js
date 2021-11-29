@@ -16,6 +16,8 @@ import {
   TaskProgressCalulator,
   TicketProgressCalulator,
 } from "../../helpers/barChartHelpers"
+import { useNavigate } from "react-router-dom";
+
 
 
 export default function Application () {
@@ -390,7 +392,6 @@ export default function Application () {
     });
   };
 
-
   const userProjectCreate = (userId, projId) => {
 
     return axios
@@ -412,8 +413,6 @@ export default function Application () {
     });
   };
 
-  let RegisteredUser;
-
   const createUser = (user) => {
     return axios.post("http://localhost:3000/registrations", { first_name: user.first_name, last_name: user.last_name, email: user.email, password: user.password })
     .then(response => {
@@ -428,25 +427,28 @@ export default function Application () {
     return axios.post("http://localhost:3000/sessions", { user })
     .then(result => {
       setData(prev => ({...prev, users: [...prev.users, result.data]}))
-      return user
+      return { feedback: result.statusText, user }
     })
   }
 
-  const logoutUser = (user) => {
-    return axios.delete("http://localhost:3000/sessions")
+  
+  const logoutUser = () => {
+    return axios.delete("http://localhost:3000/logout")
     .then(result => {
-      setData(prev => ({...prev, users: [...prev.users, result.data]}))
+      setData(prev => ({...prev, users: [...prev.users, result.data]}
+      ))
     })
   }
 
   const userProjectDelete = (id) => {
+
     return axios
-      .delete(`http://localhost:3000/users_projects/${id}`)
+      .delete(`http://localhost:3000/user_projects/${id}`)
       .then((response) => {
         
         setData((prev) => {
 
-          const filteredUserProjects = data.userProjectts.filter((userProject) => {
+          const filteredUserProjects = data.userProjects.filter((userProject) => {
             return userProject.id !== id;
           });
 
@@ -457,16 +459,6 @@ export default function Application () {
     });
   };
 
-  
-
-  // const getRegisteredUser = (userData) => {
-  //   console.log("USERDATA:", userData)
-  //   RegisteredUser = userData
-  // }
-
-  const getLoggedInUser = (userData) => {
-    console.log("Logged In: ", userData)
-  }
 
   return { 
     data: data,
@@ -506,8 +498,6 @@ export default function Application () {
     userProjectCreate,
     userProjectDelete,
     logoutUser,
-    RegisteredUser,
-    getLoggedInUser
 
   }
 }

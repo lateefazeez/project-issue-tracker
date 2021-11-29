@@ -16,7 +16,12 @@ th {
 }
 
 .tabletitle {
-  text-transform: uppercase
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: $project-table-background;
+    cursor: default;
+  }
 
 }
 
@@ -37,15 +42,63 @@ tr {
     color: $text-light;
     
   }
+
 }
 
-.tabletit {
+  
+ 
 
+.list {
+  &__item {
+     @include fade;
 
-  &:hover {
+    color: $text-light;
+    height: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     background-color: $project-table-background;
-    cursor: auto;
-  }
+    font: $font-family;
+    justify-content: space-between;
+    border-color: transparent;
+    // border: 0.1px solid $text-light;
+   
 
+    &:hover {
+      background-color: $hover-color;
+      cursor: pointer;
+      color: $text-light;
+      
+    }
+
+    &-selected {
+      background-color: white;
+      color: $text-dark;
+
+      &:hover {
+        background-color: black;
+        color: $text-light;
+      }
+    }
+  }
 }
 
+.MuiTableRow-root {
+
+  &.Mui-selected.list__item{ 
+
+    background-color: $text-light;
+        color: black;
+        
+        .MuiTableCell-root.MuiTableCell-body.MuiTableCell-sizeMedium {
+
+            background-color: $text-light;
+                color: $text-dark !important;
+      
+        
+        }
+}
+
+}

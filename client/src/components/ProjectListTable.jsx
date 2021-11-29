@@ -103,14 +103,14 @@ export default function ProjectListTable(props) {
     <Fragment>
     <TableContainer style={{ overflow: "hidden", borderTop: "0.2px solid rgb(112, 112, 112)", borderLeft: "0.2px solid rgb(112, 112, 112)", borderRight: "0.2px solid rgb(112, 112, 112)", borderTopLeftRadius: 10, borderTopRightRadius: 10  }} >
       <Table className="projecttable" sx={{ height: 250}} aria-label="simple table">
-        <TableHead>
+        <TableHead className="tabletitle">
           <TableRow className="tabletitle">
-            <TableCell><strong>Title</strong></TableCell>
-            <TableCell><strong>Description</strong></TableCell>
-            <TableCell><strong>Progress</strong></TableCell>
-            <TableCell><strong>Status</strong></TableCell>
-            <TableCell><strong>Contributors</strong></TableCell>
-            <TableCell></TableCell>
+            <TableCell className="tabletitle"><strong>Title</strong></TableCell>
+            <TableCell className="tabletitle"><strong>Description</strong></TableCell>
+            <TableCell className="tabletitle"><strong>Progress</strong></TableCell>
+            <TableCell className="tabletitle"><strong>Status</strong></TableCell>
+            <TableCell className="tabletitle"><strong>Contributors</strong></TableCell>
+            <TableCell className="tabletitle"></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

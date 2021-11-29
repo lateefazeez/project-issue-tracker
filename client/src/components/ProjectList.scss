@@ -12,6 +12,7 @@ th {
 
 .tabletitle {
   text-transform: uppercase;
+  cursor: default;
 }
 
 td {
@@ -31,15 +32,15 @@ td {
 
 }
 
-tr {
+// tr {
 
-  &:hover {
-    background-color: $hover-color;
-    cursor: pointer;
-    color: $text-light;
+//   &:hover {
+//     background-color: $hover-color;
+//     cursor: pointer;
+//     color: $text-light;
     
-  }
-}
+//   }
+// }
 
 .more-options {
   z-index: 1;

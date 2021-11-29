@@ -15,7 +15,7 @@ const Signup = (props) => {
   const [displayRegisterForm, setDisplayRegisterForm] = useState(false)
   const [displayLoginForm, setDisplayLoginForm] = useState(false)
 
-  const { createUser, loginUser, users,  RegisteredUser, getLoggedInUser } = props
+  const { createUser, loginUser, users,  reload, getLoggedInUser } = props
 
   const [user, setUser] = useState({
     first_name: "",
@@ -37,12 +37,12 @@ const Signup = (props) => {
     createUser(user)
     .then(response => {
       if (response.user) {
-        console.log("RESPONSE:", response)
         const userName = response.user.first_name
         const userId = response.user.id
         window.sessionStorage.setItem("userName", userName);
         window.sessionStorage.setItem("userId", userId);
         navigate("/navigation")
+        reload()
       } else {
         return
       }
@@ -55,16 +55,21 @@ const Signup = (props) => {
   const userLogin = () => {
     loginUser(user)
     .then(response => {
-      users.forEach(user => {
-        if(user.email == response.email) {
-          sessionStorage.clear();
-          const userName = response.first_name
-          const userId = response.id
-          window.sessionStorage.setItem("userName", userName);
-          window.sessionStorage.setItem("userId", userId);
-          navigate(navigate("/navigation"));
-        }
-      })
+      if (response.feedback === "OK") {
+        users.forEach(dbUser => {
+          if(dbUser.email === response.user.email) {
+            const userId = dbUser.id
+            const userName = dbUser.first_name
+            window.sessionStorage.setItem("userName", userName);
+            window.sessionStorage.setItem("userId", userId);
+            navigate("/navigation");
+            reload()
+          } else {
+            return
+          }
+        })
+      }
+      
     })
     handleFormDisplay()
   }
@@ -100,9 +105,7 @@ const Signup = (props) => {
           <Input className="form-inputs"  type="password" name="password" id="password" rows="5" placeholder="Password" bsSize="lg" value={user.password} onChange={handleChange}/>
         </FormGroup>
         <FormGroup className="button-container">
-          <Link to="/navigation">
             <Button className="login_btn" onClick={userLogin}>Login</Button>
-          </Link>
         </FormGroup>
       </Form>
   )

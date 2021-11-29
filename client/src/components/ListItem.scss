@@ -30,12 +30,12 @@
     }
 
     &--selected {
-      background-color: darken($white, 5%);
+      background-color: white;
       color: $text-dark;
 
       &:hover {
-        background-color: darken($white, 5%);
-        color: $text-dark;
+        background-color: $text-dark;
+        color: $text-light;
       }
     }
   }

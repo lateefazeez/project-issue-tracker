@@ -8,42 +8,66 @@ import TableRow from '@mui/material/TableRow';
 import './TicketTable.scss';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import './TableHeader.scss';
+import axios from 'axios';
+import {useState, useEffect, Fragment} from 'react';
+import { DropdownMenu, DropdownItem, UncontrolledDropdown, DropdownToggle } from "reactstrap";
+
 
 export default function TeamListTable(props) {
   
 
-  const { projectId, data, userTicketCreate } = props;
+  const { projectId, data, userTicketCreate, userProjectDelete } = props;
 
-  const getUsersByProjectID = function(projectId, userProjects, users) {
-    const projectUsers =[];
-    const userIds = [];
-
-    const filteredUserProjects = userProjects.filter((elm) => {
-      return elm.projects_id === projectId;
-    });
-
-    for (const obj of filteredUserProjects) {
-      userIds.push(obj.users_id);
-    }
-
-    for (const user of users) {
-      if (userIds.includes(Number(user.id))) {
-        projectUsers.push(user);
-      }
-    }
-
-    return projectUsers;
-  }
-
+  const getUsersByProjectID = (projectId, userProjects, users) => {
+    let devs = [];
   
+    let list = userProjects;
+  
+    list.forEach((dev) => {
+      if (dev.projects_id === projectId) {
+         let userId = dev.users_id
+         let userlist = users;
+  
+         userlist.forEach((person) => {
+          if (person.id === userId) {
+            const devObj = {devId: dev.id, ...person}
+            devs.push(devObj)
+          }
+    });
+  }
+  })
+  
+    return devs
+  };
+
+  const [isEditUserProjectOpen, setIsEditUserProjectOpen] = useState(false);
+  const [selectedUserProjectId, setSelectedUserProjectId] = useState("");
+ 
+  useEffect(() => {
+
+    const singleUserProjectURL = `http://localhost:3000/user_projects/${setSelectedUserProjectId}`
+    const getSingleUserProject = axios.get(singleUserProjectURL)
+
+    Promise.all([getSingleUserProject])
+      .then((response) => {
+        setSelectedUserProjectId(response[0].data)
+        // console.log("UPDATE TICKET RES", response[0].data) 
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }, [selectedUserProjectId])
+
 
   const teams = getUsersByProjectID(projectId, data.userProjects, data.users)
+
+  console.log("teams is", teams)
   return (
     <TableContainer style={{ overflow: "hidden" }} >
       <Table className="projecttable" sx={{ height: 0}} aria-label="simple table">
     
         <TableHead>
-          <TableRow className="tabletit">
+          <TableRow className="tabletitle">
        
             <TableCell className="tabletitle">Name</TableCell>
             <TableCell className="tabletitle">Surame</TableCell>
@@ -63,7 +87,27 @@ export default function TeamListTable(props) {
  
               <TableCell onClick={() => userTicketCreate(row.id)}>{row.last_name}</TableCell>
               <TableCell onClick={() => userTicketCreate(row.id)}>{row.email}</TableCell>
-              <TableCell onClick={() => userTicketCreate(row.id)}><MoreVertIcon /></TableCell>
+              <TableCell>
+              <UncontrolledDropdown >
+                  <DropdownToggle
+                    className="btn-icon-only text-light"
+                    role=""
+                    size="sm"
+                    color="#585858"
+                    backgroundColor="#585858"
+                    id={row.devId}
+                    onClick={() => setSelectedUserProjectId(row.devId)}
+                    
+                  >
+                    <MoreVertIcon className="more-options" />
+                  </DropdownToggle>
+                  <DropdownMenu className="dropdown-menu-arrow" end>
+                    <DropdownItem onClick={() => userProjectDelete(row.devId)}>
+                      Delete Team Member
+                    </DropdownItem>
+                  </DropdownMenu>     
+                </UncontrolledDropdown>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

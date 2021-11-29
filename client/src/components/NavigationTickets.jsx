@@ -25,8 +25,6 @@ import './Navigation.scss'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ProjectDashboard from './ProjectDashboard';
 import TicketPage from './TicketPage';
-import { useNavigate } from "react-router-dom";
-
 
 
 
@@ -76,25 +74,30 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export default function PersistentDrawerLeft(props) {
+export default function PersistentDrawerTicket(props) {
   const {
-    projects,
-    tickets, 
-    users, 
-    data, 
-    chartData, 
-    createProject, 
-    updateProject, 
-    deleteProject,
-    addTeamMember,
-    userProjects,
-    reload,
-    isLoading,
-    loggedIn, 
-    name, 
-    imageUrl,
-    logoutUser,
-    loggedInUser
+    data,
+    taskCreate,
+    taskUpdate,
+    taskDelete,
+    getTicketId,
+    userTicketCreate,
+    userTicketDelete,
+    TaskBar,
+    TimeBar,
+    TicketComments,
+    TicketDevs,
+    TicketTasks,
+    LoneTicket,
+    createTicket,
+    updateTicket,
+    deleteTicket,
+    updateStatus,
+    statusUpdate,
+    commentCreate,
+    commentDelete,
+    userProjectCreate,
+    userProjectDelete,
   } = props;
 
   const theme = useTheme();
@@ -107,15 +110,6 @@ export default function PersistentDrawerLeft(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
-  let navigate = useNavigate()
-
-  const logout = () => {
-    sessionStorage.clear();
-    logoutUser()
-    navigate("/signup")
-
-  }
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -154,7 +148,7 @@ export default function PersistentDrawerLeft(props) {
         </DrawerHeader>
           <div className="user">
           <AccountCircleIcon sx={{fontSize: 100}} />
-          <h3>{loggedInUser}</h3>
+          <h3>Fred</h3>
           </div>
         <br></br>
         <List>
@@ -166,7 +160,9 @@ export default function PersistentDrawerLeft(props) {
         </List>
         {/* <Divider light={false} /> */}<br></br>
         <div className='login'>
-          <Button children={"Logout"} onPress={logout} />
+          <Link to="/logout">
+            <Button children={"Logout"} />
+          </Link>
         </div>
         <div className="navfooter">
           <p>Powered by Lateef, Matt, and Aman</p>
@@ -175,19 +171,29 @@ export default function PersistentDrawerLeft(props) {
       {/* { loggedIn ? ( */}
         <Main open={open}>
         <DrawerHeader />
-          <ProjectDashboard 
-            projects={projects}
-            tickets={tickets}
-            users={users} 
-            chartData={chartData} 
-            createProject={createProject} 
-            updateProject={updateProject}
-            deleteProject={deleteProject}
-            addTeamMember={addTeamMember}
-            userProjects={userProjects}
-            reload={reload}
-            isLoading={isLoading}
-            loggedInUser={loggedInUser}/>
+          <TicketPage
+              data={data}
+              taskCreate={taskCreate}
+              taskUpdate={taskUpdate}
+              taskDelete={taskDelete}
+              getTicketId={getTicketId}
+              userTicketCreate={userTicketCreate}
+              userTicketDelete={userTicketDelete}
+              TaskBar={TaskBar}
+              TimeBar={TimeBar}
+              TicketComments={TicketComments}
+              TicketDevs={TicketDevs}
+              TicketTasks={TicketTasks}
+              LoneTicket={LoneTicket}
+              createTicket={createTicket}
+              updateTicket={updateTicket}
+              deleteTicket={deleteTicket}
+              updateStatus={updateStatus}
+              statusUpdate={statusUpdate}
+              commentCreate={commentCreate}
+              commentDelete={commentDelete}
+              userProjectCreate={userProjectCreate}
+              userProjectDelete={userProjectDelete} />
       </Main>
       {/* ) : (
         <Link to="/" />
@@ -198,12 +204,12 @@ export default function PersistentDrawerLeft(props) {
 }
 
 
-PersistentDrawerLeft.defaultProps = {
+PersistentDrawerTicket.defaultProps = {
   loggedIn: false
   
 }
 
-PersistentDrawerLeft.propTypes = {
+PersistentDrawerTicket.propTypes = {
   loggedIn: PropTypes.bool,
   name: PropTypes.string,
   imageUrl: PropTypes.string
