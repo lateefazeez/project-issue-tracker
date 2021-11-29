@@ -47,19 +47,28 @@ const ProjectDashboard = (props) => {
                     '#EF3C3C',
                     '#D6A850'
                   ]}
+                  hoverColors={[
+                    '#322C7C',
+                    '#982929',
+                    '#9A7B41'
+                    ]}
                   chartLabels={['Issue', 'Bug', 'Feature Request']}
                   chartData={[chartData.Issues, chartData.Bugs, chartData.FeatureRequests]}
                 />
                 <Chart className="chart"
                   title={"Priority"}
                   colors={[
-                    '#4D45B5',
                     '#EF3C3C',
                     '#D6A850',
                     '#6AD650'
                   ]}
+                  hoverColors={[
+                    '#322C7C',
+                    '#866930',
+                    '#438433'
+                    ]}
                   chartLabels={['High', 'Medium', 'Low']}
-                  chartData={[chartData.Immediate, chartData.High, chartData.Medium, chartData.Low]}
+                  chartData={[chartData.High, chartData.Medium, chartData.Low]}
                 />
                 <Chart className="chart"
                   title={"Status"}
