@@ -15,12 +15,15 @@ class UserProjectsController < ApplicationController
   
   def destroy
     @userprojects = UserProject.find(params[:id])
+    @usertickets = UserTicket.where(["projects_id = ? and users_id = ?", @userprojects.projects_id, @userprojects.users_id])
 
-    if @userprojects.destroy
-      head :no_content
+    if @userprojects.destroy and @usertickets.destroy_all
+
+      render json: UserTicket.all
     else
       render json: {error: @userprojects.errors.messages}, status: 422
     end
+    
   end
 
 
