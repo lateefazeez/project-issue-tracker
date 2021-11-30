@@ -15,6 +15,7 @@ import Duration from "./HealthStats/Duration";
 import PrimaryButton from "./PrimaryButton";
 import ProgressBar from "./ProgressBar";
 import { useLocation } from "react-router";
+import ChatBot from "./ChjatBot";
 
 const TicketPage = (props) => {
   const [isNewTaskOpen, setIsNewTaskOpen] = useState(false);
@@ -240,6 +241,7 @@ const TicketPage = (props) => {
                 mWidth="95%"
               />
             </div>
+            <ChatBot />
           </div>
         </div>
       </div>
