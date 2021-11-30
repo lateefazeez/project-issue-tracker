@@ -251,9 +251,8 @@ export default function Application () {
      const newData = {...prev,
        tickets: [...filteredTickets, response.data]};
 
-       const ticketId = LoneTicket[0].id
-          setLoneTicket(getTicketById(newData, ticketId));
-          setTimeBar(TicketProgressCalulator(getTicketById(newData, ticketId)));
+          setLoneTicket(getTicketById(newData, id));
+          setTimeBar(TicketProgressCalulator(getTicketById(newData, id)));
            return newData
     });
   });
