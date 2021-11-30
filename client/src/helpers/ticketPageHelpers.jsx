@@ -59,8 +59,10 @@ const getCommentsByTicketId = (data, id) => {
 const getDevsByTicketId = (data, id) => {
   let devs = [];
 
-  let list = data.userTickets;
+  console.log("what are these", id)
 
+  let list = data.userTickets;
+    
   list.forEach((dev) => {
     if (dev.tickets_id === id) {
        let userId = dev.users_id
