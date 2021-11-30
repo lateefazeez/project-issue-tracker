@@ -15,7 +15,10 @@ import {
 import {
   TaskProgressCalulator,
   TicketProgressCalulator,
-} from "../../helpers/barChartHelpers";
+} from "../../helpers/barChartHelpers"
+
+
+
 
 export default function Application () {
   const [data, setData] = useState({
@@ -88,37 +91,6 @@ export default function Application () {
     ProjectStatus: getTicketByStatus(data, "at risk"),
   };
 
-  const [projectId, setProjectId] = useState([])
-  const [projectTeam, setProjectTeam] = useState([])
-
-
-  const availableUsers = (projectObject) => {
-    let usersProject;
-    let projectUsers = [];
-
-
-    console.log(projectObject)
-  
-      usersProject = data.userProjects.filter((userProject) => userProject.projects_id === projectObject)
-    
-  
-    data.users.forEach(user => {
-      usersProject.forEach(avUser => {
-        if (user.id === avUser.users_id) {
-          projectUsers.push(user.first_name)
-        }
-      })
-    })
-    return projectUsers.join(", ")
-  };
-
-  // let userId = window.sessionStorage.getItem('userId')
-
-  let clickedProject;
-
-  const getProjectId = (projectId) => {
-    clickedProject = setProjectId(projectId)
-  }
 
   const createProject = (project) => {
     return axios.post("http://localhost:3000/projects", { project, team: project.team })
@@ -126,11 +98,10 @@ export default function Application () {
       console.log("RESPONSE: ", response.data)
       setData(prev => ({...prev, projects: [...prev.projects, response.data.project], userProjects: [...prev.userProjects, ...response.data.user_projects]}))
       return response.data.project
-      // TypeError: response.data.user_projects is not iterable
-    });
-  };
-
-
+      
+    })
+  }
+  
   const updateProject = (project, id) => {
     return axios
       .put(`http://localhost:3000/projects/${id}`, { project, team: project.team })
@@ -162,8 +133,6 @@ export default function Application () {
   const [TicketComments, setTicketComments] = useState([]);
   const [TimeBar, setTimeBar] = useState(0);
   const [TaskBar, setTaskBar] = useState(0);
-
- 
   
 
   const getTicketId = (id) => {
@@ -227,9 +196,9 @@ export default function Application () {
   };
 
   const createTicket = (ticket) => {
+
     return axios.post("http://localhost:3000/tickets", { title: ticket.title, description: ticket.description, category: ticket.category, priority: ticket.priority, status: ticket.status, plan_duration: ticket.duration, start_date: ticket.start_date, end_date: ticket.end_date, projects_id: ticket.projects_id, users_id: ticket.users_id })
     .then(response => {
-      console.log("MATT'S DATA: ", response)
       setData(prev=> ({...prev, tickets: [...prev.tickets, response.data.ticket], users: [...prev.users, response.data.users], userTickets: [...prev.userTickets, response.data.userProjects]}))
     })
   }
@@ -439,8 +408,7 @@ export default function Application () {
   const createUser = (user) => {
     return axios.post("http://localhost:3000/registrations", { first_name: user.first_name, last_name: user.last_name, email: user.email, password: user.password })
     .then(response => {
-      // console.log(response.data)
-      setData(prev => ({...prev, users: [...prev.users, response.data.user]}))
+      setData(prev => ({...prev, users: [...prev.users, response.data]}))
       return response.data
     })
   }
@@ -497,7 +465,6 @@ export default function Application () {
     taskUpdate,
     taskDelete,
     getTicketId,
-    getProjectId,
     userTicketCreate,
     userTicketDelete,
     TaskBar,
@@ -523,8 +490,7 @@ export default function Application () {
     userProjectCreate,
     userProjectDelete,
     logoutUser,
-    availableUsers,
 
   }
-
-};
+}
+ 
