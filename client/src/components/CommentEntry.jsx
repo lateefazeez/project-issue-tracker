@@ -1,5 +1,6 @@
 import { Fragment, useState } from "react";
 import PrimaryButton from "./PrimaryButton";
+import axios from "axios"
 
 const CommentEntry = (props) => {
   const {
@@ -35,8 +36,28 @@ const CommentEntry = (props) => {
     e.preventDefault();
 
     if (comment.message) {
-      commentCreate(comment);
-      setComment({ message: "" });
+      const webhookUrl = "https://hooks.slack.com/services/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"
+
+      const data = {
+        text: `${userNameFromSession}: ${comment.message}`
+      }
+
+      return axios
+      .post(webhookUrl, JSON.stringify(data), {
+        withCredentials: false,
+        transformRequest: [(data, headers) => {
+          delete headers.post["Content-Type"]
+          return data;
+        }]
+      }).then(response => {
+        commentCreate(comment);
+        setComment({ message: "" });
+        if (response.status === 200) {
+          return
+        } else {
+          alert("Error Sending your comment, Please try again later")
+        }
+      })
     }
     return;
   };
