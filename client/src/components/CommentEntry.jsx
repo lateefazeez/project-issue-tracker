@@ -36,7 +36,7 @@ const CommentEntry = (props) => {
     e.preventDefault();
 
     if (comment.message) {
-      const webhookUrl = "https://hooks.slack.com/services/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"
+      const webhookUrl = process.env.REACT_APP_SLACK_WEBHOOK
 
       const data = {
         text: `${userNameFromSession}: ${comment.message}`
