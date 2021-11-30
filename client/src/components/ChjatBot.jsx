@@ -4,7 +4,7 @@ const ChatBot = () => {
   return ( 
 <ReactSlackChat
           botName='project-issue-tracker' // VisitorID, CorpID, Email, IP address etc.
-          apiToken = "eG94Yi0yNzgwMTYwMjI0MzI1LTI3OTYwNTA2MDgyNTctcFgyRzNqZ2tWTkZ6Wmc5ekE4OWdwOEo2"
+          apiToken = "eG94Yi0yNzgwMTYwMjI0MzI1LTI3OTYwNTA2MDgyNTctdHE5YzBmTDFlVHlXTkt0R0w4bkVqbWZq"
           channels={[
           {
             name: 'project'
