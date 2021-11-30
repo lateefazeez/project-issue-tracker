@@ -35,8 +35,11 @@ const CreateTicket = (props) => {
       ticket.description
     ) {
 
-    createTicket(ticket);
-    onClose();
+    createTicket(ticket)
+    .then(() => {
+      onClose();
+    })
+   
     
   }
   return

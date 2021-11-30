@@ -92,7 +92,8 @@ const ProjectTable= (props) => {
                 createProject={createProject} 
                 users={users}
                 addTeamMember={addTeamMember}
-                reload={reload}/>
+                reload={reload}
+                availableUsers={availableUsers}/>
             </FormModal>
           </div>
           
