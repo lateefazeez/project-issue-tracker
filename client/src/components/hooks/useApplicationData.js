@@ -126,7 +126,7 @@ export default function Application () {
       console.log("RESPONSE: ", response.data)
       setData(prev => ({...prev, projects: [...prev.projects, response.data.project], userProjects: [...prev.userProjects, ...response.data.user_projects]}))
       return response.data.project
-      
+      // TypeError: response.data.user_projects is not iterable
     });
   };
 
@@ -227,10 +227,9 @@ export default function Application () {
   };
 
   const createTicket = (ticket) => {
-
     return axios.post("http://localhost:3000/tickets", { title: ticket.title, description: ticket.description, category: ticket.category, priority: ticket.priority, status: ticket.status, plan_duration: ticket.duration, start_date: ticket.start_date, end_date: ticket.end_date, projects_id: ticket.projects_id, users_id: ticket.users_id })
     .then(response => {
-      setData(prevTickets=> ({...prevTickets, tickets: [...prevTickets.tickets, response.data]}))
+      setData(prev=> ({...prev, tickets: [...prev.tickets, response.data]}))
     })
   }
 
@@ -440,7 +439,8 @@ export default function Application () {
   const createUser = (user) => {
     return axios.post("http://localhost:3000/registrations", { first_name: user.first_name, last_name: user.last_name, email: user.email, password: user.password })
     .then(response => {
-      setData(prev => ({...prev, users: [...prev.users, response.data]}))
+      // console.log(response.data)
+      setData(prev => ({...prev, users: [...prev.users, response.data.user]}))
       return response.data
     })
   }

@@ -19,7 +19,8 @@ class ProjectsController < ApplicationController
       users.each do |user|
         @project.users << user
       end
-      render json: @project, status: :created
+      render json: {project: @project, user_projects: UserProject.all}
+
     else
       render json: {error: @project.errors.messages}, status: 422
     end
