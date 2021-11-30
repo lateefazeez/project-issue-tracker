@@ -177,8 +177,7 @@ export default function Application () {
 
   };
 
-  const userTicketCreate = (userId) => {
-
+  const userTicketCreate = (userId, projectId) => {
 
     if (!LoneTicket[0]) {
       return
@@ -187,7 +186,8 @@ export default function Application () {
     return axios
       .post("http://localhost:3000/users_tickets", {
         users_id: userId,
-        tickets_id: ticketId
+        tickets_id: ticketId,
+        projects_id: projectId
       })
       .then((response) => {
         setData((prev) => {
@@ -478,6 +478,8 @@ export default function Application () {
 
   const userProjectDelete = (id) => {
 
+    const ticketId = LoneTicket[0].id
+
     return axios
       .delete(`http://localhost:3000/user_projects/${id}`)
       .then((response) => {
@@ -488,9 +490,13 @@ export default function Application () {
             return userProject.id !== id;
           });
 
+      
          const newData = { ...prev, 
-          userProjects: [...filteredUserProjects]};
-           return newData
+          userProjects: [...filteredUserProjects],
+          userTickets: [...response.data]};
+          
+          setTicketDevs(getDevsByTicketId(newData, ticketId));
+          return newData
       });
     });
   };

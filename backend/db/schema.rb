@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_28_072606) do
+ActiveRecord::Schema.define(version: 2021_11_30_201617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,6 +110,8 @@ ActiveRecord::Schema.define(version: 2021_11_28_072606) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "users_id"
     t.bigint "tickets_id"
+    t.bigint "projects_id"
+    t.index ["projects_id"], name: "index_user_tickets_on_projects_id"
     t.index ["tickets_id"], name: "index_user_tickets_on_tickets_id"
     t.index ["users_id"], name: "index_user_tickets_on_users_id"
   end
@@ -138,6 +140,7 @@ ActiveRecord::Schema.define(version: 2021_11_28_072606) do
   add_foreign_key "tickets", "users", column: "users_id"
   add_foreign_key "user_projects", "projects", column: "projects_id"
   add_foreign_key "user_projects", "users", column: "users_id"
+  add_foreign_key "user_tickets", "projects", column: "projects_id"
   add_foreign_key "user_tickets", "tickets", column: "tickets_id"
   add_foreign_key "user_tickets", "users", column: "users_id"
 end

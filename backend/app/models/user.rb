@@ -3,10 +3,10 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   validates_presence_of :email
   
-  has_many :user_tickets
-  has_many :tickets, through: :user_tickets
-  has_many :user_projects
-  has_many :projects, through: :user_projects
+  has_many :user_tickets, dependent: :destroy
+  has_many :tickets, through: :user_tickets, dependent: :destroy
+  has_many :user_projects, dependent: :destroy
+  has_many :projects, through: :user_projects, dependent: :destroy
   has_many :comments, foreign_key: :users_id, dependent: :destroy
 
 

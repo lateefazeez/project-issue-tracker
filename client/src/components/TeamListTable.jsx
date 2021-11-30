@@ -80,12 +80,12 @@ export default function TeamListTable(props) {
               key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell onClick={() => userTicketCreate(row.id)} component="th" scope="row">
+              <TableCell onClick={() => userTicketCreate(row.id, projectId)} component="th" scope="row">
                 {row.first_name}
               </TableCell>
  
-              <TableCell onClick={() => userTicketCreate(row.id)}>{row.last_name}</TableCell>
-              <TableCell onClick={() => userTicketCreate(row.id)}>{row.email}</TableCell>
+              <TableCell onClick={() => userTicketCreate(row.id, projectId)}>{row.last_name}</TableCell>
+              <TableCell onClick={() => userTicketCreate(row.id, projectId)}>{row.email}</TableCell>
               <TableCell>
               <UncontrolledDropdown >
                   <DropdownToggle
