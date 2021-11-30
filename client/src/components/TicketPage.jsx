@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import FormModal from "./Form/FormModal";
 import CreateTask from "./Form/CreateTask";
 import classNames from "classnames";
-
+import axios from 'axios';
 import Table from "./Table";
 import "./TicketPage.scss";
 import "./TicketListTable";
@@ -46,6 +46,25 @@ const TicketPage = (props) => {
     userIdFromSession,
     userNameFromSession
   } = props;
+
+  const [users, setUsers] = useState(data.users)
+
+  useEffect(() => {
+
+    console.log()
+    const newUsersURL = `http://localhost:3000/users/`
+    const getNewUsersURL = axios.get(newUsersURL)
+
+    Promise.all([getNewUsersURL])
+      .then((response) => {
+        console.log("USERS-RESPONSE", response.data)
+        setUsers(response.data)
+    
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }, [users])
 
   const { state } = useLocation();
   const { id } = state;
@@ -113,6 +132,7 @@ const TicketPage = (props) => {
             getTicketId={getTicketId}
             projectId={id}
             data={data}
+            users={users}
             createTicket={createTicket}
             updateTicket={updateTicket}
             deleteTicket={deleteTicket}

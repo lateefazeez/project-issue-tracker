@@ -24,7 +24,7 @@ export default function TicketListTable(props) {
   const [selectedTicketData, setSelectedTicketData] = useState(false);
   const [isEditTicketOpen, setIsEditTicketOpen] = useState(false);
   const [selectedTicketId, setSelectedTicketId] = useState("");
-
+  
   const toggleEditTicket = () => {
 
     setIsEditTicketOpen(!isEditTicketOpen);

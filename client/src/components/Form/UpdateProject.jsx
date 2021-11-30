@@ -80,14 +80,6 @@ const UpdateProject = (props) => {
           <Input className="form-inputs" type="text" name="percentage_complete" id="percentage_complete" placeholder="Enter current progress" bsSize="lg" value={project.percentage_complete} onChange={handleChange}/>
         </FormGroup>
         
-        <FormGroup className="input-select">
-          <Label for="team" className="input-labels">Update Team Members</Label>
-          <Input className="form-inputs"  type="select" name="team" id="team" multiple bsSize="lg" value={project.team} onChange={handleChange}>
-            { projectUsers(project) && projectUsers(project).map((member) => {
-              return <option className="input-select">{member.first_name} {member.last_name}</option>})
-            }
-          </Input>
-        </FormGroup>
         <FormGroup className="button-container">
           <Button className="submit_btn" onClick={handleSubmit}>Submit</Button>
         </FormGroup>
