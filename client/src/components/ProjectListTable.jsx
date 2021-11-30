@@ -13,7 +13,7 @@ import './ProjectList.scss';
 import ProgressBar from './ProgressBar';
 import { useNavigate } from "react-router-dom";
 import { DropdownMenu, DropdownItem, UncontrolledDropdown, DropdownToggle } from "reactstrap";
-
+import { getProjectPercentComplete } from '../helpers/projectPageHelpers';
 
 
 
@@ -36,8 +36,11 @@ export default function ProjectListTable(props) {
     availableUsers,
     page,
     rowsPerPage,
-    getProjectId,
+    projectUsers,
+    data
   } = props
+
+  console.log("project percent complete:", getProjectPercentComplete(data, 1))
 
   useEffect(() => {
 
@@ -56,8 +59,6 @@ export default function ProjectListTable(props) {
   }, [selectedProjectId])
   
 
-  
-
   let navigate = useNavigate()
 
   const resetProjectId = () => setSelectedProjectId(null);
@@ -72,13 +73,14 @@ export default function ProjectListTable(props) {
   
 
   const getProjectStatus = (project) => {
-    const totalTickets = tickets.length
+    let totalTickets = 0;
 
     let projectStatus;
     let riskCount = 0
     let barColor;
     for (const eachTicket of tickets) {
       if (eachTicket.projects_id === project.id) {
+            totalTickets += 1
         if (eachTicket.status.toLowerCase() === "at risk") {
           riskCount += 1
         }
@@ -96,11 +98,6 @@ export default function ProjectListTable(props) {
       barColor = "#6AD650"
     }
     return { projectStatus, barColor }
-  }
-
-  const doBoth = (id) => {
-    getProjectId(id)
-    navigate("/tickets", { state: { id: id} })
   }
 
   return (
@@ -125,10 +122,10 @@ export default function ProjectListTable(props) {
               <TableCell className="projectitle"  onClick={() => navigate("/tickets", { state: { id: project.id}, onClose: { onClose: onClose } })} component="th" scope="project">
                 {project.title}
               </TableCell>
-              <TableCell onClick={() => doBoth(project.id)} >{project.description}</TableCell>
-              <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} ><ProgressBar className="Actual-bar" height="20px"color={ getProjectStatus(project).barColor}percent={project.percentage_complete}/></TableCell>
+              <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{project.description}</TableCell>
+              <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} ><ProgressBar className="Actual-bar" height="20px"color={ getProjectStatus(project).barColor}percent={getProjectPercentComplete(data, project.id)}/></TableCell>
               <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{ getProjectStatus(project).projectStatus}</TableCell>
-              <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{availableUsers(project.id) }</TableCell>
+              <TableCell onClick={() => navigate("/tickets", { state: { id: project.id} })} >{availableUsers(project)}</TableCell>
               <TableCell>
                 <UncontrolledDropdown onClick={(e) => setProjectId(e)} >
                   <DropdownToggle

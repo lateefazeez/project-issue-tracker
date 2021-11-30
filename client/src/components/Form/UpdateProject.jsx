@@ -32,8 +32,12 @@ const UpdateProject = (props) => {
       percentage_complete: project.percentage_complete,
       team: project.team
     }
+
+    if (project.title && project.description && project.start_date && project.end_date) {
     updateProject(updatedProject, id)
     onClose()
+    }
+    return
   }
 
   const handleChange = (e) => { 
@@ -41,7 +45,10 @@ const UpdateProject = (props) => {
       ...project,
       [e.target.id] : e.target.value
     })
+    console.log(e.target.value)
   }
+
+  
 
   const projectUsers = (projectObject) => {
     return users.filter((user) => user.projects_id === projectObject.id)
@@ -79,7 +86,7 @@ const UpdateProject = (props) => {
         
         <FormGroup className="input-select">
           <Label for="team" className="input-labels">Update Team Members</Label>
-          <Input className="form-inputs"  type="select" name="team" id="team" multiple bsSize="lg" value={project.team}>
+          <Input className="form-inputs"  type="select" name="team" id="team" multiple bsSize="lg" value={project.team} onChange={handleChange}>
             { projectUsers(project) && projectUsers(project).map((member) => {
               return <option className="input-select">{member.first_name} {member.last_name}</option>})
             }

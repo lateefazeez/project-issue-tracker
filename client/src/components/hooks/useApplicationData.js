@@ -13,15 +13,9 @@ import {
   updateStatus,
 } from "../../helpers/ticketPageHelpers";
 import {
-  getProjectById,
-} from "../../helpers/projectPageHelpers";
-import {
   TaskProgressCalulator,
   TicketProgressCalulator,
 } from "../../helpers/barChartHelpers";
-
-
-
 
 export default function Application () {
   const [data, setData] = useState({
@@ -34,6 +28,7 @@ export default function Application () {
     userProjects: [],
     isLoading: true
   });
+  const [loggedUser, setLoggedUser] = useState(null)
 
   useEffect(() => {
     const allProjectsUrl = "http://localhost:3000/projects";
@@ -128,16 +123,13 @@ export default function Application () {
   const createProject = (project) => {
     return axios.post("http://localhost:3000/projects", { project, team: project.team })
     .then(response => {
-   
-      setData(prev => {
-
-      const newData = {...prev, projects: [...prev.projects, response.data]}
-      availableUsers(getProjectById(newData, clickedProject));
-      return newData
+      console.log("RESPONSE: ", response.data)
+      setData(prev => ({...prev, projects: [...prev.projects, response.data.project], userProjects: [...prev.userProjects, ...response.data.user_projects]}))
+      return response.data.project
       
     });
-  });
-};
+  };
+
 
   const updateProject = (project, id) => {
     return axios
@@ -236,7 +228,7 @@ export default function Application () {
 
   const createTicket = (ticket) => {
 
-    return axios.post("http://localhost:3000/tickets", { title: ticket.title, description: ticket.description, category: ticket.category, priority: ticket.priority, status: ticket.status, plan_duration: ticket.duration, start_date: ticket.start, end_date: ticket.end_date, projects_id: ticket.projects_id, users_id: ticket.users_id })
+    return axios.post("http://localhost:3000/tickets", { title: ticket.title, description: ticket.description, category: ticket.category, priority: ticket.priority, status: ticket.status, plan_duration: ticket.duration, start_date: ticket.start_date, end_date: ticket.end_date, projects_id: ticket.projects_id, users_id: ticket.users_id })
     .then(response => {
       setData(prevTickets=> ({...prevTickets, tickets: [...prevTickets.tickets, response.data]}))
     })
@@ -534,5 +526,5 @@ export default function Application () {
     availableUsers,
 
   }
-}
- 
+
+};

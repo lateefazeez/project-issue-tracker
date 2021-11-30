@@ -1,4 +1,5 @@
-
+/* eslint-disable no-undef */
+import { useState } from "react"
 import { Routes, Route } from "react-router-dom";
 import SelectProject from "./components/SelectProject"
 import Signup from "./components/Signup"
@@ -12,7 +13,7 @@ import ProjectDashboard from "./components/ProjectDashboard";
 
 function App() {
 
-  // const [isLoading, setIsLoading] = useState("true")
+  const [loggedInUser, setLoggedInUser] = useState(null)
 
   const {
     data,
@@ -52,14 +53,15 @@ function App() {
     logoutUser,
     RegisteredUser,
     getLoggedInUser,
-    availableUsers
+    projectUsers,
   } = useApplication()
 
   const reload = () => window.location.reload()
 
-  const loggedInUser = window.sessionStorage.getItem("userName")
+  const userIdFromSession = window.sessionStorage.getItem("userId")
+  const userNameFromSession = window.sessionStorage.getItem("userName")
   
-
+  console.log("LoggedIn: ", loggedInUser)
   return (
     //  isLoading ? "Loading..." :  
     <div className="App">
@@ -77,6 +79,7 @@ function App() {
               reload={reload}
               users={users}
               loggedInUser={loggedInUser}
+              setLoggedInUser={setLoggedInUser}
             />
             } />
         <Route
@@ -97,7 +100,11 @@ function App() {
               isLoading={isLoading}
               logoutUser={logoutUser}
               loggedInUser={loggedInUser}
-              availableUsers={availableUsers}
+              projectUsers={projectUsers}
+              setLoggedInUser={setLoggedInUser}
+              userIdFromSession={userIdFromSession}
+              userNameFromSession={userNameFromSession}
+              data={data}
             /> } />
         <Route 
           path="/tickets" 
@@ -126,6 +133,10 @@ function App() {
               userProjectCreate={userProjectCreate}
               userProjectDelete={userProjectDelete}
               loggedInUser={loggedInUser}
+              setLoggedInUser={setLoggedInUser}
+              logoutUser={logoutUser}
+              userIdFromSession={userIdFromSession}
+              userNameFromSession={userNameFromSession}
             />
           }
         />

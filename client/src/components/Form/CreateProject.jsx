@@ -7,6 +7,7 @@ import './CreateProject.scss'
 const loggedInUserId = window.sessionStorage.getItem("userId")
 
 const CreateProject = (props) => {
+ 
   const [values, setValues] = useState({ 
     title: "",
     description: "",
@@ -56,11 +57,13 @@ const CreateProject = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // reload()
+  
+    if (values.title && values.description && values.start_date && values.end_date) {
     createProject(values)
     .then(response => availableUsers(response))
-    
     onClose()
+  }
+  return
   }
  
 

@@ -23,8 +23,10 @@ const ProjectTable= (props) => {
     userProjects,
     reload,
     loggedInUser,
-    getProjectId,
-    availableUsers
+    projectUsers,
+    userIdFromSession,
+    userNameFromSession,
+    data,
   } = props;
 
   //pagination
@@ -47,30 +49,31 @@ const ProjectTable= (props) => {
     setIsNewProjectOpen(!isNewProjectOpen);
   }
 
-  // const availableUsers = (projectObject) => {
-  //   let usersProject;
-  //   let projectUsers = [];
-  //   if (userProjects) {
-  //     usersProject = userProjects.filter((userProject) => userProject.projects_id === projectObject.id)
-  //   }
+  const availableUsers = (projectObject) => {
+    let usersProject;
+    let projectUsers = [];
+    if (userProjects) {
+      usersProject = userProjects.filter((userProject) => userProject.projects_id === projectObject.id)
+    }
 
-  //   users.forEach(user => {
-  //     usersProject.forEach(avUser => {
-  //       if (user.id === avUser.users_id) {
-  //         projectUsers.push(user.first_name)
-  //       }
-  //     })
-  //   })
-  //   return projectUsers.join(", ")
-  // }
+    users.forEach(user => {
+      usersProject.forEach(avUser => {
+        if (user.id === avUser.users_id) {
+          projectUsers.push(user.first_name)
+        }
+      })
+    })
+    return projectUsers.join(", ")
+  }
 
+  
  
   return (
     
     <div className="dash">
       <div className='topdash'>
         <h4 style={{color: "#DEDBDB" }}>Projects</h4>
-        <h6 style={{color: "#DEDBDB" }}>Logged In As: {loggedInUser}</h6>
+        {loggedInUser ? <h6 style={{color: "#DEDBDB" }}>Logged In As: {loggedInUser.name}</h6> : <h6 style={{color: "#DEDBDB" }}>Logged In As: {userNameFromSession}</h6>}
       </div>
       <div className="dashbuttons">
           <div className='buttons'>
@@ -89,7 +92,6 @@ const ProjectTable= (props) => {
                 createProject={createProject} 
                 users={users}
                 addTeamMember={addTeamMember}
-                availableUsers={availableUsers}
                 reload={reload}/>
             </FormModal>
           </div>
@@ -106,23 +108,19 @@ const ProjectTable= (props) => {
           onClose={toggleNewProject}
           users={users} 
           userProjects={userProjects}
-          availableUsers={availableUsers}
           reload={reload}
           page={page}
           rowsPerPage={rowsPerPage}
           emptyRows={emptyRows}
-          getProjectId={getProjectId}
+          projectUsers={projectUsers}
+          loggedInUser={loggedInUser}
+          availableUsers={availableUsers}
+          data={data}
+
           />     
       </div>
       <div className="bottomdash">
       <TablePaginations
-        rowsPerPageOptions={[5, 10, 25]}
-        component="div"
-        count={projects.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onChangePage={handleChangePage}
-        onChangeRowsPerPage={handleChangeRowsPerPage}
       />
       </div>
       

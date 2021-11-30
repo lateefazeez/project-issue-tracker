@@ -19,12 +19,16 @@ const ProjectDashboard = (props) => {
     userProjects,
     reload,
     loggedInUser,
-    getProjectId,
-    availableUsers
+    setLoggedInUser,
+    projectUsers,
+    logoutUser,
+    userIdFromSession,
+    userNameFromSession,
+    data,
   } = props
 
   return ( 
-    <PersistentDrawerLeft>
+    <PersistentDrawerLeft logoutUser={logoutUser} loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} userNameFromSession={userNameFromSession} >
       <div className="project--dashboard">
           { projects && 
             <ProjectTable 
@@ -39,8 +43,10 @@ const ProjectDashboard = (props) => {
               userProjects={userProjects}
               reload={reload}
               loggedInUser={loggedInUser}
-              getProjectId={getProjectId}
-              availableUsers={availableUsers}
+              projectUsers={projectUsers}
+              userIdFromSession={userIdFromSession}
+              userNameFromSession={userNameFromSession}
+              data={data}
             />
             }
           { projects && <div className="chart--group">

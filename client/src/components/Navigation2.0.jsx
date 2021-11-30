@@ -83,7 +83,11 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function PersistentDrawerLeft(props) {
   const {
     logoutUser,
-    children
+    children,
+    loggedInUser,
+    setLoggedInUser,
+    userIdFromSession,
+    userNameFromSession
   } = props;
 
   const theme = useTheme();
@@ -100,12 +104,10 @@ export default function PersistentDrawerLeft(props) {
   let navigate = useNavigate()
 
   const logout = () => {
-    sessionStorage.clear();
+    setLoggedInUser(null)
     logoutUser()
     navigate("/signup")
   }
-
-  const loggedInUser = window.sessionStorage.getItem("userName")
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -144,7 +146,7 @@ export default function PersistentDrawerLeft(props) {
         </DrawerHeader>
           <div className="user">
           <AccountCircleIcon sx={{fontSize: 80}} />
-          <h3 className="logged-user">{loggedInUser}</h3>
+          {loggedInUser ? <h3 className="logged-user">{loggedInUser.name }</h3> : <h3 className="logged-user">{userNameFromSession }</h3>}
           </div>
         <hr className="divider" ></hr>
         <List className="navitems">
