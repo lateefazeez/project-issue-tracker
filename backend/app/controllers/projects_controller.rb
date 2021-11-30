@@ -19,12 +19,8 @@ class ProjectsController < ApplicationController
       users.each do |user|
         @project.users << user
       end
-      @user_projects = UserProject.where(["projects_id = ?", @project.id])
-      puts @user_projects
-      render json: { 
-        project: @project, 
-        user_projects: @user_projects, 
-        status: :created }
+      render json: {project: @project, user_projects: UserProject.all}
+
     else
       render json: {error: @project.errors.messages}, status: 422
     end

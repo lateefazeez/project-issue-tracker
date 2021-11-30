@@ -199,7 +199,6 @@ export default function Application () {
 
     return axios.post("http://localhost:3000/tickets", { title: ticket.title, description: ticket.description, category: ticket.category, priority: ticket.priority, status: ticket.status, plan_duration: ticket.duration, start_date: ticket.start_date, end_date: ticket.end_date, projects_id: ticket.projects_id, users_id: ticket.users_id })
     .then(response => {
-      console.log("MATT'S DATA: ", response)
       setData(prev=> ({...prev, tickets: [...prev.tickets, response.data.ticket], users: [...prev.users, response.data.users], userTickets: [...prev.userTickets, response.data.userProjects]}))
     })
   }

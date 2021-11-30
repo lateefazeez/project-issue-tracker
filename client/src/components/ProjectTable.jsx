@@ -25,7 +25,8 @@ const ProjectTable= (props) => {
     loggedInUser,
     projectUsers,
     userIdFromSession,
-    userNameFromSession
+    userNameFromSession,
+    data,
   } = props;
 
   //pagination
@@ -91,8 +92,8 @@ const ProjectTable= (props) => {
                 createProject={createProject} 
                 users={users}
                 addTeamMember={addTeamMember}
-                availableUsers={availableUsers}
-                reload={reload}/>
+                reload={reload}
+                availableUsers={availableUsers}/>
             </FormModal>
           </div>
           
@@ -108,13 +109,15 @@ const ProjectTable= (props) => {
           onClose={toggleNewProject}
           users={users} 
           userProjects={userProjects}
-          availableUsers={availableUsers}
           reload={reload}
           page={page}
           rowsPerPage={rowsPerPage}
           emptyRows={emptyRows}
           projectUsers={projectUsers}
           loggedInUser={loggedInUser}
+          availableUsers={availableUsers}
+          data={data}
+
           />     
       </div>
       <div className="bottomdash">

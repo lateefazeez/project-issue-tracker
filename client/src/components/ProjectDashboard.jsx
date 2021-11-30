@@ -23,7 +23,8 @@ const ProjectDashboard = (props) => {
     projectUsers,
     logoutUser,
     userIdFromSession,
-    userNameFromSession
+    userNameFromSession,
+    data,
   } = props
 
   return ( 
@@ -45,6 +46,7 @@ const ProjectDashboard = (props) => {
               projectUsers={projectUsers}
               userIdFromSession={userIdFromSession}
               userNameFromSession={userNameFromSession}
+              data={data}
             />
             }
           { projects && <div className="chart--group">

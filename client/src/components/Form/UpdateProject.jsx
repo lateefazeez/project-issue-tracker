@@ -32,8 +32,12 @@ const UpdateProject = (props) => {
       percentage_complete: project.percentage_complete,
       team: project.team
     }
+
+    if (project.title && project.description && project.start_date && project.end_date) {
     updateProject(updatedProject, id)
     onClose()
+    }
+    return
   }
 
   const handleChange = (e) => { 

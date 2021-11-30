@@ -32,8 +32,19 @@ const UpdateTicket = (props) => {
       plan_duration: duration,
       start_date: ticket.start_date
     }
+
+    if (
+      ticket.start_date &&
+      ticket.end_date &&
+      ticket.priority &&
+      ticket.category &&
+      ticket.title &&
+      ticket.description
+    ) {
     updateTicket(updatedticket, id)
     onClose()
+    }
+    return
   }
 
   const handleChange = (e) => { 

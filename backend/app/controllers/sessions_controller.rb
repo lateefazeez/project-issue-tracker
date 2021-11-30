@@ -8,7 +8,6 @@ include UserConcern
       # logged in when they navigate around our website.
       session[:user_id] = @user.id
       render json: @user
-      
     else
       # if user's login doesn't work, send them back to the login form
       render json: { status: 401}
