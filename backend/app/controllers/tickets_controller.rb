@@ -8,12 +8,18 @@ class TicketsController < ApplicationController
 
   def create
     ticket = Ticket.new(ticket_params)
+    users = User.all
+    userTickets = UserTicket.all
 
     if ticket.save
       # params[:id].each do |id|
       #   UserProject.create!(users_id: id, projects_id: @project.id)
       # end
-      render json: ticket, status: :created
+      render json: { 
+        ticket: ticket, 
+        users: users,
+        userTickets: userTickets,
+        status: :created }
     else
       render json: {error: ticket.errors.messages}, status: 422
     end

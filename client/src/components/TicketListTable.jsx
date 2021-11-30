@@ -24,7 +24,7 @@ export default function TicketListTable(props) {
   const [selectedTicketData, setSelectedTicketData] = useState(false);
   const [isEditTicketOpen, setIsEditTicketOpen] = useState(false);
   const [selectedTicketId, setSelectedTicketId] = useState("");
-
+  
   const toggleEditTicket = () => {
 
     setIsEditTicketOpen(!isEditTicketOpen);
@@ -85,7 +85,7 @@ export default function TicketListTable(props) {
   
   return (
     <Fragment>
-    <TableContainer style={{ overflow: "hidden", borderLeft: "0.2px solid rgb(112, 112, 112)", borderRight: "0.2px solid rgb(112, 112, 112)" }} >
+    <TableContainer style={{ overflow: "hidden", borderLeft: "1px solid rgb(179, 174, 174)", borderRight: "1px solid rgb(179, 174, 174)" }} >
       <Table className="projecttable" sx={{ height: 140}} aria-label="simple table">
     
         <TableHead>
