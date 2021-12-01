@@ -73,7 +73,7 @@ const ProjectDashboard = (props) => {
                     '#6AD650'
                   ]}
                   hoverColors={[
-                    '#322C7C',
+                    '#982929',
                     '#866930',
                     '#438433'
                     ]}
@@ -87,6 +87,11 @@ const ProjectDashboard = (props) => {
                     '#4D45B5',
                     '#D6A850'
                   ]}
+                  hoverColors={[
+                    '#982929',
+                    '#322C7C',
+                    '#438433'
+                    ]}
                   chartLabels={['At Risk', 'On Track']}
                   chartData={[chartData.AtRisk, chartData.OnTrack, chartData.New]}
                 />
