@@ -36,6 +36,8 @@ npm run storybook
 
 !["Screenshot of the Project Dashboard 2"](https://github.com/lateefazeez/project-issue-tracker/blob/master/client/src/images/Screen%20Shot%202021-12-01%20at%2012.32.54%20PM.png?raw=true)
 
+!["Screenshot of the Project Dashboard 2"](https://github.com/lateefazeez/project-issue-tracker/blob/master/client/src/images/Screen%20Shot%202021-12-01%20at%201.18.37%20PM.png?raw=true)
+
 !["Screenshot of the Ticket Page"](https://github.com/lateefazeez/project-issue-tracker/blob/master/client/src/images/Screen%20Shot%202021-12-01%20at%2012.35.23%20PM.png?raw=true)
 
 !["Screenshot of the Ticket Page2"](https://github.com/lateefazeez/project-issue-tracker/blob/master/client/src/images/Screen%20Shot%202021-12-01%20at%2012.35.39%20PM.png?raw=true)
