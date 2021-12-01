@@ -9,6 +9,22 @@
 puts "Seeding Data..."
 User.destroy_all
 User.create({
+  first_name: "Jerry",
+  last_name: "Seinfeld",
+  email: "jerry@gmail.com",
+  password: "password",
+  phone_number: "555-555-5555",
+  admin: true
+})
+User.create({
+  first_name: "George",
+  last_name: "Costanza",
+  email: "george@gmail.com",
+  password: "password",
+  phone_number: "555-555-5544",
+  admin: false
+})
+User.create({
   first_name: "Barney",
   last_name: "Rubble",
   email: "barney@gmail.com",
@@ -24,108 +40,73 @@ User.create({
   phone_number: "555-555-5544",
   admin: false
 })
+User.create({
+  first_name: "Bill",
+  last_name: "Murray",
+  email: "bill@gmail.com",
+  password: "spud",
+  phone_number: "555-555-5544",
+  admin: false
+})
 
 Project.destroy_all
 Project.create!({
   title: "Project tracking app",
-  description: "hahahahahahahahahahahahahah",
+  description: "A project management utility intended for internal use within an organization.",
   start_date: "Aug 19, 2021",
-  end_date: "Nov 25, 2021",
-  percentage_complete: 50,
+  end_date: "Dec 20, 2021",
+  percentage_complete: 0,
   status: "on track",
   users_id: 1
 })
 Project.create!({
   title: "Scheduler app",
-  description: "hahahahahahahahahahahahahah",
+  description: "Scheduler is a single page React App developed for booking interviews in Lighthouse",
   start_date: "Jul 20, 2021",
   end_date: "Sept 20, 2021",
-  percentage_complete: 75,
+  percentage_complete: 0,
   status: "on track",
   users_id: 2
 })
 Project.create!({
   title: "Wikimap app",
-  description: "hahahahahahahahahahahahahah",
+  description: "WikiMap is a user friendly clone of google my-map",
   start_date: "Jul 14, 2021",
   end_date: "Oct 20, 2021",
-  percentage_complete: 75,
+  percentage_complete: 0,
   status: "on track",
   users_id: 1
+})
+Project.create!({
+  title: "Tweeter Clone",
+  description: "Tweeter is a simple, single-page Twitter clone.",
+  start_date: "Jul 14, 2021",
+  end_date: "Oct 20, 2021",
+  percentage_complete: 0,
+  status: "on track",
+  users_id: 2
 })
 
 Ticket.destroy_all
 Ticket.create!({
-  start_date: "Jul 21, 2021",
-  end_date: "Jul 24,2021",
-  plan_duration: 360,
-  title: "Appointment List Component",
-  description: "Create a tested and 100% developed Appointment feature for the application",
-  status: "On Track",
-  category: "Feature",
-  priority: "Low",
-  percentage_complete: 75,
-  projects_id: 2,
-  users_id: 1
-})
-Ticket.create!({
-  start_date: "Jul 20, 2021",
-  end_date: "Jul 22, 2021",
-  plan_duration: 137,
-  title: "Setup ticket list item",
-  description: "Setup ticket list item",
-  status: "At Risk",
-  category: "Bug",
-  priority: "High",
-  percentage_complete: 0,
-  projects_id: 1,
-  users_id: 2
-})
-Ticket.create!({
-  start_date: "Jul 21, 2021",
-  end_date: "Jul 24,2021",
-  plan_duration: 360,
-  title: "Appointment List Component",
-  description: "Create a tested and 100% developed Appointment feature for the application",
-  status: "On Track",
-  category: "Feature",
-  priority: "Low",
-  percentage_complete: 75,
-  projects_id: 2,
-  users_id: 1
-})
-Ticket.create!({
-  start_date: "Sept 20, 2021",
-  end_date: "Nov 22, 2021",
-  plan_duration: 137,
-  title: "What is Lorem Ipsum?",
-  description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  status: "At Risk",
-  category: "Feature",
-  priority: "High",
-  percentage_complete: 0,
-  projects_id: 1,
-  users_id: 2
-})
-Ticket.create!({
   start_date: "Nov 21, 2021",
-  end_date: "Dec 22,2021",
-  plan_duration: 360,
-  title: "Where does it come from?",
-  description: "Contrary to popular belief, Lorem Ipsum is not simply random text",
+  end_date: "Jan 24, 2022",
+  plan_duration: 0,
+  title: "Edit Ticket selection bug",
+  description: "Ticket data is not re-rendering after ticket is edited",
   status: "On Track",
-  category: "Feature",
+  category: "Bug",
   priority: "Low",
-  percentage_complete: 75,
-  projects_id: 2,
+  percentage_complete: 0,
+  projects_id: 1,
   users_id: 1
 })
 Ticket.create!({
-  start_date: "Jul 20, 2021",
-  end_date: "Jul 22, 2021",
-  plan_duration: 137,
-  title: "Why do we use it?",
-  description: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+  start_date: "Nov 02, 2021",
+  end_date: "Dec 22, 2021",
+  plan_duration: 0,
+  title: "Pass user id for comments and ticket anuthor",
+  description: "User Id needed on tickets page for comments to display Author",
   status: "At Risk",
   category: "Issue",
   priority: "Medium",
@@ -134,107 +115,29 @@ Ticket.create!({
   users_id: 2
 })
 Ticket.create!({
-  start_date: "Jul 21, 2021",
-  end_date: "Jul 24,2021",
-  plan_duration: 360,
-  title: "Appointment List Component",
-  description: "Create a tested and 100% developed Appointment feature for the application",
+  start_date: "Oct 15, 2021",
+  end_date: "Feb 24,2021",
+  plan_duration: 0,
+  title: "Add team members from projects to tickets on the fly",
+  description: "New feature needed to add project team members to a ticket",
   status: "On Track",
   category: "Feature",
-  priority: "Low",
-  percentage_complete: 75,
-  projects_id: 2,
+  priority: "High",
+  percentage_complete: 0,
+  projects_id: 1,
   users_id: 1
 })
 Ticket.create!({
-  start_date: "Jul 20, 2021",
-  end_date: "Jul 22, 2021",
-  plan_duration: 137,
-  title: "Where can I get some?",
-  description: "There are many variations of passages of Lorem Ipsum available",
+  start_date: "Oct 22, 2021",
+  end_date: "Jan 29, 2021",
+  plan_duration: 0,
+  title: "Collapsible Ticket Zone",
+  description: "Make Tickets info collapse and only show when a ticket is selected",
   status: "At Risk",
-  category: "Bug",
+  category: "Feature",
   priority: "Medium",
   percentage_complete: 0,
   projects_id: 1,
-  users_id: 2
-})
-
-Task.destroy_all
-Task.create!({
-  title: "Generate component",
-  complete?: false,
-  tickets_id: 2
-})
-Task.create!({
-  title: "Generate component",
-  complete?: true,
-  tickets_id: 1
-})
-Task.create!({
-  title: "Perform unit testing",
-  complete?: true,
-  tickets_id: 3
-})
-Task.create!({
-  title: "Perform storybook testing",
-  complete?: true,
-  tickets_id: 1
-})
-Task.create!({
-  title: "Perform cypress testing",
-  complete?: false,
-  tickets_id: 1
-})
-Comment.create!({
-  message: "Hellooo 2",
-  tickets_id: 2,
-  users_id: 1
-})
-Comment.create!({
-  message: "Hellooo 1",
-  tickets_id: 1,
-  users_id: 2
-})
-Comment.create!({
-  message: "Hellooo 3",
-  tickets_id: 3,
-  users_id: 1
-})
-UserTicket.create!({
-  tickets_id: 2,
-  users_id: 1
-})
-UserTicket.create!({
-  tickets_id: 3,
-  users_id: 1
-})
-UserTicket.create!({
-  tickets_id: 2,
-  users_id: 2
-})
-UserTicket.create!({
-  tickets_id: 1,
-  users_id: 1
-})
-UserTicket.create!({
-  tickets_id: 3,
-  users_id: 2
-})
-UserProject.create!({
-  projects_id: 1,
-  users_id: 2
-})
-UserProject.create!({
-  projects_id: 1,
-  users_id: 1
-})
-UserProject.create!({
-  projects_id: 2,
-  users_id: 2
-})
-UserProject.create!({
-  projects_id: 3,
   users_id: 2
 })
 
