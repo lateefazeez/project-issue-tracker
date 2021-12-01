@@ -33,7 +33,7 @@ class UsersTicketsController < ApplicationController
   
     private
   def usertickets_params
-    params.require(:users_ticket).permit(:users_id, :tickets_id)
+    params.require(:users_ticket).permit(:users_id, :tickets_id, :projects_id)
   end
 
 end

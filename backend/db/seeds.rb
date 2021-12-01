@@ -203,23 +203,28 @@ Comment.create!({
 })
 UserTicket.create!({
   tickets_id: 2,
-  users_id: 1
+  users_id: 1,
+  projects_id: 1
 })
 UserTicket.create!({
   tickets_id: 3,
-  users_id: 1
+  users_id: 1,
+  projects_id: 1
 })
 UserTicket.create!({
   tickets_id: 2,
-  users_id: 2
+  users_id: 2,
+  projects_id: 2
 })
 UserTicket.create!({
   tickets_id: 1,
-  users_id: 1
+  users_id: 1,
+  projects_id: 2
 })
 UserTicket.create!({
   tickets_id: 3,
-  users_id: 2
+  users_id: 2,
+  projects_id: 1
 })
 UserProject.create!({
   projects_id: 1,
