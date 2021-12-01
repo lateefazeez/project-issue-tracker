@@ -19,11 +19,14 @@ const SelectProject = () => {
         <div className="action--buttons">
           
         </div>
+        
+        <Link to="construction">
         <PrimaryButton style={{ backgroundColor: "#4D45B5", marginRight: "20px", padding: "1rem 4rem", borderRadius: "0.4rem"}}>
 
           Construction
         </PrimaryButton >
-        
+        </Link>
+
         <Link to="signup">
           <PrimaryButton style={{ backgroundColor: "#4D45B5", marginRight: "20px", padding: "1rem 5.2rem", borderRadius: "0.4rem"}}>
           Software

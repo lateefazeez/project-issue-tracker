@@ -3,6 +3,7 @@ import ProjectTable from "./ProjectTable";
 import './ProjectDashboard.scss'
 import Chart from "./Chart";
 import PersistentDrawerLeft from "./Navigation2.0";
+import ChatBot from "./ChjatBot";
 
 
 const ProjectDashboard = (props) => {
@@ -91,6 +92,7 @@ const ProjectDashboard = (props) => {
                   chartData={[chartData.AtRisk, chartData.OnTrack, chartData.New]}
                 />
               </div>}
+              
           </div>
     </PersistentDrawerLeft>
 

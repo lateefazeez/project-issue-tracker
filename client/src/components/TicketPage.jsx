@@ -103,7 +103,7 @@ const TicketPage = (props) => {
       {"bottom-tick-hide": color});
 
   return (
-    <div>
+    <div className="ticket-page">
       <div className="tiptop">
       <h4 className="project-header">Project Name: {getProjById(data, id)}</h4>
       {loggedInUser ? <h6 className="loggedin">Logged In As: {loggedInUser.name}</h6> : <h6 className="loggedin">Logged In As: {userNameFromSession}</h6> }

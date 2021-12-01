@@ -10,6 +10,7 @@ import useApplication from "./components/hooks/useApplicationData";
 import "./App.scss"
 import PersistentDrawerTicket from "./components/NavigationTickets";
 import ProjectDashboard from "./components/ProjectDashboard";
+import Construction from "./components/Construction";
 
 function App() {
 
@@ -63,10 +64,10 @@ function App() {
   
   console.log("LoggedIn: ", loggedInUser)
   return (
-    //  isLoading ? "Loading..." :  
     <div className="App">
       <Routes>
         <Route path="/" element={<SelectProject />} />
+        <Route path="/construction" element={<Construction />} />
         <Route 
           path="/signup" 
           element={
