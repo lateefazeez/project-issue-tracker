@@ -18,6 +18,12 @@
 !/tmp/pids/
 !/tmp/pids/.keep
 
+# Ignore carrier wave uploads for development
+/public/uploads
+
+# Ignore db creds / settings
+/config/database.yml
+
 # Ignore uploaded files in development.
 /storage/*
 !/storage/.keep
@@ -27,6 +33,7 @@
 /config/master.key
 
 /.env
+/config/database.yml
 
 /public/packs
 /public/packs-test

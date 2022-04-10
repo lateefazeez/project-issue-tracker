@@ -21,13 +21,11 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   host: localhost
-  # username: development
-  # password: development
 
 development:
   <<: *default
   database: trackit_development
-  username: lateefazeez
+  username: development
   password: development
 
   # The specified database role being used to connect to postgres.

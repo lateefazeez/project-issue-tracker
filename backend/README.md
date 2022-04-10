@@ -1,24 +1,21 @@
-# README
+# TRACKIT
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The rails/postgres backend for the trackit app.
 
-Things you may want to cover:
+## Additional Steps for Apple M1 Machines
 
-* Ruby version
+1. Make sure that you are runnning Ruby 2.6.8 (`ruby -v`)
+1. Install ImageMagick `brew install imagemagick imagemagick@6 --build-from-source`
 
-* System dependencies
+## Setup
 
-* Configuration
+1. Run `bundle install` to install dependencies
+2. Create `config/database.yml` by copying `config/database.example.yml`
+3. Run `rake db:reset` to create, load and seed db
+4. Run `rails s` to start the server
+5. Go to `localhost:3000` to see the server running
 
-* Database creation
+## Dependencies
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Rails 6.1 [Rails Guide](http://guides.rubyonrails.org/v6.1/)
+- PostgreSQL 9.x
