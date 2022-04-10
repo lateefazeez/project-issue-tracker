@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import FormModal from "./Form/FormModal";
 import CreateTask from "./Form/CreateTask";
 import classNames from "classnames";
-import axios from 'axios';
+import axios from "axios";
 import Table from "./Table";
 import "./TicketPage.scss";
 import "./TicketListTable";
@@ -15,7 +15,7 @@ import Duration from "./HealthStats/Duration";
 import PrimaryButton from "./PrimaryButton";
 import ProgressBar from "./ProgressBar";
 import { useLocation } from "react-router";
-import ChatBot from "./ChjatBot";
+import ChatBot from "./ChatBot";
 
 const TicketPage = (props) => {
   const [isNewTaskOpen, setIsNewTaskOpen] = useState(false);
@@ -45,27 +45,25 @@ const TicketPage = (props) => {
     userProjectDelete,
     loggedInUser,
     userIdFromSession,
-    userNameFromSession
+    userNameFromSession,
   } = props;
 
-  const [users, setUsers] = useState(data.users)
+  const [users, setUsers] = useState(data.users);
 
   useEffect(() => {
-
-    console.log()
-    const newUsersURL = `http://localhost:3000/users/`
-    const getNewUsersURL = axios.get(newUsersURL)
+    console.log();
+    const newUsersURL = `http://localhost:3000/users/`;
+    const getNewUsersURL = axios.get(newUsersURL);
 
     Promise.all([getNewUsersURL])
       .then((response) => {
-        console.log("USERS-RESPONSE", response.data)
-        setUsers(response.data)
-    
+        console.log("USERS-RESPONSE", response.data);
+        setUsers(response.data);
       })
       .catch((error) => {
-        console.error(error)
-      })
-  }, [users])
+        console.error(error);
+      });
+  }, [users]);
 
   const { state } = useLocation();
   const { id } = state;
@@ -94,19 +92,24 @@ const TicketPage = (props) => {
     getTicketId(null);
   }, []);
 
-  let color
+  let color;
   if (!LoneTicket[0]) {
-    color = "auto"
-  } 
+    color = "auto";
+  }
 
-      const heightClass = classNames("bottom-tick", 
-      {"bottom-tick-hide": color});
+  const heightClass = classNames("bottom-tick", { "bottom-tick-hide": color });
 
   return (
     <div>
       <div className="tiptop">
-      <h4 className="project-header">Project Name: {getProjById(data, id)}</h4>
-      {loggedInUser ? <h6 className="loggedin">Logged In As: {loggedInUser.name}</h6> : <h6 className="loggedin">Logged In As: {userNameFromSession}</h6> }
+        <h4 className="project-header">
+          Project Name: {getProjById(data, id)}
+        </h4>
+        {loggedInUser ? (
+          <h6 className="loggedin">Logged In As: {loggedInUser.name}</h6>
+        ) : (
+          <h6 className="loggedin">Logged In As: {userNameFromSession}</h6>
+        )}
       </div>
       <div className="tickets-upper">
         <div className="Team-box">
@@ -154,11 +157,11 @@ const TicketPage = (props) => {
           </h5>
           <div className="new-task">
             <div className={heightClass}>
-            <PrimaryButton 
-              onPress={toggleNewTask}
-              style={{ backgroundColor: "#4D45B5" }}
-              children="+ New Task"
-            />
+              <PrimaryButton
+                onPress={toggleNewTask}
+                style={{ backgroundColor: "#4D45B5" }}
+                children="+ New Task"
+              />
             </div>
           </div>
         </div>
