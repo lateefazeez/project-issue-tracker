@@ -1,21 +1,20 @@
 # project-issue-tracker
-A project management utility intended for internal use within an organization. Users can create projects and assign/manage team members as well as create and track tickets and issues on the specific project they are working on. 
 
+A project management utility intended for internal use within an organization. Users can create projects and assign/manage team members as well as create and track tickets and issues on the specific project they are working on.
 
 This project is built with react in the front-end and ruby on rails in the back-end. PostgreSQL is used as database to persist all data. Among other tech stacks used are material ui, storybook, reactstrap, react-router, chartjs-2, react-slack-chat.
 
 ## Setup
 
-Install fron-end dependencies with `npm install`(inside the client folder)
+Install fron-end dependencies with `yarn install`(inside the client folder)
 Install back-end dependencies with `bundle install`, (inside the backend folder)
 
 get a webhook key from slack by creating a workspace and put inside a .env file based on the .env_example provided
 
-
 ## Running Webpack Development Server
 
 ```sh
-npm start
+yarn start
 ```
 
 ## Running Jest Test Framework
@@ -49,8 +48,6 @@ npm run storybook
 !["Screenshot of Team Member Addition"](https://github.com/lateefazeez/project-issue-tracker/blob/master/client/src/images/Screen%20Shot%202021-12-01%20at%2012.36.21%20PM.png?raw=true)
 
 !["Screenshot of New Task Addition"](https://github.com/lateefazeez/project-issue-tracker/blob/master/client/src/images/Screen%20Shot%202021-12-01%20at%2012.36.25%20PM.png?raw=true)
-
-
 
 ## Dependencies
 

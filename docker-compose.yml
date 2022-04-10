@@ -1,0 +1,38 @@
+version: "3.9"
+services:
+  db:
+    image: "postgres:latest"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres_password
+
+  backend:
+    build:
+      dockerfile: Dockerfile
+      context: ./backend
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - ./backend:/backend
+    env_file: ./backend/.env
+    environment:
+      RAILS_ENV: development
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+  client:
+    build:
+      dockerfile: Dockerfile
+      context: ./client
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+    env_file: ./client/.env
+    environment:
+      NODE_ENV: development
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+      - backend
