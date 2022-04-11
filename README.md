@@ -6,10 +6,20 @@ This project is built with react in the front-end and ruby on rails in the back-
 
 ## Setup
 
-Install fron-end dependencies with `yarn install`(inside the client folder)
-Install back-end dependencies with `bundle install`, (inside the backend folder)
+Install docker desktop and make sure it runs on your computer.
+Start docker and ensure that it is running on the local machine.
 
-get a webhook key from slack by creating a workspace and put inside a .env file based on the .env_example provided
+## Start App
+
+1. In the backend folder, create `config/database.yml` by copying `config/database.example.yml`
+2. In the root directory, open `start.sh`, comment out line 3 and remove comment from line 2.
+3. Run `sh start.sh`(`. start.sh`on Linux) to create, load and seed db, as well as startup both the backend, pg and React front end.
+4. Open your browser and go to `localhost:3000`There will be an error message and a button to complete the db migrations, click the button.
+5. Go to `localhost:3001` to see the project running
+6. Stop the app from running `Ctrl C`.
+7. Open `start.sh` again, comment out line 2 and remove comment from line 3.
+8. Run `sh start.sh` again to create, load and seed db, as well as startup both the backend, pg and React front end.
+9. Get a webhook key from slack by creating a workspace and put inside a .env file based on the .env_example provided
 
 ## Running Webpack Development Server
 
@@ -63,3 +73,8 @@ npm run storybook
 - Storybook Testing App
 - Cypress
 - Chartjs-2
+
+## Backend Dependencies
+
+- Rails 6.1 [Rails Guide](http://guides.rubyonrails.org/v6.1/)
+- PostgreSQL 9.x

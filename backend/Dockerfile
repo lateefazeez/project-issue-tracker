@@ -1,6 +1,7 @@
 FROM ruby:3.0.0
 RUN apt-get update -qq
-WORKDIR '/backend'
+RUN mkdir /backend
+WORKDIR /backend
 COPY Gemfile Gemfile.lock ./
 RUN gem install bundler
 RUN bundle install
@@ -10,4 +11,4 @@ ENTRYPOINT ["entrypoint.sh"]
 COPY . .
 
 # Configure the main process to run when running the image
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]

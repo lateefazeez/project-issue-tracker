@@ -25,29 +25,6 @@ ActiveRecord::Schema.define(version: 2021_11_28_072606) do
     t.index ["users_id"], name: "index_comments_on_users_id"
   end
 
-  create_table "favourites", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "map_id"
-  end
-
-  create_table "maps", id: :serial, force: :cascade do |t|
-    t.string "title", limit: 255, null: false
-    t.string "description", limit: 255, null: false
-    t.integer "user_id"
-    t.string "preview_image", limit: 255, null: false
-    t.datetime "created_at"
-  end
-
-  create_table "points", id: :serial, force: :cascade do |t|
-    t.string "title", limit: 255, null: false
-    t.string "description", limit: 255, null: false
-    t.float "latitude", null: false
-    t.float "longitude", null: false
-    t.integer "map_id"
-    t.integer "user_id"
-    t.string "category", limit: 255, null: false
-  end
-
   create_table "project_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -129,8 +106,6 @@ ActiveRecord::Schema.define(version: 2021_11_28_072606) do
 
   add_foreign_key "comments", "tickets", column: "tickets_id"
   add_foreign_key "comments", "users", column: "users_id"
-  add_foreign_key "favourites", "maps", name: "favourites_map_id_fkey", on_delete: :cascade
-  add_foreign_key "points", "maps", name: "points_map_id_fkey", on_delete: :cascade
   add_foreign_key "projects", "project_types"
   add_foreign_key "projects", "users", column: "users_id"
   add_foreign_key "tasks", "tickets", column: "tickets_id"

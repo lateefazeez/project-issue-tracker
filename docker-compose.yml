@@ -5,6 +5,8 @@ services:
     restart: always
     environment:
       POSTGRES_PASSWORD: postgres_password
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
 
   backend:
     build:
@@ -13,9 +15,13 @@ services:
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - ./backend:/backend
-    env_file: ./backend/.env
     environment:
-      RAILS_ENV: development
+      - PGUSER=postgres
+      - PGHOST=db
+      - PGDATABASE=postgres
+      - PGPASSWORD=postgres_password
+      - PGPORT=5432
+      - RAILS_ENV=development
     ports:
       - "3000:3000"
     depends_on:
