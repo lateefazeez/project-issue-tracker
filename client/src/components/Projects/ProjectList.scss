@@ -1,13 +1,12 @@
-@import "../styles/mixins.scss";
-@import "../styles/variables.scss";
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
 
 table {
   background-color: $project-table-background;
 }
 
 th {
-  color:$text-light !important;
-  
+  color: $text-light !important;
 }
 
 .tabletitle {
@@ -16,19 +15,17 @@ th {
 }
 
 td {
-  color:$text-light !important;
+  color: $text-light !important;
 }
 
-
 .tabledata {
-  color:$text-light !important;
+  color: $text-light !important;
   &:hover {
     background-color: $hover-color;
     cursor: pointer;
     color: $text-light;
     opacity: 0.9;
   }
-
 }
 
 .more-options {

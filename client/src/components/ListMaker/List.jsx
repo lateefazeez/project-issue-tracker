@@ -2,8 +2,8 @@ import React from "react";
 import TaskListItem from "../Tasks/TaskListItem";
 import TeamListItem from "../Teams/TeamListItem";
 import CommentListItem from "../Comment/CommentListItem";
-import TicketListTable from "../TicketListTable";
-import TeamListTable from "../TeamListTable";
+import TicketListTable from "../Tickets/TicketListTable";
+import TeamListTable from "../Teams/TeamListTable";
 
 const ListMaker = (props) => {
   let listo = "";

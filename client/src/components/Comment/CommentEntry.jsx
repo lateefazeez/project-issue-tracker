@@ -1,5 +1,5 @@
 import { Fragment, useState } from "react";
-import PrimaryButton from "../PrimaryButton";
+import PrimaryButton from "../Buttons/PrimaryButton";
 import axios from "axios";
 
 const CommentEntry = (props) => {

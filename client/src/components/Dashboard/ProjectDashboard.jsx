@@ -1,8 +1,8 @@
 import { useState } from "react";
-import ProjectTable from "../ProjectTable";
+import ProjectTable from "../Projects/ProjectTable";
 import "./ProjectDashboard.scss";
 import Chart from "../Charts/Chart";
-import PersistentDrawerLeft from "./Navigation2.0";
+import PersistentDrawerLeft from "../Navigations/Navigation2.0";
 
 const ProjectDashboard = (props) => {
   const {

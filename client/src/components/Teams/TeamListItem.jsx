@@ -1,13 +1,17 @@
-import "./ListItem.scss";
+import "../ListMaker/ListItem.scss";
 import classNames from "classnames";
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { DropdownMenu, DropdownItem, UncontrolledDropdown, DropdownToggle } from "reactstrap";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import {
+  DropdownMenu,
+  DropdownItem,
+  UncontrolledDropdown,
+  DropdownToggle,
+} from "reactstrap";
 
 const TeamListItem = (props) => {
+  const { id, first_name, last_name, userTicketDelete } = props;
 
-   const { id, first_name, last_name, userTicketDelete } = props;
-
-   const teamClass = classNames("list__item", {
+  const teamClass = classNames("list__item", {
     "list__item--selected": props.selected,
   });
 
@@ -19,27 +23,37 @@ const TeamListItem = (props) => {
       onClick={() => console.log("yo")}
     >
       <div className="TmPost">
-      <div className="noPointer">{first_name} {last_name} </div>
-      <UncontrolledDropdown onClick={(e) => e.stopPropagation()}>
-                  <DropdownToggle
-                    className="btn-icon-only text-light"
-                    role=""
-                    size="sm"
-                    color="#585858"
-                    backgroundColor="#585858"
-                    id={"hi"}
-                  >
-                    <MoreVertIcon className="teamtiny" />
-                  </DropdownToggle>
-                  <DropdownMenu className="dropdown-menu-arrow" end onClick={(e) => console.log(e)}>
-                    <DropdownItem onClick={() => {userTicketDelete(id)}}>
-                      Delete Resource
-                    </DropdownItem>
-                  </DropdownMenu>     
-                </UncontrolledDropdown>
+        <div className="noPointer">
+          {first_name} {last_name}{" "}
+        </div>
+        <UncontrolledDropdown onClick={(e) => e.stopPropagation()}>
+          <DropdownToggle
+            className="btn-icon-only text-light"
+            role=""
+            size="sm"
+            color="#585858"
+            backgroundColor="#585858"
+            id={"hi"}
+          >
+            <MoreVertIcon className="teamtiny" />
+          </DropdownToggle>
+          <DropdownMenu
+            className="dropdown-menu-arrow"
+            end
+            onClick={(e) => console.log(e)}
+          >
+            <DropdownItem
+              onClick={() => {
+                userTicketDelete(id);
+              }}
+            >
+              Delete Resource
+            </DropdownItem>
+          </DropdownMenu>
+        </UncontrolledDropdown>
       </div>
     </li>
   );
-}
- 
+};
+
 export default TeamListItem;

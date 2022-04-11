@@ -1,12 +1,9 @@
-
-
-@import "../styles/mixins.scss";
-@import "../styles/variables.scss";
-
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
 
 .list {
   &__item {
-     @include fade;
+    @include fade;
 
     color: $text-light;
     height: auto;
@@ -20,13 +17,11 @@
     justify-content: space-between;
     border-color: $text-light;
     border: 0.1px solid $text-light;
-   
 
     &:hover {
       background-color: $hover-color;
       cursor: pointer;
       color: $text-light;
-      
     }
 
     &--selected {
@@ -44,6 +39,6 @@
 .Progress-Bar {
   width: 100%;
 }
-.Plan-bar{
-  width: 100%
+.Plan-bar {
+  width: 100%;
 }

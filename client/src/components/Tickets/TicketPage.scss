@@ -1,6 +1,5 @@
-@import "../styles/mixins.scss";
-@import "../styles/variables.scss";
-
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
 
 .tiptop {
   display: flex;
@@ -11,16 +10,15 @@
   color: $text-light;
   margin-left: 30px;
   margin-top: -7px;
-
 }
 
-.loggedin{
+.loggedin {
   margin-top: px;
   margin-right: 30px;
   color: $text-light;
 }
 
-.top-button{
+.top-button {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -29,25 +27,24 @@
   width: 100%;
   padding-right: 1%;
 }
-.tickets-upper{
+.tickets-upper {
   margin-top: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.Team-box{
+.Team-box {
   margin-left: 1%;
   width: 29%;
-
 }
 
-.Tickets-box{
+.Tickets-box {
   margin-right: 1%;
   width: 67%;
 }
 
-.tickets-lower{
+.tickets-lower {
   display: flex;
   margin-top: 50px;
   flex-direction: column;
@@ -69,14 +66,13 @@
   border-radius: 5px solid $text-light;
   margin-left: 4%;
   margin-bottom: 20px;
-
 }
 
-#mini{
+#mini {
   padding-top: 10px;
   height: 50px;
   padding-left: 5px;
-  color: $text-light;;
+  color: $text-light;
 }
 
 .top-tick {
@@ -99,18 +95,17 @@
   justify-content: space-between;
   width: 100%;
 
-    &-hide {
-      height: 0px;
-      visibility: hidden;
-    }
-  
+  &-hide {
+    height: 0px;
+    visibility: hidden;
+  }
 }
 
-.right-side{
+.right-side {
   width: 50%;
 }
 
-.left-side{
+.left-side {
   width: 50%;
 }
 
@@ -118,8 +113,7 @@
   padding-left: 30px;
 }
 
-
-.Health-box{
+.Health-box {
   display: flex;
   flex-direction: row;
   margin-left: 20px;
@@ -128,7 +122,6 @@
   width: 91%;
   margin-left: 4%;
 }
-
 
 #commenttile {
   display: flex;
@@ -144,14 +137,14 @@
   padding-top: 10px;
 }
 
-#Comment-top{
+#Comment-top {
   border: transparent;
   border-bottom: 1px solid;
   width: 95%;
   margin-left: 2.5%;
 }
 
-#Comment-bottom{
+#Comment-bottom {
   border: transparent;
   width: 95%;
   margin-left: 2.5%;
@@ -171,13 +164,13 @@
   }
 }
 
-#Task-top{
+#Task-top {
   border: transparent;
   width: 95%;
   margin-left: 1;
 }
 
-#Task-bottom{
+#Task-bottom {
   border: transparent;
   width: 95%;
   margin-left: 2.5%;
@@ -200,43 +193,42 @@
   }
 }
 
-.noPointer{
+.noPointer {
   &:hover {
     cursor: default;
   }
 }
 
-#Devs-top{
+#Devs-top {
   border: transparent;
   width: 95%;
   margin-left: 1;
   border-top: 1px solid $text-light;
   border-radius: 0;
-
 }
 
-#Devs-bottom{
+#Devs-bottom {
   border: transparent;
   width: 95%;
   margin-left: 2.5%;
   height: 0;
 }
 
-.Assignees-box{
+.Assignees-box {
   margin-left: 4%;
 }
 
-#commentInput{
+#commentInput {
   width: inherit;
   height: 50px;
   border-radius: 30px;
   background-color: black;
   color: $text-light;
-  margin-bottom:30px;
+  margin-bottom: 30px;
   margin-top: 0px;
   padding-left: 1rem;
   outline: none;
-  border:inherit;
+  border: inherit;
 }
 
 .commentZone {
@@ -249,7 +241,6 @@
   background-color: black;
   margin-bottom: 2rem;
   margin: 1rem;
- 
 }
 
 .new-comment {
@@ -258,7 +249,6 @@
   height: inherit !important;
   padding: 3px;
 }
-
 
 #DevssuperList {
   background-color: $project-table-background;
@@ -275,7 +265,7 @@
   width: 107%;
 }
 
-.ComPost{
+.ComPost {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -297,7 +287,7 @@
   width: 99%;
 }
 
-.TkPost{
+.TkPost {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -308,11 +298,9 @@
   display: flex;
 }
 
-
-.tktiny{
+.tktiny {
   margin-left: 70px;
 }
-
 
 .new-task {
   display: flex;

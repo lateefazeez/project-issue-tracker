@@ -1,21 +1,21 @@
 import { useState, useEffect } from "react";
-import FormModal from "./Form/FormModal";
-import CreateTask from "./Form/CreateTask";
+import FormModal from "../Form/FormModal";
+import CreateTask from "../Form/CreateTask";
 import classNames from "classnames";
 import axios from "axios";
-import Table from "./Table";
+import Table from "../Tables/Table";
 import "./TicketPage.scss";
 import "./TicketListTable";
-import "./HealthStats/HealthStats.scss";
+import "../HealthStats/HealthStats.scss";
 
-import HealthPriority from "./HealthStats/HealthPriority";
-import HealthStatus from "./HealthStats/HealthStatus";
-import HealthType from "./HealthStats/HealthType";
-import Duration from "./HealthStats/Duration";
-import PrimaryButton from "./PrimaryButton";
-import ProgressBar from "./ProgressBar";
+import HealthPriority from "../HealthStats/HealthPriority";
+import HealthStatus from "../HealthStats/HealthStatus";
+import HealthType from "../HealthStats/HealthType";
+import Duration from "../HealthStats/Duration";
+import PrimaryButton from "../Buttons/PrimaryButton";
+import ProgressBar from "../Other Components/ProgressBar";
 import { useLocation } from "react-router";
-import ChatBot from "../components/ChatBot/ChatBot";
+import ChatBot from "../ChatBot/ChatBot";
 
 const TicketPage = (props) => {
   const [isNewTaskOpen, setIsNewTaskOpen] = useState(false);

@@ -7,7 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import "./TicketTable.scss";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import "./TableHeader.scss";
+import "../Tables/TableHeader.scss";
 import axios from "axios";
 import { useState, useEffect, Fragment } from "react";
 import FormModal from "../Form/FormModal";

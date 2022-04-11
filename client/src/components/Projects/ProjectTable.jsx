@@ -1,12 +1,12 @@
 import { useState } from "react";
 import ProjectListTable from "./ProjectListTable";
-import TablePaginations from "./slider/TablePaginations";
-import CreateButton from "./Buttons/CreateButton";
+import TablePaginations from "../slider/TablePaginations";
+import CreateButton from "../Buttons/CreateButton";
 import "./ProjectTable.scss";
-import PrimaryButton from "./Buttons/PrimaryButton";
-import FormModal from "./Form/FormModal";
-import CreateProject from "./Form/CreateProject";
-import { getPercentageComplete } from "../helpers/getAllTicketCategories";
+import PrimaryButton from "../Buttons/PrimaryButton";
+import FormModal from "../Form/FormModal";
+import CreateProject from "../Form/CreateProject";
+import { getPercentageComplete } from "../../helpers/getAllTicketCategories";
 
 const ProjectTable = (props) => {
   const [isNewProjectOpen, setIsNewProjectOpen] = useState(false);

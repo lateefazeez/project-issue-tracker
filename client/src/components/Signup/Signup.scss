@@ -7,15 +7,14 @@
   height: 100%;
 
   position: absolute;
-  top:0;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  
+
   margin: auto;
   // background-color: #08071D;
   // opacity: 0.7;
-  
 }
 
 .button__header {
@@ -24,7 +23,7 @@
   margin-bottom: 2rem;
 }
 
-.page-control  {
+.page-control {
   color: white;
   letter-spacing: 0.05rem;
 }
@@ -43,31 +42,29 @@ h4 {
 }
 
 .home__icon {
-  z-index: 100
+  z-index: 100;
 }
 
 .logo-circle {
   width: 1.8rem;
   height: 1.8rem;
-  background-color: #4D45B5;
+  background-color: #4d45b5;
   border-radius: 50px;
   margin-right: 0.6rem;
 }
 .logo-circle-big {
   width: 1.8rem;
   height: 1.8rem;
-  background-color: #4D45B5;
+  background-color: #4d45b5;
   border-radius: 50px;
   margin-right: 0.6rem;
 }
-
-
 
 .opaque-background {
   position: absolute;
   height: 100%;
   width: 100%;
-  background-color:rgba(0,0,0,0.8);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .git-icon {
@@ -84,23 +81,24 @@ h4 {
 }
 
 .login_btn {
-  background-color: #4D45B5 !important;
-  color: #FFFFFF !important;;
-  padding: 0.5rem 3rem !important;;
+  background-color: #4d45b5 !important;
+  color: #ffffff !important;
+  padding: 0.5rem 3rem !important;
   margin-top: 2rem;
   border-radius: 0.5rem !important;
   font-size: 1.5rem !important;
 }
 
 .login__header {
-  color: #DEDBDB;
+  color: #dedbdb;
   display: flex;
   justify-content: center;
   margin-top: 2rem;
 }
 
 .image-box {
-  background: url("../../src/images/software-page-image.jpg") no-repeat center center fixed;
+  background: url("../../images/software-page-image.jpg") no-repeat center
+    center fixed;
   background-size: cover;
 
   /* Here's the same styles we applied to our content-div earlier */

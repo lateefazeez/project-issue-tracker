@@ -1,7 +1,7 @@
 import { Fragment, useState } from "react";
 import ListMaker from "../ListMaker/List";
 import TablePaginations from "../slider/TablePaginations";
-import PrimaryButton from "./PrimaryButton";
+import PrimaryButton from "../Buttons/PrimaryButton";
 import CommentEntry from "../Comment/CommentEntry";
 import FormModal from "../Form/FormModal";
 import CreateTicket from "../Form/CreateTicket";

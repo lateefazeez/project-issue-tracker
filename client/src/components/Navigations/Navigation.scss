@@ -1,5 +1,5 @@
-@import "../styles/mixins.scss";
-@import "../styles/variables.scss";
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
 
 .topbar {
   background-color: $page-dark-background;
@@ -10,7 +10,7 @@
 // }
 
 .user {
-  color: #BCBABA;
+  color: #bcbaba;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,25 +20,25 @@
 }
 
 .logged-user {
-  color: #5E6DCB;
+  color: #5e6dcb;
 }
 
 .navitems {
   color: "#BCBABA";
   :hover {
-    color: white !important
+    color: white !important;
   }
 }
 
 a {
-  color: #BCBABA !important;
+  color: #bcbaba !important;
   text-decoration: none !important;
 }
 
 a:hover {
-  color:white !important; 
-  text-decoration:none; 
-  cursor:pointer;  
+  color: white !important;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 // .closebutton {
@@ -46,7 +46,6 @@ a:hover {
 //   flex-direction: column;
 //   align-items: flex-start;
 // }
-
 
 .trademark--logout {
   display: flex;
@@ -69,8 +68,8 @@ a:hover {
 
 .divider {
   margin-top: 5rem;
-  color: #BCBABA;
-  height: 0.2px
+  color: #bcbaba;
+  height: 0.2px;
 }
 
 // .lists-items {

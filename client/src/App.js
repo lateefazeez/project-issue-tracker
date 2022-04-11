@@ -1,19 +1,16 @@
 /* eslint-disable no-undef */
-import { useState } from "react"
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import SelectProject from "./components/SelectProject"
-import Signup from "./components/Signup"
-import PersistentDrawerLeft from "./components/Navigation2.0"
+import SelectProject from "./components/Projects/SelectProject";
+import Signup from "./components/Signup/Signup";
 import useApplication from "./components/hooks/useApplicationData";
 
-
-import "./App.scss"
-import PersistentDrawerTicket from "./components/NavigationTickets";
-import ProjectDashboard from "./components/ProjectDashboard";
+import "./App.scss";
+import PersistentDrawerTicket from "./components/Navigations/NavigationTickets";
+import ProjectDashboard from "./components/Dashboard/ProjectDashboard";
 
 function App() {
-
-  const [loggedInUser, setLoggedInUser] = useState(null)
+  const [loggedInUser, setLoggedInUser] = useState(null);
 
   const {
     data,
@@ -54,25 +51,25 @@ function App() {
     RegisteredUser,
     getLoggedInUser,
     projectUsers,
-  } = useApplication()
+  } = useApplication();
 
-  const reload = () => window.location.reload()
+  const reload = () => window.location.reload();
 
-  const userIdFromSession = window.sessionStorage.getItem("userId")
-  const userNameFromSession = window.sessionStorage.getItem("userName")
-  
-  console.log("LoggedIn: ", loggedInUser)
+  const userIdFromSession = window.sessionStorage.getItem("userId");
+  const userNameFromSession = window.sessionStorage.getItem("userName");
+
+  console.log("LoggedIn: ", loggedInUser);
   return (
-    //  isLoading ? "Loading..." :  
+    //  isLoading ? "Loading..." :
     <div className="App">
       <Routes>
         <Route path="/" element={<SelectProject />} />
-        <Route 
-          path="/signup" 
+        <Route
+          path="/signup"
           element={
-            <Signup 
+            <Signup
               createUser={createUser}
-              loginUser={loginUser} 
+              loginUser={loginUser}
               logoutUser={logoutUser}
               RegisteredUser={RegisteredUser}
               getLoggedInUser={getLoggedInUser}
@@ -81,7 +78,8 @@ function App() {
               loggedInUser={loggedInUser}
               setLoggedInUser={setLoggedInUser}
             />
-            } />
+          }
+        />
         <Route
           path="/navigation"
           element={
@@ -89,11 +87,11 @@ function App() {
               getProjectId={getProjectId}
               projects={projects}
               tickets={tickets}
-              users={users} 
-              user={users} 
-              chartData={chartData} 
-              createProject={createProject} 
-              updateProject={updateProject} 
+              users={users}
+              user={users}
+              chartData={chartData}
+              createProject={createProject}
+              updateProject={updateProject}
               deleteProject={deleteProject}
               userProjects={userProjects}
               reload={reload}
@@ -105,9 +103,11 @@ function App() {
               userIdFromSession={userIdFromSession}
               userNameFromSession={userNameFromSession}
               data={data}
-            /> } />
-        <Route 
-          path="/tickets" 
+            />
+          }
+        />
+        <Route
+          path="/tickets"
           element={
             <PersistentDrawerTicket
               data={data}
@@ -141,15 +141,8 @@ function App() {
           }
         />
       </Routes>
-
     </div>
-    
-    
   );
 }
 
 export default App;
-
-
-
-
